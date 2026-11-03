@@ -2,6 +2,8 @@
 
 This file records what was actually executed for the corrective revision, what passed, and what remains limited. It is not a peer-review certificate and does not assign a journal decision.
 
+Final release commit: `3a5f732` (corrective analysis `342bd41`, wording `01e515c`, build-report fix `3a5f732`).
+
 ## Environment
 
 - Windows 10, Python 3.11.9 (venv at `D:/trae/venv`), numpy 1.26.4, scipy 1.16.3, pandas 2.3.3, matplotlib 3.10.9, threadpoolctl 3.6.0, pypdf 6.14.2.
@@ -48,4 +50,8 @@ Production wall-clock: calibration 28.4 min for 24,000 panels plus merge (29.8 m
 - The calibration simulator reproduces the empirical intercept but not the empirical slope (0.413 vs 0.560 for RA), sample size (1,568 vs 1,748) or national lag-one autocorrelation (0.244 vs 0.494). These are reported in `calibration.json` response checks, not tuned away.
 - The design exercise saturates; it cannot estimate the number of seasons needed in reality.
 - Two of 1,050,000 thinning inner fits failed; the failure policy makes any affected level average undefined, and this is retained in diagnostics.
-- The independent clean-copy rerun covers the empirical, fixed-effect, block, thinning, theory, secondary and design stages. Calibration was executed once at full budget with its own 30 implementation tests and deterministic-seed reproducibility checks; it was not rerun a second time from the clean copy.
+- The independent clean-copy rerun covers the empirical, fixed-effect, block, thinning, theory, secondary and design stages, with the production and clean values identical to the last printed digit for the compared quantities. Calibration was executed once at full budget with its own 30 implementation tests and deterministic-seed reproducibility checks; it was not rerun a second time from the clean copy.
+
+## Final build report
+
+`validation/build/build_report.json` records both languages: English 25 pages, Chinese 26 pages, no unresolved question marks, and zero overfull boxes, undefined references, missing characters, LaTeX errors or duplicate destinations in the final pass.
