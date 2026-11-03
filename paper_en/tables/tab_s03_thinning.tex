@@ -1,7 +1,7 @@
 \begin{table}[htbp]
 \centering
 \scriptsize
-\caption{Shared-count thinning estimates, simultaneous bands and simulation diagnostics}\label{tab:thinning}
+\caption{Shared-count binomial thinning of the R\_\allowbreak{}A sample (n=1748): estimates, simultaneous bands and simulation diagnostics}\label{tab:thinning}
 \setlength{\tabcolsep}{2pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}@{}}
 \toprule
@@ -113,6 +113,6 @@ both50 & noq01 & delta\_\allowbreak{}a\_\allowbreak{}rate & -0.0004328 [-0.00133
 \end{tabularx}
 \par\smallskip
 \begin{minipage}{\linewidth}\footnotesize\raggedright
-Per-q intervals are pointwise; the separate bands are simultaneous over q within each subset. full uses all q; noq01 excludes q=0.1. highCt50 requires original current count >=50; both50 requires both original adjacent counts >=50. c is the slope increment per (1/q-1); bP is the plug-in Poisson reference. B=1000; R(point)=400; R(inner, actual)=50; MC tolerance=0.1; max finite MC/sampling SE=68.44; undefined MC ratios=0/219; MC status=tolerance\_\allowbreak{}met. Point fits 8400/8400; bootstrap fits 1049998/1050000; failed bootstrap averages=2. Any failed inner fit makes that q average undefined; no silent averaging over successful fits. full: n=1748; bP=0.4455 [0.4282, 0.4658]. highCt50: n=828; bP=0.4206 [0.4032, 0.4387]. both50: n=821; bP=0.4183 [0.4008, 0.4359].
+Per-q intervals are pointwise; the separate bands are simultaneous over q within each subset. full uses all q; noq01 excludes q=0.1. highCt50 requires original current count >=50; both50 requires both original adjacent counts >=50. c is the slope increment per (1/q-1); bP is the plug-in Poisson reference. B=1000; R(point)=400; R(inner, actual)=50; precision criterion: MC SE at most 0.1 times the point estimate, applied to the five monitored response summaries; max finite MC SE/|point| over all stored metrics=68.44; max finite MC SE/sampling SE over all stored metrics=1.74; undefined MC ratios=0/219; MC status=tolerance\_\allowbreak{}met. Point fits 8400/8400; bootstrap fits 1049998/1050000; failed bootstrap averages=2. Any failed inner fit makes that q average undefined; no silent averaging over successful fits. full: n=1748; bP=0.4455 [0.4282, 0.4658]. highCt50: n=828; bP=0.4206 [0.4032, 0.4387]. both50: n=821; bP=0.4183 [0.4008, 0.4359].
 \end{minipage}
 \end{table}

@@ -242,7 +242,16 @@ def mc_summary(inputs):
     metrics = mc.get("metrics", {})
     ratios = [v.get("mc_to_sampling_se") for v in metrics.values()]
     finite_ratios = [v for v in ratios if finite(v)]
+    # s03b stores MC SE / |point estimate| under the key mc_to_sampling_se.
+    # Also compute the literal MC SE / sampling SE ratio for transparent reporting.
+    literal = []
+    for value in metrics.values():
+        mc_se = at(value, "bootstrap_mean_mc_se")
+        sampling_se = at(value, "estimated_sampling_se")
+        if finite(mc_se) and finite(sampling_se) and sampling_se > 0:
+            literal.append(mc_se / sampling_se)
     return {"maximum": max(finite_ratios) if finite_ratios else None,
+            "max_mc_over_sampling": max(literal) if literal else None,
             "undefined_metrics": sum(not finite(v) for v in ratios),
             "n_metrics": len(metrics), "status": 1 if mc.get("adequate") is True else (0 if mc.get("adequate") is False else -1),
             "text": mc.get("status", "unavailable")}
@@ -351,8 +360,8 @@ def cv_table(i, lang):
                     rows.append([stat, str(f.get("fold", "--")), shown(f.get("test_n")), shown(f.get("score_affine")),
                                  shown(f.get("score_power")), shown(f.get("power_minus_affine")),
                                  tr(lang, "yes", "是") if f.get("converged_and_positive") else tr(lang, "unavailable", "不可用")])
-    notes = [tr(lang, "Summary rows show valid/total folds and the number favoring affine in the last column; season rows show test n and convergence. Score is mean L/mu + log(mu), lower is better. Difference = power minus affine, so positive favors affine. Fold fits refit the training center. Training sets overlap; no iid-fold SE or four-season significance test is reported.",
-                "汇总行列出有效/总折数及末列偏向仿射模型的折数；季节行列出测试样本量与收敛状态。评分为平均 L/mu + log(mu)，越低越好。差值=幂律减仿射，正值偏向仿射。各折重新拟合训练中心。训练集重叠，不报告独立折标准误或四季显著性检验。")]
+    notes = [tr(lang, "Summary rows show valid/total folds and the number favoring affine in the last column; season rows show test n and convergence. Score is mean L/mu + log(mu), lower is better. Difference = power minus affine, so positive favors affine. The summary difference is the mean across folds weighted by held-out test n; the unweighted fold mean and the count of folds favouring affine are shown separately. Fold fits refit the training center. Training sets overlap; no iid-fold SE or four-season significance test is reported.",
+                "汇总行列出有效/总折数及末列偏向仿射模型的折数；季节行列出测试样本量与收敛状态。评分为平均 L/mu + log(mu)，越低越好。差值=幂律减仿射，正值偏向仿射。汇总差值为以测试样本量加权的折均值；同时列出未加权折均值与仿射胜出折数。各折重新拟合训练中心。训练集重叠，不报告独立折标准误或四季显著性检验。")]
     return tr(lang, "Foldwise model validation", "逐折模型验证"), [tr(lang, "Statistic / split", "统计量/划分"), tr(lang, "Fold", "折"), tr(lang, "Valid/total or n", "有效/总数或n"), tr(lang, "Affine", "仿射"), tr(lang, "Power", "幂律"), tr(lang, "Difference", "差值"), tr(lang, "Wins / valid", "胜出/有效")], rows, notes, True
 
 
@@ -378,7 +387,9 @@ def thinning_table(i, lang):
     notes = [tr(lang, "Per-q intervals are pointwise; the separate bands are simultaneous over q within each subset. full uses all q; noq01 excludes q=0.1. highCt50 requires original current count >=50; both50 requires both original adjacent counts >=50. c is the slope increment per (1/q-1); bP is the plug-in Poisson reference.",
                 "逐q区间为点态区间；单列包络为各子集中跨q的同时区间。full使用全部q；noq01排除q=0.1。highCt50要求原当期计数>=50；both50要求原相邻两期计数均>=50。c为每(1/q-1)的斜率增量；bP为代入式泊松参照。"),
              f"B={shown(meta.get('bootstrap'))}; R(point)={shown(meta.get('point_reps'))}; R(inner, actual)={shown(meta.get('inner_reps'))}; "
-             f"MC tolerance={shown(i.get('thinning', 'monte_carlo', 'tolerance'))}; max finite MC/sampling SE={shown(mc['maximum'])}; "
+             f"precision criterion: MC SE at most {shown(i.get('thinning', 'monte_carlo', 'tolerance'))} times the point estimate, applied to the five monitored response summaries; "
+             f"max finite MC SE/|point| over all stored metrics={shown(mc['maximum'])}; "
+             f"max finite MC SE/sampling SE over all stored metrics={shown(mc['max_mc_over_sampling'])}; "
              f"undefined MC ratios={mc['undefined_metrics']}/{mc['n_metrics']}; MC status={mc['text']}.",
              f"Point fits {shown(diag.get('point_converged'))}/{shown(diag.get('point_attempted'))}; "
              f"bootstrap fits {shown(diag.get('bootstrap_converged'))}/{shown(diag.get('bootstrap_attempted'))}; "
@@ -386,7 +397,7 @@ def thinning_table(i, lang):
              str(i.get("thinning", "failure_policy", default="Unavailable"))]
     for subset in ("full", "highCt50", "both50"):
         notes.append(f"{subset}: n={shown(i.get('thinning', 'metadata', 'config', 'subsets', subset))}; bP={estimate(estimates.get(subset + '/bP'))}.")
-    return tr(lang, "Shared-count thinning estimates, simultaneous bands and simulation diagnostics", "共享计数稀释估计、同时区间与模拟诊断"), [tr(lang, "Sample", "样本"), tr(lang, "q / fit", "q/拟合"), tr(lang, "Metric", "指标"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Simultaneous 95%", "同时95%区间"), tr(lang, "Finite/B", "有限/B")], rows, notes, True
+    return tr(lang, "Shared-count binomial thinning of the R_A sample (n=1748): estimates, simultaneous bands and simulation diagnostics", "共享计数稀释估计、同时区间与模拟诊断"), [tr(lang, "Sample", "样本"), tr(lang, "q / fit", "q/拟合"), tr(lang, "Metric", "指标"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Simultaneous 95%", "同时95%区间"), tr(lang, "Finite/B", "有限/B")], rows, notes, True
 
 
 def fe_table(i, lang):
@@ -413,9 +424,9 @@ def fe_table(i, lang):
         d = i.get("fixed_effects", "diagnostics", key, default={})
         rows.append([tr(lang, "Point diagnostic", "点估计诊断"), key, "b=" + shown(d.get("b")) if d.get("converged") else tr(lang, "Unavailable", "不可用"),
                      tr(lang, "No CI", "无区间"), str(d.get("failure") or d.get("method", "unavailable"))])
-    notes.insert(0, tr(lang, "Intervals retain signed draws and are conditional on finite estimates when finite/B < 1. Last column gives the nonpositive fraction over all requested draws. FE targets the sampled state occurrences; pooled/FE comparisons are paired within draws. L denotes the within-season week-block length. Week-only and state-and-week fits are point diagnostics; failed fits have no estimate or interval.",
-                         "区间保留有符号重抽样；有限/B<1时，区间以有限估计为条件。末列为全部请求重抽样中的非正比例。FE以抽中的州出现次数为目标；合并/FE比较在重抽样内配对。L为季内周块长度。仅周和州加周拟合为点估计诊断，失败时无估计或区间。"))
-    return tr(lang, "Fixed effects, paired ratios, block sensitivity and convergence", "固定效应、配对比值、周块敏感性与收敛"), [tr(lang, "Block", "周块"), tr(lang, "Parameter", "参数"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B"), tr(lang, "Nonpositive / diagnostic", "非正比例/诊断")], rows, notes, True
+    notes.insert(0, tr(lang, "Sample: the R_A specification, n=1748 state-weeks in 51 jurisdictions; the G sample is not used here. Intervals retain signed draws and are conditional on finite estimates when finite/B < 1. Last column gives the nonpositive fraction over all requested draws. FE targets the sampled state occurrences; pooled/FE comparisons are paired within draws. L denotes the within-season week-block length. Week-only and state-and-week fits are point diagnostics; failed fits have no estimate or interval. Pooled rows here use this table's own 1000-draw bootstrap and can differ slightly from the primary 2000-draw interval in Table S1.",
+                         "样本为 $R_A$ 规格的 1748 个州周、51 个辖区；本表不使用 $G$ 样本。区间保留有符号重抽样；有限/B<1时，区间以有限估计为条件。末列为全部请求重抽样中的非正比例。FE以抽中的州出现次数为目标；合并/FE比较在重抽样内配对。L为季内周块长度。仅周和州加周拟合为点估计诊断，失败时无估计或区间。本表合并行使用本表自身的 1000 次自助抽样，可能与表 S1 的 2000 次主区间略有差异。"))
+    return tr(lang, "Fixed effects for the R_A sample (n=1748): paired ratios, block sensitivity and convergence", "R_A 样本（n=1748）的固定效应：配对比值、周块敏感性与收敛"), [tr(lang, "Block", "周块"), tr(lang, "Parameter", "参数"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B"), tr(lang, "Nonpositive / diagnostic", "非正比例/诊断")], rows, notes, True
 
 
 def centering_table(i, lang):
@@ -429,8 +440,8 @@ def centering_table(i, lang):
         for key in ("week_change", "week_reduction_fraction"):
             d = i.get("empirical", "centering", stat, key, default={})
             rows.append([stat + " / " + key, shown(normalizer), estimate(d, scale=100 if key.endswith("fraction") else 1), "--", draws_text(d)])
-    notes = [tr(lang, "All five centers use the same pooled mean as the relative-loss denominator within each statistic; the denominator is refitted with weights within each bootstrap draw. week_leave_state_out removes the focal state from its weekly center. Reduction is 100*(a_pooled-a_week)/a_pooled, in percent; changes are descriptive and not additive variance components.",
-                "同一统计量的五种中心均使用相同合并均值作为相对损失分母；每次重抽样用权重重新拟合该分母。week_leave_state_out的周中心排除本州。减少比例为100*(a_pooled-a_week)/a_pooled，单位为百分比；这些是描述性变化，并非可加总方差分量。"), failure_notes(checks, lang)]
+    notes = [tr(lang, "All five centers use the same pooled mean as the relative-loss denominator within each statistic; the denominator is refitted with weights within each bootstrap draw. week_leave_state_out removes the focal state from its weekly center. Reduction is 100*(a_pooled-a_week)/a_pooled, in percent; changes are descriptive and not additive variance components. Intervals here use this table's own 1000-draw bootstrap and can differ slightly from the primary 2000-draw interval in Table S1.",
+                "同一统计量的五种中心均使用相同合并均值作为相对损失分母；每次重抽样用权重重新拟合该分母。week_leave_state_out的周中心排除本州。减少比例为100*(a_pooled-a_week)/a_pooled，单位为百分比；这些是描述性变化，并非可加总方差分量。本表区间使用自身的 1000 次自助抽样，可能与表 S1 的 2000 次主区间略有差异。"), failure_notes(checks, lang)]
     return tr(lang, "Centering stages with a common loss normalizer", "采用共同损失分母的中心化阶段"), [tr(lang, "Statistic / center", "统计量/中心"), tr(lang, "Pooled mean", "合并均值"), "a / " + tr(lang, "change [95% CI]", "变化 [95% CI]"), "b [95% CI]", tr(lang, "Finite/B", "有限/B")], rows, notes, True
 
 
@@ -666,7 +677,7 @@ def fig_thinning(i, lang, plt, np):
         ax.plot([u for u, v in zip(x, vals) if finite(v)], [v for v in vals if finite(v)], ("o-", "s--")[j], color=COLORS[j], label=metric)
     tolerance = i.get("thinning", "monte_carlo", "tolerance")
     if finite(tolerance): ax.axhline(tolerance, color="#555555", linestyle=":", label=tr(lang, "MC tolerance", "MC容差"))
-    ax.set_xlabel("1/q − 1"); ax.set_ylabel("MC SE / sampling SE"); ax.legend(frameon=False)
+    ax.set_xlabel("1/q − 1"); ax.set_ylabel("MC SE / point estimate"); ax.legend(frameon=False)
     mc = mc_summary(i)
     fig.suptitle(tr(lang, "Thinning", "稀释") + f"  B={shown(i.get('thinning', 'metadata', 'bootstrap'))}, "
                  f"R={shown(i.get('thinning', 'metadata', 'inner_reps'))}; " +

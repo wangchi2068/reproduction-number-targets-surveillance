@@ -6,7 +6,7 @@
 
 已知真实值的模拟呈现了模型预言的目标差异（图~\ref{fig:concept}）。报告概率固定且正确已知时，当期再生数的误差随病例量倒数下降；固定一组已实现时期的均值误差也下降，因为这些时期的真实波动属于目标本身。对于平稳过程均值，在抽取时期数固定时，误差保留实现均值的方差。模拟仅检查模型自身假设下的公式，并不证明住院统计量截距有相同来源。
 
-采用平均报告率归一化、而当期完整度独立波动时，当期误差趋向报告项而非零。有限时期均值也继承除以独立时期数的报告分量。因此，没有环境底线不等于没有观察过程底线。模拟记录每项比较的蒙特卡洛标准误，按模拟不确定性评价数值差异，而不以任意百分比作为一致标准。补充材料的方差平衡和预算结果属于该指定模型，不是由住院数据识别的操作门槛。
+采用平均报告率归一化、而当期完整度独立波动时，当期误差趋向报告项而非零。有限时期均值也继承除以独立时期数的报告分量。因此，没有环境底线不等于没有观察过程底线。模拟记录每项比较的蒙特卡洛标准误，按模拟不确定性评价数值差异，而不以任意百分比作为一致标准。附录~\ref{app:extensions} 的方差平衡和预算结果属于该指定模型，不是由住院数据识别的操作门槛。
 
 \begin{figure}[tbp]
 \centering
@@ -34,13 +34,13 @@
 \subsection{对受控随机移除病例的响应}
 \label{sec:res-thinning}
 
-全保留率水平的稀释速率为 \ThinAllPoint{}（95\% 区间 \ThinAllInterval{}），近似弹性参照为 \ThinBPPoint{}，与参照的配对比值为 \ThinRatioPoint{}（\ThinRatioInterval{}）。剔除最极端保留率后得到 \ThinNoqPoint{}（\ThinNoqInterval{}；图~\ref{fig:thinning}、表~\ref{tab:thinning}）。二者值得并列考察，因为 $q=0.1$ 对过原点回归预测变量平方和的贡献约为 76\%。这来自所选逆保留率设计，本身不证明该点存在偏差。
+对 $R_A$ 样本（n=\Nra{} 个州周），全保留率水平的稀释速率为 \ThinAllPoint{}（95\% 区间 \ThinAllInterval{}），近似弹性参照为 \ThinBPPoint{}，与参照的配对比值为 \ThinRatioPoint{}（\ThinRatioInterval{}）。剔除最极端保留率后得到 \ThinNoqPoint{}（\ThinNoqInterval{}；图~\ref{fig:thinning}、表~\ref{tab:thinning}）。二者值得并列考察，因为 $q=0.1$ 对过原点回归预测变量平方和的贡献约为 76\%。这来自所选逆保留率设计，本身不证明该点存在偏差。
 
 原始 $C_t\ge50$ 子样本的速率为 \ThinHighPoint{}（\ThinHighInterval{}），同时要求当前和下一周计数均不低于 50 时为 \ThinBothPoint{}（\ThinBothInterval{}）。后一限制处理了前一限制的不足：较大的当前计数不保证稀释后的分子也足够大。所有子样本均由原始计数确定，不在稀释后重新筛选；每个子样本使用重新计算的参照系数，不借用全样本值。
 
 图~\ref{fig:thinning} 同时报告截距差及联合不确定性，包括低保留率下的偏离。区间包含零不表示截距严格不变。即使施加的计数移除机制已知，非线性变换、连续性修正、重新中心化与回归仍可影响拟合响应。补充输出中的已知泊松计数例检查完整流程，不声称代表现实中的全部报告机制。
 
-计算实际使用 \ThinBootstrap{} 次外层样本、\ThinPointReps{} 次点实现，每个外层水平使用 \ThinInnerReps{} 次内层实现。表~\ref{tab:thinning} 报告预定蒙特卡洛检查及拟合失败，区分平均稀释响应的不确定性与单次随机稀释的离散度。实验刻画这些已记录病例对进一步随机移除的响应，不分离原截距中的传播、住院实践、延迟观察和报告变异；$b(1)$ 与 $c_{\rm thin}$ 的差额也不唯一量化后代过度离散。
+计算实际使用 \ThinBootstrap{} 次外层样本、\ThinPointReps{} 次点实现，每个外层水平使用 \ThinInnerReps{} 次内层实现。表~\ref{tab:thinning} 报告预定蒙特卡洛检查及拟合失败，由于点估计平均的实现次数多于每个自助抽样，区间同时包含抽样变异与有限内层模拟波动；表~ef{tab:thinning} 报告两部分误差、预定蒙特卡洛检查与拟合失败。实验刻画这些已记录病例对进一步随机移除的响应，不分离原截距中的传播、住院实践、延迟观察和报告变异；$b(1)$ 与 $c_{\rm thin}$ 的差额也不唯一量化后代过度离散。
 
 \begin{figure}[tbp]
 \centering
@@ -52,11 +52,11 @@
 \subsection{州异质性与损失参照选择}
 \label{sec:res-fe}
 
-包含州截距和共同州内斜率时，$b_{\rm w}=\FEbPoint{}$（\FEbInterval{}），州截距均值为 \FEaPoint{}（\FEaInterval{}）。均值口径的比值为 \FEratioPoint{}（\FEratioInterval{}）；采用实际加权 $D_t$ 得到 \FEDratioPoint{}（\FEDratioInterval{}；图~\ref{fig:heterogeneity}、表~\ref{tab:fe}）。后一规格是独立拟合，不再是单周计数分析的别名。
+对同一样本（$R_A$，n=\Nra{}），包含州截距和共同州内斜率时，$b_{\rm w}=\FEbPoint{}$（\FEbInterval{}），州截距均值为 \FEaPoint{}（\FEaInterval{}）。均值口径的比值为 \FEratioPoint{}（\FEratioInterval{}）；采用实际加权 $D_t$ 得到 \FEDratioPoint{}（\FEDratioInterval{}；图~\ref{fig:heterogeneity}、表~\ref{tab:fe}）。后一规格是独立拟合，不再是单周计数分析的别名。
 
 独立重抽样日历周时，合并对州内的配对比值为 \FEpairedPoint{}（\FEpairedInterval{}）。两周、三周块区间分别为 \FEpairedBlockTwoInterval{} 和 \FEpairedBlockThreeInterval{}。普通区间下界略高于 1，时间块区间则包含 1。因此差异依赖于如何表示时间相关，不能转换为空间汇总的因果贡献比例。主州模型在 \FEBootstrap{} 次自助样本中有 \FEvalid{} 次有效拟合，有限有效重复区间的条件性及诊断失败均已标注。州与周双向点诊断未达到数值收敛标准，不报告斜率或置信区间。
 
-改变损失参照同样会改变截距（表~\ref{tab:centering}）。保持共同全局归一化分母，用全国周中心替代合并中心后，$R_A$ 截距减少 \RAweekReductionPoint{}\%（\RAweekReductionInterval{}\%），$G$ 减少 \GweekReductionPoint{}\%（\GweekReductionInterval{}\%）。这里的降幅低于旧流程的 41\%--51\%，因为本分析固定归一化分母；旧流程同时改变了中心与尺度。按季中心化与共同线性去趋势并不产生相同变化。不同参照移除不同的观测轨迹成分，其中包含真实共同信号。排除自身州的变体进一步记录一个观测参与自身周参照的影响。这些比较刻画定义敏感性，不构成独立传播与报告方差的已识别分解。
+改变损失参照同样会改变截距（表~\ref{tab:centering}）。保持共同全局归一化分母，用全国周中心替代合并中心后，$R_A$ 截距减少 \RAweekReductionPoint{}\%（\RAweekReductionInterval{}\%），$G$ 减少 \GweekReductionPoint{}\%（\GweekReductionInterval{}\%）。该降幅仅针对固定归一化分母；若同时改变归一化，将定义另一个不可直接比较的量。按季中心化与共同线性去趋势并不产生相同变化。不同参照移除不同的观测轨迹成分，其中包含真实共同信号。排除自身州的变体进一步记录一个观测参与自身周参照的影响。这些比较刻画定义敏感性，不构成独立传播与报告方差的已识别分解。
 
 \begin{figure}[tbp]
 \centering

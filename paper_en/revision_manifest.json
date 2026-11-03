@@ -2,10 +2,10 @@
   "schema_version": 1,
   "generator": {
     "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-    "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+    "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
     "version": "render-revision-1.0"
   },
-  "generated_at": "2026-11-03T05:48:48.761119+00:00",
+  "generated_at": "2026-11-03T06:56:13.860538+00:00",
   "language": "en",
   "mode": "production",
   "results_dir": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised",
@@ -984,6 +984,7 @@
   },
   "monte_carlo": {
     "maximum": 68.43985642997627,
+    "max_mc_over_sampling": 1.7396919672646671,
     "undefined_metrics": 0,
     "n_metrics": 219,
     "status": 1,
@@ -1044,7 +1045,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "macro_names": [
@@ -1164,7 +1165,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       }
     },
@@ -1182,7 +1183,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:pooled",
@@ -1193,7 +1194,7 @@
     {
       "path": "tables/tab_s02_cv.tex",
       "kind": "table",
-      "sha256": "54256156cc4a582dd5d0b911da66263277034cdd135e311e51dc7304b581a416",
+      "sha256": "03619e82476d331962c255320c5ae3b1b036e1287e1848b7def49d7cb33b73d9",
       "inputs": {
         "empirical": {
           "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised\\empirical.json",
@@ -1204,7 +1205,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:cv",
@@ -1215,7 +1216,7 @@
     {
       "path": "tables/tab_s03_thinning.tex",
       "kind": "table",
-      "sha256": "8490faec661a97a8cf355aa54c9ca087cc2c93edfeac4f4d78ecada0d8f5af5e",
+      "sha256": "c4e265a1b6cf85619798442f84ebf182b198cca4eaafc1787059cbf15e1c6a97",
       "inputs": {
         "thinning": {
           "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised\\thinning.json",
@@ -1226,18 +1227,18 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:thinning",
-      "caption": "Shared-count thinning estimates, simultaneous bands and simulation diagnostics",
+      "caption": "Shared-count binomial thinning of the R_A sample (n=1748): estimates, simultaneous bands and simulation diagnostics",
       "rows": 102,
       "environment": "longtable"
     },
     {
       "path": "tables/tab_s04_fe.tex",
       "kind": "table",
-      "sha256": "390fab2e204ce11a99471215e446fcb1561594905e3dd02bf44ef7224d501d27",
+      "sha256": "c734ce2ea65b1a5bf5303569a00a4982ac758d289b8d202827029e7b28af3d51",
       "inputs": {
         "fixed_effects": {
           "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised\\fixed_effects.json",
@@ -1258,18 +1259,18 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:fe",
-      "caption": "Fixed effects, paired ratios, block sensitivity and convergence",
+      "caption": "Fixed effects for the R_A sample (n=1748): paired ratios, block sensitivity and convergence",
       "rows": 50,
       "environment": "longtable"
     },
     {
       "path": "tables/tab_s05_centering.tex",
       "kind": "table",
-      "sha256": "fdd8ce0af6b7d82b8a2ce8390326e285de4c6f716d476da68db6c200400f9b13",
+      "sha256": "6a4521795641d0f74a77893b53cf51c7c56488caf15479322f48a0eba6ec9e6f",
       "inputs": {
         "empirical": {
           "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised\\empirical.json",
@@ -1280,7 +1281,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:centering",
@@ -1302,7 +1303,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:calibration",
@@ -1324,7 +1325,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:design",
@@ -1346,7 +1347,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "label": "tab:secondary",
@@ -1368,7 +1369,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "font_selection": {
@@ -1390,7 +1391,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "font_selection": {
@@ -1401,7 +1402,7 @@
     {
       "path": "figures/fig_03_thinning.pdf",
       "kind": "figure",
-      "sha256": "2e5bab7167e202297dca4e3c3d8c01fc1c178170a99bbcbec127fabef783611a",
+      "sha256": "0005972ed5b26a51b6e3ea83884fe5f8f703f0464598c7274bfaeeef66c5c30f",
       "inputs": {
         "thinning": {
           "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\analysis\\revised\\thinning.json",
@@ -1412,7 +1413,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "font_selection": {
@@ -1449,7 +1450,7 @@
       "missing_inputs": [],
       "generator": {
         "path": "D:\\Users\\wangchi2068\\Desktop\\新建文件夹\\113.2\\case-count-bottleneck\\experiment\\code\\render_revision.py",
-        "sha256": "d267623ce9b1c0ee440cc16975b1b5cdea7c8f733a8b72cdb1bd40bd6f4ee4b1",
+        "sha256": "d690cbbc96b18bd001733e1df48171400c352d1f5e3d17afcc8defd88fb2a7af",
         "version": "render-revision-1.0"
       },
       "font_selection": {
