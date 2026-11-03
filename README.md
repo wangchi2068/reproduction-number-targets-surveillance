@@ -10,9 +10,10 @@ The statistical return to counting more cases depends on the inferential target:
 
 | Target | Mean squared error | Behaviour as case volume grows |
 |---|---|---|
-| Current value $R_t$ | $A/m$ | Falls to zero when reporting is fixed and known |
-| Realised mean of $T$ observed periods $\bar R_T$ | $A/(Tm)$ | Falls to zero; no environmental floor |
-| Stationary process mean $\bar R$ | $v_R+A/m$ (independent periods) | Retains $v_R$; only more periods reduce it |
+| Current value $R_t$, single-period estimate | $A/m$ | Falls to zero when reporting is fixed and known |
+| Realised mean of $T$ observed periods $ar R_T$ | $A/(Tm)$ | Falls to zero; no environmental floor |
+| Stationary process mean $ar R$, $T$-period average | $v_R/T+A/(Tm)$ (independent periods) | Floor $v_R/T$; only more periods reduce it |
+| Stationary process mean $ar R$, single-period estimate | $v_R+A/m$ (independent periods) | Floor $v_R$; more cases alone cannot remove it |
 | Current value with unobserved reporting volatility | $v_H+A_H/m$ | Retains a reporting floor $v_H$ |
 
 The empirical analyses are diagnostics of apparent weekly statistics, not measurements of latent transmission. An affine working model, held-out curve comparisons, controlled binomial thinning, state-intercept fits, loss-reference sensitivities and a conditional simulator are reported with their failures, boundaries and non-identifiability. No operational case-volume threshold is recommended.

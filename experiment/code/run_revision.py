@@ -30,10 +30,11 @@ def digest(path):
 
 
 def fingerprint(config):
-    sources={p.relative_to(REPO).as_posix():digest(p) for p in sorted(CODE.glob('*.py')) if p.name.startswith('revision_') or p.name in ('s03b_thinning.py','s03c_state_fe.py')}
+    sources={p.relative_to(REPO).as_posix():digest(p) for p in sorted(CODE.glob('*.py'))}
+    documents={p.name:digest(p) for p in (EXP/'analysis_protocol.md',EXP/'input_assumptions.json') if p.is_file()}
     inputs={p.relative_to(REPO).as_posix():digest(p) for p in sorted((EXP/'data/external').glob('*')) if p.is_file()}
     environment={name:importlib.metadata.version(name) for name in ('numpy','scipy','pandas','matplotlib','threadpoolctl')}
-    payload={'sources':sources,'inputs':inputs,'configuration':config,'environment':environment,'python':sys.version}
+    payload={'sources':sources,'documents':documents,'inputs':inputs,'configuration':config,'environment':environment,'python':sys.version}
     payload['fingerprint']=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
     return payload
 

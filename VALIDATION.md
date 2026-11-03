@@ -36,7 +36,7 @@ Production wall-clock: calibration 28.4 min for 24,000 panels plus merge (29.8 m
 
 ## Corrections that change reported results
 
-1. State-intercept bootstrap now weights by sampled state multiplicity; omitted states are not zero. The within-state ratio interval changes from `[3.3, 51.4]` to `[3.3, 47.8]`, and the pooled-to-within paired ratio from `[0.93, 7.75]` to `[1.04, 7.74]`.
+1. State-intercept bootstrap now weights by sampled state multiplicity; omitted states are not zero. The within-state ratio interval changes from `[3.3, 51.4]` to `[3.3, 47.8]`, and the pooled-to-within paired ratio from the superseded `[0.93, 7.75]` to `[1.04, 7.74]`.
 2. The `D_t` sensitivity now uses the weighted lagged scale; ratio `17.71 [3.27, 47.81]` instead of a duplicate of the `C_t` fit.
 3. Week-only and state-plus-week diagnostics report convergence status; the state-plus-week fit did not converge and is not given a slope or interval.
 4. Thinning intervals now reflect the nested average-response estimator: pooled rate `0.405 [0.366, 0.441]`, excluding `q=0.1` `0.485 [0.439, 0.528]`, ratio to the approximate elasticity reference `0.909 [0.810, 0.999]`.
