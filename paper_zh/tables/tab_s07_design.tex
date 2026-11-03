@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{给定模型下的设计检验大小与功效}\label{tab:design}
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}@{}}
+\toprule
+季数 & 计数倍数 & 大小 [95\% CI] & 功效 [95\% CI] & 有效C/N/A & 大小相容 \\
+\midrule
+4 & 1 & 0.058 [0.03918, 0.08224] & 0.996 [0.9856, 0.9995] & 500/500/500 & 是 \\
+4 & 2 & 0.06 [0.04084, 0.08455] & 0.998 [0.9889, 0.9999] & 500/500/500 & 是 \\
+4 & 4 & 0.052 [0.03425, 0.07527] & 0.994 [0.9826, 0.9988] & 500/500/500 & 是 \\
+8 & 1 & 0.058 [0.03918, 0.08224] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+8 & 2 & 0.038 [0.02303, 0.05871] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+8 & 4 & 0.082 [0.05949, 0.1096] & 1 [0.9926, 1] & 500/500/500 & 否 \\
+12 & 1 & 0.058 [0.03918, 0.08224] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+12 & 2 & 0.07 [0.04924, 0.09601] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+12 & 4 & 0.054 [0.03588, 0.0776] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+20 & 1 & 0.032 [0.0184, 0.05145] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+20 & 2 & 0.058 [0.03918, 0.08224] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+20 & 4 & 0.056 [0.03753, 0.07992] & 1 [0.9926, 1] & 500/500/500 & 是 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+条件区分模拟复用观测季节/计数设计，校准与评估样本独立。有效次数依次为校准/零假设/备择假设。末列表示检验大小区间是否包含名义alpha；保留全部单元，包括大小检验不通过的单元。这些模拟不意味着普适季节门槛或普适80\%功效。 alpha=0.05; replicates/stage=500.
+\end{minipage}
+\end{table}

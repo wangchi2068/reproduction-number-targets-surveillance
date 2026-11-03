@@ -1,178 +1,163 @@
-\section{模型与理论}
+\section{模型与推断目标}
 \label{sec:background}
 
-\subsection{传播、报告与两类估计目标}
+\subsection{观测尺度已知的分枝实验}
 \label{sec:bg-model}
 
-考虑以 $t$ 为索引的一代传播，其中 $n$ 名感染者作为原发病例。假设给定瞬时再生数 $R_t$ 时，原发病例 $i$ 引起的继发感染数 $X_{i,t}$ 服从负二项分布，以刻画传播中的个体异质性\citep{lloydsmith2005superspreading}。后代分布为
+考虑由 $n\ge1$ 例原发感染构成的一代传播。给定再生数 $R_t>0$，原发病例 $i$ 独立产生负二项后代\citep{lloydsmith2005superspreading}，
 \begin{equation}
-  X_{i,t}\mid R_t \sim \NB\!\left(k,\ \frac{k}{k+R_t}\right),\qquad
-  \E(X_{i,t}\mid R_t)=R_t,\qquad \Var(X_{i,t}\mid R_t)=R_t+\frac{R_t{}^2}{k},
+  X_{i,t}\mid R_t\sim\NB\!\left(k,\frac{k}{k+R_t}\right),\qquad
+  \E(X_{i,t}\mid R_t)=R_t,\quad
+  \Var(X_{i,t}\mid R_t)=R_t+\frac{R_t^2}{k}.
   \label{eq:offspring}
 \end{equation}
-其中 $k>0$ 为离散参数，$k$ 越小，异质性越强；$k\to\infty$ 时退化为 Poisson 后代分布。每例感染随后以概率 $\rho\in(0,1]$ 独立报告。成功概率相同的独立负二项变量之和仍服从负二项分布，二项稀疏化也保持这一分布族，因此报告病例数 $C_t$ 满足
+其中 $k>0$ 控制个体异质性。每例继发感染以概率 $\rho\in(0,1]$ 独立报告。求和与二项稀疏化给出
 \begin{equation}
-  C_t\mid n,R_t \sim \NB\!\left(nk,\ \frac{k}{k+\rho R_t}\right),\qquad
-  \E(C_t\mid n,R_t)=\rho nR_t,\qquad
-  \Var(C_t\mid n,R_t)=\rho nR_t+\frac{\rho^2nR_t{}^2}{k},
+\begin{aligned}
+  C_t\mid n,R_t&\sim\NB\!\left(nk,\frac{k}{k+\rho R_t}\right),\\
+  \E(C_t\mid n,R_t)&=\rho nR_t,\qquad
+  \Var(C_t\mid n,R_t)=\rho nR_t+\frac{\rho^2nR_t^2}{k}.
+\end{aligned}
   \label{eq:observed}
 \end{equation}
-其中 $m=\rho n$ 为 $R_t=1$ 时每个时期的期望报告病例数，下文称 $m$ 为病例量。
+定义 $m=\rho n$ 和 $\Rhat_t=C_t/m$。设计规模 $m$ 是 $R_t=1$ 时的期望报告数，而非实现计数 $C_t$。
 
-模型建立在四项假设之上。每例感染以不随时间变化的概率 $\rho$ 独立报告（H1）。原发病例按式~(\ref{eq:offspring}) 独立同分布地传播（H2）。离散参数 $k$ 与 $R_t$ 和 $n$ 无关（H3）。原发病例数 $n$ 由设计固定，且与 $R_t$ 相互独立（H4）。当 $n$ 由接触者追踪确定时，假设 H4 成立；常规监测中 $n$ 本身是早期传播的结果，第~\ref{sec:meth-loss}~节的更新方程形式放宽了这一假设。
+基准假设为：$\rho$ 固定已知且报告相互独立（H1）；后代在条件下独立并服从式~(\ref{eq:offspring})（H2）；$k$ 固定，且在似然计算中已知（H3）；$n$ 固定或外生给定，并与传播独立（H4）。结果以所选设计为条件，各期具有相同的 $m$。记 $\E(R_t)=\Rbar>0$、$\Var(R_t)=v_R<\infty$。对于重复时期，另假定给定完整传播轨迹后各期计数独立，且条件分布为式~(\ref{eq:observed})。这里描述的是重复分枝实验，并不主张自然演化的发病数具有外生性。
 
-下文涉及两个反复出现的尺度（表~\ref{tab:notation}）。理论模型中的量，包括 $R_t$、其均值 $\Rbar$ 与方差 $v_R$、病例量 $m$ 以及后文定义的平衡规模，均属于潜在量，定义在单代传播尺度上。第~\ref{sec:meth-stats}~节由住院数计算的周统计量，以及拟合相对损失所得的截距 $a$、斜率 $b$ 与比值 $b/a$，均属于表观量，定义在各统计量自身的尺度与周尺度上。仅当一代恰好为一周且病例分母规模不含噪声时，$b/a$ 才等于平衡规模（第~\ref{sec:meth-loss}~节）。因此，我们称 $b/a$ 为表观平衡比，保留 $\mx$ 表示潜在平衡规模，并通过第~\ref{sec:meth-inversion}~节的模拟校准将二者联系起来。
+观测尺度至关重要。未知报告比例的稳定性不足以确立无偏性：若除以假定的 $\rho_0$，条件均值为 $(\rho/\rho_0)R_t$，增加病例无法消除相应的乘性偏差。由含噪观测发病数构造的比值也具有随机分母，不必具备 $C_t/(\rho n)$ 的性质。因此，基准模型是一种明确的参照实验，而不是适用于所有监测统计量的直接模型。
+
+条件计数方差同时包含后代随机性与独立漏报。先以继发感染总数为条件，可将两者贡献分别写为 $(R_t+R_t^2/k)/n$ 和 $(1-\rho)R_t/(\rho n)$，二者之和等于上述方差。特别地，与 $R_t$ 成线性的项并不全是报告噪声：完全报告时它仍然存在。这一区分避免将纯代数分项误认为唯一的生物学归因。
+
+\subsection{当期值、实现均值与过程均值}
+\label{sec:bg-variance}
+
+对于当期目标，$\E(\Rhat_t\mid R_t)=R_t$，条件方差为 $[R_t+\rho R_t^2/k]/m$，达到单参数计数模型中的条件 Cram\'er--Rao 下界（附录~\ref{app:proofs}）。该陈述针对在此似然下对每个 $R_t$ 都无偏的估计量，不是普适的极小极大下界，也不涵盖有偏、分层或使用先验信息的方法。
+
+\begin{proposition}[单个时期的两个目标]
+\label{prop:average}
+在 H1--H4 下，令 $A=\Rbar+\rho(\Rbar^2+v_R)/k$，则
+\begin{equation}
+\begin{aligned}
+  \E[(\Rhat_t-R_t)^2]&=\frac{A}{m},\\
+  V(m):=\E[(\Rhat_t-\Rbar)^2]&=v_R+\frac{A}{m}.
+\end{aligned}
+  \label{eq:var-average}
+\end{equation}
+在仅基于当期计数且对 $R_t$ 条件无偏的估计量类中，$\Rhat_t$ 同时最小化这两种风险。
+\end{proposition}
+
+第一种风险按指定的 $R_t$ 分布对条件估计误差取平均，既不是每个固定取值下的条件风险，也不是某一时期的后验可信区间。第二种风险以不同目标评价同一个观测。单期比较只涉及边际矩，因此不要求传播时期彼此独立；跨期汇总风险时，独立性才发挥作用。
+
+这一区别来自
+\begin{equation}
+  \Rhat_t-\Rbar=(\Rhat_t-R_t)+(R_t-\Rbar).
+  \label{eq:error-split}
+\end{equation}
+条件无偏性使两项不相关。跨期传播变异属于当期信号，却为过程均值贡献抽样误差。后者是指定平稳分布下的均值，不会自动等同于非平稳流行过程的季节平均。两项贡献具有整群抽样中熟悉的单元内与单元间结构\citep{cochran1977sampling, engen1998demographic}。
+
+当 $v_R>0$ 时，定义平衡规模 $\mx=A/v_R$。固定 $\rho$、$k$ 与传播分布，通过 $n$ 增加 $m$ 不改变 $A$；在 $m=\mx$ 处，$V(m)$ 的两项贡献相等。这一规模描述所选估计量与目标，并不意味着所有信息的丧失；改变 $\rho$ 则会同时改变 $A$ 和 $m$。覆盖与预算计算仅作为符号化扩展列于附录~\ref{app:extensions}。
+
+\begin{corollary}[固定的一组已观测时期]
+\label{cor:targets}
+在 H1--H4 及给定 $R_{1:T}$ 后计数条件独立的假设下，定义 $\Rbar_T=T^{-1}\sum_{t=1}^T R_t$ 和 $\widehat{\Rbar}_T=T^{-1}\sum_{t=1}^T\Rhat_t$。对整数 $T\ge1$，若 $R_t$ 具有共同边际矩，则
+\begin{equation}
+\begin{aligned}
+  \E[(\widehat{\Rbar}_T-\Rbar_T)^2]&=\frac{A}{Tm},\\
+  \E[(\widehat{\Rbar}_T-\Rbar)^2]&=B_T+\frac{A}{Tm},
+  \qquad B_T=\Var(\Rbar_T).
+\end{aligned}
+  \label{eq:target-means}
+\end{equation}
+若 $R_t$ 独立同分布，则 $B_T=v_R/T$。对满足 $\Cov(R_t,R_{t+h})=v_R\phi^{|h|}$、$|\phi|<1$ 的平稳过程，有限 $T$ 下的精确表达式为 $B_T=v_RS(\phi,T)/T^2$，其中
+\begin{equation}
+  S(\phi,T)=T+2\sum_{h=1}^{T-1}(T-h)\phi^h
+  =\frac{T(1+\phi)}{1-\phi}-\frac{2\phi(1-\phi^T)}{(1-\phi)^2}.
+  \label{eq:ar-sum}
+\end{equation}
+\end{corollary}
+
+实现均值的恒等式不要求各期传播水平独立，只要求计数误差条件独立且具有所述共同矩。固定 $T$ 而增加病例，可以消除实现均值的计数误差；过程均值的风险则趋于 $B_T$。追加时期应对的是这一项，其贡献取决于相依性。预测未来值是另一个目标，见附录~\ref{app:extensions}。
+
+平稳协方差公式使用整数时期和完整的有限求和，而非长序列近似。正的持续性通常减小相邻时期带来的收益，负自相关则可能增加收益。不能自动将序列相关过程或均值变化的流行季替换为独立抽取。对于非平稳传播，实现均值仍有明确定义，但共同过程均值的解释需要额外模型。
+
+空间平均具有类似条件。若 $J$ 个单元的传播方差均为 $v_R$、平均两两相关系数为 $\bar c$，其等权传播均值的方差为
+\begin{equation}
+  \Var\!\left(J^{-1}\sum_{j=1}^J R_{j,t}\right)
+  =v_R\left[\bar c+\frac{1-\bar c}{J}\right].
+  \label{eq:pooling}
+\end{equation}
+这是协方差恒等式，并非经验回归截距的分解。方差不等、权重不等或相关结构变化时，需使用对应的协方差矩阵。
+
+\subsection{不可观测的报告波动与识别}
+\label{sec:bg-reporting}
+
+将 H1 替换为共同的逐期报告概率 $p_t\in[0,1]$：其独立于 $R_t$ 及设计，已知均值为 $\rho>0$，且 $\Var(p_t)=\rho^2\tau^2$（H5）。给定 $p_t$ 时，各例感染仍独立报告。必有 $\tau^2\le(1-\rho)/\rho$。估计量仍除以 $m=\rho n$，并不观测 $p_t$。
+
+\begin{proposition}[报告波动与矩不可识别性]
+\label{prop:report-noise}
+在 H2--H5 下，记 $Q=\Rbar^2+v_R$，则
+\begin{equation}
+\begin{aligned}
+  \E(\Rhat_t)&=\Rbar,\qquad
+  V_H(m):=\Var(\Rhat_t)=v_R+v_H+\frac{A_H}{m},\\
+  v_H&=\tau^2Q,\qquad
+  A_H=\Rbar+\frac{\rho(1+\tau^2)Q}{k}.
+\end{aligned}
+  \label{eq:vH-AH}
+\end{equation}
+当 $m$、$\rho$ 和 $k$ 已知时，计数的前两个矩仅通过 $U=(1+\tau^2)(\Rbar^2+v_R)$ 依赖 $v_R$ 与 $\tau^2$，因此一般不能分别识别传播方差与报告波动。
+\end{proposition}
+
+同时给定 $R_t$ 与 $p_t$ 时，估计量的均值为 $(p_t/\rho)R_t$。只有对均值正确且独立的报告过程取平均后，才恢复对 $R_t$ 的无偏性。这说明为何同一时期内增加感染数无法平均掉共同报告冲击。如果能测量当期报告概率且它为正，正确调整的估计量将对应另一个问题；测量该概率的不确定性本身也需要传播。
+
+这是指定模型族中的矩不可识别结果，并不意味着外部报告测量、附加假设下的时间信息，或限制更强的完整分布永远无法识别机制。边界情形也可能带来进一步约束。报告与传播独立是一项实质性条件；若疾病负担改变报告实践，上述分解未必成立。
+
+\begin{corollary}[报告波动下的当期值与实现均值风险]
+\label{cor:report-current}
+在 H2--H5 下，
+\begin{equation}
+  \E[(\Rhat_t-R_t)^2]=v_H+\frac{A_H}{m}.
+  \label{eq:vH-current}
+\end{equation}
+若另外假定各期 $p_t$ 独立同分布、独立于完整传播轨迹，且给定两条轨迹后各期计数独立，则
+\begin{equation}
+  \E[(\widehat{\Rbar}_T-\Rbar_T)^2]=\frac{v_H+A_H/m}{T},\qquad
+  \E[(\widehat{\Rbar}_T-\Rbar)^2]=B_T+\frac{v_H+A_H/m}{T}.
+  \label{eq:report-means}
+\end{equation}
+\end{corollary}
+
+因此，实现目标中没有传播变异项，不代表没有报告误差。固定 $T$ 时，随着 $m$ 增加，不可观测的报告波动仍然存在。报告的序列相依性会增加协方差项，稳定但未知的平均报告比例也会引入偏差。表~\ref{tab:targets} 汇总了各恒等式及其条件。
 
 \begin{table}[t]
 \centering
-\footnotesize
-\caption{主要变量的符号与尺度。潜在量属于传播模型并按代定义；表观量定义在周统计量自身的尺度上。}
-\label{tab:notation}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}}
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{推断目标及精确均方误差。固定报告列假设 H1--H4；波动报告列假设 H2--H5，且对跨期均值另要求各期报告概率独立、独立于完整传播轨迹。各期计数误差条件独立。$B_T=\Var(\Rbar_T)$；传播独立同分布时等于 $v_R/T$，具有所述平稳自协方差时等于 $v_RS(\phi,T)/T^2$。}
+\label{tab:targets}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{0.16\linewidth}>{\centering\arraybackslash}p{0.24\linewidth}>{\centering\arraybackslash}p{0.27\linewidth}}
 \toprule
-符号 & 含义 & 尺度 & 本研究取值 \\
+目标 & 估计量 & 固定且已知的报告 & 不可观测的波动报告 \\
 \midrule
-$R_t$; $\Rbar$; $v_R$ & 第 $t$ 期的瞬时再生数；跨期均值与方差 & 潜在，每代 & 基线 $\Rbar=1.15$，$v_R=0.04$ \\
-$m$ & $R_t=1$ 时的单期期望报告数（病例量） & 潜在，例/代 & -- \\
-$A$; $\mx=A/v_R$ & 抽样系数与平衡规模（命题~\ref{prop:average}） & 潜在，例/代 & 基线 53.1；数据隐含潜在值 30.3 [21.7, 46.3]，每周 58.9 [42.3, 90.0] \\
-$\tau$; $v_H$; $m_{\times,H}$ & 相对报告波动、附加方差与广义平衡规模（命题~\ref{prop:report-noise}） & 潜在 & $\tau=0.15$ 时 $v_H=0.0307$，$m_{\times,H}=30.4$ \\
-$m^*$ & 各期独立且成本线性时的最优单期病例量（命题~\ref{prop:allocation}） & 与所用平衡规模同尺度 & -- \\
-$G_t$; $R_{A,t}$ & 加权增长比与更新型比值（式~(\ref{eq:dt}) 与~(\ref{eq:ra})） & 表观，每周 & -- \\
-$D_t$ & 病例分母规模，近期周住院数的加权和 & 周住院例数 & -- \\
-$a$; $b$ & 相对损失的截距与斜率（式~(\ref{eq:affine})） & 表观，统计量尺度 & $R_A$ 为 $a=0.0150$；$G$ 为 0.0840 \\
-$b/a$ & 表观平衡比 & 周住院例数 & $R_A$ 为 37.4；$G$ 为 23.5 \\
-$b_{\mathrm{w}}/\bar{a}_s$ & 含州截距 $a_s$ 时的州内表观平衡比 & 周住院例数（$R_A$ 尺度） & 17.3（95\% CI: 3.3, 51.4） \\
-$c$; $b_P$ & 二项稀释下斜率上升速率；泊松理论基准 & $R_A$ 尺度 & $c=0.41$（95\% CI: 0.31, 0.53）；$b_P=0.45$ \\
-$\kappa$ & 校准尺度因子 $\E(\hat{a})/(v_R/\Rbar^2)$ & 比值 & $R_A$ 为 0.516；$G$ 为 2.729 \\
-$v_R^{\mathrm{impl}}$ & 两步反演给出的潜在环境方差 & 潜在，每代 & 代际间隔 3.6 天下 $R_A$ 为 0.040、$G$ 为 0.043；2.2 至 2.9 天下 $R_A$ 为 0.013 至 0.026 \\
+当期值 $R_t$ & $\Rhat_t$ & $A/m$ & $v_H+A_H/m$ \\
+实现均值 $\Rbar_T$ & $\widehat{\Rbar}_T$ & $A/(Tm)$ & $(v_H+A_H/m)/T$ \\
+过程均值 $\Rbar$ & $\widehat{\Rbar}_T$ & $B_T+A/(Tm)$ & $B_T+(v_H+A_H/m)/T$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-传播潜力随气候条件、学校学期和行为模式在时期之间变化\citep{cauchemez2008estimating, shaman2009absolute, dalziel2018urbanization}，其边际矩记为 $\E(R_t)=\Rbar$ 与 $\Var(R_t)=v_R$。这类变异同时作用于同一时期内的每条传播链，对应种群生态学中的环境随机性；式~(\ref{eq:observed}) 中的后代变异与报告变异则对应种群统计随机性\citep{engen1998demographic, lande2003stochastic}。
+\subsection{内生计数规模与表观统计量}
+\label{sec:bg-scope}
 
-尺度化病例数 $\Rhat_t=C_t/m$ 可服务于两个不同的估计目标。第一个目标是当期值 $R_t$，用于态势感知与判断传播是否大于一。第二个目标是跨期均值 $\Rbar$，用于描述一个流行季内的典型传播水平。关于有限时期实现均值和下一期预测这两个相关目标，见推论~\ref{cor:targets}。第一个目标的误差为 $\Rhat_t-R_t$。第二个目标的误差可写为
+若 $m=\rho n$ 随机且与传播关联，即使保留给定 $(R_t,m)$ 的条件计数分布与无偏性，也只能得到
 \begin{equation}
-  \Rhat_t-\Rbar=(\Rhat_t-R_t)+(R_t-\Rbar),
-  \label{eq:error-split}
+\begin{aligned}
+ \E[(\Rhat_t-\Rbar)^2\mid m]
+ &=\frac{\E(R_t\mid m)+\rho\E(R_t^2\mid m)/k}{m}\\
+ &\quad+\Var(R_t\mid m)+[\E(R_t\mid m)-\Rbar]^2.
+\end{aligned}
+\label{eq:endogenous-risk}
 \end{equation}
-其中第二项与 $m$ 无关。给定 $R_t$ 时，$\Rhat_t$ 是 $R_t$ 的无偏估计，其方差 $R_t/m+\rho R_t{}^2/(km)$ 随 $m$ 增大趋于零，并达到 $R_t$ 的 Cram\'er--Rao 下界（附录~\ref{app:target1}）。由于给定 $R_t$ 时式~(\ref{eq:error-split}) 第一项的条件均值为零，两项相互正交，两个目标的均方误差恰好相差 $v_R$。这一恒等式成立依赖三项条件：估计量对 $R_t$ 条件无偏；病例量 $m$ 与 $R_t$ 独立（H4）；报告率 $\rho$ 固定已知（H1）。对于跨期目标，时期之间 $R_t$ 的真实变异构成了目标误差的一部分；它是该目标的抽样变异，而非计数误差，并不随 $m$ 下降。
+这些条件矩可能随规模改变，因此推不出常数截距加常数系数乘计数倒数的形式。以观测到的结果计数为条件，限制更强：这种条件化未必保留原先假定的条件观测分布。仅采用更新方程表述并不能解决上述任何问题。
 
-\subsection{误差方差与平衡规模}
-\label{sec:bg-variance}
-
-对第二个目标，将全方差公式应用于式~(\ref{eq:error-split}) 即可得到误差方差。
-
-\begin{proposition}[跨期均值的误差方差]
-\label{prop:average}
-在 H1--H4 下，$\Rhat_t=C_t/(\rho n)$ 围绕 $R_t$ 的均方误差为 $A/m$，围绕 $\Rbar$ 的方差为
-\begin{equation}
-  V(n,\rho)=v_R+\frac{\Rbar}{\rho n}+\frac{\Rbar^2+v_R}{kn}=v_R+\frac{A}{m},
-  \qquad A=\Rbar+\frac{\rho(\Rbar^2+v_R)}{k},
-  \label{eq:var-average}
-\end{equation}
-三项依次为环境贡献、报告贡献与后代贡献。此外：
-\begin{enumerate}[label=(\roman*),leftmargin=2em]
-  \item 固定 $\rho$ 时，随 $n\to\infty$ 有 $V\to v_R$；
-  \item 固定 $n$ 时，随 $\rho\to1$ 有 $V\to v_R+\Rbar/n+(\Rbar^2+v_R)/(kn)>v_R$；
-  \item 在平衡规模 $\mx=A/v_R$ 处，抽样贡献与环境贡献相等，且 $m$ 加倍一次使 $V$ 下降的比例为 $1/[2(1+m/\mx)]$；
-  \item 在对 $R_t$ 条件无偏的估计量类中，不存在围绕 $\Rbar$ 的均方误差严格小于 $V$ 的估计量。
-\end{enumerate}
-\end{proposition}
-
-平衡规模对应生态学模型中种群统计方差与环境方差相等的临界种群规模\citep{lande1993risks, lande2003stochastic}，是权衡两类方差贡献的参照尺度，其自身并不定义最低监测规模。结论 (iv) 仅限于条件无偏类；向先验均值收缩的有偏估计量可能具有更小的误差（附录~\ref{app:shrinkage}）。
-
-结论 (i) 与 (ii) 表明，扩大覆盖规模 $n$ 在极限下可同时消除两项抽样方差，而完全报告仍保留后代项。在基线附近，覆盖规模同比例增加使方差的降幅是报告概率同比例增加时的 $A/\Rbar$ 倍。
-
-单期结论可推广至结合若干时期的估计。令 $\Rbar_T=T^{-1}\sum_{t=1}^T R_t$ 表示已观测 $T$ 个时期的实现均值，$R_t$ 服从独立抽取或自相关系数为 $\phi$ 的平稳一阶自回归过程。
-
-\begin{corollary}[跨越若干时期的三类目标]
-\label{cor:targets}
-在 H1--H4 下，给定 $(R_t)$ 时各期计数误差独立，均值 $T^{-1}\sum_{t=1}^T\Rhat_t$ 与对 $R_{t+1}$ 的一步预测具有以下均方误差：
-\begin{enumerate}[label=(\alph*),leftmargin=2em]
-  \item 围绕过程均值 $\Rbar$，独立时期下的均方误差为 $v_R/T+A/(Tm)$；自回归过程下为 $v_RS(\phi,T)/T^2+A/(Tm)$，其中
-  \begin{equation}
-    S(\phi,T)=\frac{T(1+\phi)}{1-\phi}-\frac{2\phi(1-\phi^T)}{(1-\phi)^2}.
-    \label{eq:ar-sum}
-  \end{equation}
-  \item 围绕有限时期实现均值 $\bar{R}_T$，无论 $R_t$ 的相依结构如何，均方误差严格为 $A/(Tm)$。
-  \item 直接以 $\Rhat_t$ 朴素预测 $R_{t+1}$ 时，独立时期的误差为 $A/m+2v_R$；自回归过程下为 $A/m+2(1-\phi)v_R$。若 $\Rbar$ 已知，最优线性预测 $\Rbar+\lambda(\Rhat_t-\Rbar)$（其中 $\lambda=\phi v_R/(v_R+A/m)$）的均方误差为
-  \begin{equation}
-    v_R\left[1-\phi^2\,\frac{m}{m+\mx}\right],
-    \label{eq:forecast}
-  \end{equation}
-  当 $m\to\infty$ 时趋向于 $(1-\phi^2)v_R$；独立时期退化为 $v_R$。
-\end{enumerate}
-\end{corollary}
-
-结论 (b) 说明有限时期实现均值的性质与当期值相似：其误差仅包含计数误差，随病例累积趋于零。结论 (a) 与 (c) 表明，推断超出观测期外的目标时始终保留环境方差下界。基于 $\Rhat_t$ 构建的任何线性预测误差均不低于 $(1-\phi^2)v_R$，而朴素外推误差不低于 $2(1-\phi)v_R$。下界 $v_R$ 还假定地区间环境变异独立。若 $J$ 个辖区共享环境方差 $v_R$ 且平均相关系数为 $\bar{c}$，其均值的环境方差为
-\begin{equation}
-  v_R\,\bar{c}+\frac{v_R(1-\bar{c})}{J},
-  \label{eq:pooling}
-\end{equation}
-多地区合并仅在变异不同步（$\bar{c}<1$）时降低该下界。
-
-\subsection{报告异质性与监测预算的分配}
-\label{sec:bg-reporting}
-
-报告完整度极少恒定。将假设 H1 推广为：报告概率 $p_t$ 独立于 $R_t$ 和 $n$ 在时期之间变化，均值为 $\rho$，相对波动为 $\tau=\mathrm{SD}(p_t)/\rho$，且给定 $R_t$ 与 $p_t$ 时各期计数条件独立（H5）。
-
-\begin{proposition}[报告异质性]
-\label{prop:report-noise}
-在 H2--H5 下，$\Rhat_t=C_t/m$ 围绕 $\Rbar$ 的误差方差可写为
-\begin{equation}
-  V_H(m)=v_R+v_H+\frac{A_H}{m},\qquad
-  v_H=\tau^2(\Rbar^2+v_R),\qquad A_H=\Rbar+\frac{\rho(1+\tau^2)(\Rbar^2+v_R)}{k},
-  \label{eq:vH-AH}
-\end{equation}
-其中 $v_H$ 为报告异质性引入的附加方差。极限方差升至 $v_R+v_H$，广义平衡规模满足 $m_{\times,H}=A_H/(v_R+v_H)\le\mx$，当且仅当 $\tau=0$ 时取等号。记 $Q=\Rbar^2+v_R$，二者差值为
-\begin{equation}
-  \mx-m_{\times,H}=\frac{\tau^2Q\,\Rbar\,(1+\rho\Rbar/k)}{v_R(v_R+v_H)}.
-  \label{eq:mx-gap}
-\end{equation}
-仅凭计数的均值与方差无法分离 $v_R$ 与 $v_H$，这两个矩只能识别 $(1+\tau^2)(\Rbar^2+v_R)$。
-\end{proposition}
-
-\begin{corollary}[报告波动对当期值估计的影响]
-\label{cor:report-current}
-在 H2--H5 下，当当期报告概率 $p_t$ 不可直接观测，且 $\Rhat_t=C_t/(\rho n)$ 采用平均报告率 $\rho$ 归一化时，围绕当期值 $R_t$ 的均方误差满足：
-\begin{equation}
-  \E[(\Rhat_t - R_t)^2] = v_H + \frac{A_H}{m},
-  \label{eq:vH-current}
-\end{equation}
-其中 $v_H = \tau^2(\Rbar^2 + v_R)$，$A_H$ 由式~(\ref{eq:vH-AH}) 给出。
-因此，尽管计数抽样项随 $m\to\infty$ 趋于零，不可测的报告波动使当期估计同样存在渐近方差底线 $v_H$。
-\end{corollary}
-
-命题~\ref{prop:report-noise} 构成实证部分的识别边界。若不单独测量报告过程，由病例数估计的截距必然同时包含传播变异与报告变异。同样的问题也出现在种群动态的状态空间模型中\citep{knape2008estimability, augermethe2016state}。
-
-平衡规模还决定固定预算的最优分配方式。设共观测 $T$ 个时期，每期设计病例量为 $m$（即 $R_t=1$ 时的期望报告量），每期固定成本为 $c_0$，每单位设计病例量成本为 $c_1$，总预算为 $\mathcal{B}=T(c_0+c_1m)$。
-
-\begin{proposition}[固定预算的分配]
-\label{prop:allocation}
-在 H1--H4 下，时期相互独立、成本线性且 $T$ 视为连续变量时，$T$ 个时期内 $\Rhat_t$ 围绕过程均值 $\Rbar$ 的误差方差为
-\begin{equation}
-  \frac{v_R}{T}+\frac{A}{Tm},
-  \label{eq:alloc-indep}
-\end{equation}
-在预算约束下，该方差在下述规模处达到唯一最小值：
-\begin{equation}
-  m^*=\sqrt{\frac{c_0}{c_1}\,\mx},
-  \label{eq:optimal-m}
-\end{equation}
-其中 $T^*=\mathcal{B}/(c_0+c_1m^*)$，要求 $T^*\ge1$。在固定预算下，方差随 $m$ 单调递增当且仅当 $m>m^*$。
-\end{proposition}
-
-最优病例量为价格比 $c_0/c_1$ 与平衡规模的几何平均，与两阶段抽样中二级单元最优数量及整群随机试验的最优群规模同形\citep{cochran1977sampling, raudenbush1997statistical}。在命题假设下，$m>m^*$ 是把追加预算转向更多时期能够降低误差的充要条件。该规则具有条件性：整数 $T$ 会使最优点移至相邻整数解，非线性成本由成本函数形态决定，而在自相关环境下环境项变为 $v_RS(\phi,T)/T^2$（推论~\ref{cor:targets}），最优点依赖于总预算（附录~\ref{app:budget-ar}）。
-
-报告异质性可能逆转覆盖规模与完整度作为投入方向的优先次序。
-
-\begin{corollary}[覆盖规模与报告完整度的比较]
-\label{cor:switch}
-若 $\tau$ 不依赖于 $\rho$，扩大覆盖规模 $n$ 对 $V_H$ 的降幅大于 $\rho$ 同比例提高时的降幅。若报告变异来自对 $\nu$ 个单位的二项抽样，即 $\Var(p_t)=\rho(1-\rho)/\nu$，则在下式成立时提高 $\rho$ 更为有利：
-\begin{equation}
-  m>\frac{\rho^2(\nu-1)}{k},
-  \label{eq:r3-switch}
-\end{equation}
-其中 $\nu$ 为每个时期抽样的报告单位数。若报告概率服从 Beta 先验分布 $p_t\sim\mathrm{Beta}(\rho\nu,(1-\rho)\nu)$，其方差为 $\rho(1-\rho)/(\nu+1)$，对应条件为 $m>\rho^2\nu/k$。
-\end{corollary}
+因此，实证响应定义为表观统计量相对于指定中心的相对偏差平方（第~\ref{sec:meth-stats}~节），而非相对于已知 $R_t$ 的误差。其仿射截距和斜率不必等于 $v_R/\Rbar^2$ 与 $A/\Rbar^2$。延迟、聚合、分母噪声与变化的条件均值都会影响这一映射。校准规定的是依赖模型的联系（第~\ref{sec:meth-inversion}~节），不会把经验截距变成生物学来源的精确加性分解。

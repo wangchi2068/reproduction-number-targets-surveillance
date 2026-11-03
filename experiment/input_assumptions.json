@@ -1,0 +1,100 @@
+{
+  "version": "corrected-calibration-1.0",
+  "protocol": "experiment/analysis_protocol.md",
+  "purpose": "Conditional sensitivity calibration under stated model assumptions; not posterior inference for biological inputs.",
+  "generation_intervals": {
+    "family": "gamma, discretized daily; below-first-lag mass folded into first lag; upper truncation at the 0.999 gamma quantile plus one day, renormalized",
+    "true_vs_analyst": "True GI determines renewal kernel; analyst GI only determines the RA transform in revision_data.load_sample. G uses the empirical fixed denominator weights.",
+    "continuity_baseline": {"mean_days": 3.6, "sd_days": 1.6, "status": "retained historical analyst assumption; not asserted to be a modern intrinsic-GI estimate"},
+    "fixed_cv": {"value": 0.4444444444444444, "formula": "1.6/3.6", "status": "assumption", "matched_means_days": [3.2, 3.6], "true_gi_stress_means_days": [2.2, 2.9, 4.3], "stress_analyst_mean_days": 3.6},
+    "source_matched_sensitivity": {
+      "scenario": "matched32_source_sd21_binomial",
+      "true_mean_days": 3.2,
+      "true_sd_days": 2.1,
+      "analyst_mean_days": 3.2,
+      "analyst_sd_days": 2.1,
+      "source": "Chan et al. (2025), Table 2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11986874/",
+      "reported_intrinsic_mean_credible_interval": [2.9, 3.6],
+      "reported_intrinsic_sd_credible_interval": [1.8, 2.5],
+      "verification": "Full-text Table 2 verified by reference agent; source evidence retained by the main revision workflow.",
+      "interpretation": "Point-parameter sensitivity using the reported intrinsic GI; gamma family remains a calibration assumption. Marginal credible limits do not define a joint posterior and are not sampled. The realised household GI mean 2.8/SD 1.6 is a distinct quantity."
+    }
+  },
+  "design": {
+    "data_api": "revision_data.load_raw(pathogen='flu'), national_series(raw), rule_windows(national)",
+    "number_of_seasons": 4,
+    "observation_weeks_in_season_order": [9, 12, 8, 13],
+    "states_per_season_in_current_snapshot": 51,
+    "warmup_weeks": 4,
+    "post_window_weeks": 1,
+    "initial_counts": "Actual first-window-week admissions by state set the deterministic exponential initial intensity. Missing initial counts are excluded and listed. True zeros remain zero, with no 0.5 floor and no imported infections, so these trajectories are absorbing. The first randomly observed week is not forced to equal its initial target.",
+    "growth_matching": "Geometric mean of observed national weekly growth within each fixed window; the daily true R target solves the discrete Euler-Lotka identity for that same growth and true GI kernel.",
+    "window_rule": "Fixed observed rule-v2 bounds supplied to load_sample for all simulations; windows are not searched again on simulated data."
+  },
+  "renewal": {
+    "step_days": 1,
+    "weekly_r": "R_state,week = max(0.05, R_season + national_AR1 + state_AR1)",
+    "v_definition": "Weekly marginal variance of the additive R process before the lower bound; not variance per generation. Lower-bound event counts are recorded because realised bounded-process variance can differ.",
+    "v_grid": [0, 0.02, 0.04, 0.06, 0.09],
+    "baseline_national_share": 0.45,
+    "baseline_phi_national": 0,
+    "baseline_phi_state": 0,
+    "national_innovation_variance": "national_share*v*(1-phi_national^2)",
+    "state_innovation_variance": "(1-national_share)*v*(1-phi_state^2)",
+    "ar_initialization": "Stationary marginal distribution; national and state shocks have independent random streams.",
+    "baseline_innovation_note": "At zero persistence the weekly marginal variance equals the weekly innovation variance.",
+    "daily_count_model": "I_d ~ Poisson(Gamma(shape=k*infectiousness_d, scale=R_d/k)); zero infectiousness yields zero infections.",
+    "k": {"value": 0.35, "status": "assumption", "single_stress": 0.1}
+  },
+  "observation": {
+    "rho_h": {"value": 0.01, "status": "assumed infection-to-admission probability", "limited_existing_stresses": [0.005, 0.02]},
+    "delay": {"family": "gamma on integer lags starting at zero", "mean_days": 5.5, "sd_days": 3, "status": "assumption", "limited_existing_stresses_mean_sd": [[3.5, 2], [8, 4]]},
+    "baseline": "Each latent infection is allocated to one delayed admission or no admission, using conditional binomials equivalent to multinomial allocation. No infection contributes more than one admission.",
+    "alternative": "Compute lambda from rho_h times the delay convolution of the latent infection path, aggregate to week, then perform exactly one gamma-Poisson observation draw. No already-observed count is used as the mixing mean.",
+    "conditional_mean": "E(C|lambda)=lambda",
+    "conditional_variance": "Var(C|lambda)=observation_phi*lambda",
+    "phi_domain": "finite observation_phi >=1; exact direct Poisson when phi=1; zero intensity deterministically yields zero",
+    "mixture": "For phi>1, latent mixing rate is Gamma(shape=lambda/(phi-1), scale=phi-1), followed by Poisson.",
+    "synchronous_reporting": "Separate mean-one lognormal weekly multiplier, shared across states and generated by an independent stream. It multiplies arrival-day admission probabilities in the binomial model or latent observation intensity in the gamma-Poisson model. Infeasible binomial probabilities raise an error rather than clipping.",
+    "reporting_single_stress": {"log_sd": 0.12, "phi_reporting": 0, "national_transmission_share": 0}
+  },
+  "scenario_design": {
+    "replicates_per_cell": 200,
+    "matched_binomial_references": ["matched36_binomial", "matched32_binomial", "matched32_source_sd21_binomial"],
+    "joint_grid": {"true_and_analyst_mean_days": [3.2, 3.6], "gi_sd": "fixed CV 1.6/3.6 assumption", "phi_national": [0, 0.25], "phi_state": 0, "observation": "gamma_poisson", "observation_phi": [1, 1.25]},
+    "single_stresses": ["true2.2_analyst36", "true2.9_analyst36", "true4.3_analyst36", "national_share0", "national_share65", "national_persistence25", "state_persistence50", "delay_short", "delay_long", "k01", "rho_h005", "rho_h02", "reporting_shock"],
+    "total_scenarios": 24,
+    "total_cells": 120,
+    "total_panels": 24000
+  },
+  "analysis": {
+    "transforms_filters": "revision_data.load_sample(stat,gi_mean,gi_sd,raw=simulated_raw,windows=fixed_windows), identically for observed and simulated panels",
+    "fitting": "revision_stats.fit_loss(x,D): pooled mean recentered in each panel; relative squared loss; gamma quasi-deviance affine fit with positive fitted means and signed intercept. Failed fits remain failures.",
+    "saved_metrics": ["a", "b", "signed_b_over_a", "xbar", "n", "VR_week", "r1_state", "r1_national", "fit_convergence_and_iteration_diagnostics", "lower_R_bound_events"],
+    "VR_week": "Sample variance of calendar-week means of signed relative deviations x/xbar-1 divided by sample variance of all signed relative deviations; both use ddof=1.",
+    "r1_state": "State-season mean-centered relative deviations; sum of exact consecutive-week cross-products divided by full within-block sum of squares; only blocks with at least three retained observations.",
+    "r1_national": "Same r1 calculation on weekly cross-state means of the same eligible apparent statistic, centered within season; this is not a statistic recomputed after summing national counts.",
+    "calibration_line": "WLS of per-cell mean intercept on weekly v with inverse MC variance weights, requiring at least three cells with finite positive MC standard error. Report departures from linearity in MC SE units.",
+    "paired_uncertainty": "Empirical paired RA/G bootstrap supplied by revised pooled outputs; source RA32 or RA32source is chosen to match analyst GI. For each calibration draw, simulated panel indices are resampled jointly for RA/G within each cell. One common empirical draw index preserves empirical cross-statistic dependence.",
+    "bootstrap_default": 2000,
+    "empirical_draw_keys": ["RA_a", "RA_b", "G_a", "G_b", "RA32_a", "RA32_b", "RA32source_a", "RA32source_b"],
+    "boundary_reporting": "Store every requested draw, nonfinite counts, nonpositive slopes/variances, and out-of-grid inversion flags. Quantiles are explicitly conditional on finite draws, never on positive-only draws. No clamping to the simulated grid.",
+    "response_checks": "At nearest declared v cell, compare a,b,b/a,xbar,n,signed-week VR,state r1,national r1 with observed diagnostics; flag extrapolated inversion. These are conditional checks, not model validation guarantees."
+  },
+  "reproducibility": {
+    "seed_default": 20261103,
+    "seed_structure": "SeedSequence includes stable scenario configuration digest, variance-cell digest, logical chunk, global replicate, season and mechanism stream. Logical chunks have 25 panels independently of execution batching.",
+    "streams": {"0": "national R shocks", "1": "state R shocks", "2": "daily renewal", "3": "common reporting", "4": "admission observation"},
+    "cache": "No cache. Existing raw calibration results are refused; separate output directories identify independent execution batches. --replicate-start selects a disjoint global index range; --simulate-only defers inversion to a validated --merge-batches step. Merge requires compatible code/data/assumption hashes, no duplicate panel keys, the full variance grid, and all requested global replicates per cell.",
+    "provenance": "Output manifest contains raw-input/config/calibration/data-code/stats-code/assumptions hashes and raw per-panel result hash; empirical draw hash if supplied.",
+    "raw_results": "Every simulated panel's paired fit and diagnostic results retained in calibration_panels.jsonl before summary. All paired inference draws retained in calibration_draws.csv."
+  },
+  "exclusions": [
+    "No fabricated posterior from GI interval limits.",
+    "No weekly count or weekly variance translation to generations by multiplying counts alone.",
+    "No operational admission thresholds or biological identification claim.",
+    "No resampling of already noisy observed admissions in the alternative observation model.",
+    "No rewriting of legacy results or manuscript prose."
+  ]
+}

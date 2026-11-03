@@ -6,253 +6,219 @@
 \section{Proofs}
 \label{app:proofs}
 
-\subsection{Offspring and reporting model}
+\subsection{Count law and conditional information}
 \label{app:model}
-
-The negative binomial distribution $\NB(r,p)$ with $r$ successes and success probability $p$ has mean $r(1-p)/p$ and variance $r(1-p)/p^2$. Setting $r=k$ and $p=k/(k+R_t)$ gives Eq.~(\ref{eq:offspring}). A sum of $n$ independent $\NB(k,p)$ variables is $\NB(nk,p)$, and binomial thinning of $\NB(r,k/(k+\mu))$ with retention probability $\rho$ gives $\NB(r,k/(k+\rho\mu))$, which together give Eq.~(\ref{eq:observed}).
-
-\subsection{The period-specific target}
 \label{app:target1}
 
-Write $c$ for an observed value of $C_t$. From Eq.~(\ref{eq:observed}), the log-likelihood of $R_t$ given $n$ is given by:
+The probability generating function of one negative binomial offspring count is $[1+(R_t/k)(1-z)]^{-k}$. Conditional independence raises this function to the power $n$. Substituting $z\mapsto1-\rho+\rho z$ for independent reporting gives $[1+(\rho R_t/k)(1-z)]^{-nk}$, proving Eq.~(\ref{eq:observed}). Its derivatives give the stated moments.
+
+For fixed, known $(n,\rho,k)$ and $R>0$, the count likelihood has score and Fisher information
 \begin{equation}
-  \ell(R_t)=\text{const}+nk\log\frac{k}{k+\rho R_t}+c\log\frac{\rho R_t}{k+\rho R_t},
+ \dot\ell(R)=\frac{c}{R}-\frac{(c+nk)\rho}{k+\rho R}
+ =\mathcal I(R)(\Rhat-R),\qquad
+ \mathcal I(R)=\frac{m}{R+\rho R^2/k}.
+ \label{eq:score}
 \end{equation}
-and the score can be written as:
-\begin{equation}
-  \dot{\ell}(R_t)=\frac{c}{R_t}-\frac{(c+nk)\rho}{k+\rho R_t}=\mathcal{I}(R_t)\,(\Rhat_t-R_t),\qquad
-  \mathcal{I}(R_t)=\frac{n}{R_t/\rho+R_t{}^2/k},
-  \label{eq:score}
-\end{equation}
-where $\mathcal{I}(R_t)$ is the Fisher information. The conditional mean of $\Rhat_t=c/(\rho n)$ is $R_t$, and its conditional variance is $R_t/(\rho n)+R_t{}^2/(kn)=1/\mathcal{I}(R_t)$. Because the score in Eq.~(\ref{eq:score}) is proportional to $\Rhat_t-R_t$, the Cram\'er--Rao bound is attained for every finite $n$. The distribution in Eq.~(\ref{eq:observed}) is a one-parameter exponential family in $C_t$ with natural parameter $\log[\rho R_t/(k+\rho R_t)]$, which ranges over an open interval, so $C_t$ is complete and sufficient. By the Lehmann--Scheff\'e theorem, $\Rhat_t$ is the uniformly minimum-variance unbiased estimator of $R_t$ \citep{lehmann1998theory, lehmann2005testing}.
+Consequently $\Var(\Rhat\mid R)=\mathcal I(R)^{-1}$. The support does not depend on $R$, and the regular one-parameter Cram\'er--Rao inequality applies to estimators unbiased for every $R$. It gives the attained bound in Section~\ref{sec:background} \citep{lehmann1998theory}. The calculation does not establish an unrestricted decision-theoretic bound or a bound with unknown nuisance parameters.
 
 \subsection{Proof of Proposition~\ref{prop:average}}
 \label{app:prop1}
 
-Under H4, $\E(R_t\mid n)=\Rbar$ and $\Var(R_t\mid n)=v_R$. By the law of total variance and Appendix~\ref{app:target1}, the error variance is given by:
+Let $e_t=\Rhat_t-R_t$. Then $\E(e_t\mid R_t)=0$ and
 \begin{equation}
-  \Var(\Rhat_t\mid n)=\E\!\left[\frac{R_t}{\rho n}+\frac{R_t{}^2}{kn}\right]+\Var(R_t)=v_R+\frac{\Rbar}{\rho n}+\frac{\Rbar^2+v_R}{kn},
+ \E(e_t^2)=\frac{\E R_t+\rho\E R_t^2/k}{m}=\frac{A}{m},
+ \qquad \E[e_t(R_t-\Rbar)]=0.
 \end{equation}
-and substituting $m=\rho n$ gives Eq.~(\ref{eq:var-average}). Parts (i) and (ii) follow by taking limits. For part (iii), $[V(m)-V(2m)]/V(m)=[A/(2m)]/(v_R+A/m)=1/[2(1+m/\mx)]$, which equals one quarter at $m=\mx$. For part (iv), let $\tilde{\theta}$ be any estimator from data on period $t$ with $\E(\tilde{\theta}\mid R_t)=R_t$. Then $\E(\tilde{\theta}-\Rbar)^2=\E[\Var(\tilde{\theta}\mid R_t)]+v_R\ge\E[1/\mathcal{I}(R_t)]+v_R=V$, with equality for $\Rhat_t$. The first equality uses the conditional unbiasedness of $\tilde{\theta}$, which makes $\tilde{\theta}-R_t$ uncorrelated with $R_t-\Rbar$; the same argument applied to $\Rhat_t$ gives the difference of exactly $v_R$ between the mean squared errors about $\Rbar$ and about $R_t$. For prediction of the next scaled count $y=C_{t+1}/m$ when $R_{t+1}$ is independent of the history, $\E(\hat{y}-y)^2=(\hat{y}-\E y)^2+\Var(y)\ge V$, with equality at $\hat{y}=\Rbar$.
-
-The marginal effects of coverage and completeness are $-\partial V/\partial\log n=A/m$ and $-\partial V/\partial\log\rho=\Rbar/m$, so their ratio is $A/\Rbar$. If $R_t$ follows a stationary first-order autoregressive process with variance $v_R$ and autocorrelation $\phi$, the best linear predictor of $R_{t+1}$ given $R_t$ itself has error variance $(1-\phi^2)v_R$ \citep{hamilton1994time}; a predictor that sees only $\Rhat_t$ cannot do better (Appendix~\ref{app:cor-targets}). For $J$ jurisdictions with common variance $v_R$ and mean pairwise correlation $\bar{c}$, the variance of their average is $J^{-2}[Jv_R+J(J-1)\bar{c}v_R]$, which gives Eq.~(\ref{eq:pooling}).
-
-\subsection{Proof of Proposition~\ref{prop:report-noise}}
-\label{app:prop2}
-
-Write $\sigma^2=\Var(p_t)=\tau^2\rho^2$. Given $(n,R_t,p_t)$, $C_t$ has mean $p_tnR_t$ and variance $p_tnR_t+p_t{}^2nR_t{}^2/k$. Averaging over $p_t$, the conditional variance given $(n,R_t)$ is given by:
+Squaring Eq.~(\ref{eq:error-split}) proves Eq.~(\ref{eq:var-average}). For any estimator based on the same count and unbiased conditional on every $R_t$, its expected conditional variance is at least $\E[\mathcal I(R_t)^{-1}]=A/m$. Its process-mean risk adds the same $v_R$, proving the restricted optimality statement. At fixed $\rho$, $k$ and transmission law,
 \begin{equation}
-  \Var(C_t\mid n,R_t)=\rho nR_t+\frac{(\rho^2+\sigma^2)nR_t{}^2}{k}+\sigma^2n^2R_t{}^2.
+ \frac{V(m)-V(2m)}{V(m)}=\frac{1}{2(1+m/\mx)},\qquad v_R>0.
 \end{equation}
-The conditional mean is $\rho nR_t$, so $\Rhat_t$ remains unbiased for $\Rbar$. Averaging over $R_t$ and dividing by $(\rho n)^2$ gives:
-\begin{equation}
-  V_H(m)=v_R+\tau^2(\Rbar^2+v_R)+\frac{\Rbar}{m}+\frac{\rho(1+\tau^2)(\Rbar^2+v_R)}{km},
-\end{equation}
-which is Eq.~(\ref{eq:vH-AH}). Writing $U=(1+\tau^2)(\Rbar{}^2+v_R)$, the limiting error variance is $v_R+v_H=U-\Rbar{}^2$ and $A_H=\Rbar+\rho U/k$, so the mean and variance of $\Rhat_t$ depend on $v_R$ and $\tau$ only through $U$. With $Q=\Rbar^2+v_R$, $v_H=\tau^2Q$ and $A_H-A=\rho\tau^2Q/k$, the difference of the two balance scales is:
-\begin{equation}
-  \mx-m_{\times,H}=\frac{A(v_R+v_H)-A_Hv_R}{v_R(v_R+v_H)}=\frac{\tau^2Q\left[A-\rho v_R/k\right]}{v_R(v_R+v_H)}=\frac{\tau^2Q\,\Rbar\,(1+\rho\Rbar/k)}{v_R(v_R+v_H)},
-\end{equation}
-because $A-\rho v_R/k=\Rbar+\rho\Rbar^2/k$. The right-hand side is zero at $\tau=0$ and positive for $\tau>0$, which gives $m_{\times,H}\le\mx$ with equality if and only if $\tau=0$, and Eq.~(\ref{eq:mx-gap}).
-
-\subsection{Proof of Corollary~\ref{cor:report-current}}
-\label{app:cor-report-current}
-
-Decompose the error about the current value as:
-\begin{equation}
-  \Rhat_t - R_t = \left(\frac{C_t}{\rho n} - \frac{p_t}{\rho} R_t\right) + \left(\frac{p_t}{\rho} - 1\right) R_t.
-\end{equation}
-Conditional on $(n, R_t, p_t)$, the first term has mean zero and variance $\Var(C_t\mid n, R_t, p_t)/(\rho n)^2 = p_t R_t/(\rho^2 n) + p_t{}^2 R_t{}^2/(\rho^2 k n)$. Taking expectation over $p_t$ yields $R_t/(\rho n) + (1+\tau^2)R_t{}^2/(k n)$, whose expectation over $R_t$ is $A_H/m$. The second term has mean zero given $R_t$ and variance $\tau^2 R_t{}^2$, whose expectation over $R_t$ is $\tau^2(\Rbar^2 + v_R) = v_H$. Because the two terms are conditionally uncorrelated given $(n, R_t, p_t)$, their expected squares add, giving Eq.~(\ref{eq:vH-current}).
-
-\subsection{Proof of Proposition~\ref{prop:allocation}}
-\label{app:prop3}
-
-Conditional on $(R_1,\dots,R_T)$, counts in different periods are independent. With $\bar{R}_T=T^{-1}\sum_tR_t$, the variance of the mean estimate is given by:
-\begin{equation}
-  \Var\!\Big(\frac{1}{T}\sum_{t=1}^T\Rhat_t\Big)=\Var(\bar{R}_T)+\frac{A}{Tm},
-\end{equation}
-where $\Var(\bar{R}_T)=v_R/T$ for independent periods, giving Eq.~(\ref{eq:alloc-indep}). Substituting $T=\mathcal{B}/(c_0+c_1m)$ into Eq.~(\ref{eq:alloc-indep}) gives the objective:
-\begin{equation}
-  f(m)=\frac{(c_0+c_1m)(v_R+A/m)}{\mathcal{B}}=\frac{c_0v_R+c_1A+c_1v_Rm+c_0A/m}{\mathcal{B}},
-\end{equation}
-which is strictly convex for $c_0>0$, with $f'(m)=(c_1v_R-c_0A/m^2)/\mathcal{B}$. The unique stationary point is $m^{*2}=c_0A/(c_1v_R)=(c_0/c_1)\mx$, which is Eq.~(\ref{eq:optimal-m}). Because $f$ is strictly convex, $f'(m)>0$ if and only if $m>m^*$, so at a fixed budget the error increases with $m$ exactly when $m>m^*$.
+This comparison changes exposure $n$; it does not hold unchanged when reporting probability changes.
 
 \subsection{Proof of Corollary~\ref{cor:targets}}
 \label{app:cor-targets}
 
-Write $e_t=\Rhat_t-R_t$. Given $(R_s)$, the $e_t$ are independent with mean zero and $\E(e_t{}^2\mid R_t)=R_t/m+\rho R_t{}^2/(km)$, so $\E e_t{}^2=A/m$, and $e_t$ is uncorrelated with every function of $(R_s)$. For part (a), $T^{-1}\sum_t\Rhat_t-\Rbar=(\Rbar_T-\Rbar)+T^{-1}\sum_te_t$, and the two terms are uncorrelated, so the error is $\Var(\Rbar_T)+A/(Tm)$. For a stationary first-order autoregressive process with $\Cov(R_s,R_t)=v_R\phi^{|s-t|}$, $T^2\Var(\Rbar_T)=v_R[T+2\sum_{h=1}^{T-1}(T-h)\phi^h]$, and summing the geometric series gives Eq.~(\ref{eq:ar-sum}) \citep{hamilton1994time}. For part (b), $T^{-1}\sum_t\Rhat_t-\Rbar_T=T^{-1}\sum_te_t$, whose mean square is $A/(Tm)$ for any law of $(R_t)$. For part (c), $\Rhat_t-R_{t+1}=e_t+(R_t-R_{t+1})$, and $\E(R_t-R_{t+1})^2=2(1-\phi)v_R$, which gives the naive error. For a forecast $\Rbar+\lambda(\Rhat_t-\Rbar)$, $\Cov(\Rhat_t,R_{t+1})=\phi v_R$ and $\Var(\Rhat_t)=v_R+A/m$, so the error is:
+Conditional on the entire path $R_{1:T}$, the $e_t$ are independent and centred. They are therefore pairwise uncorrelated and orthogonal to every square-integrable function of that path. Thus
 \begin{equation}
-  v_R-2\lambda\phi v_R+\lambda^2\left(v_R+\frac{A}{m}\right),
+ \E\!\left[\left(T^{-1}\sum_t e_t\right)^2\right]=\frac{A}{Tm},\qquad
+ \Var(\widehat{\Rbar}_T)=\Var(\Rbar_T)+\frac{A}{Tm}.
 \end{equation}
-which is minimised at $\lambda=\phi v_R/(v_R+A/m)$ with value $v_R-\phi^2v_R{}^2/(v_R+A/m)$. Since $v_R/(v_R+A/m)=m/(m+\mx)$, this is Eq.~(\ref{eq:forecast}). The value decreases in $m$ towards $(1-\phi^2)v_R$, so no linear forecast from $\Rhat_t$ has a smaller error.
+For independent, identically distributed $R_t$, $\Var(\Rbar_T)=v_R/T$. Under the stated stationary autocovariance, summing all covariance pairs gives
+$T^2\Var(\Rbar_T)=v_R[T+2\sum_{h=1}^{T-1}(T-h)\phi^h]$.
+The finite geometric sum yields Eq.~(\ref{eq:ar-sum}), including $T=1$ and $\phi=0$ \citep{hamilton1994time}. Similarly, summing spatial covariance pairs gives Eq.~(\ref{eq:pooling}); its correlation matrix must be admissible.
 
-\subsection{Proof of Corollary~\ref{cor:switch}}
-\label{app:cor1}
+\subsection{Proof of Proposition~\ref{prop:report-noise} and Corollary~\ref{cor:report-current}}
+\label{app:prop2}
+\label{app:cor-report-current}
 
-Write $U_0=\Rbar^2+v_R$. From Eq.~(\ref{eq:vH-AH}), the gains from proportional increases in coverage and completeness are given by:
+Write $z_t=p_t/\rho$ and $u_t=C_t/m-z_tR_t$. Conditional on $(R_t,p_t)$, $u_t$ has zero mean. Independence of $p_t$ and $R_t$, with $\E z_t=1$ and $\E z_t^2=1+\tau^2$, gives
 \begin{equation}
-  -\frac{\partial V_H}{\partial\log n}=\frac{\Rbar}{\rho n}+\frac{(1+\tau^2)U_0}{kn},\qquad
-  -\frac{\partial V_H}{\partial\log\rho}=\frac{\Rbar}{\rho n}-\rho\frac{\mathrm{d}\tau^2}{\mathrm{d}\rho}\,U_0\left(1+\frac{1}{kn}\right).
+ \E(u_t^2)=\frac{\Rbar+\rho(1+\tau^2)(\Rbar^2+v_R)/k}{m}
+ =\frac{A_H}{m}.
 \end{equation}
-If $\mathrm{d}\tau^2/\mathrm{d}\rho=0$, the first gain exceeds the second by $(1+\tau^2)U_0/(kn)>0$. Under binomial sampling of $\nu$ units, $\Var(p_t)=\rho(1-\rho)/\nu$, $\tau^2=(1-\rho)/(\rho\nu)$ and $\rho\,\mathrm{d}\tau^2/\mathrm{d}\rho=-1/(\rho\nu)$. The second gain minus the first is
-\begin{equation}
-  \frac{U_0}{kn}\left[\frac{kn+\rho}{\rho\nu}-1\right],
-\end{equation}
-which is positive if and only if $kn>\rho\nu-\rho$, that is $m=\rho n>\rho^2(\nu-1)/k$. Under a Beta prior $\Var(p_t)=\rho(1-\rho)/(\nu+1)$, the denominator inside the brackets becomes $\rho(\nu+1)$ and the condition is $m>\rho^2\nu/k$.
+The error $\Rhat_t-R_t=u_t+(z_t-1)R_t$ has uncorrelated terms. The second has expected square $\tau^2(\Rbar^2+v_R)=v_H$, proving Eq.~(\ref{eq:vH-current}). Moreover $\E(\Rhat_t-R_t\mid R_t)=0$, so process-mean risk adds $v_R$. Under the additional cross-period assumptions of Corollary~\ref{cor:report-current}, these errors are centred and independent conditional on the transmission path after integrating out reporting, giving Eq.~(\ref{eq:report-means}).
 
-\subsection{Renewal formulation and denominator noise}
-\label{app:renewal}
-
-Let $\bar{\Lambda}=\E(\Lambda_{t+1}\mid\mathcal{F}_t)$ and $m=\rho\bar{\Lambda}$. Assuming that given $(\Lambda_{t+1},R_{t+1})$, incident cases follow a negative binomial distribution, and given $\mathcal{F}_t$, $\Lambda_{t+1}$ and $R_{t+1}$ are independent with $\E(R_{t+1}\mid\mathcal{F}_t)=\Rbar$ and $\Var(R_{t+1}\mid\mathcal{F}_t)=v_R$, conditioning on $(\Lambda_{t+1},R_{t+1})$ and applying the law of total variance gives:
+For the identification claim, set $U=(1+\tau^2)(\Rbar^2+v_R)$. The two observable moments of the scaled count satisfy
 \begin{equation}
-  \Var(C_{t+1}\mid\mathcal{F}_t)=mA+\rho^2\bar{\Lambda}^2\left[v_R+\mathrm{CV}^2(\Lambda_{t+1}\mid\mathcal{F}_t)\,(\Rbar^2+v_R)\right],
+ \E\Rhat_t=\Rbar,\qquad
+ \Var(\Rhat_t)=U-\Rbar^2+\frac{\Rbar+\rho U/k}{m}.
+ \label{eq:moment-identification}
 \end{equation}
-and dividing by $m^2$ gives Eq.~(\ref{eq:info-decomp}). For Eq.~(\ref{eq:b-delta}), assuming a flat latent trajectory ($Z_{t-j}\equiv Z$) with independent lagged reporting noise, write $D_t=m(1+\delta)$ with $\E\delta=0$ and $\E\delta^2=c_w/m$, where $c_w=(1-\rho)\sum_sw_s{}^2$, and let $Y=C_{t+1}/m$ be independent of $\delta$ with mean $\Rbar$ and variance $v_R+A/m$. Expanding $G_t=Y(1+\delta)^{-1}$ to second order gives:
-\begin{equation}
-  \E(G_t)=\Rbar\left(1+\frac{c_w}{m}\right)+O(m^{-2}),\qquad
-  \Var(G_t)=v_R+\frac{A+(\Rbar^2+3v_R)c_w}{m}+O(m^{-2}),
-\end{equation}
-and dividing by $[\E(G_t)]^2=\Rbar^2(1+2c_w/m)+O(m^{-2})$ gives a relative variance of $v_R/\Rbar^2+[A+(\Rbar^2+v_R)c_w]/(\Rbar^2m)$ to first order in $1/m$, which is Eq.~(\ref{eq:b-delta}).
+Whenever admissible distinct values of $\tau^2$ give $v_R=U/(1+\tau^2)-\Rbar^2\ge0$, these moments coincide. Such distinct pairs occur away from degenerate boundaries; varying exogenous $m$ does not separate them. The restrictions on $p_t$ and $R_t$ must still hold. This proves nonidentification by these moments, without asserting equality of full count distributions.
 
-\section{Extensions}
+For $v_R>0$, the generalised balance scale $m_{\times,H}=A_H/(v_R+v_H)$ obeys
+\begin{equation}
+ \mx-m_{\times,H}
+ =\frac{\tau^2(\Rbar^2+v_R)\Rbar(1+\rho\Rbar/k)}{v_R(v_R+v_H)}\ge0.
+ \label{eq:mx-gap}
+\end{equation}
+For $\Rbar>0$, equality holds exactly when $\tau=0$. A lower balance scale here accompanies a larger risk, not more accurate surveillance.
+
+\section{Symbolic theoretical extensions}
 \label{app:extensions}
 
-\subsection{Precision of the environmental variance}
-\label{app:vr-precision}
-
-\begin{proposition}[Precision of environmental variance]
-\label{prop:vr-precision}
-Suppose that $R_1,\dots,R_T$ are independent gamma variables with known mean $\Rbar$ and variance $v_R$, and let $\xi=\Rbar^2/v_R$. Any unbiased estimator of $v_R$ based on the counts from the $T$ periods has relative standard error at least
-\begin{equation}
-  \left[T\xi\left(\xi\psi'(\xi)-1\right)\right]^{-1/2},
-  \label{eq:vr-bound}
-\end{equation}
-where $\psi'$ is the trigamma function. As $\xi\to\infty$, the bound tends to the Gaussian value $\sqrt{2/T}$.
-\end{proposition}
-
-\begin{proof}
-The counts depend on $v_R$ only through $R_{1:T}$, so by the data processing inequality the Fisher information for $v_R$ in the counts cannot exceed that in $R_{1:T}$. With the mean fixed, the gamma shape is $\xi$ and the scale is $v_R/\Rbar$. The information for $\xi$ in one observation is $\psi'(\xi)-1/\xi$, and $\mathrm{d}\xi/\mathrm{d}v_R=-\xi/v_R$, so the information for $v_R$ in $T$ periods is $T\xi(\xi\psi'(\xi)-1)/v_R{}^2$. The Cram\'er--Rao inequality gives Eq.~(\ref{eq:vr-bound}). The limit follows from $\psi'(\xi)=1/\xi+1/(2\xi^2)+O(\xi^{-3})$.
-\end{proof}
-
-At the baseline of Table~\ref{tab:s7} ($\Rbar=1.15$, $v_R=0.04$), $\xi=33.06$ and $\xi(\xi\psi'(\xi)-1)=0.505$, so the relative standard error is at least 0.812 with 3 periods, 0.445 with 10 periods and 0.199 with 50 periods. The constant 0.505 is specific to this baseline, and Eq.~(\ref{eq:vr-bound}) is the general form.
-
-\subsection{Budget threshold with autocorrelated environments}
-\label{app:budget-ar}
-
-With autocorrelation $\phi$, the environmental term of Proposition~\ref{prop:allocation} is $v_Re(T)$ with $e(T)=S(\phi,T)/T^2$. Define $g_T=-T^2e'(T)$, treating $T$ as continuous, so that $g_T=1$ for independent periods, and let $m_0{}^*=\sqrt{(c_0/c_1)\mx}$ be the optimum of Eq.~(\ref{eq:optimal-m}).
-
-\begin{proposition}[Budget threshold]
-\label{prop:budget-ar}
-Under the budget constraint $\mathcal{B}=T(c_0+c_1m)$, the optimal case volume per period satisfies $m^*=m_0{}^*(g_{T^*})^{-1/2}$, where $T^*$ is the optimal number of periods. If $g_T$ increases in $T$ from $g_1<1$ towards $(1+\phi)/(1-\phi)>1$, there is a unique $T^\dagger$ with $g_{T^\dagger}=1$, and $m^*$ exceeds $m_0{}^*$ when $T^*<T^\dagger$ and falls below it when $T^*>T^\dagger$. The two regimes meet at the budget
-\begin{equation}
-  \mathcal{B}^\dagger=T^\dagger\left(c_0+c_1m_0{}^*\right),
-  \label{eq:b-dagger}
-\end{equation}
-which is expressed in units of the cost per unit case volume when $c_1=1$.
-\end{proposition}
-
-\begin{proof}
-Writing the sampling term as $Ac_1/(\mathcal{B}-c_0T)$ and differentiating $v_Re(T)+Ac_1/(\mathcal{B}-c_0T)$ with respect to $T$ gives the first-order condition $v_Rg_T=c_0A/(c_1m^2)$, so $m^{*2}=m_0{}^{*2}/g_{T^*}$. The ordering of $m^*$ and $m_0{}^*$ follows from the monotonicity of $g_T$, and at $T^*=T^\dagger$ the budget constraint gives Eq.~(\ref{eq:b-dagger}).
-\end{proof}
-
-For $\phi=0.8$, $g_T$ increases in $T$ and $T^\dagger=4.484$. With $c_0/c_1=100$ and the baseline balance scale, $m_0{}^*=72.86$ and $\mathcal{B}^\dagger=775.0$; over the uncorrected scenario range of 21.3 to 49.2 cases per generation in Section~\ref{sec:meth-loss}, $\mathcal{B}^\dagger$ ranges from 655.3 to 762.9 (762.85 rounded, Table~\ref{tab:s7}). The calculation treats $T$ as continuous and the environmental process as stationary, so it applies within a season and not across seasons with different mean transmission.
-
-\subsection{Between-season variance}
-\label{app:seasons}
-
-\begin{corollary}[Season-level bound]
-\label{cor:season}
-Suppose that season effects $\eta_1,\dots,\eta_S$ are independent Gaussian variables with unknown mean and variance $v_S$, and that the counts depend on $v_S$ only through the season effects. Any unbiased estimator of $v_S$ based on the counts has relative standard error at least $\sqrt{2/(S-1)}$, which is 1.00 for $S=3$ and 0.816 for $S=4$.
-\end{corollary}
-
-\begin{proof}
-Let $\delta$ be an unbiased estimator based on the counts. Because the conditional distribution of the counts given $\eta_{1:S}$ does not depend on the unknown parameters $(\mu, v_S)$ and unbiasedness holds for all $(\mu, v_S)$, $\E(\delta\mid\eta_{1:S})$ is a function of the season effects that is unbiased for $v_S$, and its variance does not exceed that of $\delta$. The sample mean and sample variance of $\eta_{1:S}$ are complete and sufficient, so the sample variance is the minimum-variance unbiased estimator of $v_S$, with variance $2v_S{}^2/(S-1)$ \citep{lehmann1998theory, lehmann2005testing, searle1992variance}.
-\end{proof}
-
-The bound uses $S-1$ degrees of freedom because the mean across seasons is estimated; the corresponding bound with a known mean, $\sqrt{2/S}$, is smaller (Table~\ref{tab:s7}). Season-specific intercepts for three and four seasons are reported separately in Table~\ref{tab:s5}.
-
-\subsection{Testing whether transmission exceeds one}
-\label{app:ump}
-
-For $R>R'$, the likelihood ratio of Eq.~(\ref{eq:observed}) increases in $c$ because $R/(k+\rho R)$ increases in $R$, so the family has a monotone likelihood ratio in $C_t$. The test that rejects $R_t\le1$ when $C_t\ge c_\alpha$ therefore has a power function that does not decrease in $R_t$, and by the Karlin--Rubin theorem it is uniformly most powerful at its attained level $\alpha^*=P_{R_t=1}(C_t\ge c_\alpha)\le\alpha$ \citep{karlin1956theory, lehmann2005testing}. Because $C_t$ is discrete, $\alpha^*$ is generally below the nominal level; optimality holds at $\alpha^*$, not at $\alpha$, unless the test is randomised or a mid-$p$ value is used.
-
-\subsection{Shrinkage as an ideal bound}
+\subsection{Forecasting and shrinkage}
+\label{app:forecast}
 \label{app:shrinkage}
 
-Part (iv) of Proposition~\ref{prop:average} excludes estimators that are biased given $R_t$. Consider $\hat{\theta}_\lambda=(1-\lambda)\Rhat_t+\lambda\mu_0$ for a fixed benchmark $\mu_0$ with $\Delta=\mu_0-\Rbar$. Its mean squared error for $\Rbar$ is given by:
+Under fixed, known reporting and the stationary covariance model of Corollary~\ref{cor:targets}, assume the counting error at $t$ is centred conditional on the entire transmission path. Then
 \begin{equation}
-  \mathrm{MSE}(\lambda)=(1-\lambda)^2V+\lambda^2\Delta^2,
+ \E[(\Rhat_t-R_{t+1})^2]=\frac{A}{m}+2(1-\phi)v_R.
 \end{equation}
-where $V$ is given by Eq.~(\ref{eq:var-average}). The minimum is at $\lambda^*=V/(V+\Delta^2)$, where $\mathrm{MSE}(\lambda^*)=V\Delta^2/(V+\Delta^2)$, which is below $v_R$ if and only if $\Delta^2<v_R(1+m/\mx)$. The weight $\lambda^*$ depends on the unknown $\Rbar$ and $V$, so this is an ideal bound and not a feasible estimator; an empirical Bayes or hierarchical estimator estimates the weight from the data and does not attain it \citep{stoner2019hierarchical}.
+For known $\Rbar$, $v_R$ and $\phi$, minimising over forecasts of the form $\Rbar+\lambda(\Rhat_t-\Rbar)$ gives
+\begin{equation}
+ \lambda^*=\frac{\phi v_R}{v_R+A/m},\qquad
+ \mathrm{MSE}_{\mathrm{lin}}=v_R-\frac{\phi^2v_R^2}{v_R+A/m}.
+ \label{eq:forecast}
+\end{equation}
+These follow by expanding a quadratic in $\lambda$ and using $\Cov(\Rhat_t,R_{t+1})=\phi v_R$. The limit is $(1-\phi^2)v_R$; with independent transmission periods, the best forecast in this class is the known process mean. Optimality is restricted to linear forecasts from the single current estimate, not all histories or nonlinear predictors.
 
-\clearpage
-\section{Supplementary figures}
-\label{app:figure}
+For estimating $\Rbar$ instead, consider $\hat\theta_\lambda=(1-\lambda)\Rhat_t+\lambda\mu_0$ with fixed benchmark $\mu_0$ and $\Delta=\mu_0-\Rbar$. Its risk is
+\begin{equation}
+ \E[(\hat\theta_\lambda-\Rbar)^2]=(1-\lambda)^2V+\lambda^2\Delta^2,
+ \qquad V=v_R+A/m.
+\end{equation}
+The oracle weight $\lambda^*=V/(V+\Delta^2)$ gives risk $V\Delta^2/(V+\Delta^2)$. This may be below $v_R$, illustrating the importance of the unbiasedness restriction. The oracle uses unknown quantities; estimating its weight requires a separate risk analysis.
 
-\setcounter{figure}{0}
-\renewcommand{\thefigure}{S\arabic{figure}}
+\subsection{Budget allocation with feasible periods}
+\label{app:allocation}
 
-Figures~\ref{fig:budget}--\ref{fig:seasons} give the detailed panels behind the main figures. They show the budget example and the scenario range of the optimal case volume (Fig.~\ref{fig:budget}) and the calibration of the inversion (Fig.~\ref{fig:inversion}). They also show the national series and sensitivity of the empirical fit (Fig.~\ref{fig:floor}), the reporting regimes (Fig.~\ref{fig:reporting}), the design nomogram (Fig.~\ref{fig:design}) and the between-season analysis (Fig.~\ref{fig:seasons}).
+\begin{proposition}[Continuous budget relaxation]
+\label{prop:allocation}
+\label{app:prop3}
+Under H1--H4, independent, identically distributed transmission periods, conditionally independent counts, fixed $\rho$ and linear costs, let $\mathcal B=T(c_0+c_1m)$ with $c_0,c_1>0$. Treat $T\ge1$ and $m>0$ as continuous. If $v_R>0$ and $\mathcal B>c_0$, the unconstrained stationary point is
+\begin{equation}
+ m^*=\sqrt{\frac{c_0A}{c_1v_R}}=\sqrt{\frac{c_0}{c_1}\mx}.
+ \label{eq:optimal-m}
+\end{equation}
+The feasible optimum is $\min\{m^*,(\mathcal B-c_0)/c_1\}$, with $T$ recovered from the budget constraint. A prescribed lower bound $m_{\min}>0$ instead requires clamping $m^*$ to $[m_{\min},(\mathcal B-c_0)/c_1]$, provided this interval is nonempty.
+\end{proposition}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.92\linewidth]{figures/fig_05_heterogeneity_budget.pdf}
-  \caption{Reporting heterogeneity and the allocation of a fixed surveillance budget. (A) Error variance against expected reported cases per period for four levels of relative reporting volatility; dotted lines mark the corresponding limits as case volume grows, set by environmental plus reporting variance. (B) Generalised balance scale against relative reporting volatility; the dashed line is the balance scale without reporting volatility, and the dot marks the volatility used in panel D. (C) Optimal number of reported cases per period against the price ratio $c_0/c_1$, for the two ends of the uncorrected scenario range of the balance scale, 21.3 and 49.2 cases per generation (labelled $m_\times$ in the panel); the band spans the range between them. (D) Mean squared error of the estimator of the mean reproduction number against total budget, when additional budget buys either more cases per period or more periods, with autocorrelated environmental and reporting variation, under baseline (solid) and standardised (dashed) reporting.}
-  \label{fig:budget}
-\end{figure}
+\begin{proof}
+For independent, identically distributed periods, process-mean risk is
+\begin{equation}
+ \frac{v_R}{T}+\frac{A}{Tm}
+ =\frac{(c_0+c_1m)(v_R+A/m)}{\mathcal B}=:f(m).
+ \label{eq:alloc-indep}
+\end{equation}
+Its derivatives are $f'(m)=(c_1v_R-c_0A/m^2)/\mathcal B$ and $f''(m)=2c_0A/(\mathcal B m^3)>0$. Strict convexity gives the stationary point and the clamped solution. When $v_R=0$, risk decreases with $m$, so the optimum is the largest feasible $m$, corresponding to $T=1$ without further constraints.
+\end{proof}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\linewidth]{figures/fig_06_sim_inversion.pdf}
-  \caption{Simulation-based inversion from apparent statistics to latent dynamics. (A) Calibration lines from 200 simulated panels per cell that reproduce the observed seasons, window lengths, state sizes, national week shocks and reporting delay. Fitted intercepts are scaled by the empirical intercept. Dashed drop lines mark where each line meets the data, giving the implied latent variance $v_R$. (B) Scale factor $\kappa$ linking the fitted intercept to $v_R/\Rbar^2$ for each simulation setting. Filled markers are fitted values and open markers the noise-free limit. (C) Distribution of the implied $v_R$ under the data-matched setting. Uncertainty combines the two-way bootstrap of the data with Monte Carlo error of the calibration. Top ticks show the point values of the other settings. (D) Simulated per-panel $b/a$ and the calibrated theoretical range, against empirical estimates with 95\% intervals. Grey bands mark $v_R=0.04$--0.08.}
-  \label{fig:inversion}
-\end{figure}
+The relaxation has the familiar form of cluster-size allocation \citep{cochran1977sampling, raudenbush1997statistical}. Actual designs require integer $T$ and integer $n$, with $m=\rho n$. Under a budget inequality, for each feasible integer $T$ choose
+\begin{equation}
+ n_T=\left\lfloor\frac{\mathcal B/T-c_0}{c_1\rho}\right\rfloor\ge1,
+ \qquad m_T=\rho n_T,
+\end{equation}
+and compare the risks over all feasible $T$. This handles unspent budget and the boundary $T=1$; rounding the relaxed optimum alone need not suffice.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.86\linewidth]{figures/fig_07_empirical_loss.pdf}
-  \caption{Relative loss of two apparent weekly statistics in influenza hospital admissions. (A) National weekly admissions on a logarithmic scale; shading marks the rule-based early-growth windows of the primary analysis, hatching marks the calendar windows of the earlier analysis, and triangles mark the first national turning point of each season. (B) Binned mean relative loss against case-count scale for the renewal-type ratio and the weighted growth ratio, with the fitted affine curve, a power law without intercept used for comparison and the fitted intercept; bin error bars ignore clustering. (C) Intercept before adjustment, after removing national-week effects and after also removing state-season effects, with two-way bootstrap intervals. (D) Ratio of slope to intercept under sensitivity variants; the band is the uncalibrated theoretical range for the growth ratio with the denominator correction, and Fig.~\ref{fig:inversion}D gives the calibrated range.}
-  \label{fig:floor}
-\end{figure}
+\subsection{Budget allocation under temporal dependence}
+\label{app:budget-ar}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.86\linewidth]{figures/fig_08_reporting.pdf}
-  \caption{Reporting completeness and the empirical intercept. (A) Distribution of the share of hospitals reporting influenza admissions under the three reporting regimes. (B) Change in the intercept when the statistic is adjusted for reporting coverage, pooled and by season, with 90\% paired bootstrap intervals. Each statistic is expressed relative to its own equivalence margin, and shaded bands show the margins implied by two thresholds of reporting volatility. (C) Power of the two one-sided equivalence test against the true change, for both statistics and both margins, with a conventional power reference. (D) Interquartile range of the logarithm of the growth ratio over May to October in three calendar years; the year with voluntary reporting is highlighted, and labels give median reporting completeness.}
-  \label{fig:reporting}
-\end{figure}
+For the stationary autocovariance model, compare instead the exact integer-design objective
+\begin{equation}
+ F(T)=\frac{v_RS(\phi,T)}{T^2}+\frac{A}{Tm_T}.
+ \label{eq:budget-ar-exact}
+\end{equation}
+No independent-period optimum or universal switch threshold follows from this expression. Under independent reporting shocks, replace its counting term by $(v_H+A_H/m_T)/T$. All costs and exposures must refer to the same period; these symbolic formulas provide no direct conversion of weekly admission ratios into generational design thresholds.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\linewidth]{figures/fig_09_design_nomogram.pdf}
-  \caption{Surveillance design nomogram. (A) Observation weeks needed for the relative standard error of a single state's mean renewal ratio $R_A$ to reach 2--8\%, by weekly admissions $m$, on the scale of the statistic and ignoring autocorrelation within states. The dashed line marks the apparent balance ratio $b/a$ of $R_A$, labelled $m_\times$ in the panel, and the grey band its 95\% interval. To its left, added cases give most of the gain. To its right, contours flatten and added weeks or regions give most of the gain. (B) Share of attainable precision, $m/(m+\mx)$, and the variance reduction from one doubling of $m$. (C) Variance of the mean weekly deviation pooled over $J$ states, relative to one state, for $R_A$ and the growth ratio $G$. Points and bands come from random state subsets; dotted lines show the national-week component. (D) Relative variance of $R_A$ under the Poisson renewal variance alone and under the fitted $a+b/m$.}
-  \label{fig:design}
-\end{figure}
+\subsection{Coverage and reporting completeness}
+\label{app:coverage}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.86\linewidth]{figures/fig_10_seasons_pathogens_design.png}
-  \caption{Between-season uncertainty, intercept ratios across pathogens and number of periods. (A) Season-specific intercepts of the weighted growth ratio in calendar windows and in rule-defined early-growth windows, with two-way bootstrap 95\% intervals; open diamonds show random-effects pooled estimates. Panel B gives the lower bound on the relative standard error of an estimated between-season variance against the number of seasons, compared with the values reported in the earlier analysis. Panel C gives intercept ratios for a single-week denominator and an equal three-week denominator relative to the original weights; grey bars give the ranges expected from reporting noise and epidemic growth without environmental variation, and filled markers denote one-sided tests that remain significant after Holm correction. Panel D gives the number of periods needed to match the precision of a given number of noise-free periods, by reported admissions per period; the panel is illustrative and is superseded by the empirical nomogram in Fig.~\ref{fig:design}A.}
-  \label{fig:seasons}
-\end{figure}
+For fixed transmission law and a differentiable reporting-volatility relation $\tau^2(\rho)$ independent of $n$, write $Q=\Rbar^2+v_R$. At interior values of $\rho$, the reductions in single-period process-mean risk from proportional increases in $n$ and $\rho$ are
+\begin{equation}
+\begin{aligned}
+ -\frac{\partial V_H}{\partial\log n}
+ &=\frac{\Rbar}{\rho n}+\frac{(1+\tau^2)Q}{kn},\\
+ -\frac{\partial V_H}{\partial\log\rho}
+ &=\frac{\Rbar}{\rho n}-\rho\frac{\mathrm d\tau^2}{\mathrm d\rho}\,Q\left(1+\frac{1}{kn}\right).
+\end{aligned}
+ \label{eq:coverage-gains}
+\end{equation}
+These follow by differentiating Eq.~(\ref{eq:vH-AH}) before substituting $m=\rho n$. At fixed $\tau$, the first gain is larger. If improving completeness also stabilises reporting, that ordering can change; these are proportional, not cost-adjusted, comparisons.
+
+\begin{corollary}[A specified reporting mechanism]
+\label{cor:switch}
+If $p_t$ is the fraction of $\nu$ independent reporting units participating with probability $\rho$, so $\tau^2=(1-\rho)/(\rho\nu)$, increasing completeness has the larger proportional gain exactly when
+\begin{equation}
+ m>\frac{\rho^2(\nu-1)}{k}.
+ \label{eq:r3-switch}
+\end{equation}
+For $p_t\sim\mathrm{Beta}(\rho\nu,(1-\rho)\nu)$, the corresponding condition is $m>\rho^2\nu/k$.
+\end{corollary}
+
+Subtracting the first derivative gain from the second gives $Q(kn)^{-1}[(kn+\rho)/(\rho\nu)-1]$ for the reporting-unit model. Replacing $\nu$ by $\nu+1$ proves the beta case. Neither mechanism is implied by observed facility participation alone.
+
+\subsection{Conditional renewal moments and noisy denominators}
+\label{app:renewal}
+\label{app:random-denominator}
+
+A restricted renewal analogue can be stated explicitly. Given history $\mathcal F$, suppose infection pressure $\Lambda>0$ is independent of the next $R$, with $\E(R\mid\mathcal F)=\Rbar$ and $\Var(R\mid\mathcal F)=v_R$. Assume a conditional count law with mean $\rho\Lambda R$ and variance $\rho\Lambda R+\rho^2\Lambda R^2/k$. Put $\bar\Lambda=\E(\Lambda\mid\mathcal F)$ and $m=\rho\bar\Lambda$. Total variance gives
+\begin{equation}
+ \frac{\Var(C\mid\mathcal F)}{m^2}
+ =v_R+\frac{A}{m}
+   +\frac{\Var(\Lambda\mid\mathcal F)}{\bar\Lambda^2}(\Rbar^2+v_R).
+ \label{eq:renewal-conditional}
+\end{equation}
+The result assumes the conditional independence and fixed moments just stated. It is a count-prediction variance, not a general error identity for a ratio with an estimated denominator, and it does not resolve endogenous incidence.
+
+To see the ratio issue, condition on a positive latent path and write numerator and denominator as their latent values times $(1+\varepsilon)$ and $(1+u)$. Let $Y=y(1+\varepsilon)/(1+u)$, with centred disturbances of order $\tau$, a denominator bounded away from zero, bounded scaled third moments and integrable Taylor remainders. Then
+\begin{equation}
+\begin{aligned}
+ \E(Y\mid y,\text{path})/y
+ &=1+\E(u^2\mid\text{path})-\E(\varepsilon u\mid\text{path})+O(\tau^3),\\
+ \Var(Y\mid\text{path})/y^2
+ &=\Var(\varepsilon-u\mid\text{path})+O(\tau^3).
+\end{aligned}
+\end{equation}
+Both numerator--denominator covariance and induced bias enter apparent variation. Overlapping ratios can share disturbances. These conditional approximations do not supply an exact source decomposition of a fitted loss intercept.
+
+\subsection{Replication and variance estimation}
+\label{app:vr-precision}
+\label{app:seasons}
+
+\begin{proposition}[A conditional information bound for process variance]
+\label{prop:vr-precision}
+Suppose $R_1,\ldots,R_T$ are independent, identically distributed gamma variables with known mean $\Rbar$ and variance $v_R>0$. If the observation law given $R_{1:T}$ does not otherwise depend on $v_R$, any regular unbiased estimator of $v_R$ from the counts has relative standard error at least
+\begin{equation}
+ [T\xi(\xi\psi'(\xi)-1)]^{-1/2},\qquad \xi=\Rbar^2/v_R,
+ \label{eq:vr-bound}
+\end{equation}
+where $\psi'$ is the trigamma function.
+\end{proposition}
+
+Observing the latent $R_t$ cannot provide less information than observing only counts generated from them. With the mean fixed, information for gamma shape $\xi$ is $\psi'(\xi)-1/\xi$ per period; the change of parameter $\mathrm d\xi/\mathrm dv_R=-\xi/v_R$ gives the bound. It approaches $\sqrt{2/T}$ as $\xi\to\infty$.
+
+\begin{corollary}[Independent season effects]
+\label{cor:season}
+For $S\ge2$ independent, identically distributed Gaussian season effects with unknown mean and variance $v_S>0$, assume their conditional count law is parameter-free. Any estimator unbiased for $v_S$ for all means and variances has relative standard error at least $\sqrt{2/(S-1)}$.
+\end{corollary}
+
+Conditional expectation onto the latent effects cannot increase variance. Their sample variance is uniformly minimum-variance unbiased and has variance $2v_S^2/(S-1)$ \citep{lehmann1998theory, searle1992variance}. Thus more observations within existing seasons cannot replace independent seasons for this bound. Both bounds are conditional model results, not empirical confidence limits.
 
 \FloatBarrier
 \clearpage
-\section{Supplementary tables}
-\label{app:tables}
-
-\setcounter{table}{0}
 \renewcommand{\thetable}{S\arabic{table}}
-
-Tables~\ref{tab:s1}--\ref{tab:s7} report the estimates that underlie Figs.~\ref{fig:identification}A, \ref{fig:envelope}A and \ref{fig:budget}--\ref{fig:seasons}. Table~\ref{tab:s8} gives the implied environmental variance under each setting of the inversion (Figs.~\ref{fig:envelope}B and \ref{fig:inversion}), Table~\ref{tab:s9} lists the specifications used across the rounds of this analysis, and Table~\ref{tab:s11} gives the thinning and within-state results of Fig.~\ref{fig:identification}B and C. Table~\ref{tab:s4} compares the voluntary reporting period with the same calendar months of the mandatory years. All values were generated from the stored outputs of the analysis code.
-
-\input{tables/tab_s1_headline}
-\input{tables/tab_s2_decomposition}
-\input{tables/tab_s3_reporting}
-\input{tables/tab_s4_calendar_lab}
-\input{tables/tab_s5_seasons}
-\input{tables/tab_s6_pathogens}
-\input{tables/tab_s7_theory}
-\input{tables/tab_s8_inversion_settings}
-\input{tables/tab_s9_analysis_history}
-\input{tables/tab_s10_polish}
-\input{tables/tab_s11_thinning_fe}
+\setcounter{table}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\input{sections/supplement}

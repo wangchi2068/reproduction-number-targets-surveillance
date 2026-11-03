@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{采用共同损失分母的中心化阶段}\label{tab:centering}
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}@{}}
+\toprule
+统计量/中心 & 合并均值 & a / 变化 [95\% CI] & b [95\% CI] & 有限/B \\
+\midrule
+RA / pooled & 1.206 & 0.01495 [0.01016, 0.02083] & 0.56 [0.3625, 0.7639] & 1000/1000 \\
+RA / season & 1.206 & 0.01471 [0.009507, 0.01966] & 0.5391 [0.3602, 0.7205] & 1000/1000 \\
+RA / season\_\allowbreak{}linear & 1.206 & 0.0154 [0.008972, 0.01901] & 0.3936 [0.2717, 0.5763] & 1000/1000 \\
+RA / week & 1.206 & 0.009766 [0.007103, 0.01357] & 0.4581 [0.3124, 0.5916] & 1000/1000 \\
+RA / week\_\allowbreak{}leave\_\allowbreak{}state\_\allowbreak{}out & 1.206 & 0.01016 [0.007654, 0.01481] & 0.4841 [0.3492, 0.6636] & 1000/1000 \\
+RA / week\_\allowbreak{}change & 1.206 & -0.005189 [-0.01015, -0.0006938] & -- & 1000/1000 \\
+RA / week\_\allowbreak{}reduction\_\allowbreak{}fraction & 1.206 & 34.7 [5.967, 51.9] & -- & 1000/1000 \\
+G / pooled & 1.724 & 0.08401 [0.05163, 0.1222] & 1.971 [0.9987, 2.986] & 1000/1000 \\
+G / season & 1.724 & 0.08163 [0.0504, 0.1156] & 1.842 [0.9591, 2.602] & 1000/1000 \\
+G / season\_\allowbreak{}linear & 1.724 & 0.07864 [0.04808, 0.09897] & 1.249 [0.6423, 1.988] & 1000/1000 \\
+G / week & 1.724 & 0.05607 [0.03962, 0.07812] & 1.401 [0.7134, 1.912] & 1000/1000 \\
+G / week\_\allowbreak{}leave\_\allowbreak{}state\_\allowbreak{}out & 1.724 & 0.05843 [0.04308, 0.08505] & 1.477 [0.8089, 2.138] & 1000/1000 \\
+G / week\_\allowbreak{}change & 1.724 & -0.02794 [-0.05687, -0.003708] & -- & 1000/1000 \\
+G / week\_\allowbreak{}reduction\_\allowbreak{}fraction & 1.724 & 33.25 [6.805, 51.63] & -- & 1000/1000 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+同一统计量的五种中心均使用相同合并均值作为相对损失分母；每次重抽样用权重重新拟合该分母。week\_\allowbreak{}leave\_\allowbreak{}state\_\allowbreak{}out的周中心排除本州。减少比例为100*(a\_\allowbreak{}pooled-a\_\allowbreak{}week)/a\_\allowbreak{}pooled，单位为百分比；这些是描述性变化，并非可加总方差分量。 RA/pooled: 1000/1000 有限重抽样; RA/season: 1000/1000 有限重抽样; RA/season\_\allowbreak{}linear: 1000/1000 有限重抽样; RA/week: 1000/1000 有限重抽样; RA/week\_\allowbreak{}leave\_\allowbreak{}state\_\allowbreak{}out: 1000/1000 有限重抽样; G/pooled: 1000/1000 有限重抽样; G/season: 1000/1000 有限重抽样; G/season\_\allowbreak{}linear: 1000/1000 有限重抽样; G/week: 1000/1000 有限重抽样; G/week\_\allowbreak{}leave\_\allowbreak{}state\_\allowbreak{}out: 1000/1000 有限重抽样.
+\end{minipage}
+\end{table}

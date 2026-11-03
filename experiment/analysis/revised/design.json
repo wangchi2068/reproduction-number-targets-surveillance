@@ -1,0 +1,281 @@
+{
+  "meta": {
+    "replicates_per_stage": 500,
+    "seed": 2026110304,
+    "raw_sha256": "9685ddd4b0035694754334e530d5b356bd3503f57b82821f7ee7883c4f5fb94b",
+    "code_sha256": "00bf75b329bd202b083603aca846ee948fb3f9238b54904624f3fdda8d0a6f0d",
+    "completed_at": "2026-11-03T12:17:30.976303+08:00"
+  },
+  "generator": {
+    "description": "Conditional relative-loss curves on recycled observed season/count designs, crossed mean-one lognormal multipliers. No inferred transmission truth.",
+    "state_sd": 0.35,
+    "week_sd": 0.35,
+    "individual_sd": 0.9,
+    "weekly_ar": 0.25,
+    "affine": {
+      "a": 0.014954566182030291,
+      "b": 0.5599555819435609,
+      "ratio": 37.443786407954434,
+      "method": "damped_fgls",
+      "min_mu": 0.015099257546873588,
+      "rank": 2,
+      "n_active": 1748,
+      "converged": true,
+      "iterations": 13,
+      "objective": 0.8587988569324486,
+      "scoring_residual": 4.3463169321033227e-10,
+      "failure": null
+    },
+    "power": {
+      "coefficient": 0.14200684264126953,
+      "exponent": 0.3829792774752757,
+      "converged": true,
+      "boundary": false
+    },
+    "nominal_alpha": 0.05,
+    "calibration_and_evaluation_independent": true,
+    "scope": "Illustrative model-conditional discrimination; not a universal required season count, not retrospective observed power."
+  },
+  "designs": [
+    {
+      "seasons": 4,
+      "count_multiplier": 1,
+      "rows": 1748,
+      "critical_value": -0.007241857407115431,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.058,
+      "size_ci95": [
+        0.03918386879718778,
+        0.08223822089383517
+      ],
+      "power": 0.996,
+      "power_ci95": [
+        0.9856259214377997,
+        0.99951521382371
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 4,
+      "count_multiplier": 2,
+      "rows": 1748,
+      "critical_value": -0.007172824556805757,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.06,
+      "size_ci95": [
+        0.0408441817627769,
+        0.08454855370760019
+      ],
+      "power": 0.998,
+      "power_ci95": [
+        0.9889075231010312,
+        0.9999493656659926
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 4,
+      "count_multiplier": 4,
+      "rows": 1748,
+      "critical_value": -0.0065606276916698805,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.052,
+      "size_ci95": [
+        0.03424569808276791,
+        0.07526637103062207
+      ],
+      "power": 0.994,
+      "power_ci95": [
+        0.9825663262740865,
+        0.9987609424564593
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 8,
+      "count_multiplier": 1,
+      "rows": 3496,
+      "critical_value": -0.009564590838913681,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.058,
+      "size_ci95": [
+        0.03918386879718778,
+        0.08223822089383517
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 8,
+      "count_multiplier": 2,
+      "rows": 3496,
+      "critical_value": -0.00850786818819034,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.038,
+      "size_ci95": [
+        0.023030770806247606,
+        0.05870729046322849
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 8,
+      "count_multiplier": 4,
+      "rows": 3496,
+      "critical_value": -0.00965662558782144,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.082,
+      "size_ci95": [
+        0.059485463735588225,
+        0.10959894311096288
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": false
+    },
+    {
+      "seasons": 12,
+      "count_multiplier": 1,
+      "rows": 5244,
+      "critical_value": -0.010430705692417,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.058,
+      "size_ci95": [
+        0.03918386879718778,
+        0.08223822089383517
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 12,
+      "count_multiplier": 2,
+      "rows": 5244,
+      "critical_value": -0.010346083013916225,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.07,
+      "size_ci95": [
+        0.049238644720378776,
+        0.09601109159263313
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 12,
+      "count_multiplier": 4,
+      "rows": 5244,
+      "critical_value": -0.010382277652044247,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.054,
+      "size_ci95": [
+        0.03588425972193367,
+        0.07759746849493718
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 20,
+      "count_multiplier": 1,
+      "rows": 8740,
+      "critical_value": -0.010670041045367245,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.032,
+      "size_ci95": [
+        0.018399185323639905,
+        0.051446768291645545
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 20,
+      "count_multiplier": 2,
+      "rows": 8740,
+      "critical_value": -0.011132530573437247,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.058,
+      "size_ci95": [
+        0.03918386879718778,
+        0.08223822089383517
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    },
+    {
+      "seasons": 20,
+      "count_multiplier": 4,
+      "rows": 8740,
+      "critical_value": -0.011251222825821739,
+      "calibration_valid": 500,
+      "null_valid": 500,
+      "alternative_valid": 500,
+      "size": 0.056,
+      "size_ci95": [
+        0.0375304444750222,
+        0.07992130060436008
+      ],
+      "power": 1.0,
+      "power_ci95": [
+        0.9926493899480923,
+        1.0
+      ],
+      "size_compatible_with_nominal": true
+    }
+  ]
+}

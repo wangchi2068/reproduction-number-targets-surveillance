@@ -1,0 +1,66 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{固定效应、配对比值、周块敏感性与收敛}\label{tab:fe}
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}@{}}
+\toprule
+周块 & 参数 & 估计值 [95\% CI] & 有限/B & 非正比例/诊断 \\
+\midrule
+L=1 & Pooled a & 0.01495 [0.009976, 0.02114] & 1000/1000 & 0 \\
+L=1 & Pooled b & 0.56 [0.3682, 0.7707] & 1000/1000 & 0 \\
+L=1 & Pooled b/a & 37.44 [18.64, 73.92] & 1000/1000 & 0 \\
+L=1 & State FE b & 0.3794 [0.1082, 0.6403] & 999/1000 & 0 \\
+L=1 & State FE mean a & 0.02192 [0.01289, 0.03502] & 999/1000 & 0 \\
+L=1 & State FE b/mean a & 17.3 [3.315, 47.8] & 999/1000 & 0 \\
+L=1 & State FE median a & 0.01751 [0.01037, 0.03014] & 999/1000 & 0 \\
+L=1 & State FE b/median a & 21.67 [3.977, 57.85] & 999/1000 & 0 \\
+L=1 & State FE row-weighted a & 0.02061 [0.01339, 0.03114] & 999/1000 & 0 \\
+L=1 & State FE row-weighted ratio & 18.41 [3.705, 45.56] & 999/1000 & 0 \\
+L=1 & State FE count-weighted a & 0.01542 [0.01056, 0.02288] & 999/1000 & 0 \\
+L=1 & State FE count-weighted ratio & 24.61 [5.265, 55.65] & 999/1000 & 0 \\
+L=1 & True D\_\allowbreak{}t b & 0.3691 [0.1153, 0.6145] & 999/1000 & 0 \\
+L=1 & True D\_\allowbreak{}t mean a & 0.02084 [0.01218, 0.03429] & 999/1000 & 0 \\
+L=1 & True D\_\allowbreak{}t ratio & 17.71 [3.267, 47.81] & 999/1000 & 0 \\
+L=1 & Paired pooled/FE ratio & 2.164 [1.04, 7.745] & 999/1000 & 0 \\
+L=2 & Pooled a & 0.01495 [0.009493, 0.02077] & 1000/1000 & 0 \\
+L=2 & Pooled b & 0.56 [0.371, 0.763] & 1000/1000 & 0 \\
+L=2 & Pooled b/a & 37.44 [18.73, 74.77] & 1000/1000 & 0 \\
+L=2 & State FE b & 0.3794 [0.109, 0.6611] & 1000/1000 & 0 \\
+L=2 & State FE mean a & 0.02192 [0.01288, 0.03581] & 1000/1000 & 0 \\
+L=2 & State FE b/mean a & 17.3 [3.453, 50.16] & 1000/1000 & 0 \\
+L=2 & State FE median a & 0.01751 [0.01024, 0.03013] & 1000/1000 & 0 \\
+L=2 & State FE b/median a & 21.67 [3.984, 60.15] & 1000/1000 & 0 \\
+L=2 & State FE row-weighted a & 0.02061 [0.013, 0.03107] & 1000/1000 & 0 \\
+L=2 & State FE row-weighted ratio & 18.41 [3.819, 48.17] & 1000/1000 & 0 \\
+L=2 & State FE count-weighted a & 0.01542 [0.0102, 0.02293] & 1000/1000 & 0 \\
+L=2 & State FE count-weighted ratio & 24.61 [5.111, 57.08] & 1000/1000 & 0 \\
+L=2 & True D\_\allowbreak{}t b & 0.3691 [0.1082, 0.612] & 1000/1000 & 0.001 \\
+L=2 & True D\_\allowbreak{}t mean a & 0.02084 [0.01168, 0.03555] & 1000/1000 & 0 \\
+L=2 & True D\_\allowbreak{}t ratio & 17.71 [3.26, 51.13] & 1000/1000 & 0.001 \\
+L=2 & Paired pooled/FE ratio & 2.164 [0.964, 8.483] & 1000/1000 & 0 \\
+L=3 & Pooled a & 0.01495 [0.01001, 0.02089] & 1000/1000 & 0 \\
+L=3 & Pooled b & 0.56 [0.3851, 0.7603] & 1000/1000 & 0 \\
+L=3 & Pooled b/a & 37.44 [19.39, 68.59] & 1000/1000 & 0 \\
+L=3 & State FE b & 0.3794 [0.111, 0.6669] & 1000/1000 & 0.001 \\
+L=3 & State FE mean a & 0.02192 [0.01247, 0.03692] & 1000/1000 & 0 \\
+L=3 & State FE b/mean a & 17.3 [3.051, 50.11] & 1000/1000 & 0.001 \\
+L=3 & State FE median a & 0.01751 [0.01068, 0.03045] & 1000/1000 & 0 \\
+L=3 & State FE b/median a & 21.67 [3.982, 58.24] & 1000/1000 & 0.001 \\
+L=3 & State FE row-weighted a & 0.02061 [0.01293, 0.0317] & 1000/1000 & 0 \\
+L=3 & State FE row-weighted ratio & 18.41 [3.407, 47.65] & 1000/1000 & 0.001 \\
+L=3 & State FE count-weighted a & 0.01542 [0.01076, 0.02338] & 1000/1000 & 0 \\
+L=3 & State FE count-weighted ratio & 24.61 [4.841, 57.62] & 1000/1000 & 0.001 \\
+L=3 & True D\_\allowbreak{}t b & 0.3691 [0.1072, 0.6252] & 1000/1000 & 0.001 \\
+L=3 & True D\_\allowbreak{}t mean a & 0.02084 [0.0116, 0.03629] & 1000/1000 & 0 \\
+L=3 & True D\_\allowbreak{}t ratio & 17.71 [3.068, 51.41] & 1000/1000 & 0.001 \\
+L=3 & Paired pooled/FE ratio & 2.164 [0.9866, 8.87] & 999/1000 & 0 \\
+点估计诊断 & week\_\allowbreak{}only & b=0.5258 & 无区间 & group\_\allowbreak{}gamma\_\allowbreak{}objective\_\allowbreak{}fallback \\
+点估计诊断 & state\_\allowbreak{}and\_\allowbreak{}week & 不可用 & 无区间 & iteration\_\allowbreak{}limit \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+区间保留有符号重抽样；有限/B<1时，区间以有限估计为条件。末列为全部请求重抽样中的非正比例。FE以抽中的州出现次数为目标；合并/FE比较在重抽样内配对。L为季内周块长度。仅周和州加周拟合为点估计诊断，失败时无估计或区间。 L=1 pooled: 1000 converged, 0 failed; \{\}. L=1 state: 999 converged, 1 failed; \{"gamma\_\allowbreak{}objective\_\allowbreak{}fallback\_\allowbreak{}failed": 1\}. L=1 state\_\allowbreak{}D: 999 converged, 1 failed; \{"gamma\_\allowbreak{}objective\_\allowbreak{}fallback\_\allowbreak{}failed": 1\}. L=2 pooled: 1000 converged, 0 failed; \{\}. L=2 state: 1000 converged, 0 failed; \{\}. L=2 state\_\allowbreak{}D: 1000 converged, 0 failed; \{\}. L=3 pooled: 1000 converged, 0 failed; \{\}. L=3 state: 1000 converged, 0 failed; \{\}. L=3 state\_\allowbreak{}D: 1000 converged, 0 failed; \{\}.
+\end{minipage}
+\end{table}

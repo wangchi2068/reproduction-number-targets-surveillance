@@ -1,0 +1,43 @@
+# Corrective revision analysis protocol
+
+Recorded before the corrective analyses on 2026-11-03. This is a post-review revision protocol, not a preregistration. Original inputs and history are preserved outside the active delivery. No model or subset is chosen to produce significance.
+
+## Primary objects
+
+The theoretical targets are current R, the realised finite-period mean, and a stationary process mean. The empirical response is squared relative deviation of apparent weekly statistics, not error against observed transmission truth. The primary RA transform remains gamma mean 3.6 d / SD 1.6 d for continuity; 3.2 d with fixed coefficient of variation is explicitly an assumption-based sensitivity. G is a complementary statistic. The primary window is the previously disclosed rule-v2 early-growth window in each of four seasons. Do not move windows to improve a fit.
+
+## Input and sample
+
+Rebuild from the public NHSN snapshot, preserving missing and suppressed counts as missing. Require exact consecutive weekly dates for the four counts forming a row. Exclude incomplete rows; real zeros remain zero. Report all exclusion counts and verify the historical primary n=1748 (RA), n=1756 (G), or explain any change. Freeze state/week keys for paired empirical comparisons and controlled thinning. No post-thinning eligibility filter.
+
+## Fitting and uncertainty
+
+Use the affine mean of relative squared loss, mu=a+b/C, with variance weights proportional to mu squared. The implementation must return convergence, positivity of fitted mu and iteration diagnostics. Do not silently report an unconverged last iterate. An intercept may be negative if fitted mu remains positive; a positive intercept is not guaranteed by construction. For numerical fallback, use the same gamma quasi-deviance objective sum w*(L/mu+log(mu)), with positive fitted means. Any unsupported or failed ancillary fit is recorded, not promoted to a point estimate.
+
+For pooled/state-intercept comparisons use paired state x calendar-week multiplicities, with centering re-estimated per draw. State summaries target the resampled-state distribution: each sampled state occurrence is counted; row/case weighted summaries use resampled totals. Absent states have no fitted intercept and do not enter as zeros. The weighted median follows state multiplicities. Use actual D_t, not the RA scale alias C_t, for denominator sensitivity. Save all draws, convergence counts and denominator signs; do not turn unstable ratios into positive-only confidence intervals. Primary pooled inference B=2000; state-FE B=1000. Week-only and state-plus-week models are numerical diagnostics, not primary claims.
+
+## Controlled thinning
+
+Retain q={0.8,0.6,0.5,0.4,0.3,0.2,0.1}. A unique state-week count is drawn once per realisation and reused in all overlapping ratios. Regress on the original C_t. Primary point estimates average 400 realisations per q; bootstrap the same average-response estimand with B=1000 and initially 50 inner realisations, checking the Monte Carlo error against sample uncertainty. If inner Monte Carlo error is material, increase it uniformly based on a numerical tolerance, not statistical significance. Store actual counts and seeds.
+
+**Protocol amendment, 2026-11-03 (before any thinning result was reported).** The initially implemented precision rule required the Monte Carlo standard error to be at most one tenth of the bootstrap sampling standard error. That ratio grows roughly as the square root of the outer-to-inner budget ratio, so with B=1000 it cannot be met at any feasible inner budget: sampling error itself shrinks with B while simulation error shrinks only with inner repetitions. The rule was therefore replaced by a scale-free relative precision rule: for the primary response summaries (full-sample pooled rate, the rate excluding q=0.1, the rate at q=0.1, and the two prespecified high-count subsets), the Monte Carlo standard error must be at most 10% of the point estimate, with a uniform cap of 200 inner realisations. All subset-by-level rates remain reported with their own Monte Carlo diagnostics. This amendment changes a computational adequacy criterion only; it does not change the estimand, the data, the fitted model, the retention levels or any scientific decision rule.
+
+Report each q; full and q>=0.2 pooled rates; leave-one-q-out; C_t>=50 and both C_t,C_next>=50 sensitivities. Recompute the derivative-based Poisson reference within each bootstrap draw and report paired c/b_P. The delta approximation is not an exact invariant of the nonlinear statistic. Report delta a and simultaneous uncertainty without interpreting non-rejection as equivalence. Include a known-count-model simulation through the same thinning pipeline.
+
+## Specification and model comparison
+
+Compare affine and power-law means. Leave-state-out and leave-season-out predictions use training-fold-only centering and scoring weights. Report fold-level paired prediction scores, uncertainty and four-season limitations. Do not reuse the old residual-bootstrap p=0.114 as a corrected test. For a new test, validate null generation and rejection rate first. Keep centred-loss sensitivity separate from regression fixed effects: pooled, season-centred, common season-linear trend, and national-week centring; use the same global-mean-squared denominator first. Means/trends are refitted in each resample. A leave-own-state-out weekly centre checks mechanical shrinkage. Report changes as loss-definition sensitivity, not orthogonal biological variance components. Define VR_week explicitly on signed relative deviations.
+
+Use state x week bootstrap, plus season-restricted time blocks of 2 and 3 weeks for sensitivity. Do not choose a block length from significance. A limited prospective design calculation crosses seasons {4,8,12,20} and count multipliers {1,2,4}, under stated crossed positive-noise affine/power-law generators. Distinguish this curve-discrimination exercise from identifying biological environmental variance. Calibrate null critical values independently from evaluation simulations and report Monte Carlo binomial intervals.
+
+## Conditional calibration
+
+Use an import-safe daily renewal simulator with explicitly separate weekly R persistence and observation noise. Draw admissions directly from the latent infection/delay mechanism; never add a second Gamma-Poisson layer centred on already noisy observed admissions. Baseline binomial allocation across delays; a gamma-Poisson observation approximation must have E(C|lambda)=lambda and Var(C|lambda)=phi*lambda, including the phi=1 Poisson limit. Transmission and common reporting shocks are separate mechanisms. Test observation moments independently.
+
+Use true/analyst GI matched at 3.2 d and 3.6 d, plus 2.2/2.9/4.3 d true-GI stresses with analyst fixed at 3.6. Fixed GI coefficient of variation, rho_h=.01, k=.35 and delay 5.5/3 d are labelled assumptions. Include a declared small joint grid of GI {3.2,3.6}, national persistence {0,.25}, observation {Poisson,phi=1.25}; retain binomial matching references and single stresses. No GI posterior is fabricated from confidence limits. Calibration v grid includes zero and .02,.04,.06,.09; 200 panels per cell and joint RA/G calibration uncertainty. Report failed fits and nonpositive implied-variance draws. Do not translate weekly variance parameters or m* to generations by multiplying counts alone.
+
+## Supplement and release
+
+Retain budget results only as model-based supplementary illustrations with consistent period/cost units. Remove the entire exploratory cross-pathogen significance family, including uncalibrated Excess and inherited growth-null-band tests, from the active manuscript: these do not address the target/counting diagnostic and their historical simulation inputs are not independently regenerated. The audit's arithmetic correction of the original 32 retained p values remains in the external historical evidence, not as a new scientific result. This editorial decision precedes new secondary computation and is not a significance-based selection. Report season and reporting-participation sensitivities descriptively; no mandate causal effect or complete-reporting guarantee.
+
+One authoritative versioned result bundle drives figures, tables and numerical prose macros in both languages. Every retained result has an executable producer and input/config/code hashes. No stale HTML, duplicate PDFs, old acceptance certificates or obsolete intermediates in the active release. Fresh means fresh derived computations; resumed caches require fingerprints. Full rerun and compilation are logged honestly, and validation distinguishes passed, failed and not run.

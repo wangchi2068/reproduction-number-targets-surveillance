@@ -1,206 +1,283 @@
-"""s03c_state_fe.py: Within-state fixed-effects analysis and spatial heterogeneity tests.
-Fits L_st = a_s + b_w / C_st via iterated FGLS on RA_rule4 (n = 1748, 51 states).
-Compares pooled cross-sectional fit with state-specific intercepts:
-- Unweighted mean, median, row-weighted and case-weighted state intercepts.
-- Scale D_t sensitivity.
-- Week intercepts only and State + Week intercepts.
-- Paired ratio of cross-sectional b/a to within-state ratio.
-- 1000 two-way bootstrap replicates for paired confidence intervals.
-Writes analysis/parts/s11_fe.json.
-Usage: python3 s03c_state_fe.py [B=1000]
+"""Corrected paired state-intercept inference; import performs no IO.
+
+State-intercept FGLS uses weighted group means and a within-group slope at each
+iteration. Missing states have no coefficient. Summaries target sampled state
+occurrences, or resampled row/case totals. Calendar-week models are point-only
+numerical diagnostics, never primary bootstrap inference.
 """
-import json
-import sys
+from __future__ import annotations
+
+import argparse
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy.optimize import LinearConstraint, minimize
 
-from cc_common import (
-    ANALYSIS,
-    PARTS,
-    SEED,
-    Log,
-    Part,
-    boot_weights,
-    fgls_affine,
-    load_panel,
-    pct,
-    rel_loss,
-    spec_frame,
-)
+from revision_stats import (VERSION, _failure, _iterate_positive, _objective, _weights,
+                            bootstrap_weights, ci_summary, file_hash, fit_loss,
+                            relative_loss, sample_hash, save_draws, write_json)
 
-B = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
-log = Log("s03c_state_fe")
-P = Part("s11_fe", "s03c_state_fe.py", ["data/panel_nhsn_vintage_2026-10-20.csv.gz"], "measured", SEED + 32)
-
-p = load_panel()
-e = spec_frame(p, "RA_rule4")
-n = len(e)
-L, _ = rel_loss(e.x.to_numpy())
-D = e.D.to_numpy()
-Ct = e.C_t.to_numpy()
-states = e.state.astype(str).to_numpy()
-weeks = e.week_end.astype(str).to_numpy()
-
-uniq_states, state_codes = np.unique(states, return_inverse=True)
-uniq_weeks, week_codes = np.unique(weeks, return_inverse=True)
-state_codes = np.asarray(state_codes, int).ravel()
-week_codes = np.asarray(week_codes, int).ravel()
-
-Ns = len(uniq_states)
-Nw = len(uniq_weeks)
-n_per_state = np.bincount(state_codes)
-cases_per_state = np.bincount(state_codes, weights=Ct)
-
-# Design matrices
-X_state = np.column_stack([np.eye(Ns)[state_codes], 1.0 / Ct])
-X_state_D = np.column_stack([np.eye(Ns)[state_codes], 1.0 / D])
-X_week = np.column_stack([np.eye(Nw)[week_codes], 1.0 / Ct])
-X_state_week = np.column_stack([np.eye(Ns)[state_codes], np.eye(Nw)[:, 1:][week_codes], 1.0 / Ct])
+SEED = 20261104
 
 
-def fit_fgls(L_vec, X_mat, w_vec=None, maxit=100, tol=1e-9):
-    sw = np.sqrt(w_vec) if w_vec is not None else np.ones(len(L_vec))
-    keep = sw > 0
-    Lk, Xk, swk = L_vec[keep], X_mat[keep], sw[keep]
+def group_wls(y, z, codes, w, n_groups):
+    """Exact WLS for one intercept per active group and one common slope."""
+    totals = np.bincount(codes, weights=w, minlength=n_groups)
+    if np.any(totals <= 0):
+        raise ValueError("empty_active_group")
+    ybar = np.bincount(codes, weights=w*y, minlength=n_groups) / totals
+    zbar = np.bincount(codes, weights=w*z, minlength=n_groups) / totals
+    dz, dy = z-zbar[codes], y-ybar[codes]
+    denominator = float(w @ (dz*dz))
+    if denominator <= 1e-14 * float(w.sum()):
+        raise ValueError("rank_deficient_within_slope")
+    slope = float(w @ (dz*dy) / denominator)
+    return np.r_[ybar-slope*zbar, slope]
+
+
+def fit_group_affine(loss, D, groups, w=None):
+    """Stable positive-mean FGLS with active original group IDs preserved.
+
+    All input group IDs appear in the output; omitted groups have NaN intercepts
+    and active=False, never zero coefficients. Signed intercepts are allowed.
+    """
+    names, codes = np.unique(np.asarray(groups), return_inverse=True)
+    empty = dict(groups=names, intercepts=np.full(len(names), np.nan),
+                 active=np.zeros(len(names), dtype=bool))
     try:
-        beta = np.linalg.lstsq(Xk * swk[:, None], Lk * swk, rcond=None)[0]
-    except Exception:
-        return None
-    for _ in range(maxit):
-        mu = np.clip(Xk @ beta, 1e-6, None)
-        ww = swk / mu
-        try:
-            new = np.linalg.lstsq(Xk * ww[:, None], Lk * ww, rcond=None)[0]
-        except Exception:
-            break
-        if np.max(np.abs(new - beta) / (np.abs(beta) + 1e-12)) < tol:
-            beta = new
-            break
-        beta = new
-    return beta
+        y, D = np.asarray(loss, float), np.asarray(D, float)
+        if y.ndim != 1 or y.shape != D.shape or len(y) != len(codes):
+            raise ValueError("incompatible_data_shapes")
+        weights = _weights(len(y), w)
+        keep = weights > 0
+        y, z, weights, codes = y[keep], 1/D[keep], weights[keep], codes[keep]
+        active_ids, local = np.unique(codes, return_inverse=True)
+        ng = len(active_ids)
+        if not np.all(np.isfinite(y)) or np.any(y < 0) or not np.all(np.isfinite(z)) or np.any(z <= 0):
+            raise ValueError("invalid_active_loss_or_scale")
+        scale = float(np.average(y, weights=weights))
+        span, lo = float(np.ptp(z)), float(z.min())
+        if scale <= 0 or span <= 0:
+            raise ValueError("zero_loss_or_rank_deficient_slope")
+        y, weights, z = y/scale, weights/weights.sum(), (z-lo)/span
+        solve = lambda p: group_wls(y, z, local, p, ng)
+        solve(weights)  # rank check before iteration
+        predict = lambda b: b[local]+b[-1]*z
+        beta, diagnostics = _iterate_positive(y, weights, predict, solve, np.r_[np.ones(ng), 0.], maxit=300)
+        method = "group_mean_within_slope_damped_fgls"
+        if not diagnostics["converged"]:
+            # Same gamma objective; linear constraints enforce all active fitted means.
+            prior = diagnostics.copy()
+            design = np.column_stack([np.eye(ng)[local], z])
+            def objective_gradient(b):
+                mu = design @ b
+                if np.any(mu <= 0):
+                    return 1e100, np.zeros(ng+1)
+                return _objective(y, mu, weights), design.T @ (weights*(mu-y)/mu**2)
+            opt = minimize(objective_gradient, beta, jac=True, method="SLSQP",
+                           constraints=[LinearConstraint(design, 1e-10, np.inf)],
+                           options={"maxiter": 600, "ftol": 1e-12})
+            mu = predict(opt.x)
+            score = objective_gradient(opt.x)[1]
+            good = bool(opt.success and np.min(mu) > 1e-9 and np.max(np.abs(score)) < 2e-5)
+            beta = opt.x
+            diagnostics = dict(converged=good, iterations=prior["iterations"]+int(opt.nit),
+                               failure=None if good else "gamma_objective_fallback_failed",
+                               optimizer_message=str(opt.message), fgls_failure=prior,
+                               scoring_residual=float(np.max(np.abs(score))))
+            method = "group_gamma_objective_fallback"
+        if not diagnostics["converged"]:
+            return dict(_failure(diagnostics.pop("failure"), method=method,
+                                 **{k:v for k,v in diagnostics.items() if k != "converged"}), **empty)
+        slope = float(scale*beta[-1]/span)
+        intercepts = np.full(len(names), np.nan)
+        intercepts[active_ids] = scale*beta[:-1]-slope*lo
+        active = np.zeros(len(names), dtype=bool)
+        active[active_ids] = True
+        return dict(b=slope, groups=names, intercepts=intercepts, active=active,
+                    min_mu=float(np.min(predict(beta))*scale), method=method,
+                    rank=ng+1, n_active=int(keep.sum()), **diagnostics)
+    except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+        return dict(_failure(exc), **empty)
 
 
-# 1. Point estimates
-# A. Pooled cross-section
-a_pool, b_pool = fgls_affine(L, Ct)
-ba_pool = b_pool / a_pool
+def fit_design_diagnostic(loss, design, w=None):
+    """Direct-design FGLS for diagnostics; rank/nonconvergence are explicit."""
+    try:
+        y, X = np.asarray(loss, float), np.asarray(design, float)
+        weights = _weights(len(y), w)
+        keep = weights > 0
+        y, X, weights = y[keep], X[keep], weights[keep]
+        rank = int(np.linalg.matrix_rank(X))
+        if rank != X.shape[1]:
+            return dict(_failure("rank_deficient_design"), rank=rank, columns=int(X.shape[1]))
+        scale = float(np.average(y, weights=weights))
+        if scale <= 0:
+            return _failure("zero_loss")
+        y, weights = y/scale, weights/weights.sum()
+        def solve(p):
+            root = np.sqrt(p)
+            beta, _, rank_now, _ = np.linalg.lstsq(X*root[:,None], y*root, rcond=None)
+            if rank_now != X.shape[1]:
+                raise ValueError("rank_loss_during_iteration")
+            return beta
+        start = np.linalg.lstsq(X, np.ones(len(y)), rcond=None)[0]
+        beta, diagnostics = _iterate_positive(y, weights, lambda b:X@b, solve, start, maxit=250)
+        if not diagnostics["converged"]:
+            return dict(_failure(diagnostics.pop("failure"), method="direct_design_damped_fgls",
+                                 **{k:v for k,v in diagnostics.items() if k != "converged"}), rank=rank)
+        return dict(coefficients=beta*scale, b=float(beta[-1]*scale),
+                    min_mu=float(np.min(X@beta)*scale), rank=rank,
+                    method="direct_design_damped_fgls", **diagnostics)
+    except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+        return _failure(exc, method="direct_design_damped_fgls")
 
-# B. State intercepts
-beta_state = fit_fgls(L, X_state)
-as_state = beta_state[:-1]
-bw_state = beta_state[-1]
-mean_as = float(np.mean(as_state))
-median_as = float(np.median(as_state))
-row_as = float(np.average(as_state, weights=n_per_state))
-case_as = float(np.average(as_state, weights=cases_per_state))
 
-r_mean = bw_state / mean_as
-r_median = bw_state / median_as
-r_row = bw_state / row_as
-r_case = bw_state / case_as
-paired_r = ba_pool / r_mean
+def multiplicity_median(values, counts):
+    """Median of explicitly duplicated state occurrences, including even-n mean."""
+    values, counts = np.asarray(values, float), np.asarray(counts, int)
+    keep = counts > 0
+    values, counts = values[keep], counts[keep]
+    if not len(values) or not np.all(np.isfinite(values)):
+        return np.nan
+    order = np.argsort(values)
+    values, cumulative = values[order], np.cumsum(counts[order])
+    n = int(cumulative[-1])
+    return float(np.mean(values[np.searchsorted(cumulative, [(n-1)//2+1, n//2+1])]))
 
-# C. Scale D_t
-beta_state_D = fit_fgls(L, X_state_D)
-as_state_D = beta_state_D[:-1]
-bw_state_D = beta_state_D[-1]
-r_state_D = bw_state_D / float(np.mean(as_state_D))
 
-# D. Week intercepts only
-beta_week = fit_fgls(L, X_week)
-bw_week = float(beta_week[-1])
+def state_summaries(fit, frame, row_weights, state_multiplicities):
+    result = {k:np.nan for k in ("mean", "median", "row", "case")}
+    if not fit["converged"]:
+        return result
+    names, codes = np.unique(frame.state.to_numpy(), return_inverse=True)
+    if not np.array_equal(names, fit["groups"]):
+        raise ValueError("state ID ordering mismatch")
+    sm = np.asarray(state_multiplicities, int)
+    intercepts = fit["intercepts"]
+    if np.any((sm > 0) & ~np.isfinite(intercepts)):
+        return result  # selected state with no observed row: the target is not estimable
+    present = sm > 0
+    result["mean"] = float(np.average(intercepts[present], weights=sm[present]))
+    result["median"] = multiplicity_median(intercepts, sm)
+    rows = np.bincount(codes, weights=row_weights, minlength=len(names))
+    cases = np.bincount(codes, weights=row_weights*frame.C_t.to_numpy(), minlength=len(names))
+    for name, totals in (("row", rows), ("case", cases)):
+        use = totals > 0
+        if use.any():
+            result[name] = float(np.average(intercepts[use], weights=totals[use]))
+    return result
 
-# E. State and week intercepts
-beta_sw = fit_fgls(L, X_state_week)
-bw_sw = float(beta_sw[-1])
 
-log("point estimates", bw_state, mean_as, r_mean, paired_r)
+def _ratio(numerator, denominator):
+    if numerator is None or denominator is None or not np.isfinite(numerator) or not np.isfinite(denominator) or denominator <= 0:
+        return np.nan
+    return float(numerator/denominator)
 
-# 2. Bootstrap
-log(f"running two-way bootstrap (B={B})...")
-boot_rng = np.random.default_rng(20261104)
 
-draws = {
-    "pool_b": [], "pool_ba": [],
-    "state_b": [], "mean_as": [],
-    "r_mean": [], "r_median": [], "r_row": [], "r_case": [],
-    "r_state_D": [], "bw_state_D": [],
-    "bw_week": [], "bw_sw": [],
-    "paired_ratio": []
-}
+def _one_draw(frame, row_weights, sm):
+    pool = fit_loss(frame.x.to_numpy(), frame.C_t.to_numpy(), row_weights)
+    try:
+        loss, _ = relative_loss(frame.x.to_numpy(), row_weights)
+    except ValueError as exc:
+        failed = _failure(exc)
+        return {}, {"pooled":pool, "state":failed, "state_D":failed}
+    state = fit_group_affine(loss, frame.C_t, frame.state, row_weights)
+    state_D = fit_group_affine(loss, frame.D_t, frame.state, row_weights)
+    summaries = state_summaries(state, frame, row_weights, sm)
+    sums_D = state_summaries(state_D, frame, row_weights, sm)
+    vals = dict(pool_a=pool["a"], pool_b=pool["b"], pool_ratio=pool["ratio"],
+                state_b=state["b"], state_D_b=state_D["b"], state_D_mean=sums_D["mean"])
+    for key, a in summaries.items():
+        vals["a_"+key] = a
+        vals["r_"+key] = _ratio(state["b"], a)
+    vals["state_D_ratio"] = _ratio(state_D["b"], sums_D["mean"])
+    vals["paired_ratio"] = _ratio(pool["ratio"], vals["r_mean"])
+    return vals, {"pooled":pool, "state":state, "state_D":state_D}
 
-for _ in range(B):
-    w = boot_weights(e, "twoway", boot_rng)
-    L_b, _ = rel_loss(e.x.to_numpy(), w=w)
-    
-    # pooled
-    ap_b, bp_b = fgls_affine(L_b, Ct, w=w)
-    bap_b = bp_b / ap_b if ap_b > 0 else np.nan
-    draws["pool_b"].append(bp_b)
-    draws["pool_ba"].append(bap_b)
-    
-    # state FE
-    bs_b = fit_fgls(L_b, X_state, w_vec=w)
-    if bs_b is not None:
-        as_b = bs_b[:-1]
-        bw_b = bs_b[-1]
-        m_as_b = float(np.mean(as_b))
-        med_as_b = float(np.median(as_b))
-        row_as_b = float(np.average(as_b, weights=n_per_state))
-        case_as_b = float(np.average(as_b, weights=cases_per_state))
-        
-        rm_b = bw_b / m_as_b if m_as_b > 0 else np.nan
-        draws["state_b"].append(bw_b)
-        draws["mean_as"].append(m_as_b)
-        draws["r_mean"].append(rm_b)
-        draws["r_median"].append(bw_b / med_as_b if med_as_b > 0 else np.nan)
-        draws["r_row"].append(bw_b / row_as_b if row_as_b > 0 else np.nan)
-        draws["r_case"].append(bw_b / case_as_b if case_as_b > 0 else np.nan)
-        draws["paired_ratio"].append(bap_b / rm_b if (rm_b > 0 and bap_b > 0) else np.nan)
-        
-    # state D
-    bs_D_b = fit_fgls(L_b, X_state_D, w_vec=w)
-    if bs_D_b is not None:
-        draws["bw_state_D"].append(bs_D_b[-1])
-        m_as_D_b = float(np.mean(bs_D_b[:-1]))
-        draws["r_state_D"].append(bs_D_b[-1] / m_as_D_b if m_as_D_b > 0 else np.nan)
-        
-    # week only
-    bw_b = fit_fgls(L_b, X_week, w_vec=w)
-    if bw_b is not None:
-        draws["bw_week"].append(bw_b[-1])
-        
-    # state + week
-    bsw_b = fit_fgls(L_b, X_state_week, w_vec=w)
-    if bsw_b is not None:
-        draws["bw_sw"].append(bsw_b[-1])
 
-res = {
-    "pooled": {"b": {"value": b_pool, "ci95": pct(draws["pool_b"])},
-               "ba": {"value": ba_pool, "ci95": pct(draws["pool_ba"])}},
-    "state_fe": {
-        "slope": {"value": bw_state, "ci95": pct(draws["state_b"])},
-        "mean_as": {"value": mean_as, "ci95": pct(draws["mean_as"])},
-        "r_mean": {"value": r_mean, "ci95": pct(draws["r_mean"])},
-        "r_median": {"value": r_median, "ci95": pct(draws["r_median"])},
-        "r_row": {"value": r_row, "ci95": pct(draws["r_row"])},
-        "r_case": {"value": r_case, "ci95": pct(draws["r_case"])},
-        "paired_ratio": {"value": paired_r, "ci95": pct(draws["paired_ratio"])},
-    },
-    "state_fe_D": {
-        "slope": {"value": bw_state_D, "ci95": pct(draws["bw_state_D"])},
-        "ratio": {"value": r_state_D, "ci95": pct(draws["r_state_D"])},
-    },
-    "week_only": {"slope": {"value": bw_week, "ci95": pct(draws["bw_week"])}},
-    "state_and_week": {"slope": {"value": bw_sw, "ci95": pct(draws["bw_sw"])}},
-    "B": B
-}
+def run_analysis(frame, bootstrap=1000, seed=SEED, block_length=1):
+    if bootstrap < 1:
+        raise ValueError("bootstrap must be positive")
+    states = np.unique(frame.state.to_numpy())
+    weeks = np.unique(pd.to_datetime(frame.week_end).to_numpy())
+    point, point_fits = _one_draw(frame, np.ones(len(frame)), np.ones(len(states), int))
+    metrics = list(point) or ["pool_a", "pool_b", "pool_ratio", "state_b", "state_D_b", "state_D_mean",
+                              "a_mean", "r_mean", "a_median", "r_median", "a_row", "r_row", "a_case", "r_case", "state_D_ratio", "paired_ratio"]
+    draws = np.full((bootstrap, len(metrics)), np.nan)
+    sm_all, wm_all = np.zeros((bootstrap, len(states)), int), np.zeros((bootstrap, len(weeks)), int)
+    intercepts = np.full((bootstrap, 2, len(states)), np.nan)
+    convergence = np.zeros((bootstrap, 3), bool)
+    iterations = np.zeros((bootstrap, 3), int)
+    min_mu = np.full((bootstrap, 3), np.nan)
+    methods, failures = np.full((bootstrap, 3), "", dtype="U80"), np.full((bootstrap, 3), "", dtype="U160")
+    rng = np.random.default_rng(seed)
+    for i in range(bootstrap):
+        w, sm, wm = bootstrap_weights(frame, rng, block_length)
+        sm_all[i], wm_all[i] = sm, wm
+        vals, fits = _one_draw(frame, w, sm)
+        draws[i] = [np.nan if vals.get(k) is None else vals.get(k, np.nan) for k in metrics]
+        for j, key in enumerate(("pooled", "state", "state_D")):
+            f = fits[key]
+            convergence[i,j], iterations[i,j] = f["converged"], f["iterations"]
+            methods[i,j], failures[i,j] = f["method"], f.get("failure") or ""
+            min_mu[i,j] = np.nan if f["min_mu"] is None else f["min_mu"]
+            if j and "intercepts" in f:
+                intercepts[i,j-1] = f["intercepts"]
+    summaries = {k:ci_summary(draws[:,j], point.get(k)) for j,k in enumerate(metrics)}
+    denominators = {"pool_ratio":"pool_a", "r_mean":"a_mean", "r_median":"a_median",
+                    "r_row":"a_row", "r_case":"a_case", "state_D_ratio":"state_D_mean", "paired_ratio":"r_mean"}
+    for ratio, denom in denominators.items():
+        summaries[ratio]["denominator"] = dict(name=denom, **summaries[denom])
+    loss, _ = relative_loss(frame.x.to_numpy())
+    week_fit = fit_group_affine(loss, frame.C_t, frame.week_end.astype(str))
+    _, si = np.unique(frame.state, return_inverse=True)
+    _, wi = np.unique(frame.week_end, return_inverse=True)
+    design = np.column_stack([np.eye(len(states))[si], np.eye(len(weeks))[wi,1:], 1/frame.C_t.to_numpy()])
+    both_fit = fit_design_diagnostic(loss, design)
+    result = dict(metadata=dict(version=VERSION, analysis="fixed_effects", seed=seed, bootstrap=bootstrap,
+                                status="full_budget" if bootstrap >= 1000 else "pilot_small_B",
+                                config=dict(block_length=block_length, centering="refit_weighted_mean",
+                                            state_target="sampled_state_occurrences", diagnostic_scope="point_only"),
+                                sample_rows=len(frame), sample_sha256=sample_hash(frame),
+                                source_code_sha256=file_hash(__file__), stats_code_sha256=file_hash(Path(__file__).with_name("revision_stats.py"))),
+                  estimates=summaries, point_fits=point_fits,
+                  diagnostics=dict(week_only=week_fit, state_and_week=both_fit,
+                                   note="Point-only numerical diagnostics; failed fits have null slopes, no confidence intervals."),
+                  bootstrap_diagnostics={k:dict(converged=int(convergence[:,j].sum()), failed=int((~convergence[:,j]).sum()),
+                                               failure_reasons=dict(Counter(failures[:,j][failures[:,j] != ""])),
+                                               methods=dict(Counter(methods[:,j]))) for j,k in enumerate(("pooled","state","state_D"))},
+                  ratio_note="Ratios require positive denominator. Missing fractions and denominator signs are retained; finite-only intervals are explicitly conditional.",
+                  actual_D_t_differences=int(np.sum(frame.D_t.to_numpy() != frame.C_t.to_numpy())))
+    arrays = dict(values=draws, metric_names=np.array(metrics), state_ids=states.astype(str), week_ids=weeks.astype(str),
+                  state_multiplicities=sm_all, week_multiplicities=wm_all, state_intercepts=intercepts,
+                  converged=convergence, iterations=iterations, min_mu=min_mu, methods=methods, failures=failures)
+    return result, arrays
 
-P.put("fe_table_s11b", res)
-P.num("fe_bw_state", bw_state, ci=pct(draws["state_b"]))
-P.num("fe_r_mean", r_mean, ci=pct(draws["r_mean"]))
-P.num("fe_paired_ratio", paired_r, ci=pct(draws["paired_ratio"]))
 
-log("completed state FE analysis", r_mean, paired_r)
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parents[1]/"analysis/revised")
+    parser.add_argument("--bootstrap", type=int, default=1000)
+    parser.add_argument("--point-reps", type=int, default=400, help="Accepted for runner compatibility; state FE is deterministic")
+    parser.add_argument("--inner-reps", type=int, default=50, help="Accepted for runner compatibility; state FE has no inner simulation")
+    parser.add_argument("--seed", type=int, default=SEED)
+    parser.add_argument("--block-length", type=int, default=1)
+    args = parser.parse_args(argv)
+    from revision_data import load_sample
+    frame = load_sample(stat="RA", gi_mean=3.6)
+    result, arrays = run_analysis(frame, args.bootstrap, args.seed, args.block_length)
+    result["metadata"]["point_reps"] = 1
+    result["metadata"]["inner_reps"] = 0
+    draw_path = args.output_dir/"fixed_effects_draws.npz"
+    save_draws(draw_path, **arrays)
+    result["metadata"]["draws"] = dict(file=draw_path.name, sha256=file_hash(draw_path))
+    write_json(args.output_dir/"fixed_effects.json", result)
+    print(f"fixed effects: {len(frame)} rows, B={args.bootstrap}, {result['metadata']['status']}; {args.output_dir}")
+    return result
+
+
+if __name__ == "__main__":
+    main()

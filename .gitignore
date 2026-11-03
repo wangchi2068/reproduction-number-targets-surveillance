@@ -18,6 +18,11 @@ __pycache__/
 *$py.class
 .ipynb_checkpoints/
 
+# Large regenerable artefacts (produced by experiment/code/run_revision.py)
+experiment/analysis/revised/calibration_panels.jsonl
+experiment/analysis/revised/calibration_draws.csv
+experiment/analysis/revised/thinning_draws.npz
+
 # Temporary and render inspection folders
 .tmp/
 paper_zh/build/png/
@@ -27,3 +32,6 @@ paper_zh/build/*.txt
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Compile diagnostics produced by build_papers.py
+validation/
