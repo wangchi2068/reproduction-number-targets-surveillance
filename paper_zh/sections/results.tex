@@ -56,7 +56,7 @@
 
 独立重抽样日历周时，合并对州内的配对比值为 \FEpairedPoint{}（\FEpairedInterval{}）。两周、三周块区间分别为 \FEpairedBlockTwoInterval{} 和 \FEpairedBlockThreeInterval{}。普通区间下界略高于 1，时间块区间则包含 1。因此差异依赖于如何表示时间相关，不能转换为空间汇总的因果贡献比例。主州模型在 \FEBootstrap{} 次自助样本中有 \FEvalid{} 次有效拟合，有限有效重复区间的条件性及诊断失败均已标注。州与周双向点诊断未达到数值收敛标准，不报告斜率或置信区间。
 
-改变损失参照同样会改变截距（表~\ref{tab:centering}）。保持共同全局归一化分母，用全国周中心替代合并中心后，$R_A$ 截距减少 \RAweekReductionPoint{}\%（\RAweekReductionInterval{}\%），$G$ 减少 \GweekReductionPoint{}\%（\GweekReductionInterval{}\%）。按季中心化与共同线性去趋势并不产生相同变化。不同参照移除不同的观测轨迹成分，其中包含真实共同信号。排除自身州的变体进一步记录一个观测参与自身周参照的影响。这些比较刻画定义敏感性，不构成独立传播与报告方差的已识别分解。
+改变损失参照同样会改变截距（表~\ref{tab:centering}）。保持共同全局归一化分母，用全国周中心替代合并中心后，$R_A$ 截距减少 \RAweekReductionPoint{}\%（\RAweekReductionInterval{}\%），$G$ 减少 \GweekReductionPoint{}\%（\GweekReductionInterval{}\%）。这里的降幅低于旧流程的 41\%--51\%，因为本分析固定归一化分母；旧流程同时改变了中心与尺度。按季中心化与共同线性去趋势并不产生相同变化。不同参照移除不同的观测轨迹成分，其中包含真实共同信号。排除自身州的变体进一步记录一个观测参与自身周参照的影响。这些比较刻画定义敏感性，不构成独立传播与报告方差的已识别分解。
 
 \begin{figure}[tbp]
 \centering
