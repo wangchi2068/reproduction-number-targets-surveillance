@@ -19,8 +19,14 @@ def main():
     args=p.parse_args();args.output_dir.mkdir(parents=True,exist_ok=True)
     engine=os.environ.get('TECTONIC') or shutil.which('tectonic')
     if not engine:raise SystemExit('Set TECTONIC to a Tectonic executable or install it on PATH. System Times New Roman/Liberation Serif and Chinese fonts are also required.')
-    report={'started_at':datetime.now().astimezone().isoformat(),'engine':str(engine),'languages':{}}
-    failed=False
+    previous = args.output_dir / 'build_report.json'
+    if previous.is_file():
+        report = json.loads(previous.read_text(encoding='utf-8'))
+        report['engine'] = str(engine)
+        report['resumed_at'] = datetime.now().astimezone().isoformat()
+    else:
+        report = {'started_at': datetime.now().astimezone().isoformat(), 'engine': str(engine), 'languages': {}}
+    failed = False
     for lang in (('en','zh') if args.lang=='both' else (args.lang,)):
         source=REPO/f'paper_{lang}'
         out=args.output_dir/lang;out.mkdir(exist_ok=True)
