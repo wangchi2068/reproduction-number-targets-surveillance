@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Implied environmental variance $v_R^{\mathrm{impl}}$ from the two-step inversion under each simulation setting, with the 95\% confidence interval of each estimate.}
+\label{tab:s8}
+\begin{tabular}{lllrrll}
+\toprule
+Setting & $v_R^{\mathrm{impl}}$ from $R_A$ & $v_R^{\mathrm{impl}}$ from $G$ & $\kappa_{R_A}$ & $\kappa_G$ & Ratio $R_A/G$ & Agree \\
+\midrule
+Data-matched design (M0) & 0.040 [0.026, 0.056] & 0.043 [0.025, 0.064] & 0.516 & 2.729 & 0.93 [0.78, 1.18] & yes \\
+No national shock & 0.039 [0.026, 0.055] & 0.042 [0.024, 0.062] & 0.523 & 2.775 & 0.94 [0.79, 1.18] & yes \\
+National share 0.65 & 0.040 [0.026, 0.056] & 0.043 [0.025, 0.065] & 0.510 & 2.670 & 0.92 [0.77, 1.16] & yes \\
+AR(1), $\phi=0.5$ & 0.027 [0.017, 0.040] & 0.025 [0.013, 0.039] & 0.780 & 4.699 & 1.08 [0.88, 1.43] & yes \\
+True GI mean 2.2 d & 0.013 [0.008, 0.019] & 0.014 [0.008, 0.021] & 1.287 & 6.991 & 0.94 [0.77, 1.20] & yes \\
+True GI mean 4.3 d & 0.058 [0.038, 0.081] & 0.063 [0.037, 0.095] & 0.380 & 1.977 & 0.92 [0.77, 1.16] & yes \\
+Delay mean 3.5 d & 0.038 [0.025, 0.053] & 0.041 [0.024, 0.061] & 0.535 & 2.790 & 0.93 [0.77, 1.16] & yes \\
+Delay mean 8 d & 0.046 [0.030, 0.064] & 0.047 [0.027, 0.069] & 0.454 & 2.483 & 0.98 [0.82, 1.22] & yes \\
+$k=0.1$ & 0.040 [0.026, 0.055] & 0.042 [0.025, 0.062] & 0.517 & 2.740 & 0.94 [0.79, 1.18] & yes \\
+Synchronous count shock & 0.019 [0.006, 0.035] & 0.029 [0.012, 0.048] & 1.041 & 4.553 & 0.67 [0.39, 0.90] & no \\
+Generic design (bridge) & 0.043 [0.029, 0.059] & 0.044 [0.027, 0.063] & 0.507 & 2.734 & 0.97 [0.83, 1.18] & -- \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize Each setting changes one element of the data-matched design (Section~\ref{sec:meth-inversion}); the analyst's generation interval stays at a mean of 3.6 days throughout. Intervals combine 2000 joint two-way bootstrap draws of the two empirical intercepts with draws of the calibration line from its Monte Carlo sampling distribution. $\kappa=\E(\hat{a})/(v_R/\bar{R}^2)$ at the grid value of $v_R$ nearest to the implied variance. Agree marks settings in which the 95\% interval of the difference between the two implied variances contains zero; the generic design of the first simulation is shown as a bridge and is not counted among the ten settings.\end{minipage}
+\end{table}

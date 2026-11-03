@@ -1,0 +1,29 @@
+# Build artifacts
+*.aux
+*.log
+*.out
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.toc
+
+# Python / Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Temporary and render inspection folders
+.tmp/
+paper_zh/build/png/
+paper_zh/build/*.txt
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,173 @@
+{
+ "meta": {
+  "script": "code/s01_data_panel.py",
+  "inputs": [
+   "nhsn_hrd_vintage_2026-10-20.csv.gz"
+  ],
+  "mode": "measured",
+  "seed": null,
+  "updated": "2026-10-20T02:16:48"
+ },
+ "numbers": {
+  "raw_rows": {
+   "value": 21641
+  },
+  "raw_columns": {
+   "value": 322
+  },
+  "raw_sha256_gz": {
+   "value": "9685ddd4b0035694754334e530d5b356bd3503f57b82821f7ee7883c4f5fb94b"
+  },
+  "raw_week_min": {
+   "value": "2020-08-08"
+  },
+  "raw_week_max": {
+   "value": "2026-10-10"
+  },
+  "n_jurisdictions": {
+   "value": 51,
+   "note": "50 states + DC; PR, VI, GU, MP, AS, US excluded"
+  },
+  "panel_rows_Dge5": {
+   "value": 10506
+  },
+  "regime1_N_inseason": {
+   "value": 3678
+  },
+  "regime2_N_inseason": {
+   "value": 55
+  },
+  "regime3_N_inseason": {
+   "value": 2288
+  },
+  "cal3_N": {
+   "value": 1267
+  },
+  "cal3_imputed_zero_rows": {
+   "value": 0,
+   "note": "m12/D31: early window contains no imputed zeros"
+  },
+  "cal3_a_G": {
+   "value": 0.09905549614919931
+  },
+  "cal3_b_G": {
+   "value": 2.242577733038325
+  },
+  "cal3_ba_G": {
+   "value": 22.639609312142667
+  },
+  "cal3_Gbar": {
+   "value": 1.6705646858414205
+  },
+  "rule4_N": {
+   "value": 1756
+  },
+  "rule4_imputed_zero_rows": {
+   "value": 0
+  },
+  "rule4_n_weeks": {
+   "value": 42
+  },
+  "rule4_n_states": {
+   "value": 51
+  },
+  "rule4_N_G": {
+   "value": 1756
+  },
+  "rule4_a_G": {
+   "value": 0.08400822401225573
+  },
+  "rule4_b_G": {
+   "value": 1.970615998389308
+  },
+  "rule4_ba_G": {
+   "value": 23.457417670225002
+  },
+  "rule4_mean_G": {
+   "value": 1.7236818870960717
+  },
+  "rule4_N_RA_mid": {
+   "value": 1748
+  },
+  "rule4_a_RA_mid": {
+   "value": 0.01495456618092087
+  },
+  "rule4_b_RA_mid": {
+   "value": 0.5599555819962383
+  },
+  "rule4_ba_RA_mid": {
+   "value": 37.443786414254745
+  },
+  "rule4_mean_RA_mid": {
+   "value": 1.205805765889582
+  },
+  "rule4_N_G1": {
+   "value": 1748
+  },
+  "rule4_a_G1": {
+   "value": 0.05547878699909877
+  },
+  "rule4_b_G1": {
+   "value": 2.8511767575550193
+  },
+  "rule4_ba_G1": {
+   "value": 51.392197122142115
+  },
+  "rule4_mean_G1": {
+   "value": 1.522463464382278
+  },
+  "rule4_min_national_growth": {
+   "value": 1.0667408231368187
+  }
+ },
+ "blocks": {
+  "rule_windows": {
+   "2022-23": {
+    "start": "2022-10-01",
+    "end": "2022-11-26",
+    "national_peak": "2022-12-03"
+   },
+   "2023-24": {
+    "start": "2023-10-07",
+    "end": "2023-12-23",
+    "national_peak": "2023-12-30"
+   },
+   "2024-25": {
+    "start": "2024-11-09",
+    "end": "2024-12-28",
+    "national_peak": "2025-01-04"
+   },
+   "2025-26": {
+    "start": "2025-10-04",
+    "end": "2025-12-27",
+    "national_peak": "2026-01-03"
+   }
+  },
+  "rule4_by_season": [
+   {
+    "season": "2022-23",
+    "N": 367,
+    "weeks": 9,
+    "Dmed": 48.95
+   },
+   {
+    "season": "2023-24",
+    "N": 503,
+    "weeks": 12,
+    "Dmed": 34.300000000000004
+   },
+   {
+    "season": "2024-25",
+    "N": 357,
+    "weeks": 8,
+    "Dmed": 50.85
+   },
+   {
+    "season": "2025-26",
+    "N": 529,
+    "weeks": 13,
+    "Dmed": 34.75
+   }
+  ]
+ }
+}

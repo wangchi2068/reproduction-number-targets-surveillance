@@ -1,0 +1,130 @@
+{
+ "schema_version": 1,
+ "tables": [
+  {
+   "id": "tab:s1",
+   "path": "tab_s1_headline.tex",
+   "sha256": "ccac0b4db541940358bdacc39bc791aa51f658dc1508fc7898e6fa9295899748",
+   "generator": "experiment/code/make_tables.py; experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s2",
+   "path": "tab_s2_decomposition.tex",
+   "sha256": "ba72281e1e06b745836e375c5c69cec73e319aed8898dff3666b2051cecacca7",
+   "generator": "experiment/code/make_tables.py; experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s3",
+   "path": "tab_s3_reporting.tex",
+   "sha256": "706a209701c211a08290075aaf6f90c94bd932247cd575cf35914861b39a7b43",
+   "generator": "experiment/code/make_tables.py; experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s4",
+   "path": "tab_s4_calendar_lab.tex",
+   "sha256": "386e1f268f1ffb421e4dff9618a7e167176a373b2b0da4eee321264b147110c6",
+   "generator": "experiment/code/make_tables.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s5",
+   "path": "tab_s5_seasons.tex",
+   "sha256": "bb4fe34d7488f4fa40cd8dbfe30965e6048080827ab23ff46f0a0899a5d73c7c",
+   "generator": "experiment/code/make_tables.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1,
+   "note": "Hash refreshed in revision: the author's errata commit 944faf0 changed table text (a citation and corrected relative standard errors) without changing the underlying data."
+  },
+  {
+   "id": "tab:s6",
+   "path": "tab_s6_pathogens.tex",
+   "sha256": "535d4dcd8b9359c68fe66c249cbf5230a01f64c8dc9bbb8ed709a86c999618ad",
+   "generator": "experiment/code/make_tables.py; experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s7",
+   "path": "tab_s7_theory.tex",
+   "sha256": "44d10fea723e87877514fae41a42cda74e3861b5a107f44f20b0796ce8b70539",
+   "generator": "experiment/code/make_tables.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1,
+   "note": "Hash refreshed in revision: the author's errata commit 944faf0 changed table text (a citation and corrected relative standard errors) without changing the underlying data."
+  },
+  {
+   "id": "tab:s8",
+   "path": "tab_s8_inversion_settings.tex",
+   "sha256": "d734cfd3de84ff4fdf5cd45659d26a0fe5177f0547a28357c8bbee94b030c115",
+   "generator": "experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/parts/inversion.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s9",
+   "path": "tab_s9_analysis_history.tex",
+   "sha256": "3354f416aeb2f066a94ec0d00f4c049064a22d6795466588c0ae2c7a76983d56",
+   "generator": "experiment/code/make_tables_r3.py",
+   "data_sources": [
+    "experiment/analysis/results.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s10",
+   "path": "tab_s10_polish.tex",
+   "sha256": "0d55da86c20f25a21c5bbf279270ca2d27a3665a07aaeeb02e19141a153e25de",
+   "generator": "experiment/code/make_tables_polish.py",
+   "data_sources": [
+    "experiment/analysis/parts/polish.json",
+    "experiment/analysis/parts/inversion.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  },
+  {
+   "id": "tab:s11",
+   "path": "tab_s11_thinning_fe.tex",
+   "sha256": "266c591aa573b85e40bea481a81a5001a29136dcd6f0ba2336084d62c184346f",
+   "generator": "experiment/code/make_tables_s11.py",
+   "data_sources": [
+    "experiment/analysis/parts/s11_thinning.json",
+    "experiment/analysis/parts/s11_fe.json"
+   ],
+   "display": "raw",
+   "n_seeds": 1
+  }
+ ]
+}

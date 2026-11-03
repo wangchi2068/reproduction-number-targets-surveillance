@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Equivalence tests for the contribution of facility-reporting completeness to the intercept, with the paired bootstrap 90\% confidence interval of each change.}
+\label{tab:s3}
+\begin{tabular}{llrlrlr}
+\toprule
+Specification & $10^3\Delta a$ [90\% CI] & $10^3\delta_{0.10}$ & Equiv. & $10^3\delta_{0.05}$ & Equiv. & Seasons equiv. \\
+\midrule
+$R_A$, rule windows ($S=4$) & 0.29 [$-$0.22, 0.85] & 2.55 & yes & 0.64 & no & 4/4 \\
+$G$, rule windows ($S=4$) & 0.37 [$-$2.83, 2.81] & 10.13 & yes & 2.53 & no & 3/4 \\
+$G$, calendar windows ($S=3$) & $-$0.38 [$-$3.55, 2.24] & 10.14 & yes & 2.54 & no & 2/3 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize $\Delta a$ is the intercept of the statistic minus that of the statistic recomputed from counts divided by the share of hospitals reporting, with a paired two-way bootstrap ($B=2000$). Margins $\delta_{\tau_0}=\kappa^2\tau_0^2(1+v_R/\bar{R}^2)$ were set from a reporting-volatility threshold and the sample mean $\bar{R}$ of each statistic ($\kappa=1$ for $G$, $v_R=0.04$). Equivalence is declared when the 90\% interval lies inside $(-\delta,\delta)$ (TOST, $\alpha=0.05$). The column of equivalent seasons counts seasons equivalent at $\tau_0=0.10$.\end{minipage}
+\end{table}

@@ -1,0 +1,178 @@
+\section{Model and theory}
+\label{sec:background}
+
+\subsection{Transmission, reporting and two estimation targets}
+\label{sec:bg-model}
+
+Consider transmission over one generation, indexed by $t$, in which $n$ infected individuals act as primary cases. Conditional on the instantaneous reproduction number $R_t$, the number of secondary infections caused by primary case $i$, $X_{i,t}$, is assumed to follow a negative binomial distribution, which captures individual heterogeneity in transmission \citep{lloydsmith2005superspreading}. The offspring distribution is given by:
+\begin{equation}
+  X_{i,t}\mid R_t \sim \NB\!\left(k,\ \frac{k}{k+R_t}\right),\qquad
+  \E(X_{i,t}\mid R_t)=R_t,\qquad \Var(X_{i,t}\mid R_t)=R_t+\frac{R_t{}^2}{k},
+  \label{eq:offspring}
+\end{equation}
+where $k>0$ is the dispersion parameter, smaller values of $k$ correspond to greater heterogeneity, and $k\to\infty$ recovers Poisson offspring. Each infection is then reported independently with probability $\rho\in(0,1]$. Because a sum of independent negative binomial variables with a common success probability is negative binomial, and because binomial thinning preserves this family, the reported count $C_t$ satisfies:
+\begin{equation}
+  C_t\mid n,R_t \sim \NB\!\left(nk,\ \frac{k}{k+\rho R_t}\right),\qquad
+  \E(C_t\mid n,R_t)=\rho nR_t,\qquad
+  \Var(C_t\mid n,R_t)=\rho nR_t+\frac{\rho^2nR_t{}^2}{k},
+  \label{eq:observed}
+\end{equation}
+where $m=\rho n$ is the expected number of reported cases per period when $R_t=1$. We refer to $m$ as the case volume.
+
+The model rests on four assumptions. Each infection is reported independently with a probability $\rho$ that does not change over time (H1). Primary cases transmit independently and identically according to Eq.~(\ref{eq:offspring}) (H2). The dispersion $k$ does not depend on $R_t$ or $n$ (H3). The number of primary cases $n$ is fixed by design and is independent of $R_t$ (H4). Assumption H4 holds when $n$ is set by contact tracing; in routine surveillance $n$ is itself the outcome of earlier transmission, and the renewal formulation in Section~\ref{sec:meth-loss} relaxes it.
+
+Two scales recur in what follows (Table~\ref{tab:notation}). The quantities of the model, namely $R_t$, its mean $\Rbar$ and variance $v_R$, the case volume $m$ and the balance scale defined below, are latent and refer to one generation of transmission. The weekly statistics computed from admissions in Section~\ref{sec:meth-stats}, and the intercept $a$, slope $b$ and ratio $b/a$ fitted to their relative loss, are apparent quantities defined on the scale of each statistic and on weeks. The ratio $b/a$ would equal the balance scale only if a week were a single generation and the case-count scale were free of noise (Section~\ref{sec:meth-loss}). We therefore call $b/a$ the apparent balance ratio, reserve $\mx$ for the latent balance scale, and link the two through the calibration of Section~\ref{sec:meth-inversion}.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Notation and scale of the main quantities. Latent quantities belong to the transmission model and refer to one generation; apparent quantities are defined on the scale of a weekly statistic.}
+\label{tab:notation}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}}
+\toprule
+Symbol & Meaning & Scale & Values in this study \\
+\midrule
+$R_t$; $\Rbar$; $v_R$ & Instantaneous reproduction number in period $t$; its mean and variance across periods & Latent, per generation & Baseline $\Rbar=1.15$, $v_R=0.04$ \\
+$m$ & Expected reported cases per period when $R_t=1$ (case volume) & Latent, cases per generation & -- \\
+$A$; $\mx=A/v_R$ & Sampling coefficient and balance scale (Proposition~\ref{prop:average}) & Latent, cases per generation & Baseline 53.1; 30.3 per generation (95\% CI 21.7 to 46.3) implied by the data, or 58.9 per week (95\% CI 42.3 to 90.0) \\
+$\tau$; $v_H$; $m_{\times,H}$ & Relative reporting volatility, variance it adds, generalised balance scale (Proposition~\ref{prop:report-noise}) & Latent & $\tau=0.15$ gives $v_H=0.0307$ and $m_{\times,H}=30.4$ \\
+$m^*$ & Budget-optimal case volume per period with independent periods and linear costs (Proposition~\ref{prop:allocation}) & Same as the balance scale used & -- \\
+$G_t$; $R_{A,t}$ & Weighted growth ratio and renewal-type ratio (Eqs.~(\ref{eq:dt}) and (\ref{eq:ra})) & Apparent, weekly & -- \\
+$D_t$ & Case-count scale, a weighted sum of recent weekly admissions & Admissions per week & -- \\
+$a$; $b$ & Intercept and slope of the relative loss (Eq.~(\ref{eq:affine})) & Apparent, scale of each statistic & $a=0.0150$ for $R_A$, 0.0840 for $G$ \\
+$b/a$ & Apparent balance ratio & Admissions per week on the scale of each statistic & 37.4 for $R_A$, 23.5 for $G$ \\
+$b_{\mathrm{w}}/\bar{a}_s$ & Within-state apparent balance ratio, with state intercepts $a_s$ & Admissions per week, scale of $R_A$ & 17.3 (95\% CI 3.3 to 51.4) \\
+$c$; $b_P$ & Rate at which the slope rises under binomial thinning; its Poisson value & Scale of $R_A$ & $c=0.41$ (95\% CI 0.31 to 0.53); $b_P=0.45$ \\
+$\kappa$ & Scale factor $\E(\hat{a})/(v_R/\Rbar^2)$ from the calibration & Ratio & 0.516 for $R_A$, 2.729 for $G$ \\
+$v_R^{\mathrm{impl}}$ & Latent environmental variance implied by the two-step inversion & Latent, per generation & 0.040 for $R_A$, 0.043 for $G$ at a mean generation interval of 3.6 days; 0.013 to 0.026 for $R_A$ at 2.2 to 2.9 days \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Transmission potential varies between periods with climatic conditions, school terms and behaviour \citep{cauchemez2008estimating, shaman2009absolute, dalziel2018urbanization}. Its marginal moments are denoted $\E(R_t)=\Rbar$ and $\Var(R_t)=v_R$. Because this variation acts on every chain of transmission in the same period, it corresponds to environmental stochasticity in population ecology, whereas the offspring and reporting variation of Eq.~(\ref{eq:observed}) corresponds to demographic stochasticity \citep{engen1998demographic, lande2003stochastic}.
+
+The scaled count $\Rhat_t=C_t/m$ can be used for two different targets. The first is the current value $R_t$, which is the quantity of interest for situational awareness and for judging whether transmission is currently above one. The second is the mean across periods, $\Rbar$, which is the quantity of interest when describing typical transmission in a season. Two related targets, the mean of the realised values over a finite set of periods and the value in the next period, are treated in Corollary~\ref{cor:targets}. The error for the first target is $\Rhat_t-R_t$. The error for the second target can be written as:
+\begin{equation}
+  \Rhat_t-\Rbar=(\Rhat_t-R_t)+(R_t-\Rbar),
+  \label{eq:error-split}
+\end{equation}
+where the second term does not depend on $m$. Conditional on $R_t$, $\Rhat_t$ is unbiased for $R_t$, and its variance $R_t/m+\rho R_t{}^2/(km)$ falls to zero as $m$ grows; in this case $\Rhat_t$ attains the Cram\'er--Rao bound for $R_t$ (Appendix~\ref{app:proofs}). Because the first term of Eq.~(\ref{eq:error-split}) has mean zero given $R_t$, the two terms are uncorrelated, and the mean squared errors of the two targets differ by exactly $v_R$. This identity requires three conditions: the estimate is conditionally unbiased for $R_t$, the case volume $m$ does not depend on $R_t$ (H4), and $\rho$ is fixed and known (H1). For the cross-period target, the true variation of $R_t$ between periods is therefore part of the error; it is sampling variation of that target, not counting error, and it does not fall with $m$.
+
+\subsection{Error variance and the balance scale}
+\label{sec:bg-variance}
+
+For the second target, the error variance follows from the law of total variance applied to Eq.~(\ref{eq:error-split}).
+
+\begin{proposition}[Error variance for the mean across periods]
+\label{prop:average}
+Under H1--H4, the mean squared error of $\Rhat_t=C_t/(\rho n)$ about $R_t$ is $A/m$, and its variance about $\Rbar$ is given by:
+\begin{equation}
+  V(n,\rho)=v_R+\frac{\Rbar}{\rho n}+\frac{\Rbar^2+v_R}{kn}=v_R+\frac{A}{m},
+  \qquad A=\Rbar+\frac{\rho(\Rbar^2+v_R)}{k},
+  \label{eq:var-average}
+\end{equation}
+where the three terms are the environmental, reporting and offspring contributions. Then:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+  \item for fixed $\rho$, $V\to v_R$ as $n\to\infty$;
+  \item for fixed $n$, $V\to v_R+\Rbar/n+(\Rbar^2+v_R)/(kn)>v_R$ as $\rho\to1$;
+  \item at the balance scale $\mx=A/v_R$, the sampling and environmental contributions are equal, and doubling $m$ reduces $V$ by the fraction $1/[2(1+m/\mx)]$;
+  \item among estimators that are conditionally unbiased for $R_t$, no estimator has a smaller mean squared error for $\Rbar$ than $V$.
+\end{enumerate}
+\end{proposition}
+
+The balance scale plays the role of the critical population size in ecological models, at which demographic and environmental contributions to the variance of population growth are equal \citep{lande1993risks, lande2003stochastic}. It is a reference point for comparing the two contributions and does not by itself define a minimum operating size. Part (iv) is restricted to conditionally unbiased estimators. An estimator that shrinks $\Rhat_t$ towards a prior mean can have smaller error for $\Rbar$ (Appendix~\ref{app:shrinkage}).
+
+Parts (i) and (ii) show that case volume can be raised in two ways with different limits. Coverage $n$ removes both sampling terms in the limit, whereas full reporting leaves the offspring term. Near the baseline, a small proportional increase in $n$ reduces $V$ by $A/\Rbar$ times as much as the same proportional increase in $\rho$.
+
+The single-period result extends to estimates that combine several periods. Let $\Rbar_T=T^{-1}\sum_{t=1}^T R_t$ denote the mean of the realised values over $T$ periods, and let $R_t$ follow either independent draws or a stationary first-order autoregressive process with autocorrelation $\phi$.
+
+\begin{corollary}[Three targets over several periods]
+\label{cor:targets}
+Under H1--H4, with counts independent across periods given $(R_t)$, the mean $T^{-1}\sum_{t=1}^T\Rhat_t$ and the one-step forecast of $R_{t+1}$ have the following mean squared errors.
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+  \item About the process mean $\Rbar$, the error is $v_R/T+A/(Tm)$ for independent periods and $v_RS(\phi,T)/T^2+A/(Tm)$ under the autoregressive process, where:
+  \begin{equation}
+    S(\phi,T)=\frac{T(1+\phi)}{1-\phi}-\frac{2\phi(1-\phi^T)}{(1-\phi)^2}.
+    \label{eq:ar-sum}
+  \end{equation}
+  \item About the finite-period mean $\Rbar_T$, the error is $A/(Tm)$ whatever the dependence of $R_t$.
+  \item The naive forecast $\Rhat_t$ of $R_{t+1}$ has error $A/m+2v_R$ for independent periods and $A/m+2(1-\phi)v_R$ under the autoregressive process. With $\Rbar$ known, the best linear forecast $\Rbar+\lambda(\Rhat_t-\Rbar)$, with $\lambda=\phi v_R/(v_R+A/m)$, has error:
+  \begin{equation}
+    v_R\left[1-\phi^2\,\frac{m}{m+\mx}\right],
+    \label{eq:forecast}
+  \end{equation}
+  which falls towards $(1-\phi^2)v_R$ as $m$ grows and equals $v_R$ for independent periods.
+\end{enumerate}
+\end{corollary}
+
+Part (b) shows that the finite-period mean behaves like the current value: its error is counting error alone and vanishes with case volume. Parts (a) and (c) show that targets beyond the observed periods keep an environmental floor. No linear forecast built from $\Rhat_t$ has error below $(1-\phi^2)v_R$, and the naive forecast has error above $2(1-\phi)v_R$. The limit $v_R$ also assumes that environmental variation is independent between places. If $J$ jurisdictions share environmental variance $v_R$ with mean pairwise correlation $\bar{c}$, the environmental variance of their average is given by:
+\begin{equation}
+  v_R\,\bar{c}+\frac{v_R(1-\bar{c})}{J},
+  \label{eq:pooling}
+\end{equation}
+where pooling reduces this limit only to the extent that variation is not synchronised ($\bar{c}<1$).
+
+\subsection{Reporting heterogeneity and the allocation of a surveillance budget}
+\label{sec:bg-reporting}
+
+Reporting completeness is rarely constant. Assumption H1 can be replaced by a reporting probability $p_t$ that varies between periods independently of $R_t$ and $n$, with mean $\rho$ and relative volatility $\tau=\mathrm{SD}(p_t)/\rho$, and with counts independent across periods conditional on $R_t$ and $p_t$ (H5).
+
+\begin{proposition}[Reporting heterogeneity]
+\label{prop:report-noise}
+Under H2--H5, the error variance of $\Rhat_t=C_t/m$ about $\Rbar$ can be written as:
+\begin{equation}
+  V_H(m)=v_R+v_H+\frac{A_H}{m},\qquad
+  v_H=\tau^2(\Rbar^2+v_R),\qquad A_H=\Rbar+\frac{\rho(1+\tau^2)(\Rbar^2+v_R)}{k},
+  \label{eq:vH-AH}
+\end{equation}
+where $v_H$ is the variance added by reporting heterogeneity. The limiting variance rises to $v_R+v_H$, and the balance scale becomes $m_{\times,H}=A_H/(v_R+v_H)\le\mx$, with equality if and only if $\tau=0$. With $Q=\Rbar^2+v_R$, the difference is given by:
+\begin{equation}
+  \mx-m_{\times,H}=\frac{\tau^2Q\,\Rbar\,(1+\rho\Rbar/k)}{v_R(v_R+v_H)}.
+  \label{eq:mx-gap}
+\end{equation}
+The variances $v_R$ and $v_H$ cannot be separated using the mean and variance of the counts alone, which identify only $(1+\tau^2)(\Rbar^2+v_R)$.
+\end{proposition}
+
+\begin{corollary}[Reporting volatility and current-value estimation]
+\label{cor:report-current}
+Under H2--H5, when the current reporting probability $p_t$ is unobserved and $\Rhat_t=C_t/(\rho n)$ normalises by the mean reporting probability $\rho$, the mean squared error about the current value $R_t$ satisfies:
+\begin{equation}
+  \E[(\Rhat_t - R_t)^2] = v_H + \frac{A_H}{m},
+  \label{eq:vH-current}
+\end{equation}
+where $v_H = \tau^2(\Rbar^2 + v_R)$ and $A_H$ is given in Eq.~(\ref{eq:vH-AH}).
+As $m\to\infty$, counting error falls to zero, but unpredictable reporting fluctuations leave an irreducible variance floor $v_H$ even for the period-specific target.
+\end{corollary}
+
+Proposition~\ref{prop:report-noise} is the identification limit for the empirical part of this study. An intercept estimated from counts alone combines transmission and reporting variation unless reporting is measured separately. The same difficulty arises in state-space models of population dynamics, where process and observation variance are often weakly identified from a single series \citep{knape2008estimability, augermethe2016state}.
+
+The balance scale also determines how a fixed budget is best divided. Suppose that $T$ periods are observed with case volume $m$ in each, that each period costs $c_0$ and each unit of case volume costs $c_1$, and that the budget is $\mathcal{B}=T(c_0+c_1m)$.
+
+\begin{proposition}[Allocation of a fixed budget]
+\label{prop:allocation}
+Under H1--H4 with $R_t$ independent across periods, linear costs and $T$ treated as continuous, the error of the mean of $\Rhat_t$ about $\Rbar$ over $T$ periods is given by:
+\begin{equation}
+  \frac{v_R}{T}+\frac{A}{Tm},
+  \label{eq:alloc-indep}
+\end{equation}
+which, under the budget constraint, is minimised at:
+\begin{equation}
+  m^*=\sqrt{\frac{c_0}{c_1}\,\mx},
+  \label{eq:optimal-m}
+\end{equation}
+where $T^*=\mathcal{B}/(c_0+c_1m^*)$, subject to $T^*\ge1$. At a fixed budget the error increases with $m$ if and only if $m>m^*$.
+\end{proposition}
+
+The optimal case volume per period is the geometric mean of $c_0/c_1$ and the balance scale, the same form as the optimal number of secondary units in two-stage sampling \citep{cochran1977sampling} and the optimal cluster size in cluster-randomised trials \citep{raudenbush1997statistical}. Under the three conditions of the proposition, $m>m^*$ is necessary and sufficient for a reallocation of budget from cases to further periods to reduce error, because the error at fixed budget is a strictly convex function of $m$. The rule is not general. With integer $T$ the optimum moves to a neighbouring feasible design, with non-linear costs it moves with the shape of the cost function, and with autocorrelated environments the environmental term becomes $v_RS(\phi,T)/T^2$ (Corollary~\ref{cor:targets}) and the optimum depends on the budget. Appendix~\ref{app:extensions} gives the budget threshold at which the autoregressive optimum switches.
+
+Reporting heterogeneity can reverse the ranking of coverage and completeness as targets for investment.
+
+\begin{corollary}[Coverage versus completeness]
+\label{cor:switch}
+If $\tau$ does not depend on $\rho$, increasing coverage $n$ reduces $V_H$ more than the same proportional increase in $\rho$. If reporting variation arises from binomial sampling of $\nu$ units with $\Var(p_t)=\rho(1-\rho)/\nu$, increasing $\rho$ is preferable whenever:
+\begin{equation}
+  m>\frac{\rho^2(\nu-1)}{k},
+  \label{eq:r3-switch}
+\end{equation}
+where $\nu$ is the number of reporting units sampled per period. Under a Beta prior $p_t\sim\mathrm{Beta}(\rho\nu,(1-\rho)\nu)$ with variance $\rho(1-\rho)/(\nu+1)$, the threshold in Eq.~(\ref{eq:r3-switch}) becomes $m>\rho^2\nu/k$.
+\end{corollary}

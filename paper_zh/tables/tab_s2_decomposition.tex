@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Decomposition of the intercept and comparison of the affine model with a power law, with the 95\% confidence interval of each intercept.}
+\label{tab:s2}
+\begin{tabular}{lllrrrrrr}
+\toprule
+Specification & $a$ total & \begin{tabular}[t]{@{}c@{}}$a$ after\\ week effects\end{tabular} & \begin{tabular}[t]{@{}c@{}}$a$ after week and\\ state-season effects\end{tabular} & \begin{tabular}[t]{@{}c@{}}Week\\ share\end{tabular} & ICC & \begin{tabular}[t]{@{}c@{}}Power\\ exponent\end{tabular} & $p$ & \begin{tabular}[t]{@{}c@{}}CV folds\\ (state; season)\end{tabular} \\
+\midrule
+$R_A$, rule windows ($S=4$) & \begin{tabular}[t]{@{}c@{}}0.0150\\ \relax[0.0100, 0.0208]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0088\\ \relax[0.0064, 0.0124]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0083\\ \relax[0.0064, 0.0141]\end{tabular} & 0.41 & 0.25 & 0.38 & 0.11 & 26/51; 2/4 \\
+$G$, rule windows ($S=4$) & \begin{tabular}[t]{@{}c@{}}0.0840\\ \relax[0.0508, 0.1226]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0415\\ \relax[0.0306, 0.0586]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0394\\ \relax[0.0293, 0.0614]\end{tabular} & 0.51 & 0.31 & 0.35 & 0.44 & 19/51; 0/4 \\
+$G$, calendar windows ($S=3$) & \begin{tabular}[t]{@{}c@{}}0.0991\\ \relax[0.0583, 0.1399]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0473\\ \relax[0.0337, 0.0676]\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.0450\\ \relax[0.0335, 0.0932]\end{tabular} & 0.52 & 0.29 & 0.27 & 0.42 & 28/51; 3/3 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize Intervals are from a two-way bootstrap with $B=1000$; the draws are separate from those of Table S1, which explains small differences. The third column removes national week effects from the statistic before the fit, and the fourth also removes state-season effects. The week share equals one minus the ratio of the third to the second column. The ICC is the share of the variance of the statistic that lies between weeks. The power exponent is $c$ in $L=\alpha D^{-c}$, and $p$ is from a parametric-bootstrap test of the affine model against this power law with 200 null draws. CV folds counts the leave-one-state-out and leave-one-season-out folds in which the affine model predicts better. A power analysis found no fraction of the estimated $a$ ($\le 1$) detectable with 80\% power.\end{minipage}
+\end{table}

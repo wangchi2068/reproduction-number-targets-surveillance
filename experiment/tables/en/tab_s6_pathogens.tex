@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Cross-pathogen intercept ratios against the pure-reporting growth null, with Holm-adjusted $p$-values.}
+\label{tab:s6}
+\begin{tabular}{lrllllrrrr}
+\toprule
+Pathogen, window & $N$ & $q_1$ [95\% CI] & $q_2$ [95\% CI] & Null $q_1$ & Null $q_2$ & $q_1<1$ & $q_2>1$ & $q_1$ out & $q_2$ out \\
+\midrule
+Influenza, rule & 1{,}756 & 0.68 [0.58, 0.81] & 1.61 [1.41, 1.87] & 0.63--0.89 & 1.13--1.58 & 0.020 & 0.034 & 1.000 & 1.000 \\
+Influenza, calendar & 1{,}267 & 0.69 [0.53, 0.85] & 1.54 [1.27, 1.88] & 0.63--0.89 & 1.13--1.58 & 0.020 & 0.020 & 1.000 & 1.000 \\
+Influenza, growth & 2{,}707 & 0.57 [0.47, 0.71] & 1.88 [1.55, 2.45] & 0.68--0.88 & 1.33--1.58 & 0.034 & 0.020 & 1.000 & 1.000 \\
+Influenza, growth, 2025-26 & 663 & 0.64 [0.45, 0.84] & 1.56 [1.28, 2.33] & 0.66--0.89 & 1.25--1.57 & 0.116 & 0.075 & 1.000 & 1.000 \\
+COVID-19, calendar & 1{,}479 & 0.73 [$-$0.32, 0.91] & 1.53 [0.67, 1.87] & 0.61--0.83 & 1.42--1.67 & 0.287 & 0.616 & 1.000 & 1.000 \\
+COVID-19, growth & 2{,}862 & 0.78 [0.61, 1.01] & 1.41 [1.21, 2.04] & 0.60--0.84 & 1.40--1.66 & 0.616 & 0.154 & 1.000 & 1.000 \\
+RSV, calendar & 494 & 0.70 [0.48, 0.93] & 1.57 [1.19, 2.09] & 0.17--1.11 & 1.01--3.02 & 0.154 & 0.228 & 1.000 & 1.000 \\
+RSV, growth & 1{,}073 & 0.64 [0.11, 0.87] & 1.69 [$-$0.22, 3.06] & 0.57--1.14 & 0.89--1.69 & 0.182 & 0.660 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize $q_1=a_{\text{1 week}}/a_{\text{original}}$, $q_2=a_{\text{equal 3 weeks}}/a_{\text{original}}$; shared two-way bootstrap, $B=2000$. Null ranges: growth-null simulation without transmission heterogeneity (three generation intervals, three admission delays, four reporting-noise levels; the rule-window row uses the influenza calendar range). The last four columns give one-sided bootstrap $p$-values, Holm-adjusted over the 32 ratio tests; "out" tests whether the ratio lies outside the null range. Negative lower confidence bounds (such as for COVID-19 calendar $q_1$ and RSV growth $q_2$) arise because in a small fraction of bootstrap resamples the reference denominator intercept is estimated below zero.\end{minipage}
+\end{table}

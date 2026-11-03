@@ -1,0 +1,35 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Lag-1 autocorrelation, and implied environmental variance and $b/a$ in the added inversion settings.}
+\label{tab:s10}
+\begin{tabular}{lllll}
+\toprule
+\multicolumn{5}{l}{\textit{A. Lag-1 autocorrelation}}\\
+Setting & $r_1$ of $R_A$ & Data pct. & $r_1$ of $G$ & Data pct. \\
+\midrule
+Data (rule windows) & $-$0.095 [$-$0.168, $-$0.019] & -- & 0.123 [0.039, 0.201] & -- \\
+Data-matched design (M0) & $-$0.074 [$-$0.151, 0.014] & 31.0 & 0.114 [0.025, 0.220] & 62.0 \\
+AR(1), $\phi=0.25$ & 0.007 [$-$0.098, 0.118] & 3.0 & 0.193 [0.097, 0.304] & 10.0 \\
+AR(1), $\phi=0.5$ & 0.072 [$-$0.039, 0.229] & 0.0 & 0.258 [0.146, 0.390] & 0.0 \\
+True GI mean 2.2 d & 0.099 [$-$0.002, 0.223] & 0.0 & 0.251 [0.156, 0.363] & 0.0 \\
+True GI mean 2.9 d & 0.006 [$-$0.083, 0.120] & 2.5 & 0.183 [0.091, 0.296] & 9.0 \\
+True GI mean 4.3 d & $-$0.134 [$-$0.206, $-$0.030] & 80.0 & 0.051 [$-$0.031, 0.161] & 92.0 \\
+Admissions VMR 1.5 & $-$0.170 [$-$0.233, $-$0.096] & 97.5 & $-$0.014 [$-$0.092, 0.076] & 100.0 \\
+Admissions VMR 2.0 & $-$0.183 [$-$0.247, $-$0.104] & 99.0 & $-$0.041 [$-$0.104, 0.035] & 100.0 \\
+Synchronous count shock & $-$0.146 [$-$0.225, $-$0.076] & 86.0 & 0.041 [$-$0.033, 0.116] & 99.0 \\
+\midrule
+\multicolumn{5}{l}{\textit{B. Added settings ($b/a$ pooled at $v_R=0.04$)}}\\
+Setting & $v_R^{\mathrm{impl}}$ from $R_A$ & $v_R^{\mathrm{impl}}$ from $G$ & $b/a$ of $R_A$ & $b/a$ of $G$ \\
+\midrule
+Data-matched design (M0) & 0.040 [0.026, 0.056] & 0.043 [0.025, 0.064] & 28.0 & 16.2 \\
+True GI mean 2.9 d & 0.026 [0.017, 0.036] & 0.027 [0.016, 0.040] & 18.2 & 10.4 \\
+Admissions VMR 1.5 & 0.039 [0.026, 0.055] & 0.044 [0.026, 0.066] & 68.0 & 40.2 \\
+Admissions VMR 2.0 & 0.039 [0.026, 0.055] & 0.045 [0.027, 0.066] & 81.0 & 48.4 \\
+AR(1), $\phi=0.25$ & 0.033 [0.021, 0.047] & 0.033 [0.019, 0.049] & 23.4 & 12.6 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize $r_1$ is the pooled lag-1 autocorrelation of the relative deviation $x/\bar{x}_{\mathrm{block}}-1$ within state-season blocks. The interval for the data comes from a state-cluster bootstrap with 1000 draws; simulated rows give the mean and the 2.5\% to 97.5\% range of $r_1$ over panels at $v_R=0.04$ (200 panels per value of $v_R$ for the added settings, 100 for the others), and Data pct.\ is the percentile of the empirical value in that distribution. The analyst's generation interval stays at a mean of 3.6 days; 2.9 and 4.3 days are the ends of the 95\% interval for the serial interval of influenza in \citet{cowling2009estimation}. Overdispersed admissions use a gamma--Poisson mixture on weekly counts.\end{minipage}
+\end{table}

@@ -1,0 +1,376 @@
+{
+ "meta": {
+  "script": "code/s09_inversion.py",
+  "inputs": [
+   "data/panel_nhsn_vintage_2026-10-20.csv.gz",
+   "data/national_flu.csv",
+   "data/external/nhsn_hrd_vintage_2026-10-20.csv.gz"
+  ],
+  "mode": "measured",
+  "seed": {
+   "joint_bootstrap": 20261921,
+   "season_ratio_bootstrap": 20261941
+  },
+  "updated": "2026-10-20T09:16:46"
+ },
+ "numbers": {
+  "RA_rule4_margin_share_of_a_vR0.04": {
+   "value": 0.1704912611490225,
+   "ci95": [
+    0.12351172310427903,
+    0.2546086616919608
+   ],
+   "note": "TOST margin k2 tau0^2 (1 + v_R/xbar^2), tau0 = 0.1, xbar = sample mean of the statistic (s04 convention), divided by a; interval from the joint bootstrap of a",
+   "mode": "analytic",
+   "margin": 0.00254962284812172
+  },
+  "RA_rule4_margin_share_of_a_vR_implied": {
+   "value": 0.17050554165869883,
+   "ci95": [
+    0.1235220685633075,
+    0.25462998795485814
+   ],
+   "note": "TOST margin k2 tau0^2 (1 + v_R/xbar^2), tau0 = 0.1, xbar = sample mean of the statistic (s04 convention), divided by a; interval from the joint bootstrap of a",
+   "mode": "analytic",
+   "margin": 0.0025498364069487718
+  },
+  "RA_rule4_delta_a_share": {
+   "value": 0.019653251173400225,
+   "ci95": [
+    -0.02397232824896763,
+    0.06117731887899731
+   ],
+   "note": "(a_raw - a_coverage_adjusted)/a_raw on rows with valid coverage; captures only what the coverage proxy explains",
+   "upper95_one_sided": 0.05274579910316778,
+   "B": 2000
+  },
+  "G_rule4_margin_share_of_a_vR0.04": {
+   "value": 0.12063856046391488,
+   "ci95": [
+    0.08256748100846614,
+    0.1995122647918816
+   ],
+   "note": "TOST margin k2 tau0^2 (1 + v_R/xbar^2), tau0 = 0.1, xbar = sample mean of the statistic (s04 convention), divided by a; interval from the joint bootstrap of a",
+   "mode": "analytic",
+   "margin": 0.010134631211968618
+  },
+  "G_rule4_margin_share_of_a_vR_implied": {
+   "value": 0.12075708213937084,
+   "ci95": [
+    0.0826485996503802,
+    0.199708276148501
+   ],
+   "note": "TOST margin k2 tau0^2 (1 + v_R/xbar^2), tau0 = 0.1, xbar = sample mean of the statistic (s04 convention), divided by a; interval from the joint bootstrap of a",
+   "mode": "analytic",
+   "margin": 0.010144588007430629
+  },
+  "G_rule4_delta_a_share": {
+   "value": 0.004440577084089825,
+   "ci95": [
+    -0.04411609360931399,
+    0.04011427412407868
+   ],
+   "note": "(a_raw - a_coverage_adjusted)/a_raw on rows with valid coverage; captures only what the coverage proxy explains",
+   "upper95_one_sided": 0.03520993523784993,
+   "B": 2000
+  },
+  "iqr_ratio_2024_over_2023": {
+   "value": 1.5835906594555453,
+   "ci95": [
+    0.9454670890833472,
+    2.2250741844844746
+   ],
+   "note": "IQR of log((C_next+0.5)/(D_t+0.5)), May-Oct; state draw shared across years, weeks within year",
+   "B": 2000
+  },
+  "sd_ratio_2024_over_2023": {
+   "value": 2.922058559560985,
+   "ci95": [
+    0.5647338232654175,
+    7.611488763506698
+   ],
+   "B": 2000
+  },
+  "iqr_ratio_2024_over_2025": {
+   "value": 1.5730228402990232,
+   "ci95": [
+    0.9517647876071832,
+    2.38638230436505
+   ],
+   "note": "IQR of log((C_next+0.5)/(D_t+0.5)), May-Oct; state draw shared across years, weeks within year",
+   "B": 2000
+  },
+  "sd_ratio_2024_over_2025": {
+   "value": 4.730535378493647,
+   "ci95": [
+    1.0509765371395354,
+    11.466676828443505
+   ],
+   "B": 2000
+  },
+  "iqr_ratio_2025_over_2023_placebo": {
+   "value": 1.006718160020177,
+   "ci95": [
+    0.7216758532790903,
+    1.2517863133477247
+   ],
+   "B": 2000
+  },
+  "iqr_ratio_2024_over_pooled_2023_2025": {
+   "value": 1.570245348765031,
+   "mode": "measured"
+  },
+  "mayoct2023_D_median": {
+   "value": 15.55
+  },
+  "mayoct2023_phat_median": {
+   "value": 94.24
+  },
+  "mayoct2024_D_median": {
+   "value": 16.625
+  },
+  "mayoct2024_phat_median": {
+   "value": 45.66
+  },
+  "mayoct2025_D_median": {
+   "value": 16.2
+  },
+  "mayoct2025_phat_median": {
+   "value": 92.31
+  },
+  "iqr_ratio_2024_over_2023_Dmatched": {
+   "value": 1.684859403595662,
+   "note": "each year reweighted to the pooled 2023+2025 decile distribution of log D_t",
+   "mode": "measured"
+  },
+  "iqr_ratio_2024_over_2025_Dmatched": {
+   "value": 1.5789291906695375,
+   "note": "each year reweighted to the pooled 2023+2025 decile distribution of log D_t",
+   "mode": "measured"
+  },
+  "iqr_ratio_month_matched_median": {
+   "value": 1.330508068011889,
+   "note": "median over May-Oct months of the 2024/2023 and 2024/2025 monthly IQR ratios (12 ratios)",
+   "range": [
+    0.8686518261185022,
+    4.4822933768260915
+   ]
+  },
+  "iqr_ratio_month_matched_n_gt1": {
+   "value": 9,
+   "note": "of 12 monthly ratios"
+  },
+  "covid_iqr_ratio_2024_over_2023": {
+   "value": 1.6176531930774305,
+   "note": "COVID admissions, May-Oct, same statistic; NaN if a year has < 30 rows with D_t >= 5",
+   "N_2023_2024_2025": [
+    1326,
+    1134,
+    1288
+   ]
+  },
+  "covid_iqr_ratio_2024_over_2025": {
+   "value": 1.1820851448751832
+  },
+  "covid_mayoct_D_median_2023_2024_2025": {
+   "value": [
+    122.25,
+    39.425,
+    53.6
+   ]
+  },
+  "rsv_iqr_ratio_2024_over_2023": {
+   "value": NaN,
+   "note": "RSV admissions, May-Oct, same statistic; NaN if a year has < 30 rows with D_t >= 5",
+   "N_2023_2024_2025": [
+    0,
+    32,
+    488
+   ]
+  },
+  "rsv_iqr_ratio_2024_over_2025": {
+   "value": 1.355340170193837
+  },
+  "rsv_mayoct_D_median_2023_2024_2025": {
+   "value": [
+    NaN,
+    11.625,
+    12.325000000000001
+   ]
+  },
+  "regime1_state_week_mean": {
+   "value": 93.97036853295535,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_state_week_median": {
+   "value": 94.44,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_share_ge95": {
+   "value": 0.4670446491849752,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_share_ge90": {
+   "value": 0.8462083628632175,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_national_hosp_weighted_median": {
+   "value": 93.79987415236195,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_national_q": {
+   "value": [
+    91.0074042699279,
+    93.99312315161635
+   ],
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime1_N_state_weeks": {
+   "value": 4233,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_state_week_mean": {
+   "value": 39.662013574660634,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_state_week_median": {
+   "value": 35.29,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_share_ge95": {
+   "value": 0.03695324283559578,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_share_ge90": {
+   "value": 0.07315233785822021,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_national_hosp_weighted_median": {
+   "value": 35.79707302797287,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_national_q": {
+   "value": [
+    33.01008130135609,
+    44.90421633210333
+   ],
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime2_N_state_weeks": {
+   "value": 1326,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_state_week_mean": {
+   "value": 91.1374548250673,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_state_week_median": {
+   "value": 92.93,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_share_ge95": {
+   "value": 0.32410611303344866,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_share_ge90": {
+   "value": 0.7026143790849673,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_national_hosp_weighted_median": {
+   "value": 91.20024636599179,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_national_q": {
+   "value": [
+    85.48896545730209,
+    94.14323918684423
+   ],
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "regime3_N_state_weeks": {
+   "value": 5202,
+   "note": "from 2022-10-01; raw NHSN state-weeks (not filtered on D_t)"
+  },
+  "rule4_windows_coverage_median": {
+   "value": 93.7
+  },
+  "rule4_windows_coverage_share_ge95": {
+   "value": 0.37242562929061784
+  },
+  "rule4_windows_coverage_share_ge90": {
+   "value": 0.7980549199084668
+  }
+ },
+ "blocks": {
+  "month_matched": {
+   "5": {
+    "2024/2023": 2.0808471170489575,
+    "2024/2025": 1.7153603211550748,
+    "2025/2023": 1.2130670689921137
+   },
+   "6": {
+    "2024/2023": 1.0287714546464712,
+    "2024/2025": 0.9299277342507585,
+    "2025/2023": 1.106291829735943
+   },
+   "7": {
+    "2024/2023": 0.9401005470405068,
+    "2024/2025": 1.0646041695112214,
+    "2025/2023": 0.8830517237896257
+   },
+   "8": {
+    "2024/2023": 0.8686518261185022,
+    "2024/2025": 1.2712508271258693,
+    "2025/2023": 0.6833048266976625
+   },
+   "9": {
+    "2024/2023": 1.3897653088979087,
+    "2024/2025": 1.8208069626766368,
+    "2025/2023": 0.7632688897756164
+   },
+   "10": {
+    "2024/2023": 3.8213508448922697,
+    "2024/2025": 4.4822933768260915,
+    "2025/2023": 0.8525436698653056
+   }
+  },
+  "participation": {
+   "1": {
+    "state_week_mean": 93.97036853295535,
+    "state_week_median": 94.44,
+    "share_ge95": 0.4670446491849752,
+    "share_ge90": 0.8462083628632175,
+    "national_hosp_weighted_median": 93.79987415236195,
+    "national_q": [
+     91.0074042699279,
+     93.99312315161635
+    ],
+    "N_state_weeks": 4233
+   },
+   "2": {
+    "state_week_mean": 39.662013574660634,
+    "state_week_median": 35.29,
+    "share_ge95": 0.03695324283559578,
+    "share_ge90": 0.07315233785822021,
+    "national_hosp_weighted_median": 35.79707302797287,
+    "national_q": [
+     33.01008130135609,
+     44.90421633210333
+    ],
+    "N_state_weeks": 1326
+   },
+   "3": {
+    "state_week_mean": 91.1374548250673,
+    "state_week_median": 92.93,
+    "share_ge95": 0.32410611303344866,
+    "share_ge90": 0.7026143790849673,
+    "national_hosp_weighted_median": 91.20024636599179,
+    "national_q": [
+     85.48896545730209,
+     94.14323918684423
+    ],
+    "N_state_weeks": 5202
+   }
+  }
+ }
+}

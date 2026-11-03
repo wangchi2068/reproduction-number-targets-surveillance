@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Cross-pathogen intercept ratios against the pure-reporting growth null, with Holm-adjusted $p$-values.}
+\label{tab:s6}
+\begin{tabular}{lrllllrrrrr}
+\toprule
+Pathogen, window & $N$ & \begin{tabular}[t]{@{}c@{}}$q_1$\\ \relax[95\% CI]\end{tabular} & \begin{tabular}[t]{@{}c@{}}$q_2$\\ \relax[95\% CI]\end{tabular} & \begin{tabular}[t]{@{}c@{}}Null\\ $q_1$\end{tabular} & \begin{tabular}[t]{@{}c@{}}Null\\ $q_2$\end{tabular} & $q_1<1$ & $q_2>1$ & \begin{tabular}[t]{@{}c@{}}$q_1$\\ out\end{tabular} & \begin{tabular}[t]{@{}c@{}}$q_2$\\ out\end{tabular} & \begin{tabular}[t]{@{}c@{}}Excess\\ $>0$\end{tabular} \\
+\midrule
+Influenza, rule & 1756 & \begin{tabular}[t]{@{}c@{}}0.68\\ \relax[0.58, 0.81]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.61\\ \relax[1.41, 1.87]\end{tabular} & 0.63--0.89 & 1.13--1.58 & 0.020 & 0.034 & 1.000 & 1.000 & 0.034 \\
+Influenza, calendar & 1267 & \begin{tabular}[t]{@{}c@{}}0.69\\ \relax[0.53, 0.85]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.54\\ \relax[1.27, 1.88]\end{tabular} & 0.63--0.89 & 1.13--1.58 & 0.020 & 0.020 & 1.000 & 1.000 & 0.020 \\
+Influenza, growth & 2707 & \begin{tabular}[t]{@{}c@{}}0.57\\ \relax[0.47, 0.71]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.88\\ \relax[1.55, 2.45]\end{tabular} & 0.68--0.88 & 1.33--1.58 & 0.034 & 0.020 & 1.000 & 1.000 & 0.020 \\
+Influenza, growth, 2025-26 & 663 & \begin{tabular}[t]{@{}c@{}}0.64\\ \relax[0.45, 0.84]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.56\\ \relax[1.28, 2.33]\end{tabular} & 0.66--0.89 & 1.25--1.57 & 0.116 & 0.075 & 1.000 & 1.000 & 0.046 \\
+COVID-19, calendar & 1479 & \begin{tabular}[t]{@{}c@{}}0.73\\ \relax[n.d., 0.91]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.53\\ \relax[0.67, 1.87]\end{tabular} & 0.61--0.83 & 1.42--1.67 & 0.287 & 0.616 & 1.000 & 1.000 & 1.000 \\
+COVID-19, growth & 2862 & \begin{tabular}[t]{@{}c@{}}0.78\\ \relax[0.61, 1.01]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.41\\ \relax[1.21, 2.04]\end{tabular} & 0.60--0.84 & 1.40--1.66 & 0.616 & 0.154 & 1.000 & 1.000 & 1.000 \\
+RSV, calendar & 494 & \begin{tabular}[t]{@{}c@{}}0.70\\ \relax[0.48, 0.93]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.57\\ \relax[1.19, 2.09]\end{tabular} & 0.17--1.11 & 1.01--3.02 & 0.154 & 0.228 & 1.000 & 1.000 & 0.200 \\
+RSV, growth & 1073 & \begin{tabular}[t]{@{}c@{}}0.64\\ \relax[0.11, 0.87]\end{tabular} & \begin{tabular}[t]{@{}c@{}}1.69\\ \relax[n.d., 3.06]\end{tabular} & 0.57--1.14 & 0.89--1.69 & 0.182 & 0.660 & 1.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize Here $q_1=a_{\text{1 week}}/a_{\text{original}}$ and $q_2=a_{\text{equal 3 weeks}}/a_{\text{original}}$, with intervals from a shared two-way bootstrap ($B=2000$). Null ranges come from a growth-null simulation without transmission heterogeneity over three generation intervals, three admission delays and four reporting-noise levels; the rule-window row uses the influenza calendar range. The last five columns give one-sided bootstrap $p$-values, Holm-adjusted over all 40 tests, and the columns marked out test whether the ratio lies outside the null range. Excess denotes $a-v_R/\bar{G}^2$ with $v_R=0.04$. A lower bound marked n.d. is not defined because some bootstrap replicates gave a negative intercept in the ratio, so the ratio has no positive lower limit; the upper limit is shown as estimated.\end{minipage}
+\end{table}

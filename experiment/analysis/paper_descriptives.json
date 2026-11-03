@@ -1,0 +1,18 @@
+{
+ "RA_rule4": {
+  "N": 1748,
+  "b_over_a": 37.44378641425474,
+  "share_scale_above_ba": 0.5526315789473685,
+  "share_scale_above_4ba": 0.2511441647597254,
+  "coverage_median": 93.7,
+  "share_coverage_ge90": 0.7980549199084668
+ },
+ "G_rule4": {
+  "N": 1756,
+  "b_over_a": 23.457417670225002,
+  "share_scale_above_ba": 0.6486332574031891,
+  "share_scale_above_4ba": 0.31548974943052394,
+  "coverage_median": 93.75,
+  "share_coverage_ge90": 0.7984054669703873
+ }
+}

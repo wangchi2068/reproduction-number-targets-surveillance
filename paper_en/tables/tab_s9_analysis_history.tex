@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Specifications used across the rounds of this analysis, with the 95\% confidence interval of each estimate on the data version of 2026-10-20.}
+\label{tab:s9}
+\begin{tabular}{p{0.27\linewidth}p{0.22\linewidth}ll}
+\toprule
+Round and specification & Role & $a$ [95\% CI] & $b/a$ [95\% CI] \\
+\midrule
+Round 1: $G$, three calendar windows ($S=3$) & Primary in round 1; secondary from round 2 & 0.0991 [0.0569, 0.1382] & 22.6 [9.0, 52.2] \\
+Round 2, rule version 1: windows ending at the season maximum & Abandoned (four weeks in 2024--25); no estimates retained & -- & -- \\
+Round 2, rule version 2 (2026-10-20): $G$, rule windows ($S=4$) & Secondary & 0.0840 [0.0498, 0.1248] & 23.5 [8.4, 59.7] \\
+Round 2, rule version 2: $R_A$, rule windows ($S=4$) & Primary from round 2 & 0.0150 [0.0100, 0.0208] & 37.4 [19.1, 71.0] \\
+Round 2: $R_A$, calendar windows ($S=3$) & Sensitivity & 0.0202 [0.0097, 0.0306] & 25.6 [10.2, 79.6] \\
+Round 3: two-step inversion & Calibration of the round-2 fits; no refit & -- & -- \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\scriptsize All estimates were refitted on the same data version with two-way bootstrap intervals ($B=2000$). The renewal-type ratio became the primary statistic in round 2 because its relationship to $R_t$ is explicit through the generation interval; the weighted growth ratio is retained for continuity. The point estimate of each specification lies inside the interval of the other specification of the same statistic.\end{minipage}
+\end{table}

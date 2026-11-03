@@ -1,0 +1,123 @@
+% =================================================================
+% RESEARCH PAPER -- single-column preprint layout modelled on the
+% Epidemics article format (author-year citations, left-aligned
+% numbered equations, "Fig. N." captions, end matter before references).
+% =================================================================
+\documentclass[10pt,a4paper,fleqn]{article}
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{paper-template}{XeLaTeX is required}{Run xelatex; exact Times New Roman cannot be guaranteed under pdfLaTeX.}
+\fi
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+}{
+  % Metric-compatible fallback when Times New Roman is not installed.
+  \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{%
+    \PackageError{paper-template}{Times New Roman is not installed}{Install or mount Times New Roman; do not silently substitute Nimbus Roman or Latin Modern.}}
+}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage[authoryear,round]{natbib}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xurl}
+\usepackage[hidelinks,unicode=true]{hyperref}
+\hypersetup{pdftitle={Two inferential targets, different returns to case volume: theory and evidence for epidemic reproduction numbers}, pdfauthor={}}
+\urlstyle{same}
+\providecommand{\doi}[1]{doi:\url{#1}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\captionsetup{
+  font=small,
+  labelfont=normalfont,
+  textfont=normalfont,
+  labelsep=period,
+  justification=justified,
+  singlelinecheck=true,
+  skip=6pt
+}
+\captionsetup[figure]{name=Fig.}
+\captionsetup[table]{name=Table,position=top}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\mathindent}{1.5em}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.70}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+% No running header, matching the Chinese version; page numbers sit in the footer.
+\pagestyle{plain}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\quad #1}{}}
+% Elsevier-style heading numbers: "1. Introduction", "2.1. Model".
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+\renewcommand\section{\@startsection{section}{1}{\z@}{-3.0ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}}% qa-allow-bold (Elsevier level-1 heading)
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{-2.5ex \@plus -1ex \@minus -.2ex}{1.2ex \@plus .2ex}{\normalfont\normalsize\itshape}}
+\makeatother
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Rbar}{\bar{R}}
+\newcommand{\NB}{\mathrm{NB}}
+\newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\mx}{m_{\times}}
+% Hat drawn as a vector stroke, so text extraction does not split R and its accent.
+\newcommand{\hatstroke}{\tikz[x=1em,y=1em,line width=0.045em,line cap=round,line join=round]\draw (0,0)--(0.17,0.11)--(0.34,0);}
+\newcommand{\Rhat}{\mathord{\hbox{\ooalign{$R$\cr\hidewidth\kern0.16em\raisebox{0.74em}{\hatstroke}\hidewidth\cr}}}}
+
+\title{Inferential targets and the value of case volume in reproduction-number surveillance}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\normalfont\mdseries
+\thispagestyle{plain}
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+\input{sections/availability}
+
+\FloatBarrier
+\clearpage
+\input{sections/appendix}
+
+\FloatBarrier
+\clearpage
+\bibliographystyle{plainnat-nodoi}
+\bibliography{bibliography}
+
+\end{document}

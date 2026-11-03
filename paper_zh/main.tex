@@ -1,0 +1,148 @@
+% =================================================================
+% RESEARCH PAPER -- Chinese edition in Elsevier elsarticle format
+% Target journal: Epidemics
+% =================================================================
+
+\documentclass[authoryear,preprint,10pt,fleqn]{elsarticle}
+
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{paper-template}{XeLaTeX or Tectonic is required}{Run xelatex or tectonic.}
+\fi
+
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+}{
+  \setmainfont{Liberation Serif}
+}
+
+\usepackage[fontset=none]{ctex}
+\IfFontExistsTF{SimSun}{
+  \setCJKmainfont{SimSun}[AutoFakeBold=2]
+}{
+  \setCJKmainfont{Noto Serif CJK SC}
+}
+\setCJKsansfont{Noto Sans CJK SC}
+
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amsthm}
+\usepackage{unicode-math}
+\IfFontExistsTF{TeX Gyre Termes Math}{
+  \setmathfont{TeX Gyre Termes Math}
+  \setmathfont{latinmodern-math.otf}[range={cal,bfcal}]
+}{
+  \setmathfont{latinmodern-math.otf}
+}
+
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{xurl}
+\usepackage[hidelinks,unicode=true]{hyperref}
+\hypersetup{pdftitle={两个推断目标下病例量的不同统计收益：再生数估计的理论与实证}, pdfauthor={}}
+\urlstyle{same}
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{\path{#1}}}
+% Long author-year citation clusters in CJK prose cannot be broken, so allow a
+% little stretch before TeX resorts to an overfull line.
+\setlength{\emergencystretch}{2em}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\captionsetup{
+  font=small,
+  labelfont=normalfont,
+  textfont=normalfont,
+  labelsep=quad,
+  justification=justified,
+  singlelinecheck=true,
+  skip=6pt
+}
+\captionsetup[figure]{name=图}
+\captionsetup[table]{name=表,position=top}
+
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\mathindent}{1.5em}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.70}
+
+\renewcommand{\proofname}{证明}
+
+\makeatletter
+\def\appendixname{附录}
+\renewcommand\appendix{\par
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \setcounter{equation}{0}%
+  \gdef\thefigure{\@Alph\c@section.\arabic{figure}}%
+  \gdef\thetable{\@Alph\c@section.\arabic{table}}%
+  \gdef\thesection{\@Alph\c@section}%
+  \gdef\thesubsection{\thesection.\arabic{subsection}}%
+  \@addtoreset{equation}{section}%
+  \gdef\theequation{\@Alph\c@section.\arabic{equation}}%
+  \def\@seccntformat##1{\csname prefix@##1\endcsname\csname the##1\endcsname.\quad}%
+  \def\prefix@section{\appendixname~}%
+}
+\makeatother
+
+\newtheorem{proposition}{命题}
+\newtheorem{corollary}{推论}
+\theoremstyle{remark}
+\newtheorem{remark}{注}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Rbar}{\bar{R}}
+\newcommand{\NB}{\mathrm{NB}}
+\newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\mx}{m_{\times}}
+\newcommand{\Rhat}{\hat{R}}
+
+\journal{Epidemics}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{再生数监测中推断目标与病例量的统计价值}
+
+\abstracttitle{摘要}
+\keywordtitle{关键词}
+
+\input{sections/abstract}
+
+\end{frontmatter}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+\input{sections/availability}
+
+\FloatBarrier
+\clearpage
+\bibliographystyle{elsarticle-harv}
+\bibliography{bibliography}
+
+\FloatBarrier
+\clearpage
+\input{sections/appendix}
+
+\end{document}

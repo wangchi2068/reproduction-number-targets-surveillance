@@ -1,0 +1,122 @@
+{
+ "meta": {
+  "script": "code/s09_inversion.py",
+  "inputs": [
+   "data/panel_nhsn_vintage_2026-10-20.csv.gz",
+   "data/national_flu.csv",
+   "data/external/nhsn_hrd_vintage_2026-10-20.csv.gz"
+  ],
+  "mode": "analytic",
+  "seed": {
+   "s02_draws": "s02 two-way draws (seed 20261024/20261124)"
+  },
+  "updated": "2026-10-20T09:16:46"
+ },
+ "numbers": {
+  "RA_rule4_m_cross": {
+   "value": 37.44378641425474,
+   "ci95": [
+    19.123212260049115,
+    70.97264402836369
+   ],
+   "mode": "measured",
+   "source": "s02_inference.RA_rule4_ba"
+  },
+  "precision_fraction_at_half_mcross": {
+   "value": 0.3333333333333333,
+   "note": "(1/V(m))/(1/a) = m/(m + m_x); identical for any m_x"
+  },
+  "variance_cut_doubling_from_half_mcross": {
+   "value": 0.3333333333333333,
+   "note": "[V(m) - V(2m)]/V(m) with V(m) = a(1 + m_x/m)"
+  },
+  "precision_fraction_at_1x_mcross": {
+   "value": 0.5,
+   "note": "(1/V(m))/(1/a) = m/(m + m_x); identical for any m_x"
+  },
+  "variance_cut_doubling_from_1x_mcross": {
+   "value": 0.25,
+   "note": "[V(m) - V(2m)]/V(m) with V(m) = a(1 + m_x/m)"
+  },
+  "precision_fraction_at_2x_mcross": {
+   "value": 0.6666666666666666,
+   "note": "(1/V(m))/(1/a) = m/(m + m_x); identical for any m_x"
+  },
+  "variance_cut_doubling_from_2x_mcross": {
+   "value": 0.16666666666666666,
+   "note": "[V(m) - V(2m)]/V(m) with V(m) = a(1 + m_x/m)"
+  },
+  "precision_fraction_at_4x_mcross": {
+   "value": 0.8,
+   "note": "(1/V(m))/(1/a) = m/(m + m_x); identical for any m_x"
+  },
+  "variance_cut_doubling_from_4x_mcross": {
+   "value": 0.1,
+   "note": "[V(m) - V(2m)]/V(m) with V(m) = a(1 + m_x/m)"
+  },
+  "RA_rule4_m_star_c10": {
+   "value": 19.350397002194743,
+   "ci95": [
+    13.828670287132264,
+    26.640690565109253
+   ],
+   "note": "m* = sqrt((c0/c1) m_x), c0/c1 = 10; interval from the two-way bootstrap draws of b/a"
+  },
+  "RA_rule4_m_star_c100": {
+   "value": 61.191328155429616,
+   "ci95": [
+    43.7300929069519,
+    84.24526615142823
+   ],
+   "note": "m* = sqrt((c0/c1) m_x), c0/c1 = 100; interval from the two-way bootstrap draws of b/a"
+  },
+  "RA_rule4_share_rows_above_mcross": {
+   "value": 0.5526315789473685,
+   "note": "share of window state-weeks with C_t >= m_x",
+   "mode": "measured"
+  },
+  "RA_rule4_share_rows_above_2mcross": {
+   "value": 0.39416475972540044,
+   "mode": "measured"
+  },
+  "G_rule4_m_cross": {
+   "value": 23.457417670225002,
+   "ci95": [
+    8.393069199014702,
+    59.65563574628699
+   ],
+   "mode": "measured",
+   "source": "s02_inference.G_rule4_ba"
+  },
+  "G_rule4_m_star_c10": {
+   "value": 15.315814594798738,
+   "ci95": [
+    9.161368727684021,
+    24.424501657485955
+   ],
+   "note": "m* = sqrt((c0/c1) m_x), c0/c1 = 10; interval from the two-way bootstrap draws of b/a"
+  },
+  "G_rule4_m_star_c100": {
+   "value": 48.43285834041287,
+   "ci95": [
+    28.970793056488038,
+    77.23705558776854
+   ],
+   "note": "m* = sqrt((c0/c1) m_x), c0/c1 = 100; interval from the two-way bootstrap draws of b/a"
+  },
+  "G_rule4_share_rows_above_mcross": {
+   "value": 0.6486332574031891,
+   "note": "share of window state-weeks with D_t >= m_x",
+   "mode": "measured"
+  },
+  "G_rule4_share_rows_above_2mcross": {
+   "value": 0.4561503416856492,
+   "mode": "measured"
+  },
+  "m_for_90pct_precision_over_mcross": {
+   "value": 9.0,
+   "note": "m/(m+m_x) = 0.9 at m = 9 m_x"
+  }
+ },
+ "blocks": {}
+}

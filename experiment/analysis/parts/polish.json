@@ -1,0 +1,948 @@
+{
+ "meta": {
+  "script": "code/s10_polish.py",
+  "inputs": [
+   "data/panel_nhsn_vintage_2026-10-20.csv.gz",
+   "data/national_flu.csv",
+   "data/external/nhsn_hrd_vintage_2026-10-20.csv.gz"
+  ],
+  "mode": "simulated",
+  "seed": {
+   "simulation": "SeedSequence([SEED, 10, cell_index, chunk_index])",
+   "r1_bootstrap": "SEED + 1001/1002",
+   "calibration_draws": 20262023
+  },
+  "updated": "2026-10-20T11:34:06"
+ },
+ "numbers": {
+  "r1_emp_RA": {
+   "value": -0.09475218775565372,
+   "ci95": [
+    -0.16766310122066982,
+    -0.019463655480627107
+   ],
+   "note": "lag-1 autocorrelation of x/mean_block - 1 within state-season rule windows; state-cluster bootstrap B=1000",
+   "mode": "measured",
+   "seed": 20262021,
+   "pairs": 1523
+  },
+  "r1_emp_RA_D20": {
+   "value": -0.011300998298684164,
+   "mode": "measured",
+   "pairs": 1034
+  },
+  "r1_sim_M0_RA": {
+   "value": -0.07402962369696077,
+   "ci95": [
+    -0.1505936130336651,
+    0.014344816270009348
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.31,
+   "mean_D20": 0.03150467867274522
+  },
+  "r1_sim_ar025_RA": {
+   "value": 0.006632242642343949,
+   "ci95": [
+    -0.09800283892939986,
+    0.11783319399004738
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.03,
+   "mean_D20": 0.13079818087821204
+  },
+  "r1_sim_ar05_RA": {
+   "value": 0.07209428231226725,
+   "ci95": [
+    -0.03895615863658315,
+    0.22931666297332912
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.0,
+   "mean_D20": 0.2207334749364052
+  },
+  "r1_emp_G": {
+   "value": 0.12322545271640821,
+   "ci95": [
+    0.03940264169644168,
+    0.20064074546002456
+   ],
+   "note": "lag-1 autocorrelation of x/mean_block - 1 within state-season rule windows; state-cluster bootstrap B=1000",
+   "mode": "measured",
+   "seed": 20262022,
+   "pairs": 1532
+  },
+  "r1_emp_G_D20": {
+   "value": 0.16926950505475738,
+   "mode": "measured",
+   "pairs": 984
+  },
+  "r1_sim_M0_G": {
+   "value": 0.1135147416979995,
+   "ci95": [
+    0.025196634007697862,
+    0.2196477661213599
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.62,
+   "mean_D20": 0.21254079917627602
+  },
+  "r1_sim_ar025_G": {
+   "value": 0.19303694699733243,
+   "ci95": [
+    0.09656683685657899,
+    0.30366200839114854
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.1,
+   "mean_D20": 0.300040076727095
+  },
+  "r1_sim_ar05_G": {
+   "value": 0.2584902401853005,
+   "ci95": [
+    0.14633833985783523,
+    0.3903514647405179
+   ],
+   "note": "mean and 2.5-97.5% over simulated panels at v_R = 0.04",
+   "emp_percentile": 0.0,
+   "mean_D20": 0.3800781256190341
+  },
+  "phi_matched_RA": {
+   "value": 0.0,
+   "ci95": [
+    0.0,
+    0.16911946962273824
+   ],
+   "note": "phi at which the simulated mean r1 equals the empirical r1 (interpolation over phi 0/0.25/0.5, clamped to [0, 0.5]); interval maps the bootstrap interval of the empirical r1",
+   "sim_mean_r1": [
+    -0.07402962369696077,
+    0.006632242642343949,
+    0.07209428231226725
+   ]
+  },
+  "phi_matched_G": {
+   "value": 0.030528300183125624,
+   "ci95": [
+    0.0,
+    0.2790428414383048
+   ],
+   "note": "phi at which the simulated mean r1 equals the empirical r1 (interpolation over phi 0/0.25/0.5, clamped to [0, 0.5]); interval maps the bootstrap interval of the empirical r1",
+   "sim_mean_r1": [
+    0.1135147416979995,
+    0.19303694699733243,
+    0.2584902401853005
+   ]
+  },
+  "gi_cow_lo_RA_vR_implied": {
+   "value": 0.02564832021142868,
+   "ci95": [
+    0.01679063412953483,
+    0.036100433962799286
+   ],
+   "note": "true GI 2.9 d (Cowling 2009 lower bound)"
+  },
+  "gi_cow_lo_RA_ba_pooled_at_nearest_v": {
+   "value": 36.12658162389132,
+   "note": "true GI 2.9 d (Cowling 2009 lower bound)",
+   "nearest_v": 0.02,
+   "replicate_q95": [
+    23.149198028010126,
+    59.42820014436183
+   ],
+   "emp_percentile": 0.525,
+   "empirical": 37.44378641425474
+  },
+  "gi_cow_lo_G_vR_implied": {
+   "value": 0.027075055269436064,
+   "ci95": [
+    0.01580453149414781,
+    0.040095499390304
+   ],
+   "note": "true GI 2.9 d (Cowling 2009 lower bound)"
+  },
+  "gi_cow_lo_G_ba_pooled_at_nearest_v": {
+   "value": 21.22184536620261,
+   "note": "true GI 2.9 d (Cowling 2009 lower bound)",
+   "nearest_v": 0.02,
+   "replicate_q95": [
+    11.030243784925037,
+    39.839688324475354
+   ],
+   "emp_percentile": 0.58,
+   "empirical": 23.457417670225002
+  },
+  "od05_RA_vR_implied": {
+   "value": 0.03947389000159141,
+   "ci95": [
+    0.025740443993660902,
+    0.05518148884098195
+   ],
+   "note": "admissions VMR 1.5"
+  },
+  "od05_RA_ba_pooled_at_nearest_v": {
+   "value": 68.02839805704785,
+   "note": "admissions VMR 1.5",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    42.12625825671676,
+    103.51939080898235
+   ],
+   "emp_percentile": 0.0,
+   "empirical": 37.44378641425474
+  },
+  "od05_G_vR_implied": {
+   "value": 0.04442862676482845,
+   "ci95": [
+    0.026158157438322335,
+    0.06559416999473701
+   ],
+   "note": "admissions VMR 1.5"
+  },
+  "od05_G_ba_pooled_at_nearest_v": {
+   "value": 40.23526657162845,
+   "note": "admissions VMR 1.5",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    21.46437663410766,
+    65.36441922350413
+   ],
+   "emp_percentile": 0.035,
+   "empirical": 23.457417670225002
+  },
+  "od10_RA_vR_implied": {
+   "value": 0.03925911579569954,
+   "ci95": [
+    0.025832169199548904,
+    0.054756191334735346
+   ],
+   "note": "admissions VMR 2.0"
+  },
+  "od10_RA_ba_pooled_at_nearest_v": {
+   "value": 80.98280313514486,
+   "note": "admissions VMR 2.0",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    52.3143734790999,
+    125.71671404388903
+   ],
+   "emp_percentile": 0.0,
+   "empirical": 37.44378641425474
+  },
+  "od10_G_vR_implied": {
+   "value": 0.04491084899990389,
+   "ci95": [
+    0.026668180311916912,
+    0.066149418103893
+   ],
+   "note": "admissions VMR 2.0"
+  },
+  "od10_G_ba_pooled_at_nearest_v": {
+   "value": 48.39986921743835,
+   "note": "admissions VMR 2.0",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    27.635075676459692,
+    83.85675340708056
+   ],
+   "emp_percentile": 0.005,
+   "empirical": 23.457417670225002
+  },
+  "ar025_RA_vR_implied": {
+   "value": 0.03306477576280434,
+   "ci95": [
+    0.021330166297013575,
+    0.04667726600538041
+   ],
+   "note": "AR(1) phi = 0.25"
+  },
+  "ar025_RA_ba_pooled_at_nearest_v": {
+   "value": 23.424198801452302,
+   "note": "AR(1) phi = 0.25",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    14.22387424034993,
+    36.158647277129404
+   ],
+   "emp_percentile": 0.985,
+   "empirical": 37.44378641425474
+  },
+  "ar025_G_vR_implied": {
+   "value": 0.0330653450509936,
+   "ci95": [
+    0.018822683905581658,
+    0.04943504356894606
+   ],
+   "note": "AR(1) phi = 0.25"
+  },
+  "ar025_G_ba_pooled_at_nearest_v": {
+   "value": 12.567981468860705,
+   "note": "AR(1) phi = 0.25",
+   "nearest_v": 0.04,
+   "replicate_q95": [
+    5.369933837416387,
+    24.03211971335029
+   ],
+   "emp_percentile": 0.965,
+   "empirical": 23.457417670225002
+  },
+  "M0_RA_ba_pooled_v0.04": {
+   "value": 28.00454756162917,
+   "note": "data-matched M0, v_R = 0.04 (s09)"
+  },
+  "M0_G_ba_pooled_v0.04": {
+   "value": 16.216841783558042,
+   "note": "data-matched M0, v_R = 0.04 (s09)"
+  },
+  "vR_impl_RA_GI_2.9_to_4.3": {
+   "value": [
+    0.02564832021142868,
+    0.058146564326529794
+   ],
+   "note": "point v_R^impl when the true GI mean is at the lower (2.9 d, gi_cow_lo) and upper (4.3 d, s09 gi_long) end of the Cowling et al. (2009) 95% interval; analyst GI fixed at 3.6 d",
+   "ci_lo": [
+    0.01679063412953483,
+    0.036100433962799286
+   ],
+   "ci_hi": [
+    0.03793982751268602,
+    0.08132817182619216
+   ]
+  },
+  "vR_impl_G_GI_2.9_to_4.3": {
+   "value": [
+    0.027075055269436064,
+    0.06326157546111687
+   ],
+   "note": "point v_R^impl when the true GI mean is at the lower (2.9 d, gi_cow_lo) and upper (4.3 d, s09 gi_long) end of the Cowling et al. (2009) 95% interval; analyst GI fixed at 3.6 d",
+   "ci_lo": [
+    0.01580453149414781,
+    0.040095499390304
+   ],
+   "ci_hi": [
+    0.03688157587732905,
+    0.09454905638550173
+   ]
+  },
+  "latent_mcross_RA": {
+   "value": 30.314644035922772,
+   "ci95": [
+    21.746181994027996,
+    46.27763423258678
+   ],
+   "unit": "admissions per generation",
+   "note": "Proposition 1 at data-matched simulator values (Rbar_true, rho = admission probability 0.01, k = 0.35) and v_R^impl; interval from the v_R^impl draws (positive draws)",
+   "mode": "simulated",
+   "A": 1.216379218916469,
+   "Rbar_true": 1.1757368670137998,
+   "n_nonpositive": 0
+  },
+  "latent_mcross_RA_per_week": {
+   "value": 58.945141180960945,
+   "ci95": [
+    42.28424276616555,
+    89.9842887855854
+   ],
+   "unit": "admissions per week",
+   "note": "per-generation value x 7/3.6 generations per week",
+   "mode": "simulated"
+  },
+  "latent_mcross_G": {
+   "value": 28.310917735669776,
+   "ci95": [
+    18.987006051733722,
+    48.26209063376136
+   ],
+   "unit": "admissions per generation",
+   "note": "Proposition 1 at data-matched simulator values (Rbar_true, rho = admission probability 0.01, k = 0.35) and v_R^impl; interval from the v_R^impl draws (positive draws)",
+   "mode": "simulated",
+   "A": 1.2161872790351216,
+   "Rbar_true": 1.1754811590864234,
+   "n_nonpositive": 0
+  },
+  "latent_mcross_G_per_week": {
+   "value": 55.049006708246786,
+   "ci95": [
+    36.91917843392668,
+    93.84295401009153
+   ],
+   "unit": "admissions per week",
+   "note": "per-generation value x 7/3.6 generations per week",
+   "mode": "simulated"
+  },
+  "ratio_vR_RA_over_G_ci90": {
+   "value": 0.9340497536175243,
+   "ci95": [
+    0.7844426120632189,
+    1.176296692796168
+   ],
+   "note": "5-95% of the ratio draws (TOST at alpha = 0.05 on [0.8, 1.25] holds if the 90% interval is inside)",
+   "mode": "simulated",
+   "within_0_8_1_25": true
+  },
+  "tau_allowed_by_upper_share": {
+   "value": 0.04043173781663879,
+   "note": "tau with v_H/(v_R + v_H) equal to the one-sided 95% upper bound of the completeness share of a (reporting_regime.RA_rule4_delta_a_share), at the s07 theory baseline Rbar 1.15, v_R 0.04",
+   "mode": "analytic",
+   "upper_share": 0.05274579910316778
+  },
+  "lever_at_tau_allowed_total": {
+   "value": 15.223674668858111,
+   "unit": "1e-3",
+   "note": "Proposition 6 baseline T=10, m=50, phi=psi=0.5 at tau_allowed",
+   "mode": "analytic",
+   "rep_share": 0.03760601389696934,
+   "standardised": 14.647991071428573,
+   "cases_x10": 11.39902526592983
+  }
+ },
+ "blocks": {
+  "r1_empirical": {
+   "RA": {
+    "r1": -0.09475218775565372,
+    "r1_ci95": [
+     -0.16766310122066982,
+     -0.019463655480627107
+    ],
+    "pairs": 1523,
+    "r1_D20": -0.011300998298684164,
+    "pairs_D20": 1034
+   },
+   "G": {
+    "r1": 0.12322545271640821,
+    "r1_ci95": [
+     0.03940264169644168,
+     0.20064074546002456
+    ],
+    "pairs": 1532,
+    "r1_D20": 0.16926950505475738,
+    "pairs_D20": 984
+   }
+  },
+  "r1_simulated_v0.04": {
+   "ar025": {
+    "RA": {
+     "mean": 0.006632242642343949,
+     "q95": [
+      -0.09800283892939986,
+      0.11783319399004738
+     ],
+     "emp_percentile": 0.03,
+     "mean_D20": 0.13079818087821204
+    },
+    "G": {
+     "mean": 0.19303694699733243,
+     "q95": [
+      0.09656683685657899,
+      0.30366200839114854
+     ],
+     "emp_percentile": 0.1,
+     "mean_D20": 0.300040076727095
+    },
+    "n": 200
+   },
+   "gi_cow_lo": {
+    "RA": {
+     "mean": 0.005971827712391409,
+     "q95": [
+      -0.08349461903538366,
+      0.12003563598068485
+     ],
+     "emp_percentile": 0.025,
+     "mean_D20": 0.10364365677244763
+    },
+    "G": {
+     "mean": 0.18283792027762494,
+     "q95": [
+      0.09128531049234287,
+      0.29629392780706404
+     ],
+     "emp_percentile": 0.09,
+     "mean_D20": 0.2662152384538337
+    },
+    "n": 200
+   },
+   "od05": {
+    "RA": {
+     "mean": -0.17006765801511173,
+     "q95": [
+      -0.23333366015303655,
+      -0.09563854746573114
+     ],
+     "emp_percentile": 0.975,
+     "mean_D20": -0.07959635913131283
+    },
+    "G": {
+     "mean": -0.013615605329917315,
+     "q95": [
+      -0.09162309724720785,
+      0.07649896493437496
+     ],
+     "emp_percentile": 1.0,
+     "mean_D20": 0.09178277750230233
+    },
+    "n": 200
+   },
+   "od10": {
+    "RA": {
+     "mean": -0.1831384130335026,
+     "q95": [
+      -0.2467388526783486,
+      -0.10364896678104256
+     ],
+     "emp_percentile": 0.99,
+     "mean_D20": -0.10121548626708111
+    },
+    "G": {
+     "mean": -0.041019220429849776,
+     "q95": [
+      -0.10393438861598998,
+      0.03487410108523567
+     ],
+     "emp_percentile": 1.0,
+     "mean_D20": 0.058807559914399066
+    },
+    "n": 200
+   },
+   "M0": {
+    "RA": {
+     "mean": -0.07402962369696077,
+     "q95": [
+      -0.1505936130336651,
+      0.014344816270009348
+     ],
+     "emp_percentile": 0.31,
+     "mean_D20": 0.03150467867274522
+    },
+    "G": {
+     "mean": 0.1135147416979995,
+     "q95": [
+      0.025196634007697862,
+      0.2196477661213599
+     ],
+     "emp_percentile": 0.62,
+     "mean_D20": 0.21254079917627602
+    },
+    "n": 100
+   },
+   "ar05": {
+    "RA": {
+     "mean": 0.07209428231226725,
+     "q95": [
+      -0.03895615863658315,
+      0.22931666297332912
+     ],
+     "emp_percentile": 0.0,
+     "mean_D20": 0.2207334749364052
+    },
+    "G": {
+     "mean": 0.2584902401853005,
+     "q95": [
+      0.14633833985783523,
+      0.3903514647405179
+     ],
+     "emp_percentile": 0.0,
+     "mean_D20": 0.3800781256190341
+    },
+    "n": 100
+   },
+   "count_shock": {
+    "RA": {
+     "mean": -0.14603549581066796,
+     "q95": [
+      -0.2251456072100921,
+      -0.07607510695075236
+     ],
+     "emp_percentile": 0.86,
+     "mean_D20": -0.09074329274208198
+    },
+    "G": {
+     "mean": 0.04071630604792529,
+     "q95": [
+      -0.03251767748797486,
+      0.11626926797232187
+     ],
+     "emp_percentile": 0.99,
+     "mean_D20": 0.0913360175907079
+    },
+    "n": 100
+   },
+   "delay_long": {
+    "RA": {
+     "mean": -0.06975835182192217,
+     "q95": [
+      -0.15328941904014345,
+      0.033959464105242664
+     ],
+     "emp_percentile": 0.29,
+     "mean_D20": 0.049712142707269605
+    },
+    "G": {
+     "mean": 0.12068249723844048,
+     "q95": [
+      0.026942941243051174,
+      0.21581048034387895
+     ],
+     "emp_percentile": 0.52,
+     "mean_D20": 0.2320430427920282
+    },
+    "n": 100
+   },
+   "delay_short": {
+    "RA": {
+     "mean": -0.05419917249047864,
+     "q95": [
+      -0.122895495564517,
+      0.048303324737760334
+     ],
+     "emp_percentile": 0.16,
+     "mean_D20": 0.051920641455139804
+    },
+    "G": {
+     "mean": 0.12610129308298457,
+     "q95": [
+      0.03542728309898349,
+      0.2251077974307505
+     ],
+     "emp_percentile": 0.5,
+     "mean_D20": 0.22559592549719823
+    },
+    "n": 100
+   },
+   "gi_long": {
+    "RA": {
+     "mean": -0.13444505880346916,
+     "q95": [
+      -0.20590190802310288,
+      -0.0300613791490784
+     ],
+     "emp_percentile": 0.8,
+     "mean_D20": -0.031006761538867784
+    },
+    "G": {
+     "mean": 0.05140024530903319,
+     "q95": [
+      -0.03069281148890123,
+      0.16086229896147033
+     ],
+     "emp_percentile": 0.92,
+     "mean_D20": 0.16202572567036275
+    },
+    "n": 100
+   },
+   "gi_short": {
+    "RA": {
+     "mean": 0.09879870523455007,
+     "q95": [
+      -0.0020026380843885033,
+      0.22258716131475695
+     ],
+     "emp_percentile": 0.0,
+     "mean_D20": 0.17489638940049945
+    },
+    "G": {
+     "mean": 0.25058659205594225,
+     "q95": [
+      0.15599584300099376,
+      0.3633744937596202
+     ],
+     "emp_percentile": 0.0,
+     "mean_D20": 0.30223662063990653
+    },
+    "n": 100
+   },
+   "k01": {
+    "RA": {
+     "mean": -0.048793573962922186,
+     "q95": [
+      -0.14505616041183675,
+      0.07860416413759756
+     ],
+     "emp_percentile": 0.2,
+     "mean_D20": 0.041621163026906285
+    },
+    "G": {
+     "mean": 0.13950101124881764,
+     "q95": [
+      0.040068961327431665,
+      0.2545000724233337
+     ],
+     "emp_percentile": 0.36,
+     "mean_D20": 0.22272729178976897
+    },
+    "n": 100
+   },
+   "rho0": {
+    "RA": {
+     "mean": -0.07042600561080323,
+     "q95": [
+      -0.12384533594225808,
+      -0.018798614397567123
+     ],
+     "emp_percentile": 0.2,
+     "mean_D20": 0.03760711330296679
+    },
+    "G": {
+     "mean": 0.1190195208153017,
+     "q95": [
+      0.06888762781331184,
+      0.16447077592032314
+     ],
+     "emp_percentile": 0.59,
+     "mean_D20": 0.22151540606017195
+    },
+    "n": 100
+   },
+   "rho65": {
+    "RA": {
+     "mean": -0.06954515981677406,
+     "q95": [
+      -0.1769535707763271,
+      0.047539782417191576
+     ],
+     "emp_percentile": 0.38,
+     "mean_D20": 0.03682609983463023
+    },
+    "G": {
+     "mean": 0.11652849818713666,
+     "q95": [
+      0.011364654036627935,
+      0.23693284520418853
+     ],
+     "emp_percentile": 0.52,
+     "mean_D20": 0.21549839449457636
+    },
+    "n": 100
+   }
+  },
+  "new_settings": {
+   "gi_cow_lo": {
+    "label": "true GI 2.9 d (Cowling 2009 lower bound)",
+    "RA": {
+     "gamma0": 0.0007539071188993552,
+     "gamma1": 0.5536681913263785,
+     "v_implied": 0.02564832021142868,
+     "v_ci95": [
+      0.01679063412953483,
+      0.036100433962799286
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 36.12658162389132,
+      "0.04": 18.165560437403517,
+      "0.06": 12.165601202673939,
+      "0.09": 8.137263507107347
+     },
+     "ba_at_nearest_v": 36.12658162389132,
+     "nearest_v": 0.02,
+     "ba_rep_q95_at_nearest": [
+      23.149198028010126,
+      59.42820014436183
+     ],
+     "emp_ba_percentile_at_nearest": 0.525,
+     "b_mean_at_nearest": 0.42657008497310855
+    },
+    "G": {
+     "gamma0": 0.003589162706266072,
+     "gamma1": 2.970227041300687,
+     "v_implied": 0.027075055269436064,
+     "v_ci95": [
+      0.01580453149414781,
+      0.040095499390304
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 21.22184536620261,
+      "0.04": 10.401089633305647,
+      "0.06": 6.92988119372317,
+      "0.09": 4.883647668558909
+     },
+     "ba_at_nearest_v": 21.22184536620261,
+     "nearest_v": 0.02,
+     "ba_rep_q95_at_nearest": [
+      11.030243784925037,
+      39.839688324475354
+     ],
+     "emp_ba_percentile_at_nearest": 0.58,
+     "b_mean_at_nearest": 1.3311545978256545
+    },
+    "ratio_RA_over_G": {
+     "value": 0.9473044452242367,
+     "ci95": [
+      0.7896908923717837,
+      1.1865556207054406
+     ]
+    },
+    "agree": true
+   },
+   "od05": {
+    "label": "admissions VMR 1.5",
+    "RA": {
+     "gamma0": 0.0006110193976032453,
+     "gamma1": 0.36336795747111206,
+     "v_implied": 0.03947389000159141,
+     "v_ci95": [
+      0.025740443993660902,
+      0.05518148884098195
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 133.32199510794027,
+      "0.04": 68.02839805704785,
+      "0.06": 45.92186498471899,
+      "0.09": 31.854198095883135
+     },
+     "ba_at_nearest_v": 68.02839805704785,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      42.12625825671676,
+      103.51939080898235
+     ],
+     "emp_ba_percentile_at_nearest": 0.0,
+     "b_mean_at_nearest": 1.0437288118006283
+    },
+    "G": {
+     "gamma0": 0.003306765705265538,
+     "gamma1": 1.8164292750744393,
+     "v_implied": 0.04442862676482845,
+     "v_ci95": [
+      0.026158157438322335,
+      0.06559416999473701
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 78.66601863707776,
+      "0.04": 40.23526657162845,
+      "0.06": 27.514554317293538,
+      "0.09": 19.628779748357008
+     },
+     "ba_at_nearest_v": 40.23526657162845,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      21.46437663410766,
+      65.36441922350413
+     ],
+     "emp_ba_percentile_at_nearest": 0.035,
+     "b_mean_at_nearest": 3.1066543667911684
+    },
+    "ratio_RA_over_G": {
+     "value": 0.8884787326544287,
+     "ci95": [
+      0.7472140395279805,
+      1.1159981456866381
+     ]
+    },
+    "agree": true
+   },
+   "od10": {
+    "label": "admissions VMR 2.0",
+    "RA": {
+     "gamma0": 0.0005301973745088566,
+     "gamma1": 0.36741451033882083,
+     "v_implied": 0.03925911579569954,
+     "v_ci95": [
+      0.025832169199548904,
+      0.054756191334735346
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 160.98881362163155,
+      "0.04": 80.98280313514486,
+      "0.06": 56.00064904881135,
+      "0.09": 37.17410956508842
+     },
+     "ba_at_nearest_v": 80.98280313514486,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      52.3143734790999,
+      125.71671404388903
+     ],
+     "emp_ba_percentile_at_nearest": 0.0,
+     "b_mean_at_nearest": 1.2502188047067537
+    },
+    "G": {
+     "gamma0": 0.002088075491987356,
+     "gamma1": 1.8240614538470128,
+     "v_implied": 0.04491084899990389,
+     "v_ci95": [
+      0.026668180311916912,
+      0.066149418103893
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 96.78903498678073,
+      "0.04": 48.39986921743835,
+      "0.06": 34.263328676679826,
+      "0.09": 22.556443994484134
+     },
+     "ba_at_nearest_v": 48.39986921743835,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      27.635075676459692,
+      83.85675340708056
+     ],
+     "emp_ba_percentile_at_nearest": 0.005,
+     "b_mean_at_nearest": 3.700231815197354
+    },
+    "ratio_RA_over_G": {
+     "value": 0.8741566162729089,
+     "ci95": [
+      0.7336604968308923,
+      1.0867393026891181
+     ]
+    },
+    "agree": true
+   },
+   "ar025": {
+    "label": "AR(1) phi = 0.25",
+    "RA": {
+     "gamma0": 0.0009960574801267982,
+     "gamma1": 0.42215646042567334,
+     "v_implied": 0.03306477576280434,
+     "v_ci95": [
+      0.021330166297013575,
+      0.04667726600538041
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 44.6566341332252,
+      "0.04": 23.424198801452302,
+      "0.06": 15.364392254214724,
+      "0.09": 10.597432119676704
+     },
+     "ba_at_nearest_v": 23.424198801452302,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      14.22387424034993,
+      36.158647277129404
+     ],
+     "emp_ba_percentile_at_nearest": 0.985,
+     "b_mean_at_nearest": 0.4164672676319318
+    },
+    "G": {
+     "gamma0": 0.005965054876067339,
+     "gamma1": 2.360270821787272,
+     "v_implied": 0.0330653450509936,
+     "v_ci95": [
+      0.018822683905581658,
+      0.04943504356894606
+     ],
+     "ba_pooled_by_v": {
+      "0.02": 24.467970139404482,
+      "0.04": 12.567981468860705,
+      "0.06": 7.86963575156332,
+      "0.09": 5.422049078655509
+     },
+     "ba_at_nearest_v": 12.567981468860705,
+     "nearest_v": 0.04,
+     "ba_rep_q95_at_nearest": [
+      5.369933837416387,
+      24.03211971335029
+     ],
+     "emp_ba_percentile_at_nearest": 0.965,
+     "b_mean_at_nearest": 1.2550732711022017
+    },
+    "ratio_RA_over_G": {
+     "value": 0.9999827829351732,
+     "ci95": [
+      0.8331390220598335,
+      1.267738473392999
+     ]
+    },
+    "agree": true
+   }
+  }
+ }
+}
