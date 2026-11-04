@@ -38,9 +38,9 @@ The study investigates how case counts determine the statistical precision of ef
 ## Key Methodological Contributions
 
 1. **Taxonomy of Inferential Targets & Risk Structure**:
-   - *Current instantaneous value ($R_t$)*: Mean squared error $\operatorname{MSE} = A/m$ decays to zero inversely with expected case count $m$ under constant reporting.
-   - *Realised mean over $T$ observed periods ($\bar{R}_T$)*: $\operatorname{MSE} = A/(Tm)$, decaying strictly with total sample size without an environmental variance floor.
-   - *Super-population stationary process mean ($\bar{R}$)*: $\operatorname{MSE} = v_R/T + A/(Tm)$ (or $v_R S(\phi, T)/T^2 + A/(Tm)$ under AR(1) persistence), retaining between-period transmission variance $v_R$. Extra case volume per period cannot remove cross-period sampling variation.
+   - *Current instantaneous value ($R_t$)*: Mean squared error $\mathrm{MSE} = A/m$ decays to zero inversely with expected case count $m$ under constant reporting.
+   - *Realised mean over $T$ observed periods ($\bar{R}_T$)*: $\mathrm{MSE} = A/(Tm)$, decaying strictly with total sample size without an environmental variance floor.
+   - *Super-population stationary process mean ($\bar{R}$)*: $\mathrm{MSE} = v_R/T + A/(Tm)$ (or $v_R S(\phi, T)/T^2 + A/(Tm)$ under AR(1) persistence), retaining between-period transmission variance $v_R$. Extra case volume per period cannot remove cross-period sampling variation.
    - *Noisy denominator inflation*: When the denominator is itself an observed count $C_t$, sampling variance rises by $\sim 1.5\times$, shifting the empirical Bayes shrinkage half-weight scale $m_\times = A/v_R$ from 53.1 to 78.6.
 
 2. **Reporting Volatility and Non-Identifiability (Proposition 2)**:
