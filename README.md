@@ -1,64 +1,122 @@
-# 《Inferential targets for reproduction-number estimates》终版论文交付包
+# Inferential Targets for Reproduction-Number Estimates: Counting Error, Between-Period Variation and What Cross-Sectional Surveillance Diagnostics Measure
 
-本目录（`D:\trae\114\论文`）仅包含学术论文最终版的有效工作文件，已剥离所有中间审稿记录与答辩过程文件（历轮审稿意见与修改说明已归档至上级目录 `D:\trae\114\审稿档案`）。
+[![LaTeX Compilation](https://img.shields.io/badge/LaTeX-Tectonic%20%2F%20XeLaTeX-brightgreen.svg)]()
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-green.svg)]()
+
+This repository contains the replication codebase, empirical pipeline, and complete LaTeX manuscript for the paper:
+
+> **Inferential targets for reproduction-number estimates: counting error, between-period variation and what cross-sectional surveillance diagnostics measure**
+
+The study investigates how case counts determine the statistical precision of effective reproduction number ($R_t$) estimates under explicit branching processes, proves an information-theoretic non-identifiability boundary under fluctuating reporting, and provides a known-truth simulation audit evaluating what commonly used cross-sectional surveillance diagnostics actually measure on real-world epidemic designs.
 
 ---
 
-## 目录结构
+## Repository Structure
 
 ```
-D:\trae\114\论文\
-│
-├── paper.pdf                  # 【最终论文手稿】30页完整出版级 PDF（包含带 DOI 参考文献与完整附录，0 错误编译通过）
-├── paper.html                 # 【离线交互阅读版】自包含网页版手稿（离线内嵌高清图表与数学公式，浏览器双击即开）
-├── highlights.txt             # 【期刊投稿亮点】针对期刊投稿的 4 条核心学术贡献 Highlights
-├── README.md                  # 【本文档】论文结构与复现指南
-│
-├── paper/                     # 【LaTeX 排版源码包】可直接本地编译或打包上传 Overleaf / 期刊投稿系统
-│   ├── main.tex               # LaTeX 主入口文件
-│   ├── compile.sh             # 编译脚本
-│   ├── bibliography.bib       # 包含 38 条官方 Crossref DOI 的完整 BibTeX 文献数据库
-│   ├── unsrtnat-noid.bst      # BibTeX 参考文献排版样式文件
-│   ├── sections/              # 正文分章节源码（abstract, introduction, model, diagnostics 等 11 个模块）
-│   ├── figures/               # 出版级矢量图件（fig_01 ~ fig_07.pdf）
-│   └── tables/                # 自动渲染的数据表格源码（18 张 .tex 表格与 manifest.json）
-│
-└── experiment/                # 【计算实验与数据包】全量支持代码、输入数据与全套结果
-    ├── code/                  # Python 核心计算脚本（ma_audit.py, ma_extensions.py, s03*.py 等）
-    ├── analysis/              # 461 项估计值汇总 results.json 及子模型输出
-    └── data/                  # 真实流感面板数据与 SHA-256 校验清单（DATA_MANIFEST.md）
+.
+├── paper.pdf                  # Compiled 30-page manuscript PDF (clean, publication-ready)
+├── paper.html                 # Self-contained offline interactive HTML manuscript
+├── highlights.txt             # Four key scientific highlights for journal submission
+├── paper/                     # Complete LaTeX / BibTeX manuscript source package
+│   ├── main.tex               # Main LaTeX document entry point
+│   ├── compile.sh             # Build script
+│   ├── bibliography.bib       # Verified BibTeX database with official Crossref DOIs
+│   ├── unsrtnat-noid.bst      # BibTeX citation style with clickable DOI support
+│   ├── sections/              # Modular LaTeX section files (11 modules)
+│   ├── figures/               # High-resolution publication vector figures (PDF)
+│   └── tables/                # Programmatically rendered LaTeX tables (.tex)
+└── experiment/                # Reproducible computational pipeline and data
+    ├── code/                  # Python simulation, audit, and econometric scripts
+    ├── analysis/              # Results bundle (results.json) containing all 461 validated estimates
+    └── data/                  # Input datasets, vintage hospital admissions, and DATA_MANIFEST.md
 ```
 
 ---
 
-## 核心科学结论概要
+## Key Methodological Contributions
 
-1. **推断目标决定病例量价值**：
-   - 当期瞬时值 $R_t$ 的误差随病例数 $m$ 趋零；
-   - 有限期实现均值 $\bar{R}_T$ 的均方误差为 $A/(Tm)$，无环境方差底线；
-   - 过程均值 $\bar{R}$ 受跨期抽样限制，保留不可消除的环境变异底线 $v_R/T$；
-   - 观测分母带噪使得相对方差上升约 1.5 倍，收缩半权尺度由 53.1 升至 78.6。
-2. **报告波动的单期不可识别性（命题 2）**：
-   - 报告率波动留下不可消除的误差下限 $v_H$，单期横截面矩无法分离生物学传播变异与统计报告波动。
-3. **已知真值审计揭示诊断本质**：
-   - 截距 $a$ 回收的是与计数无关的相对离散度（实测 $0.0150$），而非估计误差底线；
-   - 构造 **S8 Combo**（尺度异质性 + 报告波动）成功同时再现了截距（0.0148）、交叉计数（41.7 覆盖实测 37.4）与斜率比（1.298 覆盖实测 1.257），且曲线对比值分位数提升至 8.0%；
-   - 上尾加权敏感性证实 P90 差异对截距回收影响 $<4\%$；四季截距在对数尺度 Wald 检验下未拒绝同质性（$W=5.52, p=0.138$）。
+1. **Taxonomy of Inferential Targets & Risk Structure**:
+   - *Current instantaneous value ($R_t$)*: Mean squared error $\operatorname{MSE} = A/m$ decays to zero inversely with expected case count $m$ under constant reporting.
+   - *Realised mean over $T$ observed periods ($\bar{R}_T$)*: $\operatorname{MSE} = A/(Tm)$, decaying strictly with total sample size without an environmental variance floor.
+   - *Super-population stationary process mean ($\bar{R}$)*: $\operatorname{MSE} = v_R/T + A/(Tm)$ (or $v_R S(\phi, T)/T^2 + A/(Tm)$ under AR(1) persistence), retaining between-period transmission variance $v_R$. Extra case volume per period cannot remove cross-period sampling variation.
+   - *Noisy denominator inflation*: When the denominator is itself an observed count $C_t$, sampling variance rises by $\sim 1.5\times$, shifting the empirical Bayes shrinkage half-weight scale $m_\times = A/v_R$ from 53.1 to 78.6.
+
+2. **Reporting Volatility and Non-Identifiability (Proposition 2)**:
+   - When period-specific reporting completeness varies with variance $\rho^2 \tau^2$, current-value risk retains an asymptotic reporting floor $v_H = \tau^2(\bar{R}^2 + v_R)$.
+   - Single-period count moments depend on transmission variance $v_R$ and reporting volatility $\tau$ only through $U = (1+\tau^2)(\bar{R}^2 + v_R)$, proving that cross-sectional count moments cannot separate biological transmission variation from reporting noise.
+
+3. **Known-Truth Diagnostic Audit on Real Surveillance Design**:
+   - Synthetic audits across 9 data-generating mechanisms on the real 1,748 state-week design demonstrate that fitted affine dispersion intercepts ($a \approx 0.0150$) recover count-independent relative dispersion ($v_R$ under constant reporting; $v_R + v_H$ under volatile reporting) rather than an estimation-error floor.
+   - Counting slopes, slope ratios to Poisson benchmarks, and binomial thinning responses do not separate offspring overdispersion from under-reporting.
+   - Incorporating moderate scale-dependent heterogeneity with reporting shocks (S8 Combo) simultaneously reconciles the observed intercept ($0.0148$), crossover count ($41.7$, covering observed $37.4$), slope ratio ($1.298$, covering $1.257$), and curve contrast ($p=0.080$).
 
 ---
 
-## 本地编译指南
+## Replication & Build Instructions
 
-- **使用 Tectonic 编译**：
-  ```bash
-  cd "D:\trae\114\论文\paper"
-  tectonic main.tex
-  ```
-- **使用 XeLaTeX / BibTeX 编译**：
-  ```bash
-  cd "D:\trae\114\论文\paper"
-  xelatex -interaction=nonstopmode main.tex
-  bibtex main
-  xelatex -interaction=nonstopmode main.tex
-  xelatex -interaction=nonstopmode main.tex
-  ```
+### Building the Manuscript PDF
+
+The manuscript can be compiled cleanly using [Tectonic](https://tectonic-typesetting.github.io/) or standard XeLaTeX / BibTeX:
+
+```bash
+# Option 1: Compile with Tectonic (recommended, 0 dependencies)
+cd paper
+tectonic main.tex
+
+# Option 2: Compile with XeLaTeX / BibTeX
+cd paper
+xelatex -interaction=nonstopmode main.tex
+bibtex main
+xelatex -interaction=nonstopmode main.tex
+xelatex -interaction=nonstopmode main.tex
+```
+
+### Reproducing Computational Experiments
+
+Python 3.11 with pinned dependencies (`experiment/code/requirements.txt`):
+
+```bash
+cd experiment/code
+python -m pip install -r requirements.txt
+
+# Run the known-truth audit across simulation generators (S0 to S8)
+python ma_audit.py
+
+# Run state fixed effects, dual Poisson baselines, and formal season tests
+python ma_extensions.py
+
+# Run exact binomial thinning summation
+python ma_thinning_exact.py
+
+# Render tables and compile results bundle
+python ma_render.py
+```
+
+All 461 numerical estimates cited in the text and supplementary tables are programmatically verified and exported to `experiment/analysis/results.json`.
+
+---
+
+## Data Availability
+
+Analyses utilize weekly jurisdiction-level influenza hospital admissions from the National Healthcare Safety Network (NHSN) frozen vintage as of October 20, 2026. Data integrity hashes and schemas are documented in `experiment/data/DATA_MANIFEST.md` and `experiment/data/data_contract.md`.
+
+---
+
+## Citation
+
+```bibtex
+@article{wang2026inferential,
+  title={Inferential targets for reproduction-number estimates: counting error, between-period variation and what cross-sectional surveillance diagnostics measure},
+  author={Wang, Chi and collaborators},
+  journal={Working Paper / Under Review},
+  year={2026}
+}
+```
+
+---
+
+## License
+
+This repository is distributed under the MIT License. See [LICENSE](LICENSE) for details.
