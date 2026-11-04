@@ -1,0 +1,29 @@
+\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}@{}}
+\caption{Small-count variance of the log thinned count relative to the delta approximation}\label{tab:ma_varlog}\\
+\toprule
+C & q = 0.8 & q = 0.6 & q = 0.5 & q = 0.4 & q = 0.3 & q = 0.2 & q = 0.1 \\
+\midrule
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{(continued)}}\\
+\toprule
+C & q = 0.8 & q = 0.6 & q = 0.5 & q = 0.4 & q = 0.3 & q = 0.2 & q = 0.1 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{(continued on next page)}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+5 & 1.05 & 1.11 & 1.11 & 1.04 & 0.86 & 0.57 & 0.21 \\
+10 & 1.02 & 1.05 & 1.08 & 1.12 & 1.13 & 0.99 & 0.53 \\
+20 & 1.01 & 1.02 & 1.03 & 1.05 & 1.09 & 1.14 & 0.97 \\
+45 & 1.00 & 1.01 & 1.01 & 1.02 & 1.03 & 1.06 & 1.14 \\
+100 & 1.00 & 1.00 & 1.01 & 1.01 & 1.01 & 1.02 & 1.06 \\
+500 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.01 \\
+\end{longtable}
+\vspace{-.5\baselineskip}
+\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
+Exact added variance Var log(Bin(C, q) + 0.5) - Var log(C + 0.5) divided by the delta value (1 - q)/(qC). Values below 1 mean that thinning adds less variance than the delta method assumes.
+\end{minipage}\par
+\endgroup

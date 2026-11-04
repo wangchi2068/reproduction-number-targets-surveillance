@@ -342,9 +342,9 @@ def pooled_table(i, lang):
         for metric in ("a", "b", "ratio"):
             rows.append([stat, metric if metric != "ratio" else "b/a", shown(d.get("n")), estimate(d.get(metric)), draws_text(d.get(metric))])
             failures.append((f"{stat} {metric}", d.get(metric)))
-    notes = [tr(lang, "Signed percentile intervals; ratios are defined only for positive denominators. Finite-draw counts are retained for every estimate.",
-                "有符号百分位区间；比值只在分母为正时定义。逐项保留有限重抽样次数。"), failure_notes(failures, lang)]
-    return tr(lang, "Pooled affine loss fits and generation-interval sensitivities", "合并仿射损失拟合与代际间隔敏感性"), [tr(lang, "Statistic", "统计量"), tr(lang, "Parameter", "参数"), "n", tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B")], rows, notes, False
+    notes = [tr(lang, "Pooled rows: primary bootstrap (2,000 draws); the same state-week weights are used for every statistic and generation interval. Signed percentile intervals; ratios are defined only for positive denominators. Finite-draw counts are retained for every estimate.",
+                "合并行：主自助抽样（2000 次）；各统计量与代际间隔使用同一组州周权重。有符号百分位区间；比值只在分母为正时定义。逐项保留有限重抽样次数。"), failure_notes(failures, lang)]
+    return tr(lang, "Pooled affine loss fits and generation-interval sensitivities (bootstrap 95% confidence interval in brackets)", "合并仿射损失拟合与代际间隔敏感性（括号内为 bootstrap 95% 置信区间）"), [tr(lang, "Statistic", "统计量"), tr(lang, "Parameter", "参数"), "n", tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B")], rows, notes, False
 
 
 def cv_table(i, lang):
@@ -384,13 +384,13 @@ def thinning_table(i, lang):
     meta = i.get("thinning", "metadata", default={})
     diag = i.get("thinning", "fit_diagnostics", default={})
     mc = mc_summary(i)
-    notes = [tr(lang, "Per-q intervals are pointwise; the separate bands are simultaneous over q within each subset. full uses all q; noq01 excludes q=0.1. highCt50 requires original current count >=50; both50 requires both original adjacent counts >=50. c is the slope increment per (1/q-1); bP is the plug-in Poisson reference.",
-                "逐q区间为点态区间；单列包络为各子集中跨q的同时区间。full使用全部q；noq01排除q=0.1。highCt50要求原当期计数>=50；both50要求原相邻两期计数均>=50。c为每(1/q-1)的斜率增量；bP为代入式泊松参照。"),
+    notes = [tr(lang, "Per-q intervals are pointwise; the separate bands are simultaneous over q within each subset. full uses all q; noq01 excludes q=0.1. highCt50 requires original current count >=50; both50 requires both original adjacent counts >=50. c is the slope increment per (1/q-1); bP is the independent-Poisson reference (plug-in delta value).",
+                "逐q区间为点态区间；单列包络为各子集中跨q的同时区间。full使用全部q；noq01排除q=0.1。highCt50要求原当期计数>=50；both50要求原相邻两期计数均>=50。c为每(1/q-1)的斜率增量；bP为独立泊松参照（代入式 delta 值）。"),
              f"B={shown(meta.get('bootstrap'))}; R(point)={shown(meta.get('point_reps'))}; R(inner, actual)={shown(meta.get('inner_reps'))}; "
              f"precision criterion: MC SE at most {shown(i.get('thinning', 'monte_carlo', 'tolerance'))} times the point estimate, applied to the five monitored response summaries; "
              f"max finite MC SE/|point| over all stored metrics={shown(mc['maximum'])}; "
              f"max finite MC SE/sampling SE over all stored metrics={shown(mc['max_mc_over_sampling'])}; "
-             f"undefined MC ratios={mc['undefined_metrics']}/{mc['n_metrics']}; MC status={mc['text']}.",
+             f"undefined MC ratios={mc['undefined_metrics']}/{mc['n_metrics']}.",
              f"Point fits {shown(diag.get('point_converged'))}/{shown(diag.get('point_attempted'))}; "
              f"bootstrap fits {shown(diag.get('bootstrap_converged'))}/{shown(diag.get('bootstrap_attempted'))}; "
              f"failed bootstrap averages={shown(diag.get('failed_bootstrap_averages'))}.",
@@ -407,8 +407,10 @@ def fe_table(i, lang):
                     ("a_median", "State FE median a"), ("r_median", "State FE b/median a"),
                     ("a_row", "State FE row-weighted a"), ("r_row", "State FE row-weighted ratio"),
                     ("a_case", "State FE count-weighted a"), ("r_case", "State FE count-weighted ratio"),
-                    ("state_D_b", "True D_t b"), ("state_D_mean", "True D_t mean a"),
-                    ("state_D_ratio", "True D_t ratio"), ("paired_ratio", "Paired pooled/FE ratio"))
+                    ("state_D_b", "D_t scale b"), ("state_D_mean", "D_t scale mean a"),
+                    ("state_D_ratio", "D_t scale ratio"), ("slope_ratio", "Slope ratio (pooled b / state FE b)"),
+                    ("intercept_ratio", "Intercept ratio (state FE mean a / pooled a)"),
+                    ("paired_ratio", "Cross-count ratio (pooled b/a / state FE b/mean a)"))
     for source in ("fixed_effects", "block2", "block3"):
         if source not in i.data:
             if source != "fixed_effects":
@@ -424,9 +426,9 @@ def fe_table(i, lang):
         d = i.get("fixed_effects", "diagnostics", key, default={})
         rows.append([tr(lang, "Point diagnostic", "点估计诊断"), key, "b=" + shown(d.get("b")) if d.get("converged") else tr(lang, "Unavailable", "不可用"),
                      tr(lang, "No CI", "无区间"), str(d.get("failure") or d.get("method", "unavailable"))])
-    notes.insert(0, tr(lang, "Sample: the R_A specification, n=1748 state-weeks in 51 jurisdictions; the G sample is not used here. Intervals retain signed draws and are conditional on finite estimates when finite/B < 1. Last column gives the nonpositive fraction over all requested draws. FE targets the sampled state occurrences; pooled/FE comparisons are paired within draws. L denotes the within-season week-block length. Week-only and state-and-week fits are point diagnostics; failed fits have no estimate or interval. Pooled rows here use this table's own 1000-draw bootstrap and can differ slightly from the primary 2000-draw interval in Table S1.",
-                         "样本为 $R_A$ 规格的 1748 个州周、51 个辖区；本表不使用 $G$ 样本。区间保留有符号重抽样；有限/B<1时，区间以有限估计为条件。末列为全部请求重抽样中的非正比例。FE以抽中的州出现次数为目标；合并/FE比较在重抽样内配对。L为季内周块长度。仅周和州加周拟合为点估计诊断，失败时无估计或区间。本表合并行使用本表自身的 1000 次自助抽样，可能与表 S1 的 2000 次主区间略有差异。"))
-    return tr(lang, "Fixed effects for the R_A sample (n=1748): paired ratios, block sensitivity and convergence", "R_A 样本（n=1748）的固定效应：配对比值、周块敏感性与收敛"), [tr(lang, "Block", "周块"), tr(lang, "Parameter", "参数"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B"), tr(lang, "Nonpositive / diagnostic", "非正比例/诊断")], rows, notes, True
+    notes.insert(0, tr(lang, "Sample: the R_A specification, n=1748 state-weeks in 51 jurisdictions; the G sample is not used here. Intervals retain signed draws and are conditional on finite estimates when finite/B < 1. Last column gives the nonpositive fraction over all requested draws. FE targets the sampled state occurrences; pooled and FE quantities are computed on the same draw. Cross-count ratio = slope ratio x intercept ratio. L denotes the within-season week-block length. Week-only and state-and-week fits are point diagnostics; failed fits have no estimate or interval. L=1 uses the primary bootstrap (2,000 draws, the weights of Table S1). L=2 and L=3 use 1,000 draws each, and their ratios use the week-block bootstrap. Pooled row: primary bootstrap (2,000 draws).",
+                         "样本为 $R_A$ 规格的 1748 个州周、51 个辖区；本表不使用 $G$ 样本。区间保留有符号重抽样；有限/B<1时，区间以有限估计为条件。末列为全部请求重抽样中的非正比例。FE以抽中的州出现次数为目标；合并与FE量在同一次重抽样上计算。跨计数比=斜率比×截距比。L为季内周块长度。仅周和州加周拟合为点估计诊断，失败时无估计或区间。L=1 使用主自助抽样（2000 次，与表 S1 权重相同）；L=2、3 各 1000 次，其合并行同样取自主自助抽样（2000 次），比值使用周块自助抽样。"))
+    return tr(lang, "Cross-count ratios (pooled b/a over state fixed-effects b/a), slope ratios and intercept ratios for the R_A sample (n=1748), with week-block sensitivity and convergence", "R_A 样本（n=1748）的跨计数比（合并 b/a 与州固定效应 b/a 之比）、斜率比与截距比，含周块敏感性与收敛"), [tr(lang, "Block", "周块"), tr(lang, "Parameter", "参数"), tr(lang, "Estimate [95% CI]", "估计值 [95% CI]"), tr(lang, "Finite/B", "有限/B"), tr(lang, "Nonpositive / diagnostic", "非正比例/诊断")], rows, notes, True
 
 
 def centering_table(i, lang):
@@ -440,8 +442,8 @@ def centering_table(i, lang):
         for key in ("week_change", "week_reduction_fraction"):
             d = i.get("empirical", "centering", stat, key, default={})
             rows.append([stat + " / " + key, shown(normalizer), estimate(d, scale=100 if key.endswith("fraction") else 1), "--", draws_text(d)])
-    notes = [tr(lang, "All five centers use the same pooled mean as the relative-loss denominator within each statistic; the denominator is refitted with weights within each bootstrap draw. week_leave_state_out removes the focal state from its weekly center. Reduction is 100*(a_pooled-a_week)/a_pooled, in percent; changes are descriptive and not additive variance components. Intervals here use this table's own 1000-draw bootstrap and can differ slightly from the primary 2000-draw interval in Table S1.",
-                "同一统计量的五种中心均使用相同合并均值作为相对损失分母；每次重抽样用权重重新拟合该分母。week_leave_state_out的周中心排除本州。减少比例为100*(a_pooled-a_week)/a_pooled，单位为百分比；这些是描述性变化，并非可加总方差分量。本表区间使用自身的 1000 次自助抽样，可能与表 S1 的 2000 次主区间略有差异。"), failure_notes(checks, lang)]
+    notes = [tr(lang, "All five centers use the same pooled mean as the relative-loss denominator within each statistic; the denominator is refitted with weights within each bootstrap draw. week_leave_state_out removes the focal state from its weekly center. Reduction is 100*(a_pooled-a_week)/a_pooled, in percent; changes are descriptive and not additive variance components. Pooled-centre rows: primary bootstrap (2,000 draws, as in Table S1); the other centres and the week change use this table's own 1000-draw bootstrap.",
+                "同一统计量的五种中心均使用相同合并均值作为相对损失分母；每次重抽样用权重重新拟合该分母。week_leave_state_out的周中心排除本州。减少比例为100*(a_pooled-a_week)/a_pooled，单位为百分比；这些是描述性变化，并非可加总方差分量。合并中心行取自主自助抽样（2000 次，同表 S1）；其余中心与周变化使用本表自身的 1000 次自助抽样。"), failure_notes(checks, lang)]
     return tr(lang, "Centering stages with a common loss normalizer", "采用共同损失分母的中心化阶段"), [tr(lang, "Statistic / center", "统计量/中心"), tr(lang, "Pooled mean", "合并均值"), "a / " + tr(lang, "change [95% CI]", "变化 [95% CI]"), "b [95% CI]", tr(lang, "Finite/B", "有限/B")], rows, notes, True
 
 
@@ -501,13 +503,20 @@ def secondary_table(i, lang):
         rows.append([stat + " / " + tr(lang, "reporting adjustment", "报告调整"), shown(d.get("n")),
                      estimate(d.get("delta_original_minus_adjusted")), shown(d.get("original_a")),
                      shown(d.get("adjusted_a")), draws_text(d.get("delta_original_minus_adjusted"))])
+    notes = [tr(lang, "Season rows report a with its interval and b, b/a as point estimates only. Reporting-adjustment rows use the a column for original-minus-adjusted a [95% CI], b for original a, and b/a for adjusted a; the original normalizer is fixed. Season b and b/a come from separate per-season fits without a stored bootstrap; season b/a with intervals from a common-slope model are given in the season table. Summer rows are reported in a separate table.",
+                "季节行报告a及其区间，b与b/a仅为点估计。报告调整行的a列为原值减调整后a [95% CI]，b列为原a，b/a列为调整后a；保持原分母不变。季节 b 与 b/a 来自不存储自助抽样的分季拟合；带区间的季节 b/a（共同斜率模型）见季节表。夏季行另列一表。"), failure_notes(failures, lang)]
+    return tr(lang, "Season-specific fits and reporting participation sensitivity", "分季拟合与报告参与率敏感性"), [tr(lang, "Statistic / period", "统计量/时期"), "n", "a / " + tr(lang, "change [95% CI]", "变化 [95% CI]"), "b / " + tr(lang, "original a", "原a"), "b/a / " + tr(lang, "adjusted a", "调整a"), tr(lang, "Finite/B", "有限/B")], rows, notes, True
+
+
+def summer_table(i, lang):
+    rows = []
     for year, d in i.get("secondary", "summer", default={}).items():
         if isinstance(d, dict):
             rows.append([tr(lang, "Summer ", "夏季 ") + year, shown(d.get("n")), shown(d.get("median_count_scale")),
-                         shown(d.get("coverage_median")), shown(d.get("iqr_logG")), "--"])
-    notes = [tr(lang, "Season rows report a with its interval and b, b/a as point estimates only. Reporting-adjustment rows use the a column for original-minus-adjusted a [95% CI], b for original a, and b/a for adjusted a; the original normalizer is fixed. Summer rows use these columns for median count scale, median reporting participation (%) and IQR(log G). The single voluntary summer is descriptive, not a causal or independent replicated intervention.",
-                "季节行报告a及其区间，b与b/a仅为点估计。报告调整行的a列为原值减调整后a [95% CI]，b列为原a，b/a列为调整后a；保持原分母不变。夏季行相应三列为计数尺度中位数、报告参与率中位数(%)及IQR(log G)。唯一自愿报告夏季仅作描述，不作因果或独立重复干预解释。"), failure_notes(failures, lang)]
-    return tr(lang, "Season-specific fits and reporting participation sensitivity", "分季拟合与报告参与率敏感性"), [tr(lang, "Statistic / period", "统计量/时期"), "n", "a / " + tr(lang, "change [95% CI]", "变化 [95% CI]"), "b / " + tr(lang, "original a", "原a"), "b/a / " + tr(lang, "adjusted a", "调整a"), tr(lang, "Finite/B", "有限/B")], rows, notes, True
+                         shown(d.get("coverage_median")), shown(d.get("iqr_logG"))])
+    notes = [tr(lang, "Descriptive summaries of May-October state-weeks with D_t >= 5: rows, median count scale D_t, median reporting participation (%) and IQR of log G. No model is fitted, so no interval is given. Reporting was voluntary in the 2024 summer only; that contrast is descriptive, not a causal or independently replicated intervention.",
+                "5-10 月且 D_t>=5 的州周的描述性汇总：行数、计数尺度 D_t 中位数、报告参与率中位数(%)与 log G 的四分位距。未拟合模型，故不给区间。仅 2024 年夏季为自愿报告；该对比仅作描述，不作因果或独立重复干预解释。")]
+    return tr(lang, "Off-season summer descriptors", "非流行季夏季描述"), [tr(lang, "Period", "时期"), "n", tr(lang, "Median count scale", "计数尺度中位数"), tr(lang, "Median participation (%)", "参与率中位数(%)"), "IQR(log G)"], rows, notes, False
 
 
 TABLE_BUILDERS = (pooled_table, cv_table, thinning_table, fe_table, centering_table, calibration_table, design_table, secondary_table)
@@ -518,7 +527,7 @@ TABLE_INPUTS = (("empirical",), ("empirical",), ("thinning",), ("fixed_effects",
 def font_config(lang):
     from matplotlib import font_manager
     installed = {f.name for f in font_manager.fontManager.ttflist}
-    latin = next((name for name in ("Times New Roman", "Times", "DejaVu Serif") if name in installed), "DejaVu Serif")
+    latin = next((name for name in ("Times New Roman", "Times", "Liberation Serif", "DejaVu Serif") if name in installed), "DejaVu Serif")
     cjk = next((name for name in ("SimSun", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif SC") if name in installed), None)
     if lang == "zh" and cjk is None:
         raise RenderError("Chinese PDF rendering requires SimSun or Noto Serif CJK SC (discovered through matplotlib.font_manager)")
@@ -527,7 +536,7 @@ def font_config(lang):
             "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
             "axes.spines.top": False, "axes.spines.right": False, "axes.linewidth": .7,
             "lines.linewidth": 1.3, "lines.markersize": 3.5, "pdf.fonttype": 42, "ps.fonttype": 42,
-            "mathtext.fontset": "dejavuserif", "text.usetex": False, "axes.unicode_minus": False,
+            "mathtext.fontset": "stix", "text.usetex": False, "axes.unicode_minus": False,
             "savefig.facecolor": "white"}, {"latin": latin, "cjk": cjk}
 
 
@@ -564,7 +573,7 @@ def fig_targets(i, lang, plt, np):
     checks = i.get("theory", "checks", default=[])
     finite_checks = i.get("theory", "finite_mean_checks", default=[])
     titles = [tr(lang, "Inferential targets", "推断目标"), tr(lang, "Reporting variation", "报告波动"),
-              tr(lang, "Exact and Monte Carlo", "解析值与蒙特卡洛"), tr(lang, "Finite realized mean", "有限期实现均值")]
+              tr(lang, "Exact and Monte Carlo", "解析值与蒙特卡洛"), tr(lang, "Realised mean", "有限期实现均值")]
     for ax, letter, title in zip(axes.flat, "ABCD", titles): panel_title(ax, letter, title)
     if not checks or not finite_checks:
         for ax in axes.flat: unavailable(ax, lang, "theory.json")
@@ -575,16 +584,16 @@ def fig_targets(i, lang, plt, np):
     T = finite_checks[0]["T"]
     ax = axes[0, 0]
     x = [r["m"] for r in current]
-    ax.loglog(x, [r["analytic"] for r in current], color=COLORS[0], label=tr(lang, "Current period", "当期值"))
-    ax.loglog(x, [r["analytic"] / T for r in current], "--", color=COLORS[1], label=tr(lang, "Finite mean", "有限期均值") + f" (T={T})")
-    ax.loglog(x, [process[r["m"]]["analytic"] / T for r in current], "-.", color=COLORS[2], label=tr(lang, "Process mean", "过程均值") + f" (T={T})")
-    ax.set_xlabel(tr(lang, "Expected count m", "期望计数 m")); ax.set_ylabel("MSE"); ax.legend(frameon=False)
+    ax.loglog(x, [r["analytic"] for r in current], color=COLORS[0], label=tr(lang, "Current value", "当期值"))
+    ax.loglog(x, [r["analytic"] / T for r in current], "--", color=COLORS[1], label=tr(lang, "Realised mean", "有限期均值") + f" ($T={T}$)")
+    ax.loglog(x, [process[r["m"]]["analytic"] / T for r in current], "-.", color=COLORS[2], label=tr(lang, "Process mean", "过程均值") + f" ($T={T}$)")
+    ax.set_xlabel(tr(lang, "Expected count $m$", "期望计数 m")); ax.set_ylabel("MSE"); ax.legend(frameon=False)
     ax = axes[0, 1]
     for j, tau in enumerate(sorted({r["tau"] for r in checks})):
         rows = sorted((r for r in checks if r["target"] == "current" and r["tau"] == tau), key=lambda r: r["m"])
         ax.loglog([r["m"] for r in rows], [r["analytic"] for r in rows], linestyle=("-", "--", "-.")[j % 3],
-                  color=COLORS[j % len(COLORS)], label="tau=" + number(tau))
-    ax.set_xlabel(tr(lang, "Expected count m", "期望计数 m")); ax.set_ylabel(tr(lang, "Current-target MSE", "当期目标 MSE")); ax.legend(frameon=False)
+                  color=COLORS[j % len(COLORS)], label=r"$\tau=$" + number(tau))
+    ax.set_xlabel(tr(lang, "Expected count $m$", "期望计数 m")); ax.set_ylabel(tr(lang, "Current-target MSE", "当期目标 MSE")); ax.legend(frameon=False)
     ax = axes[1, 0]
     values = []
     for j, target in enumerate(("current", "process")):
@@ -592,23 +601,23 @@ def fig_targets(i, lang, plt, np):
         exact = np.array([r["analytic"] for r in rows]); simulated = np.array([r["monte_carlo"] for r in rows])
         se = np.array([r["mc_se"] for r in rows])
         ax.errorbar(exact, simulated, yerr=1.96 * se, fmt=("o", "s")[j], ms=2.5, alpha=.75, color=COLORS[j],
-                    label=tr(lang, target, "当期" if target == "current" else "过程"), elinewidth=.6)
+                    label=tr(lang, "Current value" if target == "current" else "Process mean", "当期" if target == "current" else "过程"), elinewidth=.6)
         values.extend(exact); values.extend(simulated)
     ax.plot([min(values), max(values)], [min(values), max(values)], ":", color="#555555")
     ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlabel(tr(lang, "Exact MSE", "解析 MSE")); ax.set_ylabel(tr(lang, "MC MSE (±1.96 MC SE)", "MC MSE (±1.96 MC标准误)")); ax.legend(frameon=False)
     ax = axes[1, 1]
     for j, tau in enumerate(sorted({r["tau"] for r in finite_checks})):
         rows = sorted((r for r in finite_checks if r["tau"] == tau), key=lambda r: r["m"])
-        ax.loglog([r["m"] for r in rows], [r["analytic"] for r in rows], color=COLORS[j], linestyle=("-", "--")[j % 2], label="tau=" + number(tau))
+        ax.loglog([r["m"] for r in rows], [r["analytic"] for r in rows], color=COLORS[j], linestyle=("-", "--")[j % 2], label=r"$\tau=$" + number(tau))
         ax.errorbar([r["m"] for r in rows], [r["monte_carlo"] for r in rows], yerr=[1.96 * r["mc_se"] for r in rows], fmt="o", color=COLORS[j], ms=3)
-    ax.set_xlabel(tr(lang, "Expected count m", "期望计数 m")); ax.set_ylabel(f"MSE (T={T})"); ax.legend(frameon=False)
+    ax.set_xlabel(tr(lang, "Expected count $m$", "期望计数 m")); ax.set_ylabel(f"MSE ($T={T}$)"); ax.legend(frameon=False)
     return fig
 
 
 def fig_models(i, lang, plt, np):
     fig, axes = plt.subplots(2, 2, figsize=(7.15, 5.5), constrained_layout=True)
     for j, stat in enumerate(("RA", "G")):
-        ax = axes[0, j]; panel_title(ax, "AB"[j], stat + " / " + tr(lang, "observed support", "观测支持域"))
+        ax = axes[0, j]; panel_title(ax, "AB"[j], {"RA": "$R_A$", "G": "$G$"}[stat] + " / " + tr(lang, "observed support", "观测支持域"))
         d = i.get("empirical", "pooled", stat, default={}); bins = d.get("bins", [])
         if not bins:
             unavailable(ax, lang, "empirical.json pooled." + stat); continue
@@ -620,7 +629,7 @@ def fig_models(i, lang, plt, np):
             ax.plot(grid, fit["a"] + fit["b"] / grid, color=COLORS[0], label=tr(lang, "Affine", "仿射"))
         if power.get("converged") and finite(power.get("coefficient")) and finite(power.get("exponent")):
             ax.plot(grid, power["coefficient"] * grid ** (-power["exponent"]), "--", color=COLORS[1], label=tr(lang, "Power", "幂律"))
-        ax.set_xscale("log"); ax.set_xlabel(tr(lang, "Count scale D (bin means)", "计数尺度 D（箱均值）")); ax.set_ylabel(tr(lang, "Relative squared loss", "相对平方损失")); ax.legend(frameon=False)
+        ax.set_xscale("log"); ax.set_xlabel(tr(lang, "Count scale $D$ (bin means)", "计数尺度 D（箱均值）")); ax.set_ylabel(tr(lang, "Relative squared loss", "相对平方损失")); ax.legend(frameon=False)
     for j, axis in enumerate(("season", "state")):
         ax = axes[1, j]; panel_title(ax, "CD"[j], tr(lang, "Leave-one-" + axis + " validation", "留一" + ("季" if axis == "season" else "州") + "验证"))
         groups = sorted({str(f["fold"]) for stat in ("RA", "G") for f in i.get("empirical", "validation", stat, axis, "folds", default=[])})
@@ -631,11 +640,11 @@ def fig_models(i, lang, plt, np):
                 f = by_fold.get(group, {})
                 if f.get("converged_and_positive") and finite(f.get("power_minus_affine")):
                     pos.append(n + (k - .5) * .17); diffs.append(f["power_minus_affine"])
-            ax.plot(pos, diffs, ("o", "s")[k], color=COLORS[k], label=stat, ms=3)
+            ax.plot(pos, diffs, ("o", "s")[k], color=COLORS[k], label={"RA": "$R_A$", "G": "$G$"}[stat], ms=3)
         ax.axhline(0, color="#555555", linewidth=.8)
-        ax.set_ylabel(tr(lang, "Power − affine score", "幂律 − 仿射评分")); ax.set_xlabel(tr(lang, "Held-out " + axis + " (positive favors affine)", "留出" + ("季" if axis == "season" else "州") + "（正值偏向仿射）"))
+        ax.set_ylabel(tr(lang, "Power − affine score", "幂律 − 仿射评分")); ax.set_xlabel(tr(lang, "Held-out " + axis + (" (alphabetical; positive favours affine)" if axis == "state" else " (positive favours affine)"), "留出" + ("季" if axis == "season" else "州") + "（正值偏向仿射）"))
         ax.set_xticks(range(len(groups)))
-        ax.set_xticklabels(groups, rotation=0 if axis == "season" else 90, fontsize=7 if axis == "season" else 4.3)
+        ax.set_xticklabels(groups if axis == "season" else [], fontsize=7)
         ax.legend(frameon=False)
     return fig
 
@@ -655,7 +664,7 @@ def fig_thinning(i, lang, plt, np):
     records = [i.get("thinning", "estimates", f"full/q{q:g}/b", default={}) for q in qvals]
     points_ci(ax, x, records, label=tr(lang, "b(q), pointwise 95%", "b(q)，点态95%区间"))
     bp = i.get("thinning", "estimates", "full/bP", "value"); base = i.get("thinning", "estimates", "full/unthinned_b", "value")
-    if finite(bp) and finite(base): ax.plot(x, [base + bp * u for u in x], "--", color=COLORS[1], label=tr(lang, "Plug-in Poisson reference", "代入式泊松参照"))
+    if finite(bp) and finite(base): ax.plot(x, [base + bp * u for u in x], "--", color=COLORS[1], label=tr(lang, "Independent-Poisson reference", "独立泊松参照"))
     ax.set_xlabel("1/q − 1"); ax.set_ylabel("b(q)"); ax.legend(frameon=False)
     ax = axes[0, 1]
     band = i.get("thinning", "simultaneous_bands", "full/delta_a", default={})
@@ -676,38 +685,36 @@ def fig_thinning(i, lang, plt, np):
         vals = [at(metrics, f"full/q{q:g}/{metric}", "mc_to_sampling_se") for q in qvals]
         ax.plot([u for u, v in zip(x, vals) if finite(v)], [v for v in vals if finite(v)], ("o-", "s--")[j], color=COLORS[j], label=metric)
     tolerance = i.get("thinning", "monte_carlo", "tolerance")
-    if finite(tolerance): ax.axhline(tolerance, color="#555555", linestyle=":", label=tr(lang, "MC tolerance", "MC容差"))
+    if finite(tolerance): ax.axhline(tolerance, color="#555555", linestyle=":", label=tr(lang, "0.1 reference", "0.1参考线"))
     ax.set_xlabel("1/q − 1"); ax.set_ylabel("MC SE / point estimate"); ax.legend(frameon=False)
-    mc = mc_summary(i)
     fig.suptitle(tr(lang, "Thinning", "稀释") + f"  B={shown(i.get('thinning', 'metadata', 'bootstrap'))}, "
-                 f"R={shown(i.get('thinning', 'metadata', 'inner_reps'))}; " +
-                 tr(lang, "MC adequate=" + str(mc['status'] == 1), "MC精度达标=" + ("是" if mc['status'] == 1 else "否")), fontsize=9)
+                 f"R={shown(i.get('thinning', 'metadata', 'inner_reps'))}", fontsize=9)
     return fig
 
 
 def fig_heterogeneity(i, lang, plt, np):
     fig, axes = plt.subplots(2, 2, figsize=(7.15, 5.6), constrained_layout=True)
-    titles = [tr(lang, "Pooled and within-state ratios", "合并与州内比值"), tr(lang, "Paired pooled / FE ratios", "配对合并/FE比值"),
-              tr(lang, "RA centering stages", "RA中心化阶段"), tr(lang, "G centering stages", "G中心化阶段")]
+    titles = [tr(lang, "Pooled and within-state ratios", "合并与州内比值"), tr(lang, "Cross-count ratios", "跨计数比"),
+              tr(lang, "$R_A$ centring stages", "RA中心化阶段"), tr(lang, "$G$ centring stages", "G中心化阶段")]
     for ax, letter, title in zip(axes.flat, "ABCD", titles): panel_title(ax, letter, title)
     ax = axes[0, 0]
     keys = ("pool_ratio", "r_mean", "state_D_ratio")
     records = [i.get("fixed_effects", "estimates", key, default={}) for key in keys]
     points_ci(ax, range(3), records, horizontal=True)
-    ax.set_yticks(range(3), [tr(lang, "Pooled", "合并"), tr(lang, "State FE", "州FE"), tr(lang, "State FE, true D_t", "州FE，实际D_t")]); ax.invert_yaxis()
-    ax.set_xlabel(tr(lang, "b/a [95% CI]", "b/a [95%区间]"))
+    ax.set_yticks(range(3), [tr(lang, "Pooled", "合并"), tr(lang, "State FE", "州FE"), tr(lang, "State FE, $D_t$ scale", "州FE，D_t尺度")]); ax.invert_yaxis()
+    ax.set_xlabel(tr(lang, "$b/a$ [95% CI]", "b/a [95%区间]"))
     ax = axes[0, 1]
     sources = [s for s in ("fixed_effects", "block2", "block3") if s in i.data]
     records = [i.get(s, "estimates", "paired_ratio", default={}) for s in sources]
     points_ci(ax, range(len(sources)), records, horizontal=True, color=COLORS[2])
-    ax.set_yticks(range(len(sources)), ["L=" + shown(i.get(s, "metadata", "config", "block_length")) + "; " + draws_text(r) for s, r in zip(sources, records)]); ax.invert_yaxis()
-    ax.axvline(1, color="#555555", linestyle=":"); ax.set_xlabel(tr(lang, "Paired ratio [95% CI]; finite/B", "配对比值 [95%区间]；有限/B"))
+    ax.set_yticks(range(len(sources)), ["$L=" + shown(i.get(s, "metadata", "config", "block_length")) + "$; " + draws_text(r) for s, r in zip(sources, records)]); ax.invert_yaxis()
+    ax.axvline(1, color="#555555", linestyle=":"); ax.set_xlabel(tr(lang, "Cross-count ratio (pooled / state FE)", "跨计数比（合并/州FE）"))
     labels = [tr(lang, "Pooled", "合并"), tr(lang, "Season", "季节"), tr(lang, "Season trend", "季内趋势"), tr(lang, "Week", "周"), tr(lang, "Week, leave state out", "周，排除本州")]
     for j, stat in enumerate(("RA", "G")):
         ax = axes[1, j]
         records = [i.get("empirical", "centering", stat, center, "a", default={}) for center in CENTERS]
         points_ci(ax, range(len(CENTERS)), records, horizontal=True, color=COLORS[j])
-        ax.set_yticks(range(len(CENTERS)), labels); ax.invert_yaxis(); ax.set_xlabel(tr(lang, "a [95% CI], common normalizer", "a [95%区间]，共同分母"))
+        ax.set_yticks(range(len(CENTERS)), labels); ax.invert_yaxis(); ax.set_xlabel(tr(lang, "Intercept $a$ [95% CI], common normaliser", "a [95%区间]，共同分母"))
         ax.axvline(0, color="#555555", linewidth=.6)
     return fig
 

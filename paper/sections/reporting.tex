@@ -1,0 +1,51 @@
+\section{Reporting volatility and identification}
+\label{sec:reporting}
+
+\subsection{Period-level reporting variation}
+\label{sec:reporting-volatility}
+
+Replace H1 by a common period-specific reporting probability $p_t\in[0,1]$, independent of $R_t$ and of $n$, with known mean $\rho>0$ and $\Var(p_t)=\rho^2\tau^2$ (H5). Reporting remains independent across infections given $p_t$, so $\tau^2\le(1-\rho)/\rho$. The estimator still divides by $m=\rho n$ and does not observe $p_t$.
+
+\begin{proposition}[Reporting volatility and second-moment nonidentification]
+\label{prop:report-noise}
+Under H2--H5, put $Q=\Rbar^2+v_R$. Then
+\begin{equation}
+  \E(\Rhat_t)=\Rbar,\qquad
+  \Var(\Rhat_t)=v_R+v_H+\frac{A_H}{m},\qquad
+  v_H=\tau^2Q,\qquad
+  A_H=\Rbar+\frac{\rho(1+\tau^2)Q}{k}.
+  \label{eq:vH-AH}
+\end{equation}
+For known $m$, $\rho$ and $k$, the single-period mean and variance in Eq.~\eqref{eq:vH-AH} depend on $v_R$ and $\tau^2$ only through $U=(1+\tau^2)(\Rbar^2+v_R)$.
+\end{proposition}
+
+Given $R_t$ and $p_t$ the estimator has mean $(p_t/\rho)R_t$, so a shared reporting shock is not averaged away by more infections in the same period. The statement is deliberately narrow. It concerns the first two moments of one period's count within the specified family. It does not exclude identification from full count distributions, from temporal structure under further assumptions, or from external measurements of reporting; it also assumes that reporting is independent of transmission, an assumption Section~\ref{sec:discussion} relaxes.
+
+\begin{corollary}[Current and realised-mean risks with volatile reporting]
+\label{cor:report-current}
+Under H2--H5, the current-value risk is:
+\begin{equation}
+  \E[(\Rhat_t-R_t)^2]=v_H+\frac{A_H}{m}.
+  \label{eq:vH-current}
+\end{equation}
+If, in addition, the $p_t$ are independent and identically distributed, independent of the transmission trajectory, and counts are independent given both trajectories, then
+\begin{equation}
+  \E[(\overline{\Rhat}_T-\Rbar_T)^2]=\frac{v_H+A_H/m}{T},\qquad
+  \E[(\overline{\Rhat}_T-\Rbar)^2]=B_T+\frac{v_H+A_H/m}{T}.
+  \label{eq:report-means}
+\end{equation}
+\end{corollary}
+
+At fixed $T$, unobserved reporting volatility leaves the floor $v_H/T$ on the realised-mean target as $m$ grows, so a target free of transmission variation is not free of reporting error. The crossover scale with volatile reporting, $m_{\times,H}=A_H/(v_R+v_H)$, is never larger than $\mx$ (Eq.~\eqref{eq:mx-gap}); the lower crossover accompanies a larger risk, not better surveillance. Proofs are in Appendix~\ref{app:prop2}.
+
+\subsection{From the branching experiment to surveillance counts}
+\label{sec:reporting-scope}
+
+If the scale $m$ is random and associated with transmission, conditional unbiasedness given $(R_t,m)$ still yields
+\begin{equation}
+ \E[(\Rhat_t-\Rbar)^2\mid m]
+ =\frac{\E(R_t\mid m)+\rho\E(R_t^2\mid m)/k}{m}
+ +\Var(R_t\mid m)+[\E(R_t\mid m)-\Rbar]^2,
+\label{eq:endogenous-risk}
+\end{equation}
+and the conditional moments in Eq.~\eqref{eq:endogenous-risk} can change with scale. A constant intercept plus a constant coefficient on inverse count therefore does not follow when the count scale is itself an epidemic outcome, as it is in surveillance. Delays, aggregation, ratio denominators and changing conditional means further separate an apparent statistic from the experiment above. The rest of the paper accordingly treats empirical dispersion diagnostics as descriptive quantities and asks, with a known-truth audit, what they recover.

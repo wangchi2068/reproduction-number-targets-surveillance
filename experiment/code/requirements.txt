@@ -1,0 +1,5 @@
+# Python 3.11; versions used for every number in analysis/ (pinned, CPU only)
+numpy==1.26.4
+scipy==1.16.3
+pandas==2.3.3
+matplotlib==3.10.9

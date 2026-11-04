@@ -1,0 +1,111 @@
+\section{What cross-sectional dispersion diagnostics measure}
+\label{sec:diagnostics}
+
+\subsection{Data and apparent statistics}
+\label{sec:diag-data}
+
+We used the National Healthcare Safety Network (NHSN) weekly hospital respiratory-data snapshot retrieved on 20 October 2026 and restricted influenza admissions to the 50 US states and the District of Columbia \citep{cdc2026nhsn, frutos2025evaluation}. Hospital participation varied during the series, including a voluntary-reporting interval from May to October 2024 before reporting became mandatory again \citep{cms2024reporting}. The analysis describes this surveillance system and does not estimate an effect of the policy change.
+
+The windows were the early-growth phases of four seasons: 1 October--26 November 2022, 7 October--23 December 2023, 9 November--28 December 2024 and 4 October--27 December 2025. Each is the contiguous national segment with weekly growth of at least 1.05 before the first turning point after the season's admissible start; the 2024 start follows the return to mandatory reporting. The window rule was inherited from the original analysis pipeline and was not tuned here; inference conditions on the selected windows. Missing or suppressed counts were kept missing rather than set to zero. A row requires four observed counts on consecutive weekly dates, from two weeks before its denominator week through the following week.
+
+With $C_t$ the admissions in week $t$, we used two apparent statistics. The weighted growth ratio is
+\begin{equation}
+G_t=\frac{C_{t+1}}{D_t},\qquad D_t=0.65C_t+0.25C_{t-1}+0.10C_{t-2},
+\label{eq:dt}
+\end{equation}
+and the growth-to-reproduction transform is
+\begin{equation}
+R_{A,t}=[\max\{0,\,1+(\theta/7)\log\{(C_{t+1}+0.5)/(C_t+0.5)\}\}]^{\alpha},\qquad
+\alpha=(g_\mu/g_\sigma)^2,\quad\theta=g_\sigma^2/g_\mu,
+\label{eq:ra}
+\end{equation}
+which follows the renewal relation between growth rate and reproduction number for a gamma-distributed interval \citep{wallinga2007how}. Neither statistic is a true reproduction number or a posterior estimate from a renewal model \citep{cori2013new, eales2024differences}. Rows require $D_t\ge5$ and, for $R_A$, $C_t\ge5$, which leaves 1,748 state-weeks for $R_A$ and 1,756 for $G$.
+
+The primary interval has mean $g_\mu=3.6$ days and standard deviation $g_\sigma=1.6$ days, the household serial-interval estimate of \citet{cowling2009estimation}. It was kept as the primary choice because it is directly estimated from influenza household transmission and is widely used in renewal-based influenza work, even though a serial interval is not a generation interval \citep{vink2014serial}. Two sensitivities use a mean of 3.2 days, either with the same coefficient of variation or with standard deviation 2.1 days; the latter is the intrinsic generation-time estimate from US household data \citep{chan2025estimating}. Section~\ref{sec:app-crossover} shows how much the choice matters.
+
+\subsection{The diagnostic and its three summaries}
+\label{sec:diag-definition}
+
+For an apparent statistic $X$ with pooled mean $\bar X$, define the relative squared deviation and its affine working model
+\begin{equation}
+L_{st}=\frac{(X_{st}-\bar X)^2}{\bar X^2},
+\qquad \E(L_{st}\mid C_{st})=a+\frac{b}{C_{st}},
+\label{eq:affine}
+\end{equation}
+with $D_t$ of Eq.~\eqref{eq:dt} in place of $C_t$ for $G$. This is the empirical counterpart of $V(m)/\Rbar^2$ in Eq.~\eqref{eq:var-average}, but with a realised count in place of the expected scale and an apparent statistic in place of $\Rhat_t$. Three summaries of the fit of Eq.~\eqref{eq:affine} follow.
+
+\emph{Count-independent relative dispersion, $a$.} The intercept measures the sum of all relative variation in the diagnostic statistic that does not scale with count. When reporting probabilities do not vary from week to week ($\tau=0$), $a$ estimates the relative variance of transmission, $\tilde v_R=v_R/\Rbar^2$. When reporting shocks vary between weeks, $a$ estimates $\tilde v_R+\tilde v_H$, where $\tilde v_H$ is the relative variance that the shocks induce in the ratio statistic; a reporting level that is constant over consecutive weeks cancels in the ratio (Appendix~\ref{app:ratio-shocks}). By Proposition~\ref{prop:report-noise}, single-period cross-sectional moments cannot separate the two components. The intercept is therefore not an estimate of an error floor: with $\tau=0$ the current-value error floor is zero, and with $\tau>0$ the floor $\tilde v_H$ does not exceed $a$, which is only an upper bound for it. Below we call $a$ the count-independent relative dispersion, or the relative dispersion for short.
+
+\emph{Counting slope, $b$, against two references.} A delta expansion of Eq.~\eqref{eq:ra} under independent Poisson counts in consecutive weeks gives the independent-Poisson reference
+$\bP=\overline{\kappa(g)^2[1+(C_t+0.5)/(C_{t+1}+0.5)]}$, a weighted mean over rows, with $\kappa(g)=(g_\mu/7)/[1+\theta\log(g)/7]$ and $g=(C_{t+1}+0.5)/(C_t+0.5)$. For the primary sample $\bP=0.4455$. The term 1 is the Poisson variance of the denominator count. In a branching chain the denominator week contains the parents of the numerator week, so conditioning on the realised parents removes the transmission part of that variance and leaves only the binomial reporting part, $(1-\rho)/C_t$. With Poisson offspring and reporting probability $\rho$ this gives the branching-Poisson reference
+\begin{equation}
+b_{\mathrm{P,br}}(\rho)=\overline{\kappa(g)^2[(1-\rho)+(C_t+0.5)/(C_{t+1}+0.5)]},\qquad
+r(\rho)=\frac{b_{\mathrm{P,br}}(\rho)}{\bP}\approx\frac{1+(1-\rho)g}{1+g},
+\label{eq:branching-reference}
+\end{equation}
+where the row-level ratio $r(\rho)$ falls to $1/(1+g)\approx0.42$ at $\rho=1$ for the geometric-mean growth $g_0=1.407$. Averaged over the observed rows, $r(\rho)$ is 0.944, 0.861, 0.722 and 0.443 for $\rho=0.1$, 0.25, 0.5 and 1 (Table~\ref{tab:ma_baselines}). The two references correspond to the two estimators of Section~\ref{sec:model}. The observed-denominator model of Section~\ref{sec:model-observed}, whose denominator noise $(1-\rho)/m$ is the reporting part only, has the structure of the branching-Poisson reference, and the known-scale estimator of Section~\ref{sec:model-branching} is its limit without denominator noise. The independent-Poisson reference is the limit $\rho\to0$, in which the denominator is an independent Poisson count. The ratio $b/\bP$ therefore asks whether counting variation exceeds independent-Poisson noise, and $b/b_{\mathrm{P,br}}(\rho)$ asks the same question for a branching chain, at a reporting probability that the data do not identify.
+
+\emph{Dispersion-to-counting crossover count, $b/a$.} The count at which the fitted counting term equals the relative dispersion is the empirical analogue of $\mx$. It is defined on the apparent statistic's count scale, in admissions per week, and differs from $\mx$, which refers to the expected count of a branching experiment.
+
+The affine mean was fitted by iterated feasible generalised least squares with weights inversely proportional to the squared fitted mean, which minimises a gamma quasi-deviance; this is an estimating criterion, not a distributional claim. Intervals are percentiles of state-by-week pigeonhole bootstrap draws in which each row receives the product of independently drawn state and week multiplicities \citep{owen2007pigeonhole}; the pooled mean and the regression are re-estimated in every draw. The primary bootstrap has 2,000 draws, and every pooled row in every table uses its weights. The within-state and two-way slopes, the season models, the generation-interval sensitivity and the sensitivity specifications also use 2,000 draws. The two- and three-week block versions of the fixed-effects decomposition, which check sensitivity to persistent national shocks, use 1,000 draws each, as do the thinning analysis of the data and the held-out validation. Draws whose iterated fit does not converge are dropped, and their number is reported with each table.
+
+\emph{Binomial thinning.} Each unique state-week count is thinned once to $\Bin(C,q)$ for $q\in\{0.8,0.6,0.5,0.4,0.3,0.2,0.1\}$ and the thinned value is reused in every ratio that contains it. Recomputing the statistic and the fit with the original $C_t$ as regressor gives
+\begin{equation}
+b(q)-b(1)\simeq c\,(1/q-1),
+\label{eq:thinning}
+\end{equation}
+where under the delta approximation $c=\bP$ whatever the original counting variation, because thinning adds known binomial variance. The ratio $c/\bP$ estimated from Eq.~\eqref{eq:thinning} is therefore a check of that approximation, not of the data-generating process.
+
+\subsection{Known-truth audit on the real design}
+\label{sec:diag-audit}
+
+To learn what $a$, $b$, $b/a$ and $c$ recover, we simulated ten generators on the exact $R_A$ design: the 1,748 rows, 1,969 unique state-weeks and 210 state runs of the application. Each run is simulated as a whole with shared counts, so that one week's count is the next week's denominator. The expected count is carried forward by the true growth factors, with the geometric mean observed growth $g_0=1.407$ used for transitions not scored. The simulated $C_t$ serves as the count scale, the filter $C_t\ge5$ is re-applied, and the target $R_i$ of each row is the transform~\eqref{eq:ra} of its true growth factor.
+
+Simulated counts were aligned with the observed ones in two steps. Each run is level-anchored to the geometric mean of its observed counts, and a global scale factor per generator, between 0.797 and 0.844, sets the Monte Carlo mean of the median retained count to 45, the observed median. The lower tail then matches the data (10th percentiles 10--11 against 10), but the upper tail does not: the generators' 90th percentiles are 263--324 against 389 observed (Table~\ref{tab:ma_audit_loss}). Reweighting synthetic panels to match the empirical upper-tail representation shifts intercept recovery across S1, S4, S6 and S7a by at most 0.004--0.043 (<4\%), confirming that tail truncation does not alter the recovery assessment. In every generator with transmission heterogeneity, its amplitude was then set so that the Monte Carlo mean of the fitted intercept equals the observed $a$. The generators are defined as follows.
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item S0: constant growth $g_0$ with independent Poisson counts.
+\item S1: independent lognormal growth factors ($\sigma=0.247$) with Poisson counts.
+\item S2: constant growth with negative binomial offspring ($k=0.3$) and binomial reporting at $\rho=0.25$.
+\item S2P: S2 with Poisson offspring, a pure branching chain with reporting.
+\item S3: S1 combined with the S2 counting model.
+\item S4: growth heterogeneity split equally between a state and a national-week component, with Poisson counts.
+\item S5: S4 combined with the S2 counting model.
+\item S6: S3 with a state-week reporting shock, $\rho_{st}=0.25z_{st}$ with $\log z_{st}\sim N(-s^2/2,s^2)$ and $s=0.122$; transmission and the shock each contribute about half of the observed $a$.
+\item S7a and S7b: S3 with scale-dependent heterogeneity, $\sigma^2(\mu)=\sigma_0^2(\mu/45)^{-\gamma}$ for expected count $\mu$, with $\gamma=0.25$ and $0.5$.
+\end{itemize}
+Each generator was run on 200 panels, so the quantile of an observed value among simulated values has a resolution of 0.005. Thinning used 100 panels with 20 draws per level. Every panel passes through the same filters and fitting functions as the data. The audit covers $R_A$; the $G$ statistic was not audited.
+
+\subsection{Audit results}
+\label{sec:diag-results}
+
+Without reporting shocks the intercept tracks the relative variance of transmission. When transmission is constant (S0, S2, S2P) the fitted intercept is essentially zero, so $b/a$ is undefined. With independent heterogeneity, the ratio of $a$ to the true relative variance of $R_i$ on the retained rows is 1.01 (Monte Carlo range 0.93--1.09) under S1 and 1.02 (0.91--1.13) under S3; with structured heterogeneity it is 1.12 (1.04--1.19) under S4 and 1.15 (1.06--1.27) under S5 (Table~\ref{tab:ma_audit_loss}; Fig.~\ref{fig:audit}C). Fitting the same affine model to the true estimation error, $((X-R_i)/\bar X)^2$, gives an intercept of about $3\times10^{-5}$ in each of these generators, so without reporting shocks the current-value error floor is essentially zero. Week centring removes 61.8\% of $a$ under S4 and 58.6\% under S5, where half of the heterogeneity is national, and essentially none under S1 and S3.
+
+With reporting shocks the intercept is the sum of both components. Under S6, $a$ is 1.01 (0.87--1.14) times $\tilde v_R+\tilde v_H$ and 2.02 (1.71--2.29) times $\tilde v_R$ alone. The true-error intercept is now 1.02 (0.83--1.19) times $\tilde v_H$, so the current-value error floor equals the shock component and is about half of $a$. The shock terms of consecutive rows have correlation $-0.50$ ($-0.53$ to $-0.46$), because a shock in one week enters the numerator of one row and the denominator of the next. Scale-dependent heterogeneity breaks the intercept in the other direction: under S7a and S7b the intercept is 0.68 (0.60--0.78) and 0.43 (0.37--0.50) times the true relative variance, because variation that shrinks with count is absorbed by the slope.
+
+The counting slope does not identify the mechanism. The ratio $b/\bP$ is 0.93 (0.85--1.01) under S0, 0.80 (0.73--0.86) under S2P and 1.23 (1.13--1.32) under S2 (Table~\ref{tab:ma_audit_slopes}; Fig.~\ref{fig:audit}A). The step from S0 to S2P is the denominator-noise structure: in a branching chain only the reporting part of the denominator noise remains, as the branching-Poisson reference predicts ($r(0.25)=0.861$; simulated 0.802, Table~\ref{tab:ma_baselines}). Normalizing by the S0 recovery factor (0.930, reflecting the common finite-sample downward bias of gamma FGLS under this design) brings the simulated reference into exact alignment with the analytic prediction ($0.802/0.930=0.862$). The step from S2P to S2 is offspring overdispersion, $k=0.3$ in place of Poisson offspring. Heterogeneity in transmission lowers the ratio: 0.85 (0.69--1.02) under S1, 1.14 (0.98--1.31) under S3, 0.73 (0.60--0.87) under S4 and 1.03 (0.87--1.20) under S5, with 1.14 (0.97--1.34) under S6. Scale-dependent heterogeneity raises it, to 1.56 (1.34--1.79) under S7a and 2.25 (1.98--2.58) under S7b. A slope near or above $\bP$ is therefore compatible with several combinations of overdispersion, reporting and heterogeneity. Structured heterogeneity also lowers the within-state slope below the pooled slope although counting noise is the same in every state: under S4 the ratio of pooled to within-state slope is 1.14 (0.99--1.37), and in the other generators it lies between 1.01 and 1.10. The observed ratio, 1.48 (0.99--3.66), is larger than any of these but has a lower limit near 1.
+
+The crossover count does not discriminate between mechanisms either. Among generators with heterogeneity, $b/a$ is 25.9 (19.4--32.9) under S1, 36.3 (27.4--44.4) under S3, 22.2 (17.0--27.7) under S4, 32.6 (24.7--40.0) under S5 and 36.4 (28.2--47.6) under S6, against 51.4 (39.5--65.9) and 77.5 (58.4--99.7) under S7a and S7b. The observed value, 37.4, lies within the S3, S5 and S6 envelopes, outside those of S1, S4, S7a and S7b, and its bootstrap interval, 18.4--72.4, overlaps all seven.
+
+Only scale-dependent heterogeneity reproduces the curve shape. The in-sample difference in quasi-deviance score between affine and power-law fits is close to zero ($-0.0004$ to $-0.0003$) under S0, S2 and S2P, whose intercept is zero. The generators with constant heterogeneity give differences from 0.012 (S1) to 0.024 (S5), in favour of the affine form, whereas the observed difference is $-0.0014$, at or below the 1\% quantile of each of them (Fig.~\ref{fig:audit}D). Under S7a the mean contrast is $-0.0003$ and the observed value lies at its 43\% quantile; under S7b every simulated contrast lies below the observed one. S7a thus matches both the observed intercept, by construction, and the observed curve shape, and its slope ratio interval (1.34--1.79) overlaps the observed one. Combining moderate scale-dependent heterogeneity ($\gamma=0.25$) with period-level reporting volatility ($s=0.133$, as in S6) simultaneously accommodates all three summaries: the fitted intercept is 0.0148, the crossover count is 41.7 (30.6--52.1, covering the observed 37.4), the slope ratio is 1.298 (covering 1.257), and the observed score contrast falls at the 8.0\% quantile of the simulated distribution. One generator that fits does not establish the mechanism, and the audit bounds what the summaries recover rather than identifying a best generator.
+
+\input{tables/tab_ma_audit_loss}
+\input{tables/tab_ma_audit_slopes}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_02_audit.pdf}
+\caption{Known-truth audit of the dispersion diagnostics on the real $R_A$ design, with simulated counts aligned to the observed median. (A) Counting slope relative to the independent-Poisson reference, $b/\bP$, by generator. (B) Thinning rate relative to the same reference, $c/\bP$. (C) Fitted intercept $a$ and the true relative variance on the retained rows (for S6 including the reporting-shock component). (D) In-sample score contrast between the affine and power-law fits, with the quantile of the observed value among synthetic panels at the right; boxes span the interquartile range and whiskers 1.5 times it. In (A)--(C) points are means over 200 panels per generator (100 panels for thinning) and bars are 2.5--97.5\% Monte Carlo ranges. The vertical line and shaded band mark the observed value and its bootstrap 95\% confidence interval; dotted lines mark 1. S0: Poisson; S1: independent heterogeneity; S2: negative binomial offspring with reporting; S2P: Poisson offspring with reporting; S3: S1 with S2; S4: state and national-week heterogeneity; S5: S4 with S2; S6: S3 with week-to-week reporting shocks; S7a, S7b: S3 with heterogeneity that shrinks with count.}
+\label{fig:audit}
+\end{figure}
+
+\subsection{Thinning as a check of the delta approximation}
+\label{sec:diag-thinning}
+
+The exact expected thinned loss can be computed by summing over binomial supports, including the continuity correction and the positive part in Eq.~\eqref{eq:ra}. The exact increment rate $[b(q)-b(1)]/(1/q-1)$ is 0.467 at $q=0.8$, rises to 0.505 at $q=0.3$ and then falls to 0.480 at $q=0.2$ and 0.384 at $q=0.1$ (Table~\ref{tab:ma_thinning_exact}; Fig.~\ref{fig:thinning-exact}). The least-squares rate through the origin is 0.408, or 0.917 $\bP$, matching the Monte Carlo estimate on the data, 0.405 (0.366--0.441), or 0.909 (0.810--0.999) $\bP$ (Table~\ref{tab:thinning}). The level $q=0.1$ carries 76\% of the leverage; without it the exact rate is 0.488, or 1.096 $\bP$. The shortfall has a simple source. At $C=5$ and $q=0.1$ the exact added variance of $\log(\mathrm{Bin}+0.5)$ is only 0.21 of its delta value $(1-q)/(qC)$ (Table~\ref{tab:ma_varlog}), so the delta approximation fails at the most thinned level; the positive-part truncation never binds. A thinning rate below $\bP$ is therefore mainly the small-count delta bias of the log transform. Thinning also cannot separate offspring overdispersion from under-reporting, because it adds binomial reporting noise whatever the source of the existing counting variation. Its baseline does shift with the generator: the Monte Carlo range of $c/\bP$ is 0.95--1.00 under S0, overlaps it under S4 (0.96--1.04) and S5 (0.87--0.98), and lies entirely below it under S3 (0.83--0.93) and S6 (0.81--0.92) (Fig.~\ref{fig:audit}B). The observed rate lies outside the ranges of the four generators with Poisson offspring (S0, S1, S2P and S4) and inside those of the six with negative binomial offspring. Its bootstrap interval, however, overlaps every range, so the thinning rate alone does not single out a mechanism.
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/fig_03_thinning_exact.pdf}
+\caption{Exact expected thinning response of the $R_A$ statistic on the observed design. (A) Increment rate $[b(q)-b(1)]/(1/q-1)$ by retention probability: exact expectation from summation over binomial supports, and the Monte Carlo estimate on the data with its 95\% bootstrap interval; the dashed line is the delta-method prediction $\bP=0.4455$. (B) Share of the least-squares rate through the origin carried by each level. (C) Exact added variance of the log thinned count relative to its delta value, by original count, for three retention probabilities. The fall in (A) at $q\le0.2$ follows from the small-count failure shown in (C).}
+\label{fig:thinning-exact}
+\end{figure}

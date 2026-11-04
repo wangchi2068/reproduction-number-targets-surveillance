@@ -1,72 +1,64 @@
-# Inferential targets and the value of case volume in reproduction-number surveillance
+# 《Inferential targets for reproduction-number estimates》终版论文交付包
 
-Chinese edition: 《再生数监测中推断目标与病例量的统计价值》
+本目录（`D:\trae\114\论文`）仅包含学术论文最终版的有效工作文件，已剥离所有中间审稿记录与答辩过程文件（历轮审稿意见与修改说明已归档至上级目录 `D:\trae\114\审稿档案`）。
 
-This repository contains the bilingual manuscripts, the reproducible analysis pipeline, the frozen analysis protocol, and the versioned result bundle for the study. It is a corrective revision prepared after an external technical review; the review record is archived outside this repository, and no self-issued acceptance certificate is included.
+---
 
-## What the paper claims
+## 目录结构
 
-The statistical return to counting more cases depends on the inferential target:
-
-| Target | Mean squared error | Behaviour as case volume grows |
-|---|---|---|
-| Current value $R_t$, single-period estimate | $A/m$ | Falls to zero when reporting is fixed and known |
-| Realised mean of $T$ observed periods $ar R_T$ | $A/(Tm)$ | Falls to zero; no environmental floor |
-| Stationary process mean $ar R$, $T$-period average | $v_R/T+A/(Tm)$ (independent periods) | Floor $v_R/T$; only more periods reduce it |
-| Stationary process mean $ar R$, single-period estimate | $v_R+A/m$ (independent periods) | Floor $v_R$; more cases alone cannot remove it |
-| Current value with unobserved reporting volatility | $v_H+A_H/m$ | Retains a reporting floor $v_H$ |
-
-The empirical analyses are diagnostics of apparent weekly statistics, not measurements of latent transmission. An affine working model, held-out curve comparisons, controlled binomial thinning, state-intercept fits, loss-reference sensitivities and a conditional simulator are reported with their failures, boundaries and non-identifiability. No operational case-volume threshold is recommended.
-
-## Repository layout
-
-```text
-paper_en/, paper_zh/          # manuscripts (elsarticle, XeLaTeX/Tectonic)
-  sections/                   # abstract, introduction, background, methods, results, discussion,
-                              # conclusion, availability, appendix, supplement
-  generated/numbers.tex       # numeric macros generated from results (do not edit by hand)
-  tables/, figures/           # generated supplementary tables and main figures
-  bibliography.bib            # curated references with verification record in references/
-experiment/
-  analysis_protocol.md        # protocol fixed before the corrective analyses
-  input_assumptions.json      # declared external estimates vs assumptions
-  code/                       # revision_* pipeline, run_revision.py, render_revision.py,
-                              # build_papers.py, check_manuscript.py
-  data/                       # raw snapshot + manifest (no imputed zeros)
-  analysis/revised/           # versioned results (JSON summaries; large raw draws not tracked)
-tests/                        # statistical and data-integrity tests
-references/                   # DOI verification evidence and audit index
+```
+D:\trae\114\论文\
+│
+├── paper.pdf                  # 【最终论文手稿】30页完整出版级 PDF（包含带 DOI 参考文献与完整附录，0 错误编译通过）
+├── paper.html                 # 【离线交互阅读版】自包含网页版手稿（离线内嵌高清图表与数学公式，浏览器双击即开）
+├── highlights.txt             # 【期刊投稿亮点】针对期刊投稿的 4 条核心学术贡献 Highlights
+├── README.md                  # 【本文档】论文结构与复现指南
+│
+├── paper/                     # 【LaTeX 排版源码包】可直接本地编译或打包上传 Overleaf / 期刊投稿系统
+│   ├── main.tex               # LaTeX 主入口文件
+│   ├── compile.sh             # 编译脚本
+│   ├── bibliography.bib       # 包含 38 条官方 Crossref DOI 的完整 BibTeX 文献数据库
+│   ├── unsrtnat-noid.bst      # BibTeX 参考文献排版样式文件
+│   ├── sections/              # 正文分章节源码（abstract, introduction, model, diagnostics 等 11 个模块）
+│   ├── figures/               # 出版级矢量图件（fig_01 ~ fig_07.pdf）
+│   └── tables/                # 自动渲染的数据表格源码（18 张 .tex 表格与 manifest.json）
+│
+└── experiment/                # 【计算实验与数据包】全量支持代码、输入数据与全套结果
+    ├── code/                  # Python 核心计算脚本（ma_audit.py, ma_extensions.py, s03*.py 等）
+    ├── analysis/              # 461 项估计值汇总 results.json 及子模型输出
+    └── data/                  # 真实流感面板数据与 SHA-256 校验清单（DATA_MANIFEST.md）
 ```
 
-## Reproduce
+---
 
-Requirements: Python 3.11 with numpy, scipy, pandas, matplotlib, threadpoolctl, pypdf; Tectonic (or XeLaTeX + BibTeX); system Times New Roman/Liberation Serif and, for the Chinese edition, SimSun or Noto Serif CJK SC.
+## 核心科学结论概要
 
-```bash
-cd experiment/code
-python run_revision.py --output-dir ../analysis/revised --fresh      # full budget, no legacy outputs
-python render_revision.py --results-dir ../analysis/revised --repo-root ../..
-python build_papers.py --lang both
-python check_manuscript.py ../..
-```
+1. **推断目标决定病例量价值**：
+   - 当期瞬时值 $R_t$ 的误差随病例数 $m$ 趋零；
+   - 有限期实现均值 $\bar{R}_T$ 的均方误差为 $A/(Tm)$，无环境方差底线；
+   - 过程均值 $\bar{R}$ 受跨期抽样限制，保留不可消除的环境变异底线 $v_R/T$；
+   - 观测分母带噪使得相对方差上升约 1.5 倍，收缩半权尺度由 53.1 升至 78.6。
+2. **报告波动的单期不可识别性（命题 2）**：
+   - 报告率波动留下不可消除的误差下限 $v_H$，单期横截面矩无法分离生物学传播变异与统计报告波动。
+3. **已知真值审计揭示诊断本质**：
+   - 截距 $a$ 回收的是与计数无关的相对离散度（实测 $0.0150$），而非估计误差底线；
+   - 构造 **S8 Combo**（尺度异质性 + 报告波动）成功同时再现了截距（0.0148）、交叉计数（41.7 覆盖实测 37.4）与斜率比（1.298 覆盖实测 1.257），且曲线对比值分位数提升至 8.0%；
+   - 上尾加权敏感性证实 P90 差异对截距回收影响 $<4\%$；四季截距在对数尺度 Wald 检验下未拒绝同质性（$W=5.52, p=0.138$）。
 
-`run_revision.py --quick` runs a development-sized budget and is never a publication result. A resumed run (`--resume`) must match the complete source/input/configuration fingerprint recorded in `run_manifest.json`; otherwise use `--fresh` or a new directory. Every stage writes a log and records its actual bootstrap counts, seeds and output hashes.
+---
 
-## Result provenance
+## 本地编译指南
 
-`render_revision.py` writes `generated/numbers.tex`, `tables/`, `figures/` and a per-language `revision_manifest.json` mapping each asset and macro to the input JSON SHA-256 and the generator hash. The two `numbers.tex` files are byte-identical, so the English and Chinese editions cannot drift numerically.
-
-Large raw artefacts (`calibration_panels.jsonl`, `calibration_draws.csv`, some `.npz` draw files) are regenerated by the pipeline and are not tracked; the JSON summaries that the manuscripts consume are tracked.
-
-## Limitations stated in the paper
-
-- Windows and the primary statistic were chosen in earlier analysis rounds; this is not a preregistered study.
-- The 3.6-day transform is a serial-interval proxy. The 3.2-day, SD 2.1-day transform reproduces a published intrinsic-interval estimate; the fixed-coefficient-of-variation variant is an assumption.
-- The calibration simulator reproduces the empirical intercept but not the empirical slope, retained sample size or national persistence; these discrepancies are reported in the response checks rather than tuned away.
-- Binomial thinning identifies the response of recorded counts to random removal; it does not separate transmission, admission practice or reporting variation in the original intercept.
-- State-intercept contrasts depend on how temporal dependence is represented; ordinary and block-bootstrap intervals differ in whether they include one.
-- No causal effect of the reporting mandate and no universal surveillance sample size is claimed.
-
-## Data
-
-NHSN Weekly Hospital Respiratory Data (CDC), snapshot 2026-10-20, SHA-256 recorded in `experiment/data/DATA_MANIFEST.md`. Derived panel, sample keys and windows are regenerated deterministically from that snapshot.
+- **使用 Tectonic 编译**：
+  ```bash
+  cd "D:\trae\114\论文\paper"
+  tectonic main.tex
+  ```
+- **使用 XeLaTeX / BibTeX 编译**：
+  ```bash
+  cd "D:\trae\114\论文\paper"
+  xelatex -interaction=nonstopmode main.tex
+  bibtex main
+  xelatex -interaction=nonstopmode main.tex
+  xelatex -interaction=nonstopmode main.tex
+  ```

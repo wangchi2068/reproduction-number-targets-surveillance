@@ -1,0 +1,6115 @@
+{
+  "generated_utc": "2026-11-04 03:08:03",
+  "generator": "code/ma_render.py",
+  "inputs": {
+    "authors_and_fe": {
+      "empirical": {
+        "path": "reproduction-number-review/experiment/analysis/authors/empirical.json",
+        "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
+        "bytes": 285030
+      },
+      "thinning": {
+        "path": "reproduction-number-review/experiment/analysis/authors/thinning.json",
+        "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
+        "bytes": 157030
+      },
+      "secondary": {
+        "path": "reproduction-number-review/experiment/analysis/authors/secondary.json",
+        "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
+        "bytes": 8571
+      },
+      "theory": {
+        "path": "reproduction-number-review/experiment/analysis/authors/theory.json",
+        "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
+        "bytes": 20201
+      },
+      "fixed_effects": {
+        "path": "reproduction-number-review/experiment/analysis/fe_rev2/L1/fixed_effects.json",
+        "sha256": "9ea5b2d16d11654d60b4d54ecc2dae4556ad52eaf7e08c06a3399fe04ac2c773",
+        "bytes": 19997
+      },
+      "block2": {
+        "path": "reproduction-number-review/experiment/analysis/fe_rev2/block2/fixed_effects.json",
+        "sha256": "a6bacf6614ca95d5d59a81bacb670b412400011c7dab7946def9dc9a49314ec0",
+        "bytes": 20115
+      },
+      "block3": {
+        "path": "reproduction-number-review/experiment/analysis/fe_rev2/block3/fixed_effects.json",
+        "sha256": "702885140d5ed9a550d09abb8928a72590146ad3552f218872d08e0f126d286b",
+        "bytes": 20434
+      }
+    },
+    "ma_audit.json": {
+      "path": "reproduction-number-review/experiment/analysis/ma_audit.json",
+      "sha256": "81ddd52cb8ed7a20c3ae143319d73ef44a9d1ec5ce11da81a1c96fda01003c23"
+    },
+    "ma_audit_draws.npz": {
+      "path": "reproduction-number-review/experiment/analysis/ma_audit_draws.npz",
+      "sha256": "cddf8bac04fa084638e0a362779dc850e25fcecf750a115c61a35b9c0f0dcf68"
+    },
+    "ma_thinning_exact.json": {
+      "path": "reproduction-number-review/experiment/analysis/ma_thinning_exact.json",
+      "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
+    },
+    "ma_extensions.json": {
+      "path": "reproduction-number-review/experiment/analysis/ma_extensions.json",
+      "sha256": "db4dd8cee7b014ff6328fbfec55d2bce9eee5f00158cc2d040b8bb1104071c68"
+    },
+    "ma_fe_decomp.json": {
+      "path": "reproduction-number-review/experiment/analysis/ma_fe_decomp.json",
+      "sha256": "9015755cf7ef6fa65777020436702c2689db8b292ad6354a27b2200a973b3da9"
+    }
+  },
+  "primary_bootstrap": {
+    "frame": "RA_gi3.6",
+    "B": 2000,
+    "rng": [
+      2026110352,
+      1
+    ],
+    "G_frame": "G_gi3.6 (same rng, own rows; supplement only)"
+  },
+  "estimates": [
+    {
+      "name": "pooled/RA/a",
+      "point": 0.014954566182030291,
+      "lower": 0.010007803855696405,
+      "upper": 0.020924532499895857,
+      "ci95": [
+        0.010007803855696405,
+        0.020924532499895857
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/revision_empirical.py (run_authors_pipeline.sh) -> analysis/authors/empirical.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "role": "authors' pooled interval, reproduction record (not used in tables)"
+    },
+    {
+      "name": "pooled/RA/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36897223697597603,
+      "upper": 0.7692218089754953,
+      "ci95": [
+        0.36897223697597603,
+        0.7692218089754953
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/revision_empirical.py (run_authors_pipeline.sh) -> analysis/authors/empirical.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "role": "authors' pooled interval, reproduction record (not used in tables)"
+    },
+    {
+      "name": "pooled/RA/b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.929943035980937,
+      "upper": 69.91844237615821,
+      "ci95": [
+        18.929943035980937,
+        69.91844237615821
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/revision_empirical.py (run_authors_pipeline.sh) -> analysis/authors/empirical.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "role": "authors' pooled interval, reproduction record (not used in tables)"
+    },
+    {
+      "name": "primary/RA/a",
+      "point": 0.014954566182030291,
+      "lower": 0.010060454907989416,
+      "upper": 0.020633057685582705,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.406218624289615,
+      "upper": 72.3749575346261,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/bP",
+      "point": 0.44553422780875024,
+      "lower": 0.42747815996297733,
+      "upper": 0.4645355307238374,
+      "ci95": [
+        0.42747815996297733,
+        0.4645355307238374
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_bP",
+      "point": 1.2568183250421943,
+      "lower": 0.8117132704209814,
+      "upper": 1.734149086636219,
+      "ci95": [
+        0.8117132704209814,
+        1.734149086636219
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_bPbr_rho0.1",
+      "point": 1.3309439168061399,
+      "lower": 0.8588391824043932,
+      "upper": 1.838504880794174,
+      "ci95": [
+        0.8588391824043932,
+        1.838504880794174
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_bPbr_rho0.25",
+      "point": 1.4601178352995332,
+      "lower": 0.9407480537949653,
+      "upper": 2.0199857745261043,
+      "ci95": [
+        0.9407480537949653,
+        2.0199857745261043
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_bPbr_rho0.5",
+      "point": 1.741879524477358,
+      "lower": 1.122357326678084,
+      "upper": 2.4081758537324434,
+      "ci95": [
+        1.122357326678084,
+        2.4081758537324434
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/RA/b_over_bPbr_rho1",
+      "point": 2.836677542377048,
+      "lower": 1.8288340039151172,
+      "upper": 3.9372166392601535,
+      "ci95": [
+        1.8288340039151172,
+        3.9372166392601535
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/G/a",
+      "point": 0.08400822402292242,
+      "lower": 0.05022922082411575,
+      "upper": 0.12428659350045601,
+      "ci95": [
+        0.05022922082411575,
+        0.12428659350045601
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/G/b",
+      "point": 1.9706159979808882,
+      "lower": 0.9494825434637117,
+      "upper": 3.0599632963553187,
+      "ci95": [
+        0.9494825434637117,
+        3.0599632963553187
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/G/b_over_a",
+      "point": 23.457417662384902,
+      "lower": 8.045910007396888,
+      "upper": 56.36122006158041,
+      "ci95": [
+        8.045910007396888,
+        56.36122006158041
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/G/bP",
+      "point": 0.445433779582172,
+      "lower": 0.4275212812207403,
+      "upper": 0.4642591489569369,
+      "ci95": [
+        0.4275212812207403,
+        0.4642591489569369
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "primary/G/b_over_bP",
+      "point": 4.4240380687548555,
+      "lower": 2.100288158469235,
+      "upper": 6.901143361973425,
+      "ci95": [
+        2.100288158469235,
+        6.901143361973425
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py section ratios (B=2000, rng [2026110352, 1]) -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.6/a",
+      "point": 0.014954566182030291,
+      "lower": 0.010060454907989416,
+      "upper": 0.020633057685582705,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.6/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.6/b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.406218624289615,
+      "upper": 72.3749575346261,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.6/bP",
+      "point": 0.44553422780875024,
+      "lower": 0.42747815996297733,
+      "upper": 0.4645355307238374,
+      "ci95": [
+        0.42747815996297733,
+        0.4645355307238374
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.6/b_over_bP",
+      "point": 1.2568183250421943,
+      "lower": 0.8117132704209814,
+      "upper": 1.734149086636219,
+      "ci95": [
+        0.8117132704209814,
+        1.734149086636219
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2/a",
+      "point": 0.011914936872916502,
+      "lower": 0.007986514076513688,
+      "upper": 0.01641105571040475,
+      "ci95": [
+        0.007986514076513688,
+        0.01641105571040475
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2/b",
+      "point": 0.4482019009253871,
+      "lower": 0.2923596457523693,
+      "upper": 0.614222793686085,
+      "ci95": [
+        0.2923596457523693,
+        0.614222793686085
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2/b_over_a",
+      "point": 37.61680869196897,
+      "lower": 18.718887853797455,
+      "upper": 72.05260307755503,
+      "ci95": [
+        18.718887853797455,
+        72.05260307755503
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2/bP",
+      "point": 0.3537374937494145,
+      "lower": 0.3399408475800973,
+      "upper": 0.368150740369294,
+      "ci95": [
+        0.3399408475800973,
+        0.368150740369294
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2/b_over_bP",
+      "point": 1.2670466344257265,
+      "lower": 0.8256647664258894,
+      "upper": 1.7432456639463079,
+      "ci95": [
+        0.8256647664258894,
+        1.7432456639463079
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1/a",
+      "point": 0.01106142261625278,
+      "lower": 0.00743694938610857,
+      "upper": 0.015089064084496095,
+      "ci95": [
+        0.00743694938610857,
+        0.015089064084496095
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1/b",
+      "point": 0.41960066471430024,
+      "lower": 0.27928164984450543,
+      "upper": 0.5703838347878164,
+      "ci95": [
+        0.27928164984450543,
+        0.5703838347878164
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1/b_over_a",
+      "point": 37.93369797640425,
+      "lower": 19.502212013150938,
+      "upper": 71.30535675106299,
+      "ci95": [
+        19.502212013150938,
+        71.30535675106299
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1/bP",
+      "point": 0.3399606033316058,
+      "lower": 0.3219846265037986,
+      "upper": 0.35958256820172824,
+      "ci95": [
+        0.3219846265037986,
+        0.35958256820172824
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1/b_over_bP",
+      "point": 1.234262619263008,
+      "lower": 0.8272513205422312,
+      "upper": 1.676642177842645,
+      "ci95": [
+        0.8272513205422312,
+        1.676642177842645
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/G_gi3.6/a",
+      "point": 0.08400822402292242,
+      "lower": 0.05022922082411575,
+      "upper": 0.12428659350045601,
+      "ci95": [
+        0.05022922082411575,
+        0.12428659350045601
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/G_gi3.6/b",
+      "point": 1.9706159979808882,
+      "lower": 0.9494825434637117,
+      "upper": 3.0599632963553187,
+      "ci95": [
+        0.9494825434637117,
+        3.0599632963553187
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/G_gi3.6/b_over_a",
+      "point": 23.457417662384902,
+      "lower": 8.045910007396888,
+      "upper": 56.36122006158041,
+      "ci95": [
+        8.045910007396888,
+        56.36122006158041
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/G_gi3.6/bP",
+      "point": 0.445433779582172,
+      "lower": 0.4275212812207403,
+      "upper": 0.4642591489569369,
+      "ci95": [
+        0.4275212812207403,
+        0.4642591489569369
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/G_gi3.6/b_over_bP",
+      "point": 4.4240380687548555,
+      "lower": 2.100288158469235,
+      "upper": 6.901143361973425,
+      "ci95": [
+        2.100288158469235,
+        6.901143361973425
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "gi/RA_gi3.2_minus_gi3.6_b_over_a",
+      "point": 0.1730222840145359,
+      "lower": -0.6524120111768921,
+      "upper": 0.8906444170505112,
+      "ci95": [
+        -0.6524120111768921,
+        0.8906444170505112
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "interval_note": "paired bootstrap difference"
+    },
+    {
+      "name": "gi/RA_gi3.2_minus_gi3.6_b_over_bP",
+      "point": 0.010228309383532252,
+      "lower": -0.00536515220340667,
+      "upper": 0.027946285010219042,
+      "ci95": [
+        -0.00536515220340667,
+        0.027946285010219042
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "interval_note": "paired bootstrap difference"
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1_minus_gi3.6_b_over_a",
+      "point": 0.48991156844981276,
+      "lower": -2.554009430505459,
+      "upper": 3.043375628127232,
+      "ci95": [
+        -2.554009430505459,
+        3.043375628127232
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "interval_note": "paired bootstrap difference"
+    },
+    {
+      "name": "gi/RA_gi3.2_sd2.1_minus_gi3.6_b_over_bP",
+      "point": -0.022555705779186308,
+      "lower": -0.082488688845461,
+      "upper": 0.03550655027933575,
+      "ci95": [
+        -0.082488688845461,
+        0.03550655027933575
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "interval_note": "paired bootstrap difference"
+    },
+    {
+      "name": "fe/L1/pooled_a",
+      "point": 0.014954566182030291,
+      "lower": 0.010060454907989416,
+      "upper": 0.020633057685582705,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/pooled_b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/pooled_b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.406218624289615,
+      "upper": 72.3749575346261,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/state_b",
+      "point": 0.37937647014788367,
+      "lower": 0.10690717241752809,
+      "upper": 0.6501846033913928,
+      "ci95": [
+        0.10690717241752809,
+        0.6501846033913928
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/a_mean",
+      "point": 0.021923040330930267,
+      "lower": 0.012662771658941254,
+      "upper": 0.03543898009744661,
+      "ci95": [
+        0.012662771658941254,
+        0.03543898009744661
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/state_b_over_a",
+      "point": 17.304920504691033,
+      "lower": 3.4017236700936913,
+      "upper": 49.12387429178587,
+      "ci95": [
+        3.4017236700936913,
+        49.12387429178587
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/slope_ratio",
+      "point": 1.4759892244378945,
+      "lower": 0.988251037628361,
+      "upper": 3.661751970246354,
+      "ci95": [
+        0.988251037628361,
+        3.661751970246354
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1997,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/intercept_ratio",
+      "point": 1.465976348900942,
+      "lower": 0.9891899692146643,
+      "upper": 2.2914397713930765,
+      "ci95": [
+        0.9891899692146643,
+        2.2914397713930765
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/crosscount_ratio",
+      "point": 2.1637652942585976,
+      "lower": 0.9946429837949142,
+      "upper": 7.637086161414613,
+      "ci95": [
+        0.9946429837949142,
+        7.637086161414613
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1997,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L1/log_share_slope",
+      "point": 0.5044095072240271,
+      "lower": 0.305367590700388,
+      "upper": 0.7365442125650956,
+      "ci95": [
+        0.305367590700388,
+        0.7365442125650956
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1997,
+      "total_draws": 2000,
+      "block_length": 1,
+      "B": 2000
+    },
+    {
+      "name": "fe/L2/pooled_a",
+      "point": 0.014954566182030291,
+      "lower": 0.010016806509943426,
+      "upper": 0.021178581475154935,
+      "ci95": [
+        0.010016806509943426,
+        0.021178581475154935
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/pooled_b",
+      "point": 0.5599555819435609,
+      "lower": 0.3716056187793332,
+      "upper": 0.7720626071217624,
+      "ci95": [
+        0.3716056187793332,
+        0.7720626071217624
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/pooled_b_over_a",
+      "point": 37.443786407954434,
+      "lower": 19.121575999877614,
+      "upper": 70.85555074470872,
+      "ci95": [
+        19.121575999877614,
+        70.85555074470872
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/state_b",
+      "point": 0.37937647014788367,
+      "lower": 0.1044813116540048,
+      "upper": 0.6645932726458784,
+      "ci95": [
+        0.1044813116540048,
+        0.6645932726458784
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/a_mean",
+      "point": 0.021923040330930267,
+      "lower": 0.012452371421076679,
+      "upper": 0.03616027835841981,
+      "ci95": [
+        0.012452371421076679,
+        0.03616027835841981
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/state_b_over_a",
+      "point": 17.304920504691033,
+      "lower": 2.8324046580162405,
+      "upper": 50.14307665954746,
+      "ci95": [
+        2.8324046580162405,
+        50.14307665954746
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/slope_ratio",
+      "point": 1.4759892244378945,
+      "lower": 0.9922182921739617,
+      "upper": 4.29039770728226,
+      "ci95": [
+        0.9922182921739617,
+        4.29039770728226
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 998,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/intercept_ratio",
+      "point": 1.465976348900942,
+      "lower": 0.9874386523357704,
+      "upper": 2.291486206350552,
+      "ci95": [
+        0.9874386523357704,
+        2.291486206350552
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/crosscount_ratio",
+      "point": 2.1637652942585976,
+      "lower": 0.9939171471112389,
+      "upper": 9.308837354836003,
+      "ci95": [
+        0.9939171471112389,
+        9.308837354836003
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 998,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L2/log_share_slope",
+      "point": 0.5044095072240271,
+      "lower": 0.3070258207096551,
+      "upper": 0.7334300422434464,
+      "ci95": [
+        0.3070258207096551,
+        0.7334300422434464
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 998,
+      "total_draws": 1000,
+      "block_length": 2,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/pooled_a",
+      "point": 0.014954566182030291,
+      "lower": 0.010077735078548446,
+      "upper": 0.020687125728599286,
+      "ci95": [
+        0.010077735078548446,
+        0.020687125728599286
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/pooled_b",
+      "point": 0.5599555819435609,
+      "lower": 0.373486936322509,
+      "upper": 0.7731592079454902,
+      "ci95": [
+        0.373486936322509,
+        0.7731592079454902
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/pooled_b_over_a",
+      "point": 37.443786407954434,
+      "lower": 19.015205162967465,
+      "upper": 67.91938060709491,
+      "ci95": [
+        19.015205162967465,
+        67.91938060709491
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/state_b",
+      "point": 0.37937647014788367,
+      "lower": 0.09548675222911637,
+      "upper": 0.6499090923317767,
+      "ci95": [
+        0.09548675222911637,
+        0.6499090923317767
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/a_mean",
+      "point": 0.021923040330930267,
+      "lower": 0.013152399648301297,
+      "upper": 0.03666411935271854,
+      "ci95": [
+        0.013152399648301297,
+        0.03666411935271854
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/state_b_over_a",
+      "point": 17.304920504691033,
+      "lower": 2.6575097512959003,
+      "upper": 46.48471494917051,
+      "ci95": [
+        2.6575097512959003,
+        46.48471494917051
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/slope_ratio",
+      "point": 1.4759892244378945,
+      "lower": 1.0276460340871258,
+      "upper": 4.597547812946673,
+      "ci95": [
+        1.0276460340871258,
+        4.597547812946673
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/intercept_ratio",
+      "point": 1.465976348900942,
+      "lower": 1.0103215435749096,
+      "upper": 2.3652254494870957,
+      "ci95": [
+        1.0103215435749096,
+        2.3652254494870957
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/crosscount_ratio",
+      "point": 2.1637652942585976,
+      "lower": 1.0225760838771651,
+      "upper": 9.786644251687443,
+      "ci95": [
+        1.0225760838771651,
+        9.786644251687443
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "fe/L3/log_share_slope",
+      "point": 0.5044095072240271,
+      "lower": 0.3389788353979709,
+      "upper": 0.720412051242801,
+      "ci95": [
+        0.3389788353979709,
+        0.720412051242801
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_fe_decomp.py -> analysis/ma_fe_decomp.json",
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "block_length": 3,
+      "B": 1000
+    },
+    {
+      "name": "thinning/authors/full/c",
+      "point": 0.4051434668519113,
+      "lower": 0.3655753779604976,
+      "upper": 0.44132023018930616,
+      "ci95": [
+        0.3655753779604976,
+        0.44132023018930616
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/s03b_thinning.py (run_authors_pipeline.sh) -> analysis/authors/thinning.json",
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    {
+      "name": "thinning/authors/full/c_over_bP",
+      "point": 0.9093430797550822,
+      "lower": 0.8101157171151847,
+      "upper": 0.9994919589234433,
+      "ci95": [
+        0.8101157171151847,
+        0.9994919589234433
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/s03b_thinning.py (run_authors_pipeline.sh) -> analysis/authors/thinning.json",
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    {
+      "name": "thinning/authors/bP",
+      "point": 0.44553422780875024,
+      "lower": 0.4282436178964763,
+      "upper": 0.46583862148676275,
+      "ci95": [
+        0.4282436178964763,
+        0.46583862148676275
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/s03b_thinning.py (run_authors_pipeline.sh) -> analysis/authors/thinning.json",
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    {
+      "name": "thinning/authors/unthinned_b",
+      "point": 0.5599555819435609,
+      "lower": 0.37976021883064254,
+      "upper": 0.7912545900763897,
+      "ci95": [
+        0.37976021883064254,
+        0.7912545900763897
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/s03b_thinning.py (run_authors_pipeline.sh) -> analysis/authors/thinning.json",
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    {
+      "name": "within/pooled_b/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/bP/b",
+      "point": 0.44553422780875024,
+      "lower": 0.42747815996297733,
+      "upper": 0.4645355307238374,
+      "ci95": [
+        0.42747815996297733,
+        0.4645355307238374
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/state_authors/b",
+      "point": 0.37937647014788367,
+      "lower": 0.10690717241752809,
+      "upper": 0.6501846033913928,
+      "ci95": [
+        0.10690717241752809,
+        0.6501846033913928
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/state_onestep/b",
+      "point": 0.4561494688455677,
+      "lower": 0.22774571891739262,
+      "upper": 0.6820104751073581,
+      "ci95": [
+        0.22774571891739262,
+        0.6820104751073581
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/week_onestep/b",
+      "point": 0.6343012596017805,
+      "lower": 0.4202611330550162,
+      "upper": 0.8460708364371258,
+      "ci95": [
+        0.4202611330550162,
+        0.8460708364371258
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/two_way_onestep/b",
+      "point": 0.48002249829092036,
+      "lower": 0.20767025513083404,
+      "upper": 0.7444481600711583,
+      "ci95": [
+        0.20767025513083404,
+        0.7444481600711583
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/two_way_iterated/b",
+      "point": 0.4137736134562125,
+      "lower": 0.039896879468772295,
+      "upper": 0.6590221890570763,
+      "ci95": [
+        0.039896879468772295,
+        0.6590221890570763
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1962,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled_b/over_bP",
+      "point": 1.2568183250421943,
+      "lower": 0.8117132704209814,
+      "upper": 1.734149086636219,
+      "ci95": [
+        0.8117132704209814,
+        1.734149086636219
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/state_authors/over_bP",
+      "point": 0.8515091467018211,
+      "lower": 0.2374301529893247,
+      "upper": 1.4745515557480335,
+      "ci95": [
+        0.2374301529893247,
+        1.4745515557480335
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/state_onestep/over_bP",
+      "point": 1.023825870997669,
+      "lower": 0.5136859541569436,
+      "upper": 1.5342869970993098,
+      "ci95": [
+        0.5136859541569436,
+        1.5342869970993098
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/week_onestep/over_bP",
+      "point": 1.423686935842021,
+      "lower": 0.9551273047755372,
+      "upper": 1.8942902256423908,
+      "ci95": [
+        0.9551273047755372,
+        1.8942902256423908
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/two_way_onestep/over_bP",
+      "point": 1.0774088012312593,
+      "lower": 0.46551727958935335,
+      "upper": 1.6606154115765916,
+      "ci95": [
+        0.46551727958935335,
+        1.6606154115765916
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/two_way_iterated/over_bP",
+      "point": 0.9287134133133957,
+      "lower": 0.09199709984789665,
+      "upper": 1.4770370802291037,
+      "ci95": [
+        0.09199709984789665,
+        1.4770370802291037
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1962,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled/a",
+      "point": 0.014954566182030291,
+      "lower": 0.010060454907989416,
+      "upper": 0.020633057685582705,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled/b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.406218624289615,
+      "upper": 72.3749575346261,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled/bP",
+      "point": 0.44553422780875024,
+      "lower": 0.42747815996297733,
+      "upper": 0.4645355307238374,
+      "ci95": [
+        0.42747815996297733,
+        0.4645355307238374
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "within/pooled/b_over_bP",
+      "point": 1.2568183250421943,
+      "lower": 0.8117132704209814,
+      "upper": 1.734149086636219,
+      "ci95": [
+        0.8117132704209814,
+        1.734149086636219
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    {
+      "name": "sensitivity/primary/a",
+      "point": 0.014954566182030291,
+      "lower": 0.010060454907989416,
+      "upper": 0.020633057685582705,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/primary/b",
+      "point": 0.5599555819435609,
+      "lower": 0.36202648083642996,
+      "upper": 0.7694411681636362,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/primary/b_over_a",
+      "point": 37.443786407954434,
+      "lower": 18.406218624289615,
+      "upper": 72.3749575346261,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/primary/b_over_bP",
+      "point": 1.2568183250421943,
+      "lower": 0.8117132704209814,
+      "upper": 1.734149086636219,
+      "ci95": [
+        0.8117132704209814,
+        1.734149086636219
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/min_count_10/a",
+      "point": 0.013618094144142034,
+      "lower": 0.008994794448901307,
+      "upper": 0.01876699354865126,
+      "ci95": [
+        0.008994794448901307,
+        0.01876699354865126
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1535
+    },
+    {
+      "name": "sensitivity/min_count_10/b",
+      "point": 0.6773098751726425,
+      "lower": 0.43575309917110616,
+      "upper": 0.9377671008049173,
+      "ci95": [
+        0.43575309917110616,
+        0.9377671008049173
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1535
+    },
+    {
+      "name": "sensitivity/min_count_10/b_over_a",
+      "point": 49.73602532069397,
+      "lower": 24.98896639713787,
+      "upper": 96.64568221396634,
+      "ci95": [
+        24.98896639713787,
+        96.64568221396634
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1535
+    },
+    {
+      "name": "sensitivity/min_count_10/b_over_bP",
+      "point": 1.5430456111836641,
+      "lower": 0.9875916995814771,
+      "upper": 2.1443791778577856,
+      "ci95": [
+        0.9875916995814771,
+        2.1443791778577856
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1535
+    },
+    {
+      "name": "sensitivity/min_count_20/a",
+      "point": 0.013278424833168552,
+      "lower": 0.008072139341988851,
+      "upper": 0.018863001964660193,
+      "ci95": [
+        0.008072139341988851,
+        0.018863001964660193
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1203
+    },
+    {
+      "name": "sensitivity/min_count_20/b",
+      "point": 0.7014542740685401,
+      "lower": 0.3315657393747244,
+      "upper": 1.0923026500997148,
+      "ci95": [
+        0.3315657393747244,
+        1.0923026500997148
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1203
+    },
+    {
+      "name": "sensitivity/min_count_20/b_over_a",
+      "point": 52.826617831684196,
+      "lower": 19.02283300333709,
+      "upper": 122.94824629530801,
+      "ci95": [
+        19.02283300333709,
+        122.94824629530801
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1203
+    },
+    {
+      "name": "sensitivity/min_count_20/b_over_bP",
+      "point": 1.6275543274031719,
+      "lower": 0.7606740355681598,
+      "upper": 2.5231568368733472,
+      "ci95": [
+        0.7606740355681598,
+        2.5231568368733472
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1203
+    },
+    {
+      "name": "sensitivity/min_count_50/a",
+      "point": 0.01290376023671884,
+      "lower": 0.007302079028095859,
+      "upper": 0.01905657250670681,
+      "ci95": [
+        0.007302079028095859,
+        0.01905657250670681
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 776
+    },
+    {
+      "name": "sensitivity/min_count_50/b",
+      "point": 0.6857359166122007,
+      "lower": -0.15527209354245547,
+      "upper": 1.4785718995408788,
+      "ci95": [
+        -0.15527209354245547,
+        1.4785718995408788
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 776
+    },
+    {
+      "name": "sensitivity/min_count_50/b_over_a",
+      "point": 53.142332469947476,
+      "lower": -8.354841352188435,
+      "upper": 180.13081911235332,
+      "ci95": [
+        -8.354841352188435,
+        180.13081911235332
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 776
+    },
+    {
+      "name": "sensitivity/min_count_50/b_over_bP",
+      "point": 1.6364657679979937,
+      "lower": -0.3783385453488648,
+      "upper": 3.587381545293494,
+      "ci95": [
+        -0.3783385453488648,
+        3.587381545293494
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 776
+    },
+    {
+      "name": "sensitivity/continuity_1.0/a",
+      "point": 0.015407463146785995,
+      "lower": 0.010206130041065435,
+      "upper": 0.021385705402451535,
+      "ci95": [
+        0.010206130041065435,
+        0.021385705402451535
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/continuity_1.0/b",
+      "point": 0.5103794315590048,
+      "lower": 0.3263893708829883,
+      "upper": 0.7283268898969626,
+      "ci95": [
+        0.3263893708829883,
+        0.7283268898969626
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/continuity_1.0/b_over_a",
+      "point": 33.12546826798481,
+      "lower": 16.251038673438348,
+      "upper": 66.31721563552463,
+      "ci95": [
+        16.251038673438348,
+        66.31721563552463
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/continuity_1.0/b_over_bP",
+      "point": 1.145544830683783,
+      "lower": 0.7378170760747277,
+      "upper": 1.6413988230049092,
+      "ci95": [
+        0.7378170760747277,
+        1.6413988230049092
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1748
+    },
+    {
+      "name": "sensitivity/window_threshold_1.10/a",
+      "point": 0.014059246872771502,
+      "lower": 0.009733500609048883,
+      "upper": 0.01869154624124122,
+      "ci95": [
+        0.009733500609048883,
+        0.01869154624124122
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1564
+    },
+    {
+      "name": "sensitivity/window_threshold_1.10/b",
+      "point": 0.5431179012543637,
+      "lower": 0.35678427074778823,
+      "upper": 0.7595725312735675,
+      "ci95": [
+        0.35678427074778823,
+        0.7595725312735675
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1564
+    },
+    {
+      "name": "sensitivity/window_threshold_1.10/b_over_a",
+      "point": 38.630653986609936,
+      "lower": 20.57864039984795,
+      "upper": 70.33342551236565,
+      "ci95": [
+        20.57864039984795,
+        70.33342551236565
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1564
+    },
+    {
+      "name": "sensitivity/window_threshold_1.10/b_over_bP",
+      "point": 1.255175855987192,
+      "lower": 0.826069311838612,
+      "upper": 1.7489902282769818,
+      "ci95": [
+        0.826069311838612,
+        1.7489902282769818
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 1564
+    },
+    {
+      "name": "sensitivity/season_2022-23/a",
+      "point": 0.013685048116324556,
+      "lower": 0.006696149572192579,
+      "upper": 0.021002770399071898,
+      "ci95": [
+        0.006696149572192579,
+        0.021002770399071898
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 365
+    },
+    {
+      "name": "sensitivity/season_2022-23/b",
+      "point": 0.696702729088067,
+      "lower": 0.35031921207833094,
+      "upper": 1.0825647941722512,
+      "ci95": [
+        0.35031921207833094,
+        1.0825647941722512
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 365
+    },
+    {
+      "name": "sensitivity/season_2022-23/b_over_a",
+      "point": 50.90977563001678,
+      "lower": 19.827768486468486,
+      "upper": 134.76413090564134,
+      "ci95": [
+        19.827768486468486,
+        134.76413090564134
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1995,
+      "total_draws": 2000,
+      "n": 365
+    },
+    {
+      "name": "sensitivity/season_2022-23/b_over_bP",
+      "point": 1.6198695417487943,
+      "lower": 0.8027074368204026,
+      "upper": 2.49677754765971,
+      "ci95": [
+        0.8027074368204026,
+        2.49677754765971
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 365
+    },
+    {
+      "name": "sensitivity/season_2023-24/a",
+      "point": 0.006174051852779756,
+      "lower": 0.0025237111482227324,
+      "upper": 0.014130029125963582,
+      "ci95": [
+        0.0025237111482227324,
+        0.014130029125963582
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 499
+    },
+    {
+      "name": "sensitivity/season_2023-24/b",
+      "point": 0.7018369448933863,
+      "lower": 0.4032450521004873,
+      "upper": 0.9627845170679056,
+      "ci95": [
+        0.4032450521004873,
+        0.9627845170679056
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 499
+    },
+    {
+      "name": "sensitivity/season_2023-24/b_over_a",
+      "point": 113.67525923472716,
+      "lower": 30.197724936943455,
+      "upper": 315.1127971395557,
+      "ci95": [
+        30.197724936943455,
+        315.1127971395557
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1998,
+      "total_draws": 2000,
+      "n": 499
+    },
+    {
+      "name": "sensitivity/season_2023-24/b_over_bP",
+      "point": 1.5077392836661667,
+      "lower": 0.8491739564603529,
+      "upper": 2.096545061872452,
+      "ci95": [
+        0.8491739564603529,
+        2.096545061872452
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 499
+    },
+    {
+      "name": "sensitivity/season_2024-25/a",
+      "point": 0.012683966447451898,
+      "lower": 0.005797705800741597,
+      "upper": 0.023197479610589634,
+      "ci95": [
+        0.005797705800741597,
+        0.023197479610589634
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 356
+    },
+    {
+      "name": "sensitivity/season_2024-25/b",
+      "point": 0.5825753098126208,
+      "lower": 0.16068686930261322,
+      "upper": 1.0494072124918514,
+      "ci95": [
+        0.16068686930261322,
+        1.0494072124918514
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 356
+    },
+    {
+      "name": "sensitivity/season_2024-25/b_over_a",
+      "point": 45.9300576224447,
+      "lower": 8.173891117224809,
+      "upper": 147.20833005676604,
+      "ci95": [
+        8.173891117224809,
+        147.20833005676604
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 356
+    },
+    {
+      "name": "sensitivity/season_2024-25/b_over_bP",
+      "point": 1.3801133540686938,
+      "lower": 0.36418438824814764,
+      "upper": 2.5018377228059565,
+      "ci95": [
+        0.36418438824814764,
+        2.5018377228059565
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 356
+    },
+    {
+      "name": "sensitivity/season_2025-26/a",
+      "point": 0.022525438109000404,
+      "lower": 0.008450074280647516,
+      "upper": 0.035493506331676396,
+      "ci95": [
+        0.008450074280647516,
+        0.035493506331676396
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 528
+    },
+    {
+      "name": "sensitivity/season_2025-26/b",
+      "point": 0.3532854491680454,
+      "lower": 0.12935425515357113,
+      "upper": 0.7177848945061213,
+      "ci95": [
+        0.12935425515357113,
+        0.7177848945061213
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 528
+    },
+    {
+      "name": "sensitivity/season_2025-26/b_over_a",
+      "point": 15.68384363751329,
+      "lower": 4.1435990106514575,
+      "upper": 71.56284962751056,
+      "ci95": [
+        4.1435990106514575,
+        71.56284962751056
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 528
+    },
+    {
+      "name": "sensitivity/season_2025-26/b_over_bP",
+      "point": 0.7796529175262666,
+      "lower": 0.27724186343167423,
+      "upper": 1.6145398622213143,
+      "ci95": [
+        0.27724186343167423,
+        1.6145398622213143
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "n": 528
+    },
+    {
+      "name": "seasons/common_slope/b_common",
+      "point": 0.6072256678255337,
+      "lower": 0.4154338806088916,
+      "upper": 0.7940831065161762,
+      "ci95": [
+        0.4154338806088916,
+        0.7940831065161762
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/a_2022-23",
+      "point": 0.015852197456128998,
+      "lower": 0.008674794215920352,
+      "upper": 0.026854084466853344,
+      "ci95": [
+        0.008674794215920352,
+        0.026854084466853344
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/a_2023-24",
+      "point": 0.007085845588629445,
+      "lower": 0.003582637462258652,
+      "upper": 0.01430912014591992,
+      "ci95": [
+        0.003582637462258652,
+        0.01430912014591992
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/a_2024-25",
+      "point": 0.015368325342755212,
+      "lower": 0.007113190376601157,
+      "upper": 0.027568755244274358,
+      "ci95": [
+        0.007113190376601157,
+        0.027568755244274358
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/a_2025-26",
+      "point": 0.018003718090146944,
+      "lower": 0.007510507217077409,
+      "upper": 0.027815406727486912,
+      "ci95": [
+        0.007510507217077409,
+        0.027815406727486912
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/b_over_a_2022-23",
+      "point": 38.30545698828396,
+      "lower": 17.665129206158426,
+      "upper": 77.41443824506823,
+      "ci95": [
+        17.665129206158426,
+        77.41443824506823
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1995,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/b_over_a_2023-24",
+      "point": 85.69558286733485,
+      "lower": 31.795712331193666,
+      "upper": 193.72997671653127,
+      "ci95": [
+        31.795712331193666,
+        193.72997671653127
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/b_over_a_2024-25",
+      "point": 39.51150527352586,
+      "lower": 17.450619167506325,
+      "upper": 97.59882885636601,
+      "ci95": [
+        17.450619167506325,
+        97.59882885636601
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/common_slope/b_over_a_2025-26",
+      "point": 33.727792491810646,
+      "lower": 17.071750210664852,
+      "upper": 86.7754895156538,
+      "ci95": [
+        17.071750210664852,
+        86.7754895156538
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000
+    },
+    {
+      "name": "seasons/test/wald_log_a",
+      "point": 5.518537439371225,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "df": 3,
+      "p": 0.13753406777833616,
+      "param": "log a_s, season intercepts with common slope (equivalently log b/a_s)"
+    },
+    {
+      "name": "seasons/test/wald_raw_a",
+      "point": 7.246899785933869,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "df": 3,
+      "p": 0.06443102679692411,
+      "param": "a_s, common-slope model (sensitivity)"
+    },
+    {
+      "name": "seasons/test/wald_sep_log_ba",
+      "point": 4.411412731740686,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "df": 3,
+      "p": 0.2203294921273178,
+      "param": "log b_s/a_s, separate season fits, rng [SEED,40] (sensitivity)"
+    },
+    {
+      "name": "seasons/test/cochran_q_log_a",
+      "point": 4.567833735623044,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "df": 3,
+      "p": 0.20631889429963524,
+      "I2": 0.34323353833919573
+    },
+    {
+      "name": "seasons/test/mdd_factor",
+      "point": 1.405569457693174,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "noncentrality_power80": 10.90256329013327,
+      "mdd_max_over_min_a": 3.7086358647327007,
+      "observed_max_over_min_a": 2.540800228421185,
+      "definition": "f = sqrt(lambda/W), lambda the noncentrality giving power 0.8 for a level-0.05 chi-square(3) test; mdd_max_over_min_a = exp(f * range of log a_s deviations from their inverse-variance weighted mean)"
+    },
+    {
+      "name": "seasons/test/mdd_max_over_min_a",
+      "point": 3.7086358647327007,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "observed_max_over_min_a": 2.540800228421185
+    },
+    {
+      "name": "seasons/test/n_draws_used",
+      "point": 1995.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "n_draws_total": 2000,
+      "per_test": {
+        "log_a": 1995,
+        "raw_a": 1999,
+        "separate_log_b_over_a": 1982
+      },
+      "rule": "draws with any non-finite season value are dropped: a failed fit, a season with no resampled weight, or a non-positive intercept on the log scale"
+    },
+    {
+      "name": "seasons/descriptive/max_over_min_b_over_a",
+      "point": 2.540800228421186,
+      "lower": 1.5239178797969948,
+      "upper": 6.0094537227357065,
+      "ci95": [
+        1.5239178797969948,
+        6.0094537227357065
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1999,
+      "total_draws": 2000,
+      "note": "descriptive; not a homogeneity test"
+    },
+    {
+      "name": "validation/state/power_minus_affine",
+      "point": -0.0020184270925074116,
+      "lower": -0.029026103028511416,
+      "upper": 0.029817243283791293,
+      "ci95": [
+        -0.029026103028511416,
+        0.029817243283791293
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "paired_fold_se": 0.00680648972440421,
+      "z": -0.2965445000630027,
+      "affine_better_folds": 26,
+      "folds": 51
+    },
+    {
+      "name": "validation/season/power_minus_affine",
+      "point": 0.0046263429445245405,
+      "lower": -0.029523395849149037,
+      "upper": 0.0655100094662512,
+      "ci95": [
+        -0.029523395849149037,
+        0.0655100094662512
+      ],
+      "interval": "bootstrap percentile 95%",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json",
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "paired_fold_se": 0.008733831999695608,
+      "z": 0.529703679288287,
+      "affine_better_folds": 3,
+      "folds": 4
+    },
+    {
+      "name": "table1/m_cross_known",
+      "point": 53.08035714285714,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m_cross_observed_delta",
+      "point": 78.62723214285714,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m10/observed_denominator_mc",
+      "point": 0.5145332598020184,
+      "lower": 0.5050954807786213,
+      "upper": 0.5239710388254154,
+      "ci95": [
+        0.5050954807786213,
+        0.5239710388254154
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m10/observed_denominator_delta",
+      "point": 0.31450892857142854,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m10/known_denominator_analytic",
+      "point": 0.21232142857142855,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m50/observed_denominator_mc",
+      "point": 0.06744796926983863,
+      "lower": 0.06707815290043177,
+      "upper": 0.0678177856392455,
+      "ci95": [
+        0.06707815290043177,
+        0.0678177856392455
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m50/observed_denominator_delta",
+      "point": 0.06290178571428572,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m50/known_denominator_analytic",
+      "point": 0.04246428571428571,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m200/observed_denominator_mc",
+      "point": 0.01600660750353574,
+      "lower": 0.015928734132265844,
+      "upper": 0.016084480874805636,
+      "ci95": [
+        0.015928734132265844,
+        0.016084480874805636
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m200/observed_denominator_delta",
+      "point": 0.01572544642857143,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m200/known_denominator_analytic",
+      "point": 0.010616071428571428,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m1000/observed_denominator_mc",
+      "point": 0.003160662691569805,
+      "lower": 0.0031458543537804177,
+      "upper": 0.0031754710293591926,
+      "ci95": [
+        0.0031458543537804177,
+        0.0031754710293591926
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m1000/observed_denominator_delta",
+      "point": 0.0031450892857142858,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "table1/m1000/known_denominator_analytic",
+      "point": 0.0021232142857142856,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_extensions.py -> analysis/ma_extensions.json"
+    },
+    {
+      "name": "audit/observed/a",
+      "point": 0.014954566182030291,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/b",
+      "point": 0.5599555819435609,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/b_over_a",
+      "point": 37.443786407954434,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/bP",
+      "point": 0.44553422780875024,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/b_over_bP",
+      "point": 1.2568183250421943,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/bw",
+      "point": 0.37937647014788367,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/bw_over_bP",
+      "point": 0.8515091467018211,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/a_week",
+      "point": 0.00976583216032541,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/contrast_affine_minus_power",
+      "point": -0.0013596580771664257,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/n",
+      "point": 1748.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/D_p10",
+      "point": 10.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/D_p90",
+      "point": 388.5999999999999,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/observed/D_p50",
+      "point": 45.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S0_poisson/a",
+      "point": 2.7227614035021744e-05,
+      "lower": -9.811771752357662e-05,
+      "upper": 0.00019445859358063007,
+      "ci95": [
+        -9.811771752357662e-05,
+        0.00019445859358063007
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/err_a",
+      "point": 2.5160616321497265e-05,
+      "lower": -0.00010006194626228671,
+      "upper": 0.00019426779376530446,
+      "ci95": [
+        -0.00010006194626228671,
+        0.00019426779376530446
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/b",
+      "point": 0.4062652363644986,
+      "lower": 0.3723191938907107,
+      "upper": 0.43941085246693506,
+      "ci95": [
+        0.3723191938907107,
+        0.43941085246693506
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/bP",
+      "point": 0.43681250000671296,
+      "lower": 0.4338291471205085,
+      "upper": 0.44189679016777555,
+      "ci95": [
+        0.4338291471205085,
+        0.44189679016777555
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/b_over_bP",
+      "point": 0.930040902477616,
+      "lower": 0.8530957516297096,
+      "upper": 1.0054796714987697,
+      "ci95": [
+        0.8530957516297096,
+        1.0054796714987697
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/bw_over_bP",
+      "point": 0.8958071305436935,
+      "lower": 0.793965769205235,
+      "upper": 1.020741304886215,
+      "ci95": [
+        0.793965769205235,
+        1.020741304886215
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 197,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/week_reduction",
+      "point": -30.738020168584608,
+      "lower": -34.19059800050169,
+      "upper": 12.886245711023085,
+      "ci95": [
+        -34.19059800050169,
+        12.886245711023085
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/contrast",
+      "point": -0.0003594614481083158,
+      "lower": -0.0028424288338673278,
+      "upper": 0.0018281629666623835,
+      "ci95": [
+        -0.0028424288338673278,
+        0.0018281629666623835
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/pooled_over_within_slope",
+      "point": 1.0416612794407174,
+      "lower": 0.9522062389434558,
+      "upper": 1.1327856234296243,
+      "ci95": [
+        0.9522062389434558,
+        1.1327856234296243
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 197,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/n_retained",
+      "point": 1671.45,
+      "lower": 1660.0,
+      "upper": 1683.025,
+      "ci95": [
+        1660.0,
+        1683.025
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/true_total_kept_rows",
+      "point": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/D_p10",
+      "point": 10.063,
+      "lower": 10.0,
+      "upper": 11.0,
+      "ci95": [
+        10.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/D_p50",
+      "point": 44.935,
+      "lower": 44.0,
+      "upper": 46.0,
+      "ci95": [
+        44.0,
+        46.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/D_p90",
+      "point": 280.9015,
+      "lower": 274.19500000000005,
+      "upper": 287.5125,
+      "ci95": [
+        274.19500000000005,
+        287.5125
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S0_poisson/c_over_bP",
+      "point": 0.9696038045200837,
+      "lower": 0.9460650088842681,
+      "upper": 0.9996630836090192,
+      "ci95": [
+        0.9460650088842681,
+        0.9996630836090192
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S0_poisson/true_relative_variance",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S0_poisson/observed_contrast_quantile",
+      "point": 0.2,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S0_poisson/shape_contrast_quantile",
+      "point": 0.2,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S0_poisson/lambda",
+      "point": 0.796875,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S0_poisson/sigma",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S1_heterogeneity/a",
+      "point": 0.015135586109386232,
+      "lower": 0.013933568368951904,
+      "upper": 0.01649139987309243,
+      "ci95": [
+        0.013933568368951904,
+        0.01649139987309243
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/err_a",
+      "point": 3.2537076454870115e-05,
+      "lower": -9.616823181186286e-05,
+      "upper": 0.0002053194837990976,
+      "ci95": [
+        -9.616823181186286e-05,
+        0.0002053194837990976
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/b",
+      "point": 0.3898355801883572,
+      "lower": 0.3123759559011315,
+      "upper": 0.469794593038362,
+      "ci95": [
+        0.3123759559011315,
+        0.469794593038362
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/bP",
+      "point": 0.45608611134157184,
+      "lower": 0.45329326371139284,
+      "upper": 0.4612263883555076,
+      "ci95": [
+        0.45329326371139284,
+        0.4612263883555076
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/b_over_bP",
+      "point": 0.8545584688788679,
+      "lower": 0.6861232794708383,
+      "upper": 1.0200527484424762,
+      "ci95": [
+        0.6861232794708383,
+        1.0200527484424762
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/bw_over_bP",
+      "point": 0.8192444454013129,
+      "lower": 0.6173658887381406,
+      "upper": 1.0263574525496515,
+      "ci95": [
+        0.6173658887381406,
+        1.0263574525496515
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/week_reduction",
+      "point": -0.013286428102444443,
+      "lower": -0.039797028772564594,
+      "upper": 0.007930878987553423,
+      "ci95": [
+        -0.039797028772564594,
+        0.007930878987553423
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/contrast",
+      "point": 0.011908799473126635,
+      "lower": 0.0035481952572634203,
+      "upper": 0.021302091507508104,
+      "ci95": [
+        0.0035481952572634203,
+        0.021302091507508104
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/pooled_over_within_slope",
+      "point": 1.048966803446059,
+      "lower": 0.941404703230511,
+      "upper": 1.2119885705215456,
+      "ci95": [
+        0.941404703230511,
+        1.2119885705215456
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/n_retained",
+      "point": 1677.785,
+      "lower": 1668.0,
+      "upper": 1687.025,
+      "ci95": [
+        1668.0,
+        1687.025
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/true_total_kept_rows",
+      "point": 0.015028390163856877,
+      "lower": 0.014878244771496537,
+      "upper": 0.015141251583020529,
+      "ci95": [
+        0.014878244771496537,
+        0.015141251583020529
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/b_over_a",
+      "point": 25.880910867331917,
+      "lower": 19.377862298213458,
+      "upper": 32.862724964534785,
+      "ci95": [
+        19.377862298213458,
+        32.862724964534785
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/a_recovery_kept_rows",
+      "point": 1.0071429552427227,
+      "lower": 0.9307033139763685,
+      "upper": 1.093043392627959,
+      "ci95": [
+        0.9307033139763685,
+        1.093043392627959
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/D_p10",
+      "point": 10.9345,
+      "lower": 10.0,
+      "upper": 11.0,
+      "ci95": [
+        10.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/D_p50",
+      "point": 45.355,
+      "lower": 44.0,
+      "upper": 47.0,
+      "ci95": [
+        44.0,
+        47.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/D_p90",
+      "point": 263.39250000000004,
+      "lower": 257.0,
+      "upper": 269.8025000000002,
+      "ci95": [
+        257.0,
+        269.8025000000002
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/a_over_true_total",
+      "point": 1.0071328960960277,
+      "lower": 0.9307033139763685,
+      "upper": 1.093043392627959,
+      "ci95": [
+        0.9307033139763685,
+        1.093043392627959
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S1_heterogeneity/c_over_bP",
+      "point": 0.9497805121946599,
+      "lower": 0.9122718286890819,
+      "upper": 0.9864569089972799,
+      "ci95": [
+        0.9122718286890819,
+        0.9864569089972799
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S1_heterogeneity/true_relative_variance",
+      "point": 0.015023829229141129,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S1_heterogeneity/observed_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S1_heterogeneity/shape_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S1_heterogeneity/lambda",
+      "point": 0.796875,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S1_heterogeneity/sigma",
+      "point": 0.2469463109173755,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2_nb_reporting/a",
+      "point": 0.00010940363406153582,
+      "lower": -6.232220924564573e-05,
+      "upper": 0.0003413861956853824,
+      "ci95": [
+        -6.232220924564573e-05,
+        0.0003413861956853824
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/err_a",
+      "point": 2.4871351991231897e-05,
+      "lower": -0.00012643352861159028,
+      "upper": 0.00017865556355774968,
+      "ci95": [
+        -0.00012643352861159028,
+        0.00017865556355774968
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/b",
+      "point": 0.5534772042831625,
+      "lower": 0.510034502323755,
+      "upper": 0.5980666376847811,
+      "ci95": [
+        0.510034502323755,
+        0.5980666376847811
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/bP",
+      "point": 0.4517135186810858,
+      "lower": 0.4420587493682027,
+      "upper": 0.4631393927935856,
+      "ci95": [
+        0.4420587493682027,
+        0.4631393927935856
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/b_over_bP",
+      "point": 1.2252253476881998,
+      "lower": 1.127805391709985,
+      "upper": 1.3209933737960886,
+      "ci95": [
+        1.127805391709985,
+        1.3209933737960886
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/bw_over_bP",
+      "point": 1.2061680386698435,
+      "lower": 1.0643697560146932,
+      "upper": 1.342193439794521,
+      "ci95": [
+        1.0643697560146932,
+        1.342193439794521
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 196,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/week_reduction",
+      "point": 0.4386261250508045,
+      "lower": -20.560025305427946,
+      "upper": 35.68489946968739,
+      "ci95": [
+        -20.560025305427946,
+        35.68489946968739
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/contrast",
+      "point": -0.00025676982392540014,
+      "lower": -0.0033407283242875333,
+      "upper": 0.003103120235734815,
+      "ci95": [
+        -0.0033407283242875333,
+        0.003103120235734815
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/pooled_over_within_slope",
+      "point": 1.0173984739984188,
+      "lower": 0.9457143310476694,
+      "upper": 1.1016269110360923,
+      "ci95": [
+        0.9457143310476694,
+        1.1016269110360923
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 196,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/n_retained",
+      "point": 1582.485,
+      "lower": 1535.975,
+      "upper": 1624.025,
+      "ci95": [
+        1535.975,
+        1624.025
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/true_total_kept_rows",
+      "point": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/D_p10",
+      "point": 9.515500000000001,
+      "lower": 9.0,
+      "upper": 10.0,
+      "ci95": [
+        9.0,
+        10.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/D_p50",
+      "point": 45.2475,
+      "lower": 41.975,
+      "upper": 49.0,
+      "ci95": [
+        41.975,
+        49.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/D_p90",
+      "point": 323.7795000000001,
+      "lower": 296.28,
+      "upper": 357.105,
+      "ci95": [
+        296.28,
+        357.105
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2_nb_reporting/c_over_bP",
+      "point": 0.9285791950716367,
+      "lower": 0.8979098926511555,
+      "upper": 0.9703777683864893,
+      "ci95": [
+        0.8979098926511555,
+        0.9703777683864893
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S2_nb_reporting/true_relative_variance",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2_nb_reporting/observed_contrast_quantile",
+      "point": 0.19,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2_nb_reporting/shape_contrast_quantile",
+      "point": 0.19,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2_nb_reporting/lambda",
+      "point": 0.84375,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2_nb_reporting/sigma",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/a",
+      "point": 0.014959971000816204,
+      "lower": 0.013342332406145263,
+      "upper": 0.016776767546542386,
+      "ci95": [
+        0.013342332406145263,
+        0.016776767546542386
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/err_a",
+      "point": 2.7674160125235658e-05,
+      "lower": -0.00010966609375628361,
+      "upper": 0.00019815020275393494,
+      "ci95": [
+        -0.00010966609375628361,
+        0.00019815020275393494
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/b",
+      "point": 0.540521825019653,
+      "lower": 0.4576203178434047,
+      "upper": 0.6192921512686311,
+      "ci95": [
+        0.4576203178434047,
+        0.6192921512686311
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/bP",
+      "point": 0.47267197703728436,
+      "lower": 0.4631563556254381,
+      "upper": 0.48454114460155456,
+      "ci95": [
+        0.4631563556254381,
+        0.48454114460155456
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/b_over_bP",
+      "point": 1.1433535833706896,
+      "lower": 0.983309729472441,
+      "upper": 1.308291808345831,
+      "ci95": [
+        0.983309729472441,
+        1.308291808345831
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/bw_over_bP",
+      "point": 1.1225868673626187,
+      "lower": 0.8990611350460741,
+      "upper": 1.3331369851961168,
+      "ci95": [
+        0.8990611350460741,
+        1.3331369851961168
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/week_reduction",
+      "point": -0.019371687196572344,
+      "lower": -0.05269693341006695,
+      "upper": 0.008007199475182485,
+      "ci95": [
+        -0.05269693341006695,
+        0.008007199475182485
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/contrast",
+      "point": 0.016361524763303013,
+      "lower": 0.004370328995368412,
+      "upper": 0.028118521987865776,
+      "ci95": [
+        0.004370328995368412,
+        0.028118521987865776
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/pooled_over_within_slope",
+      "point": 1.0226254151562153,
+      "lower": 0.9340504554552349,
+      "upper": 1.1406281036454071,
+      "ci95": [
+        0.9340504554552349,
+        1.1406281036454071
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/n_retained",
+      "point": 1591.63,
+      "lower": 1541.0,
+      "upper": 1630.15,
+      "ci95": [
+        1541.0,
+        1630.15
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/true_total_kept_rows",
+      "point": 0.014706806241779708,
+      "lower": 0.014417572432918517,
+      "upper": 0.014946590071777191,
+      "ci95": [
+        0.014417572432918517,
+        0.014946590071777191
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/b_over_a",
+      "point": 36.33798700529734,
+      "lower": 27.411748109093356,
+      "upper": 44.43704634617787,
+      "ci95": [
+        27.411748109093356,
+        44.43704634617787
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/a_recovery_kept_rows",
+      "point": 1.017276112540665,
+      "lower": 0.9091624110228403,
+      "upper": 1.1307313270042907,
+      "ci95": [
+        0.9091624110228403,
+        1.1307313270042907
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/D_p10",
+      "point": 9.902000000000001,
+      "lower": 9.0,
+      "upper": 11.0,
+      "ci95": [
+        9.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/D_p50",
+      "point": 44.9675,
+      "lower": 41.0,
+      "upper": 49.0,
+      "ci95": [
+        41.0,
+        49.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/D_p90",
+      "point": 298.27450000000005,
+      "lower": 269.0,
+      "upper": 335.005,
+      "ci95": [
+        269.0,
+        335.005
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/a_over_true_total",
+      "point": 1.0172141221468802,
+      "lower": 0.9091624110228403,
+      "upper": 1.1307313270042907,
+      "ci95": [
+        0.9091624110228403,
+        1.1307313270042907
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/c_over_bP",
+      "point": 0.8793799184110606,
+      "lower": 0.8282105070172391,
+      "upper": 0.9270765409408946,
+      "ci95": [
+        0.8282105070172391,
+        0.9270765409408946
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/true_relative_variance",
+      "point": 0.014690058620707052,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/observed_contrast_quantile",
+      "point": 0.01,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/shape_contrast_quantile",
+      "point": 0.01,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/lambda",
+      "point": 0.8203125,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S3_heterogeneity_nb/sigma",
+      "point": 0.24420531945628604,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S4_structured/a",
+      "point": 0.015046217338214816,
+      "lower": 0.014036255987880615,
+      "upper": 0.01613497974112484,
+      "ci95": [
+        0.014036255987880615,
+        0.01613497974112484
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/err_a",
+      "point": 2.1740470642955196e-05,
+      "lower": -5.963575949814607e-05,
+      "upper": 0.0001511691414266713,
+      "ci95": [
+        -5.963575949814607e-05,
+        0.0001511691414266713
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/b",
+      "point": 0.3335171468288566,
+      "lower": 0.27218070247028664,
+      "upper": 0.39660161735452065,
+      "ci95": [
+        0.27218070247028664,
+        0.39660161735452065
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/bP",
+      "point": 0.4542368606585334,
+      "lower": 0.4510246072503667,
+      "upper": 0.45866428882657756,
+      "ci95": [
+        0.4510246072503667,
+        0.45866428882657756
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/b_over_bP",
+      "point": 0.7340893958789675,
+      "lower": 0.6024706718140624,
+      "upper": 0.8712270923935845,
+      "ci95": [
+        0.6024706718140624,
+        0.8712270923935845
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/bw_over_bP",
+      "point": 0.6490051757026407,
+      "lower": 0.48574876873836076,
+      "upper": 0.8189212602014201,
+      "ci95": [
+        0.48574876873836076,
+        0.8189212602014201
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/week_reduction",
+      "point": 0.6177762725527025,
+      "lower": 0.5797355550794401,
+      "upper": 0.656721818683361,
+      "ci95": [
+        0.5797355550794401,
+        0.656721818683361
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/contrast",
+      "point": 0.012289527841198578,
+      "lower": 0.003210870506827013,
+      "upper": 0.022860913787976556,
+      "ci95": [
+        0.003210870506827013,
+        0.022860913787976556
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/pooled_over_within_slope",
+      "point": 1.1400608188213133,
+      "lower": 0.9891442382092701,
+      "upper": 1.3732618993125398,
+      "ci95": [
+        0.9891442382092701,
+        1.3732618993125398
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/n_retained",
+      "point": 1658.26,
+      "lower": 1648.0,
+      "upper": 1670.0,
+      "ci95": [
+        1648.0,
+        1670.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/true_total_kept_rows",
+      "point": 0.013490706431268871,
+      "lower": 0.013388075762384564,
+      "upper": 0.013602072235676166,
+      "ci95": [
+        0.013388075762384564,
+        0.013602072235676166
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/b_over_a",
+      "point": 22.240347086566317,
+      "lower": 17.04496278579329,
+      "upper": 27.65391642323213,
+      "ci95": [
+        17.04496278579329,
+        27.65391642323213
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/a_recovery_kept_rows",
+      "point": 1.1153288647265376,
+      "lower": 1.0439170157707005,
+      "upper": 1.1921279704072965,
+      "ci95": [
+        1.0439170157707005,
+        1.1921279704072965
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/D_p10",
+      "point": 11.0295,
+      "lower": 10.0,
+      "upper": 12.0,
+      "ci95": [
+        10.0,
+        12.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/D_p50",
+      "point": 45.0475,
+      "lower": 44.0,
+      "upper": 46.0,
+      "ci95": [
+        44.0,
+        46.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/D_p90",
+      "point": 315.1990000000001,
+      "lower": 308.0,
+      "upper": 322.2225,
+      "ci95": [
+        308.0,
+        322.2225
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/a_over_true_total",
+      "point": 1.1153024057613892,
+      "lower": 1.0439170157707005,
+      "upper": 1.1921279704072965,
+      "ci95": [
+        1.0439170157707005,
+        1.1921279704072965
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S4_structured/c_over_bP",
+      "point": 0.9969790530463425,
+      "lower": 0.9644404146878265,
+      "upper": 1.035222405051047,
+      "ci95": [
+        0.9644404146878265,
+        1.035222405051047
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S4_structured/true_relative_variance",
+      "point": 0.013406434860005242,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S4_structured/observed_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S4_structured/shape_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S4_structured/lambda",
+      "point": 0.796875,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S4_structured/sigma",
+      "point": 0.2356428517680722,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S5_structured_nb/a",
+      "point": 0.014925614342459415,
+      "lower": 0.013639338748401888,
+      "upper": 0.016597880782350322,
+      "ci95": [
+        0.013639338748401888,
+        0.016597880782350322
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/err_a",
+      "point": 2.934598419798291e-05,
+      "lower": -6.963774218062196e-05,
+      "upper": 0.00017494281021918857,
+      "ci95": [
+        -6.963774218062196e-05,
+        0.00017494281021918857
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/b",
+      "point": 0.48396614999875326,
+      "lower": 0.4070592469757144,
+      "upper": 0.5662415172186634,
+      "ci95": [
+        0.4070592469757144,
+        0.5662415172186634
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/bP",
+      "point": 0.47191324281270797,
+      "lower": 0.4627262818603375,
+      "upper": 0.48305315082355504,
+      "ci95": [
+        0.4627262818603375,
+        0.48305315082355504
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/b_over_bP",
+      "point": 1.0251995919279322,
+      "lower": 0.865754500155368,
+      "upper": 1.201381074932908,
+      "ci95": [
+        0.865754500155368,
+        1.201381074932908
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/bw_over_bP",
+      "point": 0.9527754170646542,
+      "lower": 0.74317899718921,
+      "upper": 1.1423543531964049,
+      "ci95": [
+        0.74317899718921,
+        1.1423543531964049
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/week_reduction",
+      "point": 0.5855116052290037,
+      "lower": 0.5349712834067756,
+      "upper": 0.6420677906582489,
+      "ci95": [
+        0.5349712834067756,
+        0.6420677906582489
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/contrast",
+      "point": 0.023895462077353945,
+      "lower": 0.012824562072190593,
+      "upper": 0.036289010078819926,
+      "ci95": [
+        0.012824562072190593,
+        0.036289010078819926
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/pooled_over_within_slope",
+      "point": 1.0827468911302318,
+      "lower": 0.937241015853334,
+      "upper": 1.2468044443561692,
+      "ci95": [
+        0.937241015853334,
+        1.2468044443561692
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/n_retained",
+      "point": 1554.9,
+      "lower": 1508.95,
+      "upper": 1598.025,
+      "ci95": [
+        1508.95,
+        1598.025
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/true_total_kept_rows",
+      "point": 0.01298802733451066,
+      "lower": 0.012686218011440008,
+      "upper": 0.013284806738764638,
+      "ci95": [
+        0.012686218011440008,
+        0.013284806738764638
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/b_over_a",
+      "point": 32.58416639604272,
+      "lower": 24.65721939876274,
+      "upper": 40.01853263632073,
+      "ci95": [
+        24.65721939876274,
+        40.01853263632073
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/a_recovery_kept_rows",
+      "point": 1.149203853475215,
+      "lower": 1.0565993849128008,
+      "upper": 1.271973137969293,
+      "ci95": [
+        1.0565993849128008,
+        1.271973137969293
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/D_p10",
+      "point": 10.034500000000001,
+      "lower": 9.0,
+      "upper": 11.0,
+      "ci95": [
+        9.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/D_p50",
+      "point": 45.2575,
+      "lower": 42.0,
+      "upper": 49.025000000000006,
+      "ci95": [
+        42.0,
+        49.025000000000006
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/D_p90",
+      "point": 323.57950000000005,
+      "lower": 281.9749999999998,
+      "upper": 368.93250000000023,
+      "ci95": [
+        281.9749999999998,
+        368.93250000000023
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/a_over_true_total",
+      "point": 1.149182547745366,
+      "lower": 1.0565993849128008,
+      "upper": 1.271973137969293,
+      "ci95": [
+        1.0565993849128008,
+        1.271973137969293
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S5_structured_nb/c_over_bP",
+      "point": 0.9248425761979369,
+      "lower": 0.8749652266467197,
+      "upper": 0.9813912851424245,
+      "ci95": [
+        0.8749652266467197,
+        0.9813912851424245
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S5_structured_nb/true_relative_variance",
+      "point": 0.013064221574131668,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S5_structured_nb/observed_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S5_structured_nb/shape_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S5_structured_nb/lambda",
+      "point": 0.8125,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S5_structured_nb/sigma",
+      "point": 0.23258733636421264,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2P_branching_poisson/a",
+      "point": 2.6660527319368623e-05,
+      "lower": -7.402213877603505e-05,
+      "upper": 0.0001499920076684776,
+      "ci95": [
+        -7.402213877603505e-05,
+        0.0001499920076684776
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/err_a",
+      "point": 1.8849840666534556e-05,
+      "lower": -8.491316268764172e-05,
+      "upper": 0.00015055365491269658,
+      "ci95": [
+        -8.491316268764172e-05,
+        0.00015055365491269658
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/b",
+      "point": 0.3478718938930858,
+      "lower": 0.31727620001228085,
+      "upper": 0.3767833026599764,
+      "ci95": [
+        0.31727620001228085,
+        0.3767833026599764
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/bP",
+      "point": 0.4363574830920658,
+      "lower": 0.4328775817363258,
+      "upper": 0.4408974771570546,
+      "ci95": [
+        0.4328775817363258,
+        0.4408974771570546
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/b_over_bP",
+      "point": 0.7971666143047946,
+      "lower": 0.7324506390091964,
+      "upper": 0.8631924452668194,
+      "ci95": [
+        0.7324506390091964,
+        0.8631924452668194
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/bw_over_bP",
+      "point": 0.7744859390840046,
+      "lower": 0.6836768253096871,
+      "upper": 0.8654902190910615,
+      "ci95": [
+        0.6836768253096871,
+        0.8654902190910615
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 193,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/week_reduction",
+      "point": -2.6401125215839083,
+      "lower": -65.19815449679838,
+      "upper": 22.65550648750734,
+      "ci95": [
+        -65.19815449679838,
+        22.65550648750734
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/contrast",
+      "point": -0.0004066519024491444,
+      "lower": -0.003684477544524389,
+      "upper": 0.002163384333084084,
+      "ci95": [
+        -0.003684477544524389,
+        0.002163384333084084
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/pooled_over_within_slope",
+      "point": 1.0307281215096324,
+      "lower": 0.9593477996707368,
+      "upper": 1.1289486957692074,
+      "ci95": [
+        0.9593477996707368,
+        1.1289486957692074
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 193,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/n_retained",
+      "point": 1654.835,
+      "lower": 1634.0,
+      "upper": 1676.05,
+      "ci95": [
+        1634.0,
+        1676.05
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/true_total_kept_rows",
+      "point": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/D_p10",
+      "point": 9.9,
+      "lower": 9.0,
+      "upper": 10.317500000000015,
+      "ci95": [
+        9.0,
+        10.317500000000015
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/D_p50",
+      "point": 44.965,
+      "lower": 43.0,
+      "upper": 47.0,
+      "ci95": [
+        43.0,
+        47.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/D_p90",
+      "point": 292.52850000000007,
+      "lower": 278.7875000000004,
+      "upper": 306.6100000000001,
+      "ci95": [
+        278.7875000000004,
+        306.6100000000001
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S2P_branching_poisson/c_over_bP",
+      "point": 0.9744264910006579,
+      "lower": 0.9526794431754069,
+      "upper": 1.0035385406518513,
+      "ci95": [
+        0.9526794431754069,
+        1.0035385406518513
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S2P_branching_poisson/true_relative_variance",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2P_branching_poisson/observed_contrast_quantile",
+      "point": 0.205,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2P_branching_poisson/shape_contrast_quantile",
+      "point": 0.205,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2P_branching_poisson/lambda",
+      "point": 0.8125,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S2P_branching_poisson/sigma",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/a",
+      "point": 0.014842277903256533,
+      "lower": 0.012700862421215285,
+      "upper": 0.01678895504501515,
+      "ci95": [
+        0.012700862421215285,
+        0.01678895504501515
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/err_a",
+      "point": 0.007459990275929476,
+      "lower": 0.005901252184069154,
+      "upper": 0.008767939720227786,
+      "ci95": [
+        0.005901252184069154,
+        0.008767939720227786
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/b",
+      "point": 0.5356718126705999,
+      "lower": 0.4503550062469567,
+      "upper": 0.6238640886191003,
+      "ci95": [
+        0.4503550062469567,
+        0.6238640886191003
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/bP",
+      "point": 0.4679284571188402,
+      "lower": 0.45731454070468974,
+      "upper": 0.4821862234568533,
+      "ci95": [
+        0.45731454070468974,
+        0.4821862234568533
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/b_over_bP",
+      "point": 1.144414456426167,
+      "lower": 0.9702206036592217,
+      "upper": 1.3416426216898547,
+      "ci95": [
+        0.9702206036592217,
+        1.3416426216898547
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/bw_over_bP",
+      "point": 1.1408725102731665,
+      "lower": 0.9345686575285198,
+      "upper": 1.3537295709589665,
+      "ci95": [
+        0.9345686575285198,
+        1.3537295709589665
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/week_reduction",
+      "point": -0.014287496252106487,
+      "lower": -0.04966721034414576,
+      "upper": 0.01595997159050105,
+      "ci95": [
+        -0.04966721034414576,
+        0.01595997159050105
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/contrast",
+      "point": 0.01760427517093562,
+      "lower": 0.004762099688530997,
+      "upper": 0.033701888554813784,
+      "ci95": [
+        0.004762099688530997,
+        0.033701888554813784
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/pooled_over_within_slope",
+      "point": 1.00661312291082,
+      "lower": 0.9034627258774763,
+      "upper": 1.1231374896904827,
+      "ci95": [
+        0.9034627258774763,
+        1.1231374896904827
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/n_retained",
+      "point": 1587.18,
+      "lower": 1541.95,
+      "upper": 1627.0,
+      "ci95": [
+        1541.95,
+        1627.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/true_total_kept_rows",
+      "point": 0.014705855017816858,
+      "lower": 0.014028903890553559,
+      "upper": 0.015396138570815985,
+      "ci95": [
+        0.014028903890553559,
+        0.015396138570815985
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/b_over_a",
+      "point": 36.39578315158609,
+      "lower": 28.1695351159814,
+      "upper": 47.601759203354234,
+      "ci95": [
+        28.1695351159814,
+        47.601759203354234
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/a_recovery_kept_rows",
+      "point": 2.015760820371225,
+      "lower": 1.7079051169964028,
+      "upper": 2.286769900821875,
+      "ci95": [
+        1.7079051169964028,
+        2.286769900821875
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/D_p10",
+      "point": 9.6485,
+      "lower": 9.0,
+      "upper": 10.025000000000006,
+      "ci95": [
+        9.0,
+        10.025000000000006
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/D_p50",
+      "point": 44.9525,
+      "lower": 40.0,
+      "upper": 49.025000000000006,
+      "ci95": [
+        40.0,
+        49.025000000000006
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/D_p90",
+      "point": 306.67750000000007,
+      "lower": 276.37500000000057,
+      "upper": 337.4300000000001,
+      "ci95": [
+        276.37500000000057,
+        337.4300000000001
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/a_over_true_total",
+      "point": 1.0092767734534573,
+      "lower": 0.8713198550780625,
+      "upper": 1.1353263474536563,
+      "ci95": [
+        0.8713198550780625,
+        1.1353263474536563
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/c_over_bP",
+      "point": 0.868663266550428,
+      "lower": 0.813532495942009,
+      "upper": 0.9193647763577238,
+      "ci95": [
+        0.813532495942009,
+        0.9193647763577238
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S6_reporting_shock/true_relative_variance",
+      "point": 0.007356475340507558,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/observed_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/shape_contrast_quantile",
+      "point": 0.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/lambda",
+      "point": 0.828125,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/sigma",
+      "point": 0.17309173920330118,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7a_scale_dep/a",
+      "point": 0.014840990016734166,
+      "lower": 0.012990715745297,
+      "upper": 0.01687924596483885,
+      "ci95": [
+        0.012990715745297,
+        0.01687924596483885
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/err_a",
+      "point": 2.901466064315977e-05,
+      "lower": -0.00011458367156936802,
+      "upper": 0.00020094161563493637,
+      "ci95": [
+        -0.00011458367156936802,
+        0.00020094161563493637
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/b",
+      "point": 0.7571768711692745,
+      "lower": 0.644220814760569,
+      "upper": 0.8715052111151114,
+      "ci95": [
+        0.644220814760569,
+        0.8715052111151114
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/bP",
+      "point": 0.48407481413551534,
+      "lower": 0.473616708194077,
+      "upper": 0.49626377215495665,
+      "ci95": [
+        0.473616708194077,
+        0.49626377215495665
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/b_over_bP",
+      "point": 1.5638697681583726,
+      "lower": 1.3374513551716611,
+      "upper": 1.7872375320694271,
+      "ci95": [
+        1.3374513551716611,
+        1.7872375320694271
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/bw_over_bP",
+      "point": 1.4841065952594823,
+      "lower": 1.2485333977382493,
+      "upper": 1.7593616102667782,
+      "ci95": [
+        1.2485333977382493,
+        1.7593616102667782
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/week_reduction",
+      "point": -0.027586976761322976,
+      "lower": -0.07512083938728875,
+      "upper": 0.018796794274810524,
+      "ci95": [
+        -0.07512083938728875,
+        0.018796794274810524
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/contrast",
+      "point": -0.00033147053749803533,
+      "lower": -0.011237844986767942,
+      "upper": 0.010647972941854034,
+      "ci95": [
+        -0.011237844986767942,
+        0.010647972941854034
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/pooled_over_within_slope",
+      "point": 1.0569016686499146,
+      "lower": 0.947837404438538,
+      "upper": 1.177565312501304,
+      "ci95": [
+        0.947837404438538,
+        1.177565312501304
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/n_retained",
+      "point": 1603.345,
+      "lower": 1559.0,
+      "upper": 1638.075,
+      "ci95": [
+        1559.0,
+        1638.075
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/true_total_kept_rows",
+      "point": 0.021704220120112486,
+      "lower": 0.02121051861191186,
+      "upper": 0.022141321693907017,
+      "ci95": [
+        0.02121051861191186,
+        0.022141321693907017
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/b_over_a",
+      "point": 51.40230955275958,
+      "lower": 39.46230646180238,
+      "upper": 65.9209165004266,
+      "ci95": [
+        39.46230646180238,
+        65.9209165004266
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/a_recovery_kept_rows",
+      "point": 0.6838229076220802,
+      "lower": 0.5997372181447158,
+      "upper": 0.7760598750066114,
+      "ci95": [
+        0.5997372181447158,
+        0.7760598750066114
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/D_p10",
+      "point": 10.296500000000002,
+      "lower": 9.0,
+      "upper": 11.0,
+      "ci95": [
+        9.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/D_p50",
+      "point": 45.2075,
+      "lower": 42.0,
+      "upper": 49.0,
+      "ci95": [
+        42.0,
+        49.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/D_p90",
+      "point": 296.26700000000005,
+      "lower": 266.8774999999999,
+      "upper": 320.5375,
+      "ci95": [
+        266.8774999999999,
+        320.5375
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/a_over_true_total",
+      "point": 0.6837836114176513,
+      "lower": 0.5997372181447158,
+      "upper": 0.7760598750066114,
+      "ci95": [
+        0.5997372181447158,
+        0.7760598750066114
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7a_scale_dep/c_over_bP",
+      "point": 0.9139835898951789,
+      "lower": 0.8606680231178753,
+      "upper": 0.9858047206267031,
+      "ci95": [
+        0.8606680231178753,
+        0.9858047206267031
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S7a_scale_dep/true_relative_variance",
+      "point": 0.022548120851721254,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7a_scale_dep/observed_contrast_quantile",
+      "point": 0.43,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7a_scale_dep/shape_contrast_quantile",
+      "point": 0.43,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7a_scale_dep/lambda",
+      "point": 0.828125,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7a_scale_dep/sigma",
+      "point": 0.29611972558803534,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7b_scale_dep/a",
+      "point": 0.014997351972723815,
+      "lower": 0.012982198144199961,
+      "upper": 0.017266730895896504,
+      "ci95": [
+        0.012982198144199961,
+        0.017266730895896504
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/err_a",
+      "point": 2.4983368237646116e-05,
+      "lower": -0.0001277974546751275,
+      "upper": 0.000213349828440541,
+      "ci95": [
+        -0.0001277974546751275,
+        0.000213349828440541
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/b",
+      "point": 1.149449167269646,
+      "lower": 1.0002900445515452,
+      "upper": 1.3082532115297187,
+      "ci95": [
+        1.0002900445515452,
+        1.3082532115297187
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/bP",
+      "point": 0.5107703966971693,
+      "lower": 0.49782006060846357,
+      "upper": 0.5285257447321435,
+      "ci95": [
+        0.49782006060846357,
+        0.5285257447321435
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/b_over_bP",
+      "point": 2.2507457138784033,
+      "lower": 1.9750722662745543,
+      "upper": 2.581589682161716,
+      "ci95": [
+        1.9750722662745543,
+        2.581589682161716
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/bw_over_bP",
+      "point": 2.0579822247175175,
+      "lower": 1.6564928717827387,
+      "upper": 2.492641463333805,
+      "ci95": [
+        1.6564928717827387,
+        2.492641463333805
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/week_reduction",
+      "point": 0.004416398200026725,
+      "lower": -0.07501420333157806,
+      "upper": 0.05644599244113422,
+      "ci95": [
+        -0.07501420333157806,
+        0.05644599244113422
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/contrast",
+      "point": -0.014198259076157516,
+      "lower": -0.022499638933702736,
+      "upper": -0.004554355355286841,
+      "ci95": [
+        -0.022499638933702736,
+        -0.004554355355286841
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/pooled_over_within_slope",
+      "point": 1.097576466769084,
+      "lower": 0.9737398690236296,
+      "upper": 1.2148056963478706,
+      "ci95": [
+        0.9737398690236296,
+        1.2148056963478706
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/n_retained",
+      "point": 1614.45,
+      "lower": 1575.0,
+      "upper": 1650.025,
+      "ci95": [
+        1575.0,
+        1650.025
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/true_total_kept_rows",
+      "point": 0.03459186392404492,
+      "lower": 0.0334155961692691,
+      "upper": 0.035671867534275946,
+      "ci95": [
+        0.0334155961692691,
+        0.035671867534275946
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/b_over_a",
+      "point": 77.45263563755638,
+      "lower": 58.42246816307787,
+      "upper": 99.66996401676481,
+      "ci95": [
+        58.42246816307787,
+        99.66996401676481
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/a_recovery_kept_rows",
+      "point": 0.4337268466297837,
+      "lower": 0.37146974542560557,
+      "upper": 0.5043360640679279,
+      "ci95": [
+        0.37146974542560557,
+        0.5043360640679279
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/D_p10",
+      "point": 10.6235,
+      "lower": 10.0,
+      "upper": 12.0,
+      "ci95": [
+        10.0,
+        12.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/D_p50",
+      "point": 44.485,
+      "lower": 41.0,
+      "upper": 48.0,
+      "ci95": [
+        41.0,
+        48.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/D_p90",
+      "point": 286.21650000000005,
+      "lower": 256.5799999999999,
+      "upper": 315.0125,
+      "ci95": [
+        256.5799999999999,
+        315.0125
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/a_over_true_total",
+      "point": 0.43355142716952894,
+      "lower": 0.37146974542560557,
+      "upper": 0.5043360640679279,
+      "ci95": [
+        0.37146974542560557,
+        0.5043360640679279
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S7b_scale_dep/c_over_bP",
+      "point": 0.9215646918892476,
+      "lower": 0.8617744636806329,
+      "upper": 0.979636731054447,
+      "ci95": [
+        0.8617744636806329,
+        0.979636731054447
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S7b_scale_dep/true_relative_variance",
+      "point": 0.037264211683020944,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7b_scale_dep/observed_contrast_quantile",
+      "point": 1.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7b_scale_dep/shape_contrast_quantile",
+      "point": 1.0,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7b_scale_dep/lambda",
+      "point": 0.8232421875,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S7b_scale_dep/sigma",
+      "point": 0.35389993944083264,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/vR_rel",
+      "point": 0.007363854668437281,
+      "lower": 0.007228609914522853,
+      "upper": 0.007498498179568575,
+      "ci95": [
+        0.007228609914522853,
+        0.007498498179568575
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/vH_rel",
+      "point": 0.00734200034937958,
+      "lower": 0.006641049008669158,
+      "upper": 0.008009267534722099,
+      "ci95": [
+        0.006641049008669158,
+        0.008009267534722099
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/lag1_corr",
+      "point": -0.49530889523278887,
+      "lower": -0.5275841326115873,
+      "upper": -0.45653330692365757,
+      "ci95": [
+        -0.5275841326115873,
+        -0.45653330692365757
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/a_over_vR",
+      "point": 2.015558232955497,
+      "lower": 1.7079051169964028,
+      "upper": 2.286769900821875,
+      "ci95": [
+        1.7079051169964028,
+        2.286769900821875
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/err_a_over_vH",
+      "point": 1.0160705422139984,
+      "lower": 0.8342178328740163,
+      "upper": 1.1913024420338465,
+      "ci95": [
+        0.8342178328740163,
+        1.1913024420338465
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S6_reporting_shock/s",
+      "point": 0.12184240679682605,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/tau2",
+      "point": 0.01495631493441496,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S6_reporting_shock/vH_analytic",
+      "point": 0.007356475340507557,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/independent_poisson_bP",
+      "point": 0.44553422780875024,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.1/over_bP",
+      "point": 0.9443059990522933,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.1/bPbr",
+      "point": 0.4207206441029339,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_sim/rho0.1/b_over_bP",
+      "point": 0.8773893800263818,
+      "lower": 0.802189941421256,
+      "upper": 0.9547410135330991,
+      "ci95": [
+        0.802189941421256,
+        0.9547410135330991
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.25/over_bP",
+      "point": 0.8607649976307334,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.25/bPbr",
+      "point": 0.38350026854420954,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_sim/rho0.25/b_over_bP",
+      "point": 0.8023060702614654,
+      "lower": 0.7341134678136085,
+      "upper": 0.8779096263408911,
+      "ci95": [
+        0.7341134678136085,
+        0.8779096263408911
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.5/over_bP",
+      "point": 0.7215299952614669,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_analytic/rho0.5/bPbr",
+      "point": 0.32146630927966885,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_sim/rho0.5/b_over_bP",
+      "point": 0.669042032344967,
+      "lower": 0.6175000056271966,
+      "upper": 0.7141464166010055,
+      "ci95": [
+        0.6175000056271966,
+        0.7141464166010055
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "baseline/branching_analytic/rho1/over_bP",
+      "point": 0.4430599905229339,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_analytic/rho1/bPbr",
+      "point": 0.19739839075058754,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "baseline/branching_sim/rho1/b_over_bP",
+      "point": 0.40163562422011745,
+      "lower": 0.3730863675776598,
+      "upper": 0.43439210277287527,
+      "ci95": [
+        0.3730863675776598,
+        0.43439210277287527
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "grid/rho0.1/k0.1/b_over_bP",
+      "point": 1.281777766304114,
+      "lower": 1.114010331542932,
+      "upper": 1.4695630602586904,
+      "ci95": [
+        1.114010331542932,
+        1.4695630602586904
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.1/k0.3/b_over_bP",
+      "point": 0.9762283419191137,
+      "lower": 0.8605240613676146,
+      "upper": 1.1303173918535845,
+      "ci95": [
+        0.8605240613676146,
+        1.1303173918535845
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.1/k1/b_over_bP",
+      "point": 0.8620164762907505,
+      "lower": 0.6860583967241116,
+      "upper": 1.009718036009952,
+      "ci95": [
+        0.6860583967241116,
+        1.009718036009952
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.1/k3/b_over_bP",
+      "point": 0.8243302394526519,
+      "lower": 0.6947697781248671,
+      "upper": 0.9934493587902576,
+      "ci95": [
+        0.6947697781248671,
+        0.9934493587902576
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.1/kpoisson/b_over_bP",
+      "point": 0.8146177281233443,
+      "lower": 0.683174121545324,
+      "upper": 0.9419241413145062,
+      "ci95": [
+        0.683174121545324,
+        0.9419241413145062
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.25/k0.1/b_over_bP",
+      "point": 1.795522073477786,
+      "lower": 1.59472600878451,
+      "upper": 2.028761814991076,
+      "ci95": [
+        1.59472600878451,
+        2.028761814991076
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.25/k0.3/b_over_bP",
+      "point": 1.1378192649406507,
+      "lower": 0.9479639243705535,
+      "upper": 1.3103876237333478,
+      "ci95": [
+        0.9479639243705535,
+        1.3103876237333478
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.25/k1/b_over_bP",
+      "point": 0.864914898600355,
+      "lower": 0.7078973311530398,
+      "upper": 1.0203386827262395,
+      "ci95": [
+        0.7078973311530398,
+        1.0203386827262395
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.25/k3/b_over_bP",
+      "point": 0.7888814939616487,
+      "lower": 0.670658005886167,
+      "upper": 0.9332415030461735,
+      "ci95": [
+        0.670658005886167,
+        0.9332415030461735
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.25/kpoisson/b_over_bP",
+      "point": 0.7560951974754576,
+      "lower": 0.6081180335362275,
+      "upper": 0.8852980854428816,
+      "ci95": [
+        0.6081180335362275,
+        0.8852980854428816
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.5/k0.1/b_over_bP",
+      "point": 2.4008444762371437,
+      "lower": 2.07096685193843,
+      "upper": 2.7354424963991306,
+      "ci95": [
+        2.07096685193843,
+        2.7354424963991306
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.5/k0.3/b_over_bP",
+      "point": 1.4053939395471826,
+      "lower": 1.2352345510146998,
+      "upper": 1.5859980109166927,
+      "ci95": [
+        1.2352345510146998,
+        1.5859980109166927
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.5/k1/b_over_bP",
+      "point": 0.8486875717171732,
+      "lower": 0.6913891542250475,
+      "upper": 0.9777252898783888,
+      "ci95": [
+        0.6913891542250475,
+        0.9777252898783888
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.5/k3/b_over_bP",
+      "point": 0.7108495531676522,
+      "lower": 0.5878052594297312,
+      "upper": 0.8086734149198603,
+      "ci95": [
+        0.5878052594297312,
+        0.8086734149198603
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho0.5/kpoisson/b_over_bP",
+      "point": 0.623355875561505,
+      "lower": 0.5039290704909934,
+      "upper": 0.751251693529031,
+      "ci95": [
+        0.5039290704909934,
+        0.751251693529031
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho1/k0.1/b_over_bP",
+      "point": 2.890098734889386,
+      "lower": 2.4084344794653245,
+      "upper": 3.344443916233688,
+      "ci95": [
+        2.4084344794653245,
+        3.344443916233688
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho1/k0.3/b_over_bP",
+      "point": 1.8041182146382813,
+      "lower": 1.534930004850225,
+      "upper": 2.0411635769890477,
+      "ci95": [
+        1.534930004850225,
+        2.0411635769890477
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho1/k1/b_over_bP",
+      "point": 0.881588732567425,
+      "lower": 0.7362776262714597,
+      "upper": 1.0407149536521734,
+      "ci95": [
+        0.7362776262714597,
+        1.0407149536521734
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho1/k3/b_over_bP",
+      "point": 0.5472513260185274,
+      "lower": 0.4132984769005697,
+      "upper": 0.6759052944480789,
+      "ci95": [
+        0.4132984769005697,
+        0.6759052944480789
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "grid/rho1/kpoisson/b_over_bP",
+      "point": 0.36856408655351536,
+      "lower": 0.28321110422095974,
+      "upper": 0.475547518052804,
+      "ci95": [
+        0.28321110422095974,
+        0.475547518052804
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "thinning_exact/q0.8/rate",
+      "point": 0.4672417125569761,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.0487223728129458
+    },
+    {
+      "name": "thinning_exact/q0.6/rate",
+      "point": 0.48451463626025965,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.0874913890302544
+    },
+    {
+      "name": "thinning_exact/q0.5/rate",
+      "point": 0.4957156153999598,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.11263194713011
+    },
+    {
+      "name": "thinning_exact/q0.4/rate",
+      "point": 0.504974617192892,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.1334137439372158
+    },
+    {
+      "name": "thinning_exact/q0.3/rate",
+      "point": 0.5051482251257244,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.1338034063290061
+    },
+    {
+      "name": "thinning_exact/q0.2/rate",
+      "point": 0.4798064200288549,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 1.0769238143355762
+    },
+    {
+      "name": "thinning_exact/q0.1/rate",
+      "point": 0.3835761989337112,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "over_bP": 0.8609354231216662
+    },
+    {
+      "name": "thinning_exact/c_exact_all_q",
+      "point": 0.40840593221275207,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/c_exact_all_q_over_bP",
+      "point": 0.9166656717294102,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/c_exact_without_q01",
+      "point": 0.48821139073210534,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/c_exact_without_q01_over_bP",
+      "point": 1.0957887413796514,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.8/leverage",
+      "point": 0.0005885045445628719,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.6/leverage",
+      "point": 0.004184921205780423,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.5/leverage",
+      "point": 0.00941607271300595,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.4/leverage",
+      "point": 0.02118616360426339,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.3/leverage",
+      "point": 0.05126528477081019,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.2/leverage",
+      "point": 0.1506571634080952,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/q0.1/leverage",
+      "point": 0.762701889753482,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json"
+    },
+    {
+      "name": "thinning_exact/mc_check/q0.5",
+      "point": 0.49033386640315024,
+      "lower": 0.48084250189999694,
+      "upper": 0.49982523090630354,
+      "ci95": [
+        0.48084250189999694,
+        0.49982523090630354
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "expected_loss_rate": 0.4957156153999598
+    },
+    {
+      "name": "thinning_exact/mc_check/q0.1",
+      "point": 0.383225436837697,
+      "lower": 0.3785267905533132,
+      "upper": 0.3879240831220808,
+      "ci95": [
+        0.3785267905533132,
+        0.3879240831220808
+      ],
+      "interval": "Monte Carlo +/- 1.96 SE",
+      "source": "code/ma_thinning_exact.py -> analysis/ma_thinning_exact.json",
+      "expected_loss_rate": 0.3835761989337112
+    }
+  ]
+}

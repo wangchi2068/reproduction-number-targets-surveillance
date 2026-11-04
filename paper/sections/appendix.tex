@@ -1,0 +1,178 @@
+\clearpage
+\appendix
+\counterwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\section{Proofs}
+\label{app:proofs}
+
+\subsection{Count law and conditional information}
+\label{app:model}
+
+The probability generating function of one negative binomial offspring count is $[1+(R_t/k)(1-z)]^{-k}$. Conditional independence raises this function to the power $n$, and substituting $z\mapsto1-\rho+\rho z$ for independent reporting gives $[1+(\rho R_t/k)(1-z)]^{-nk}$, which proves Eq.~\eqref{eq:observed}; its derivatives give the stated moments.
+
+For fixed, known $(n,\rho,k)$ and $R>0$, the count likelihood has score and Fisher information
+\begin{equation}
+ \dot\ell(R)=\frac{c}{R}-\frac{(c+nk)\rho}{k+\rho R}
+ =\mathcal I(R)(\Rhat-R),\qquad
+ \mathcal I(R)=\frac{m}{R+\rho R^2/k}.
+ \label{eq:score}
+\end{equation}
+By Eq.~\eqref{eq:score}, $\Var(\Rhat\mid R)=\mathcal I(R)^{-1}$. The support does not depend on $R$, so the regular one-parameter Cram\'er--Rao inequality applies to estimators unbiased for every $R$ and gives the attained bound stated in Section~\ref{sec:model-targets} \citep{lehmann1998theory}. The bound therefore applies to estimators unbiased for every $R$ with $\rho$ and $k$ known; biased estimators and unknown nuisance parameters require a separate analysis.
+
+\subsection{Proof of Proposition~\ref{prop:average}}
+\label{app:prop1}
+
+Let $e_t=\Rhat_t-R_t$. The error is conditionally centred, $\E(e_t\mid R_t)=0$, and its second moments are as follows:
+\begin{equation}
+ \E(e_t^2)=\frac{\E R_t+\rho\E R_t^2/k}{m}=\frac{A}{m},
+ \qquad \E[e_t(R_t-\Rbar)]=0,
+\end{equation}
+Squaring Eq.~\eqref{eq:error-split} proves Eq.~\eqref{eq:var-average}. Any estimator based on the same count and unbiased conditional on every $R_t$ has expected conditional variance at least $\E[\mathcal I(R_t)^{-1}]=A/m$, and its process-mean risk adds the same $v_R$. At fixed $\rho$, $k$ and transmission law, $[V(m)-V(2m)]/V(m)=1/[2(1+m/\mx)]$ for $v_R>0$. The comparison changes exposure $n$; it does not hold unchanged when the reporting probability changes. The shrinkage weight in Eq.~\eqref{eq:shrink-weight} is $\Cov(R_t,\Rhat_t)/\Var(\Rhat_t)=v_R/V(m)$.
+
+\subsection{Proof of Corollary~\ref{cor:targets}}
+\label{app:cor-targets}
+
+Conditional on the path $R_{1:T}$, the $e_t$ are independent and centred, hence pairwise uncorrelated and orthogonal to every square-integrable function of the path. Thus the average of $e_1,\dots,e_T$ has second moment $A/(Tm)$, and $\Var(\overline{\Rhat}_T)=\Var(\Rbar_T)+A/(Tm)$. Under the stated stationary autocovariance, summing all covariance pairs gives $T^2\Var(\Rbar_T)=v_RS(\phi,T)$ with the first expression in Eq.~\eqref{eq:ar-sum}, and the finite geometric sum yields the second \citep{hamilton1994time}. Summing spatial covariance pairs in the same way gives Eq.~\eqref{eq:pooling}, for any admissible correlation matrix.
+
+\subsection{Proof of Proposition~\ref{prop:report-noise} and Corollary~\ref{cor:report-current}}
+\label{app:prop2}
+
+Write $z_t=p_t/\rho$ and $u_t=C_t/m-z_tR_t$. Conditional on $(R_t,p_t)$, $u_t$ has zero mean. Independence of $p_t$ and $R_t$, with $\E z_t=1$ and $\E z_t^2=1+\tau^2$, gives
+\begin{equation}
+ \E(u_t^2)=\frac{\Rbar+\rho(1+\tau^2)(\Rbar^2+v_R)/k}{m}=\frac{A_H}{m}.
+\end{equation}
+The error $\Rhat_t-R_t=u_t+(z_t-1)R_t$ has uncorrelated terms, and the second has expected square $\tau^2(\Rbar^2+v_R)=v_H$, which proves Eq.~\eqref{eq:vH-current}. Because $\E(\Rhat_t-R_t\mid R_t)=0$, process-mean risk adds $v_R$. Under the additional cross-period assumptions of Corollary~\ref{cor:report-current}, the errors are centred and independent given the transmission path after integrating out reporting, which gives Eq.~\eqref{eq:report-means}.
+
+For the identification statement, set $U=(1+\tau^2)(\Rbar^2+v_R)$. The two moments of the scaled count are
+\begin{equation}
+ \E\Rhat_t=\Rbar,\qquad
+ \Var(\Rhat_t)=U-\Rbar^2+\frac{\Rbar+\rho U/k}{m}.
+ \label{eq:moment-identification}
+\end{equation}
+Whenever distinct admissible values of $\tau^2$ give $v_R=U/(1+\tau^2)-\Rbar^2\ge0$, the moments in Eq.~\eqref{eq:moment-identification} coincide, and varying an exogenous $m$ does not separate them. This proves nonidentification by these moments only; it does not assert equality of full count distributions.
+
+For $v_R>0$, the crossover scale with volatile reporting, $m_{\times,H}=A_H/(v_R+v_H)$, satisfies
+\begin{equation}
+ \mx-m_{\times,H}
+ =\frac{\tau^2(\Rbar^2+v_R)\Rbar(1+\rho\Rbar/k)}{v_R(v_R+v_H)}\ge0,
+ \label{eq:mx-gap}
+\end{equation}
+with equality exactly when $\tau=0$.
+
+\subsection{Observed denominator}
+\label{app:observed-denominator}
+
+Let $M_t\sim\Bin(n,\rho)$ be independent of the offspring given $n$, and write $M_t=m(1+u_t)$, so that $\E u_t=0$ and $\Var(u_t)=(1-\rho)/m$. Then $\tilde R_t=\Rhat_t/(1+u_t)$. To first order in $u_t$ and $\Rhat_t-R_t$, the error is approximately:
+\begin{equation}
+ \tilde R_t-R_t\approx(\Rhat_t-R_t)-R_tu_t .
+\end{equation}
+Given $(n,R_t)$, $u_t$ is independent of $\Rhat_t-R_t$ and centred, so the cross term vanishes and
+$\E[(\tilde R_t-R_t)^2]\approx A/m+(1-\rho)\E(R_t^2)/m$, which is Eq.~\eqref{eq:observed-denominator}. The Monte Carlo check in Table~\ref{tab:ma_targets_observed} draws $R_t$ from a gamma law with the stated moments and would discard draws with $M_t=0$, none of which occurred at the scales shown. The approximation neglects the convexity of $1/(1+u_t)$, which inflates the error when $m$ is small; at $m=10$ the Monte Carlo error is 1.64 times the delta value.
+
+\subsection{Reporting shocks in the ratio statistic}
+\label{app:ratio-shocks}
+
+Let the count of week $t$ in a state be reported with probability $\rho z_t$, where the shocks $z_t$ are independent between weeks with $\log z_t\sim N(-s^2/2,s^2)$. To first order, the statistic in Eq.~\eqref{eq:ra} satisfies $\log R_{A,t}\approx\mathrm{const}+\kappa(g)\log g_t$ with $\kappa(g)=(g_\mu/7)/[1+\theta\log(g)/7]$, because $\alpha\theta=g_\mu$. The shocks enter the observed growth factor as $\log g_t=\log g^{\mathrm{tr}}_t+\eta_t$, with $\eta_t=\log z_{t+1}-\log z_t$ and $g^{\mathrm{tr}}_t$ the growth factor without shocks. Hence $\Var(\eta_t)=2s^2$, and the relative variance that the shocks add to the ratio statistic is
+\begin{equation}
+ \tilde v_H\approx2\kappa^2s^2 ,
+ \label{eq:ratio-shock}
+\end{equation}
+which does not scale with count and therefore enters the intercept $a$. A reporting level that is constant over consecutive weeks of a state ($z_{t+1}=z_t$) gives $\eta_t=0$ and cancels. Consecutive rows share one shock with opposite signs, so $\Cov(\eta_t,\eta_{t+1})=-s^2$ and their correlation is $-1/2$; row-level resampling treats these errors as independent. For the realised mean over $T$ consecutive rows of one state the mean of the shock terms telescopes to $(\log z_{T+1}-\log z_1)/T$, so their contribution to the error of the realised mean falls as $T^{-2}$ rather than $T^{-1}$. With $\kappa$ near 0.5 for the primary interval and $s=0.122$ as in generator S6, Eq.~\eqref{eq:ratio-shock} gives a shock component of about half the observed intercept.
+
+\section{Extensions}
+\label{app:extensions}
+
+\subsection{Forecasting and shrinkage}
+\label{app:forecast}
+
+Under fixed, known reporting and the stationary covariance of Corollary~\ref{cor:targets}, with the counting error at $t$ centred given the transmission path, the best forecast of $R_{t+1}$ of the form $\Rbar+\lambda(\Rhat_t-\Rbar)$ has
+\begin{equation}
+ \lambda^*=\frac{\phi v_R}{v_R+A/m}=\phi\,\gamma(m),\qquad
+ \mathrm{MSE}_{\mathrm{lin}}=v_R-\frac{\phi^2v_R^2}{v_R+A/m},
+ \label{eq:forecast}
+\end{equation}
+which follows from $\Cov(\Rhat_t,R_{t+1})=\phi v_R$. The forecast weight in Eq.~\eqref{eq:forecast} is the shrinkage weight discounted by persistence, and its limit risk is $(1-\phi^2)v_R$. For the process mean, shrinking $\Rhat_t$ towards a fixed benchmark $\mu_0$ with oracle weight $V(m)/[V(m)+(\mu_0-\Rbar)^2]$ can give risk below $v_R$; this lies outside the conditionally unbiased class of Proposition~\ref{prop:average}, and estimating the weight requires its own risk analysis.
+
+\subsection{Allocation between periods, cases and coverage}
+\label{app:allocation}
+
+\begin{proposition}[Budget allocation between periods and cases]
+\label{prop:allocation}
+Under H1--H4, independent, identically distributed transmission periods, conditionally independent counts, fixed $\rho$ and linear costs, let the budget be $\mathcal B=T(c_0+c_1m)$ with $c_0,c_1>0$, and treat $T\ge1$ and $m>0$ as continuous. If $v_R>0$ and $\mathcal B>c_0$, process-mean risk $(c_0+c_1m)(v_R+A/m)/\mathcal B$ is strictly convex in $m$ and is minimised at
+\begin{equation}
+ m^*=\min\{(c_0\mx/c_1)^{1/2},\ (\mathcal B-c_0)/c_1\}.
+ \label{eq:optimal-m}
+\end{equation}
+\end{proposition}
+
+The optimum in Eq.~\eqref{eq:optimal-m} has the form of cluster-size allocation in survey sampling and multilevel design \citep{cochran1977sampling, raudenbush1997statistical}: cases per period should grow only with the square root of $\mx$ and of the relative cost of a period. Integer designs compare the risk over feasible integer $T$ with $n_T=\lfloor(\mathcal B/T-c_0)/(c_1\rho)\rfloor$. Under temporal dependence the variance term becomes $v_RS(\phi,T)/T^2$ and no closed-form optimum follows.
+
+\begin{corollary}[Coverage against completeness]
+\label{cor:switch}
+Under H2--H5, let $p_t$ be the participating fraction of $\nu$ independent reporting units, each participating with probability $\rho$, so that $\tau^2=(1-\rho)/(\rho\nu)$. A proportional increase in completeness $\rho$ reduces single-period process-mean risk more than the same proportional increase in exposure $n$ exactly when $m>\rho^2(\nu-1)/k$.
+\end{corollary}
+
+Write the single-period risk as $v_R+v_H+A_H/m$ with $v_H=\tau^2Q$, $Q=\Rbar^2+v_R$ and $m=\rho n$, and differentiate with respect to $\log\rho$ and $\log n$. The difference of the two derivatives is
+\begin{equation}
+ \frac{\partial\,\mathrm{risk}}{\partial\log\rho}-\frac{\partial\,\mathrm{risk}}{\partial\log n}
+ =-\frac{Q}{kn}\left[\frac{kn+\rho}{\rho\nu}-1\right].
+\end{equation}
+Because $Q/(kn)>0$, the difference is negative, and a proportional increase in $\rho$ lowers the risk more than the same increase in $n$, exactly when $kn+\rho>\rho\nu$, that is, when $m>\rho^2(\nu-1)/k$. The mechanism is assumed; observed facility participation alone does not imply it.
+
+\subsection{Number of seasons}
+\label{app:seasons}
+
+Suppose $S\ge2$ season effects are independent Gaussian with unknown mean and variance $v_S>0$, and the count law given the effects does not depend on these parameters. Any estimator unbiased for $v_S$ then has relative standard error at least $(2/(S-1))^{1/2}$. Observing the effects themselves gives at least as much information as the counts, and their sample variance is the minimum-variance unbiased estimator \citep{lehmann1998theory, searle1992variance}. With the four seasons analysed here the bound is $(2/3)^{1/2}=0.82$, and additional admissions within the same seasons leave it unchanged. This bound concerns the precision with which the between-season variance component can be estimated; it is distinct from the power of a test of equal season intercepts, which depends on the size of the season differences relative to their standard errors and is reported in Section~\ref{sec:app-crossover}.
+
+\FloatBarrier
+\clearpage
+\section{Supplementary tables and figures}
+\label{app:supplement}
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+
+\FloatBarrier
+\input{tables/tab_s01_pooled}
+\FloatBarrier
+\input{tables/tab_ma_baselines}
+\FloatBarrier
+\input{tables/tab_ma_thinning_exact}
+\FloatBarrier
+\input{tables/tab_s03_thinning}
+\FloatBarrier
+\input{tables/tab_ma_varlog}
+\FloatBarrier
+\input{tables/tab_s05_centering}
+\FloatBarrier
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_06_heterogeneity.pdf}
+\caption{Heterogeneity diagnostics for the $R_A$ and $G$ samples. (A) Crossover count $b/a$ for $R_A$ from the pooled fit, a state fixed-effects fit and a state fixed-effects fit with $D_t$ as count scale. (B) Cross-count ratio, pooled $b/a$ over state fixed-effects $b$ divided by the mean state intercept, under week resampling ($L=1$) and two- and three-week blocks ($L=2,3$), with the number of finite bootstrap draws; the dotted line marks 1. (C, D) Intercept $a$ under five centring choices for $R_A$ and $G$, each with the pooled mean of its statistic as common normaliser. Bars are bootstrap 95\% confidence intervals.}
+\label{fig:heterogeneity}
+\end{figure}
+\FloatBarrier
+\input{tables/tab_s08_secondary}
+\FloatBarrier
+\input{tables/tab_ma_within}
+\FloatBarrier
+\input{tables/tab_s04_fe}
+\FloatBarrier
+\input{tables/tab_ma_rho_k}
+\FloatBarrier
+\input{tables/tab_ma_seasons}
+\FloatBarrier
+\input{tables/tab_ma_summer}
+\FloatBarrier
+\input{tables/tab_ma_gi}
+\FloatBarrier
+\input{tables/tab_ma_validation}
+\FloatBarrier
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_07_models.pdf}
+\caption{Affine and power-law forms of the dispersion curve. (A, B) Relative squared deviation averaged within count bins for $R_A$ and $G$, with the fitted affine and power-law curves; bins are for display only. (C) Held-out power-minus-affine score difference for each left-out season. (D) The same for each left-out state. Positive differences favour the affine model.}
+\label{fig:models}
+\end{figure}

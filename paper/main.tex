@@ -1,0 +1,180 @@
+% =================================================================
+% RESEARCH PAPER TEMPLATE
+% =================================================================
+% Single-column preprint layout -- journal-submission convention:
+% manuscripts are prepared single column; two-column is applied by
+% the publisher at final typesetting.
+% =================================================================
+
+% CHINESE PAPER SWITCH -- one line edit:
+%   \documentclass line below -> \documentclass[fontset=none,10pt,a4paper]{ctexart}
+% XeLaTeX is mandatory for both languages so the PDF contains the requested
+% real fonts instead of pdfTeX-compatible substitutes.
+\documentclass[10pt,a4paper]{article}
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{paper-template}{XeLaTeX is required}{Run xelatex; exact Times New Roman and Songti cannot be guaranteed under pdfLaTeX.}
+\fi
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+}{
+  % Build environment without Times New Roman: use the metric-compatible
+  % Liberation Serif and report the substitution in the delivery notes.
+  \IfFontExistsTF{Liberation Serif}{
+    \setmainfont{Liberation Serif}
+    \typeout{paper-template: Times New Roman missing; using metric-compatible Liberation Serif}
+  }{
+    \PackageError{paper-template}{Times New Roman is not installed}{Install or mount Times New Roman; do not silently substitute Nimbus Roman or Latin Modern.}
+  }
+}
+\makeatletter
+\@ifclassloaded{ctexart}{
+  \IfFontExistsTF{SimSun}{
+    \setCJKmainfont{SimSun}
+  }{
+    \IfFontExistsTF{Songti SC}{
+      \setCJKmainfont{Songti SC}
+    }{
+      \IfFontExistsTF{STSong}{
+        \setCJKmainfont{STSong}
+      }{
+        \PackageError{paper-template}{No approved Songti font is installed}{Install SimSun, Songti SC, or STSong; Noto Serif CJK JP is not an acceptable fallback.}
+      }
+    }
+  }
+  \IfFontExistsTF{SimHei}{
+    \setCJKsansfont{SimHei}
+  }{
+    \IfFontExistsTF{Heiti SC}{\setCJKsansfont{Heiti SC}}{}
+  }
+}{}
+\makeatother
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{longtable}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xurl}
+\usepackage[hidelinks,unicode=true]{hyperref}
+\urlstyle{same}
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\captionsetup{
+  font=small,
+  labelfont=normalfont,
+  textfont=normalfont,
+  labelsep=space,
+  justification=justified,
+  singlelinecheck=true,
+  skip=6pt
+}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+% Let figure-heavy manuscripts drain the float queue throughout the body.
+% The final \FloatBarrier closes that queue; the following \clearpage makes
+% the bibliography start on a clean page that contains no body text or floats.
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.70}
+\setcounter{dbltopnumber}{4}
+\renewcommand{\dbltopfraction}{0.90}
+\renewcommand{\dblfloatpagefraction}{0.70}
+\usepackage{fancyhdr}
+\usepackage{extramarks}% header shows the first section mark on each page
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\firstleftmark}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
+% Chinese manuscripts use no running header by default. English manuscripts
+% retain section-synchronised headers; the bibliography environment sets its
+% own mark only when the reference heading begins.
+\makeatletter
+\@ifclassloaded{ctexart}{\pagestyle{plain}}{\pagestyle{fancy}}
+\makeatother
+% Diagrams: TikZ for flow/architecture, forest for hierarchies/trees (auto-spaced,
+% no overlap). graphicx (above) provides \resizebox to clamp a figure to \linewidth.
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, backgrounds, calc}
+\usepackage{forest}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Rbar}{\overline{R}}
+\newcommand{\Rhat}{\hat R}
+\newcommand{\NB}{\operatorname{NB}}
+\newcommand{\Bin}{\operatorname{Bin}}
+\newcommand{\mx}{m_\times}
+\newcommand{\bP}{b_{\mathrm P}}
+
+\title{\textbf{Inferential targets for reproduction-number estimates: counting error, between-period variation and what cross-sectional surveillance diagnostics measure}}
+% Production and review disclosures belong in the separate provenance report,
+% not in the manuscript author block. Scientific status such as simulated
+% evidence remains disclosed in the abstract, methods, and relevant captions.
+\author{[Author names and affiliations to be added before submission]}
+\date{\today}
+
+\begin{document}
+\maketitle
+\normalfont\mdseries
+
+% ABSTRACT IS SELF-CONTAINED: exactly 0 \cite{} and 0 \ref{} inside
+% sections/abstract.tex (it is indexed standalone — citation numbers point at
+% nothing there). End it with a bold label only: \textbf{Keywords:}; keep the
+% 4--6 keyword values at regular weight. Except for structural headings and
+% genuine numerical optima in tables, all body and caption text stays regular.
+% Full rules: .claude/skills/paper-writer/references/03-section-playbook.md
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/model}
+\input{sections/reporting}
+\input{sections/diagnostics}
+\input{sections/application}
+\input{sections/discussion}
+\input{sections/conclusion}
+\input{sections/availability}
+\input{sections/declarations}
+\input{sections/appendix}
+
+% unsrtnat-noid: local copy of unsrtnat without the unused \doi preamble; references numbered by order of first citation
+% Keep the bibliography in the manuscript's current column mode unless an
+% external publisher template explicitly requires otherwise.
+% Keep this exact boundary after the final body input: drain every queued float,
+% then start References on a new page. Figures/tables and references never share
+% a page, even when the preceding body page has unused space.
+\FloatBarrier
+\clearpage
+\bibliographystyle{unsrtnat-noid}
+\bibliography{bibliography}
+
+\end{document}
