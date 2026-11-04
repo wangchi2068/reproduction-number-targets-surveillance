@@ -35,8 +35,9 @@ Fifty-one jurisdictions (50 states and DC) are used; territories and national ag
 
 - **NHSN.**
   - Row count, column count and week range were read back after decompression; the values in the table above are those readings.
-  - The calendar-window fit reproduces the submitted manuscript's point estimates: a = 0.099055 against 0.099060, and N = 1,267.
-  - No early-window rows come from imputed zeros: 0 of 1,267 rows (S = 3) and 0 of 1,756 rows (S = 4).
+  - Primary analysis sample ($R_A$, 4 early-growth seasons, rule v2): N = 1,748 state-weeks across 51 jurisdictions with $C_t \ge 5$, yielding pooled affine intercept $a = 0.01495$ (0.0101–0.0206) and $b = 0.560$ (0.362–0.769). The $G$ renewal sample has N = 1,756 with $D_t \ge 5$.
+  - Historical archival baseline: the initial 3-season calendar window verification yielded a = 0.099055 (against 0.099060 in preliminary unrevised runs, N = 1,267).
+  - No early-window rows come from imputed zeros: 0 of 1,748 rows for $R_A$ and 0 of 1,756 rows for $G$.
 - **Delphi.**
   - Every state request returned `result = 1` or reported no data.
   - Seven jurisdictions returned no rows. They are listed in the table above and are excluded from the laboratory proxy only.

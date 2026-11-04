@@ -1,0 +1,16 @@
+\begin{table}[!tbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Inferential targets and exact mean squared errors. The fixed-reporting column assumes H1--H4; the volatile-reporting column assumes H2--H5 and, for averages, independent reporting probabilities independent of the transmission path. Counting errors are conditionally independent across periods. $B_T=\Var(\Rbar_T)$ equals $v_R/T$ for independent, identically distributed transmission and $v_RS(\phi,T)/T^2$ under the stated stationary autocovariance. With the previous observed count as denominator, the current-value entry under fixed reporting becomes approximately $[A+(1-\rho)(\Rbar^2+v_R)]/m$ (Eq.~\ref{eq:observed-denominator}; Table~\ref{tab:ma_targets_observed}).}
+\label{tab:targets}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{0.13\linewidth}>{\centering\arraybackslash}p{0.24\linewidth}>{\centering\arraybackslash}p{0.27\linewidth}}
+\toprule
+Target & Estimator & Fixed, known reporting & Unobserved volatile reporting \\
+\midrule
+Current $R_t$ & $\Rhat_t$ & $A/m$ & $v_H+A_H/m$ \\
+Realised mean $\Rbar_T$ & $\overline{\Rhat}_T$ & $A/(Tm)$ & $(v_H+A_H/m)/T$ \\
+Process mean $\Rbar$ & $\overline{\Rhat}_T$ & $B_T+A/(Tm)$ & $B_T+(v_H+A_H/m)/T$ \\
+\bottomrule
+\end{tabularx}
+\end{table}

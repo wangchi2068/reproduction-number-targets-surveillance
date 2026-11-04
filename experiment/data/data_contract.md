@@ -13,14 +13,14 @@
   - **Calendar (S = 3):** the windows of the submitted manuscript.
   - **Rule v2 (S = 4, primary):** contiguous weeks with national growth ≥ 1.05, ending the week before the first national turning point.
     - Lower bounds: 2022-10-01, 2023-10-01, 2024-11-09 and 2025-10-01.
-    - Resulting windows:
+    - Resulting windows and sample rows (G requires $D_t \ge 5$, N=1,756; $R_A$ requires $C_t \ge 5$, N=1,748):
 
-      | Season | Window | N |
-      |---|---|---|
-      | 2022-23 | 10-01 to 11-26 | 367 |
-      | 2023-24 | 10-07 to 12-23 | 503 |
-      | 2024-25 | 11-09 to 12-28 | 357 |
-      | 2025-26 | 10-04 to 12-27 | 529 |
+      | Season | Window | N ($G$, $D_t \ge 5$) | N ($R_A$, $C_t \ge 5$) |
+      |---|---|---|---|
+      | 2022-23 | 10-01 to 11-26 | 367 | 365 |
+      | 2023-24 | 10-07 to 12-23 | 503 | 499 |
+      | 2024-25 | 11-09 to 12-28 | 357 | 356 |
+      | 2025-26 | 10-04 to 12-27 | 529 | 528 |
 
 - **Reporting regimes:**
   - **1:** mandatory, up to April 2024;

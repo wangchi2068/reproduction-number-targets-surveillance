@@ -1,6 +1,6 @@
 \begingroup\scriptsize\setlength{\tabcolsep}{2pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}@{}}
-\caption{Known-truth audit on the real R\_\allowbreak{}A design: retained counts, intercept, true error and recovery by generator}\label{tab:ma_audit_loss}\\
+\caption{Known-truth audit on the real $R_A$ design: retained counts, intercept, true error and recovery by generator}\label{tab:ma_audit_loss}\\
 \toprule
 Generator & n retained & D median [P10, P90] & True rel. variance (retained rows) & Intercept a & a / truth & True-error intercept & Week-centred a reduction \\
 \midrule
@@ -15,7 +15,7 @@ Generator & n retained & D median [P10, P90] & True rel. variance (retained rows
 \endfoot
 \bottomrule
 \endlastfoot
-Observed (R\_\allowbreak{}A, GI 3.6) & 1748 & 45 [10, 389] & unknown & 0.0150 [0.0101, 0.0206] & -- & -- & 0.35 \\
+Observed ($R_A$, GI 3.6) & 1748 & 45 [10, 389] & unknown & 0.0150 [0.0101, 0.0206] & -- & -- & 0.35 \\
 S0 Poisson, no heterogeneity & 1671 & 45 [10, 281] & 0 & 0.0000 [-0.0001, 0.0002] & truth 0 & 0.00003 [-0.00010, 0.00019] & -30.74 [-34.19, 12.89] \\
 S1 iid heterogeneity, Poisson counts & 1678 & 45 [11, 263] & 0.0150 & 0.0151 [0.0139, 0.0165] & 1.01 [0.93, 1.09] & 0.00003 [-0.00010, 0.00021] & -0.01 [-0.04, 0.01] \\
 S2 NB offspring + binomial reporting, no heterogeneity & 1582 & 45 [10, 324] & 0 & 0.0001 [-0.0001, 0.0003] & truth 0 & 0.00002 [-0.00013, 0.00018] & 0.44 [-20.56, 35.68] \\
@@ -29,7 +29,7 @@ S7b S3 with scale-dependent heterogeneity, gamma 0.5 & 1614 & 44 [11, 286] & 0.0
 S8 Combo S6 shock + S7a scale-dep (gamma 0.25) & 1596 & 45 [10, 311] & 0.0175 & 0.0150 [0.0131, 0.0172] & 0.86 [0.75, 0.98] & 0.00916 [0.00775, 0.01067] & -0.02 [-0.06, 0.02] \\
 \end{longtable}
 \vspace{-.5\baselineskip}
-\begin{minipage}{\linewidth}\footnotesize\raggedright
-200 synthetic panels per generator on the real 1748-row R\_\allowbreak{}A design; analyst scale D = simulated C\_\allowbreak{}t and the filter C\_\allowbreak{}t >= 5 applied to each panel; n retained and the D quantiles are Monte Carlo means over panels. Count alignment: each run of consecutive weeks is level-anchored to the observed counts of that run, and a global scale per generator (0.797-0.844) sets the mean retained median D to 45 (observed 45). The upper tail is not matched: the generator P90 of D is 263-324 against the observed 389. Intervals are Monte Carlo 2.5-97.5\% ranges across panels; a / truth is the ratio of panel means with the range of panel ratios. Truth is the relative variance of the target R\_\allowbreak{}i on retained rows; for S6 it also includes the relative variance of the reporting-shock term. True-error intercept: affine fit of ((x - R\_\allowbreak{}i)/xbar)\textasciicircum{}2. Week-centred reduction = 1 - a\_\allowbreak{}week/a. Observed a: primary bootstrap (2,000 draws). S6 (shock log-SD 0.122): a / v\_\allowbreak{}R = 2.02 [1.71, 2.29]; true-error intercept / reporting-shock variance = 1.02 [0.83, 1.19]; lag-1 correlation of the shock term between consecutive rows -0.50 [-0.53, -0.46].
+\begin{minipage}{0.95\linewidth}\footnotesize\raggedright
+200 synthetic panels per generator on the real 1748-row $R_A$ design; analyst scale $D$ = simulated $C_t$ and the filter $C_t \ge 5$ applied to each panel; $n$ retained and the $D$ quantiles are Monte Carlo means over panels. Count alignment: each run of consecutive weeks is level-anchored to the observed counts of that run, and a global scale per generator (0.797-0.844) sets the mean retained median $D$ to 45 (observed 45). The upper tail is not matched: the generator P90 of $D$ is 263--324 against the observed 389. Intervals are Monte Carlo 2.5--97.5\% ranges across panels; a / truth is the ratio of panel means with the range of panel ratios. Truth is the relative variance of the target $R_i$ on retained rows; for S6 it also includes the relative variance of the reporting-shock term. True-error intercept: affine fit of $((x-R_i)/\bar{x})^2$. Week-centred reduction = $1 - a_{\mathrm{week}}/a$. Observed a: primary bootstrap (2,000 draws). S6 (shock log-SD $0.122$): a / $v_R$ = 2.02 [1.71, 2.29]; true-error intercept / reporting-shock variance = 1.02 [0.83, 1.19]; lag-1 correlation of the shock term between consecutive rows $-0.50$ [$ -0.53$, $-0.46$].
 \end{minipage}\par
 \endgroup

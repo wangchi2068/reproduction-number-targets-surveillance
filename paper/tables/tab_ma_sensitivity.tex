@@ -5,9 +5,9 @@
 \setlength{\tabcolsep}{2pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}@{}}
 \toprule
-Specification & n & a & b & b/a & b/b\_\allowbreak{}P \\
+Specification & n & a & b & b/a & b/$b_{\mathrm{P}}$ \\
 \midrule
-Primary (C\_\allowbreak{}t, D\_\allowbreak{}t >= 5; cc 0.5; growth rule 1.05) & 1748 & 0.0150 [0.0101, 0.0206] & 0.560 [0.362, 0.769] & 37.4 [18.4, 72.4] & 1.26 [0.81, 1.73] \\
+Primary ($C_t$, $D_t$ >= 5; cc 0.5; growth rule 1.05) & 1748 & 0.0150 [0.0101, 0.0206] & 0.560 [0.362, 0.769] & 37.4 [18.4, 72.4] & 1.26 [0.81, 1.73] \\
 Counts >= 10 & 1535 & 0.0136 [0.0090, 0.0188] & 0.677 [0.436, 0.938] & 49.7 [25.0, 96.6] & 1.54 [0.99, 2.14] \\
 Counts >= 20 & 1203 & 0.0133 [0.0081, 0.0189] & 0.701 [0.332, 1.092] & 52.8 [19.0, 122.9] & 1.63 [0.76, 2.52] \\
 Counts >= 50 & 776 & 0.0129 [0.0073, 0.0191] & 0.686 [-0.155, 1.479] & 53.1 [-8.4, 180.1] (b/a <= 0 in 4.8\% of draws) & 1.64 [-0.38, 3.59] \\
@@ -20,7 +20,7 @@ Season 2025-26 & 528 & 0.0225 [0.0085, 0.0355] & 0.353 [0.129, 0.718] & 15.7 [4.
 \bottomrule
 \end{tabularx}
 \par\smallskip
-\begin{minipage}{\linewidth}\footnotesize\raggedright
+\begin{minipage}{0.95\linewidth}\footnotesize\raggedright
 Each row refits the authors' affine FGLS on the subset or variant with a state-week bootstrap; the primary row is the primary bootstrap (2,000 draws, identical to Table S1), the other rows use 2,000 draws each. Where b/a <= 0 (b <= 0) in more than 2.5\% of draws its percentile interval is unstable; draws whose FGLS fit did not converge are dropped and counted.
 \end{minipage}
 \end{table}
