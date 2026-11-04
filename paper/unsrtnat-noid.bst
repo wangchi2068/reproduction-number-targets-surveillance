@@ -285,7 +285,11 @@ FUNCTION {format.issn}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { new.block "URL \url{" url * "}" * }
+    { doi empty$
+        { new.block "URL \url{" url * "}" * }
+        { "" }
+      if$
+    }
   if$
 }
 
