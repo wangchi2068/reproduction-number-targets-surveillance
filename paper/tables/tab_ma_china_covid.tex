@@ -1,0 +1,27 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Cross-pathogen and cross-regime validation: dispersion diagnostics on China COVID-19 province-weeks, 2020--2023, against the US influenza baseline}\label{tab:china_covid}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2600\linewidth}>{\raggedright\arraybackslash}p{0.0700\linewidth}>{\raggedright\arraybackslash}p{0.0800\linewidth}>{\raggedright\arraybackslash}p{0.1900\linewidth}>{\raggedright\arraybackslash}p{0.1650\linewidth}>{\raggedright\arraybackslash}p{0.1650\linewidth}@{}}
+\toprule
+Specification & $N$ & Provinces & Intercept $a$ [95\% CI] & $b/a$ [95\% CI] & $b/b_{\mathrm{P}}$ [95\% CI] \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{United States influenza hospital admissions (main analysis)}} \\
+\quad Pooled, four seasons & 1{,}748 & 51 & 0.0150 [0.0101, 0.0206] & 37.4 [18.4, 72.4] & 1.26 [0.81, 1.73] \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{China COVID-19 confirmed cases (independent replication)}} \\
+\quad Growth-phase pooled, 2020--2022 & 896 & 34 & 0.2103 [0.0851, 0.5001] & 23.2 [$-$3.0, 99.9] & 6.16 [$-$1.84, 13.37] \\
+\quad 2020 (initial Wuhan wave and containment) & 167 & 33 & 0.3842 [0.0280, 0.6120] & 0.7 [$-$4.7, 149.1] & 0.33 [$-$3.27, 7.76] \\
+\quad 2021 (zero-COVID suppression) & 191 & 31 & 0.1841 [0.0100, 0.6300] & 3.4 [$-$4.8, 452.6] & 0.75 [$-$3.45, 7.90] \\
+\quad 2022 (mass testing and reopening) & 531 & 33 & 0.1662 [0.0700, 0.4080] & 45.8 [$-$1.6, 157.5] & 9.90 [$-$0.80, 18.45] \\
+\quad Minimum count $C_t \ge 10$ & 723 & 34 & 0.2038 [0.0750, 0.3740] & 29.7 [0.5, 129.9] & 7.56 [0.24, 15.00] \\
+\quad Minimum count $C_t \ge 20$ & 554 & 34 & 0.2036 [0.0760, 0.4710] & 38.1 [$-$9.8, 186.5] & 9.61 [$-$5.20, 22.08] \\
+\quad Minimum count $C_t \ge 50$ & 352 & 33 & 0.2426 [0.0510, 0.5570] & 17.9 [$-$41.6, 436.5] & 5.30 [$-$25.72, 31.23] \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}\footnotesize\raggedright
+Unit of analysis: province $\times$ week, 34 provincial units, extracted from the JHU CSSE confirmed-case series (2020-01-25 to 2023-01-21). Rows enter when their own week-to-week growth factor is $g \ge 1.05$ and $C_t \ge 5$, the direct analogue of the early-growth window rule used for the US sample. Reproduction numbers use the Wallinga--Lipsitch transform with a gamma generation interval of mean 5.2 d and SD 1.7 d, and $b_{\mathrm{P}}$ is recomputed on the same rows with that interval. Intervals are pigeonhole bootstrap 95\% ranges over provinces $\times$ weeks (1{,}000 draws pooled, 500 per stratum). China in 2020 and 2021 is a containment regime in which counts were driven to very low levels by non-pharmaceutical intervention, so $b/a$ is small and the ratio's lower limit is not defined in some draws. In 2022, once mass testing and widespread transmission coexisted, the crossover count returns to the same order of magnitude as the US influenza estimate (45.8 against 37.4), while the intercept remains roughly an order of magnitude higher and $b/b_{\mathrm{P}}$ roughly five times higher. This is a descriptive cross-regime comparison; the diagnostic quantities are not estimates of a single common mechanism.
+\end{minipage}
+\end{table}

@@ -48,3 +48,47 @@ The interval choice has almost no effect on the ratio. Replacing the primary int
 \label{sec:app-shape}
 
 Held-out comparison of the affine model with a power law $\lambda C^{-\gamma}$ did not separate the two forms. Leaving out one state at a time, the power-minus-affine score difference was $-0.0020$ (paired standard error 0.0068), with 26 of 51 folds favouring the affine model; leaving out one season at a time it was 0.0046 (0.0087), with 3 of 4 folds favouring the affine model (Table~\ref{tab:ma_validation}; Fig.~\ref{fig:models}). The affine form is used here as a working summary, not as an established law for surveillance dispersion.
+
+\subsection{Cross-pathogen and cross-regime validation: China COVID-19}
+\label{sec:app-china}
+
+To test whether the dispersion diagnostics behave as the framework predicts outside a
+near-stationary influenza baseline, we replicated the analysis on a second pathogen and a
+second surveillance system: weekly laboratory-confirmed COVID-19 cases in 34 Chinese
+provincial units from 25 January 2020 to 21 January 2023, as compiled by the Johns Hopkins
+CSSE series. Rows enter the panel when their own week-to-week growth factor is at least
+1.05 and their current count is at least 5, the direct analogue of the early-growth rule
+applied to the US sample; reproduction numbers use the Wallinga--Lipsitch transform with a
+gamma generation interval of mean 5.2 days and standard deviation 1.7 days, and
+$b_{\mathrm{P}}$ is recomputed on the same rows with that interval.
+
+
+The pooled growth-phase fit gives $a=0.210$ (0.085--0.500), $b/a=23.2$ ($-3.0$ to 99.9) and
+$b/\bP=6.16$ ($-1.84$ to 13.37) on 896 province-weeks; Table~\ref{tab:china_covid} reports
+the yearly breakdown and the minimum-count sensitivity. The contrast with the US baseline is
+structured in the way the framework predicts rather than uniform. The intercept is roughly
+an order of magnitude larger ($0.210$ against $0.0150$), consistent with a regime in which
+provincial counts were moved by non-pharmaceutical intervention and by changes in testing
+and case definitions, both of which enter $a$ and cannot be separated from transmission
+variation by single-period count moments (Proposition~\ref{prop:report-noise}). The
+crossover count is of the same order of magnitude ($23.2$ against $37.4$), and in the 2022
+sub-period, when mass testing coexisted with widespread transmission, it returns to
+$45.8$, close to the influenza value. The slope ratio behaves in the opposite direction:
+$b/\bP$ rises to $6.16$ pooled and $9.90$ in 2022, against $1.26$ for influenza, quantifying
+how much farther week-to-week counting variation sits above the Poisson reference under
+intensive testing than under routine hospital reporting. In 2020 and 2021, when counts were
+driven to very low levels, $a$ is largest ($0.384$ and $0.184$) while $b/a$ collapses to
+$0.7$ and $3.4$, because the between-province dispersion produced by targeted lockdowns
+dominates a counting term that is small by construction.
+
+These are descriptive cross-regime comparisons, not estimates of a common mechanism, and the
+intervals are wide: the China panel covers 34 units rather than 51, three calendar years
+rather than four influenza seasons, and a regime whose reporting process changed abruptly
+several times. Their value is that the same diagnostic pipeline, applied unchanged to a
+different pathogen, a different country and a very different reporting environment, produces
+the qualitative pattern the framework requires --- an intercept that absorbs regime and
+reporting effects, a crossover count that stays in the tens of cases, and a slope ratio that
+tracks how far counting variation exceeds the Poisson reference.
+
+\FloatBarrier
+\input{tables/tab_ma_china_covid}
