@@ -1,424 +1,231 @@
 {
- "schema_version": 1,
- "generated_utc": "2026-11-03 11:25:24",
- "generator": "code/ma_render.py",
- "inputs": {
-  "authors": {
-   "empirical": {
-    "path": "reproduction-number-review/experiment/analysis/authors/empirical.json",
-    "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
-    "bytes": 285030
-   },
-   "fixed_effects": {
-    "path": "reproduction-number-review/experiment/analysis/authors/fixed_effects.json",
-    "sha256": "9467b9cc6cff4f116a6240e26d8b4316ecc4c4c3a4d6281acdadd7f4fe580a29",
-    "bytes": 20599
-   },
-   "thinning": {
-    "path": "reproduction-number-review/experiment/analysis/authors/thinning.json",
-    "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
-    "bytes": 157030
-   },
-   "secondary": {
-    "path": "reproduction-number-review/experiment/analysis/authors/secondary.json",
-    "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
-    "bytes": 8571
-   },
-   "theory": {
-    "path": "reproduction-number-review/experiment/analysis/authors/theory.json",
-    "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
-    "bytes": 20201
-   },
-   "calibration": {
-    "path": "reproduction-number-review/experiment/analysis/authors/calibration_reproduced/calibration.json",
-    "sha256": "060a9fe1bbe56df40ad394076f77527c1135b913e2e3c2e17f629c1e259245e2",
-    "bytes": 1336538
-   },
-   "block2": {
-    "path": "reproduction-number-review/experiment/analysis/authors/block2/fixed_effects.json",
-    "sha256": "c2a6a625b4b942bfeecea36f222b371d6d1d37895db52d9c96272700c26547f4",
-    "bytes": 20116
-   },
-   "block3": {
-    "path": "reproduction-number-review/experiment/analysis/authors/block3/fixed_effects.json",
-    "sha256": "9f14dfea4fc053232b85193e983c25cdb847626bb7a9c2da09eb209ff0e683e3",
-    "bytes": 20155
-   }
+  "generated_utc": "2026-11-04 07:06:53",
+  "generator": "code/ma_render.py",
+  "inputs": {
+    "authors_and_fe": {
+      "empirical": {
+        "path": "论文\\experiment\\analysis\\authors\\empirical.json",
+        "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
+        "bytes": 285030
+      },
+      "thinning": {
+        "path": "论文\\experiment\\analysis\\authors\\thinning.json",
+        "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
+        "bytes": 157030
+      },
+      "secondary": {
+        "path": "论文\\experiment\\analysis\\authors\\secondary.json",
+        "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
+        "bytes": 8571
+      },
+      "theory": {
+        "path": "论文\\experiment\\analysis\\authors\\theory.json",
+        "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
+        "bytes": 20201
+      },
+      "fixed_effects": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\L1\\fixed_effects.json",
+        "sha256": "9ea5b2d16d11654d60b4d54ecc2dae4556ad52eaf7e08c06a3399fe04ac2c773",
+        "bytes": 19997
+      },
+      "block2": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block2\\fixed_effects.json",
+        "sha256": "a6bacf6614ca95d5d59a81bacb670b412400011c7dab7946def9dc9a49314ec0",
+        "bytes": 20115
+      },
+      "block3": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block3\\fixed_effects.json",
+        "sha256": "702885140d5ed9a550d09abb8928a72590146ad3552f218872d08e0f126d286b",
+        "bytes": 20434
+      }
+    },
+    "ma_audit.json": {
+      "path": "论文\\experiment\\analysis\\ma_audit.json",
+      "sha256": "8ea16256eb535090cda52059f12a45c313d2a0bbf6d4c8ae7a9ddbb5fb7a8d71"
+    },
+    "ma_audit_draws.npz": {
+      "path": "论文\\experiment\\analysis\\ma_audit_draws.npz",
+      "sha256": "4d8fb2add9145b7d0fe984c5f31fa8794fe1d8e3749e949eb15d06a108b3b30b"
+    },
+    "ma_thinning_exact.json": {
+      "path": "论文\\experiment\\analysis\\ma_thinning_exact.json",
+      "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
+    },
+    "ma_extensions.json": {
+      "path": "论文\\experiment\\analysis\\ma_extensions.json",
+      "sha256": "db4dd8cee7b014ff6328fbfec55d2bce9eee5f00158cc2d040b8bb1104071c68"
+    },
+    "ma_fe_decomp.json": {
+      "path": "论文\\experiment\\analysis\\ma_fe_decomp.json",
+      "sha256": "9015755cf7ef6fa65777020436702c2689db8b292ad6354a27b2200a973b3da9"
+    }
   },
-  "ma_audit.json": {
-   "path": "reproduction-number-review/experiment/analysis/ma_audit.json",
-   "sha256": "64914a617d8033b5139121c5892a878706b99d0606a2eca3a393769b8ebb853f"
+  "latex_packages": [
+    "booktabs",
+    "array",
+    "tabularx",
+    "longtable"
+  ],
+  "dropped": {
+    "tab_s07_design": "design stage removed from the manuscript; observed-contrast quantiles under the audit generators replace it (tab_ma_audit_slopes)",
+    "tab_s06_calibration": "calibration withdrawn (2026-11-03): its simulator did not reproduce the observed slope, row count or autocorrelation; see code/README.md",
+    "tab_ma_calibration_diag": "calibration withdrawn (2026-11-03)"
   },
-  "ma_audit_draws.npz": {
-   "path": "reproduction-number-review/experiment/analysis/ma_audit_draws.npz",
-   "sha256": "3b443f64c4d46e89a5176987fe383d8e874ba00fdf11811354eb6c6102da3a52"
-  },
-  "ma_thinning_exact.json": {
-   "path": "reproduction-number-review/experiment/analysis/ma_thinning_exact.json",
-   "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
-  },
-  "ma_extensions.json": {
-   "path": "reproduction-number-review/experiment/analysis/ma_extensions.json",
-   "sha256": "f239c1d974bea044c910eafc36c6dbaa7d1ff177d0cc06ec0141cc1fd08e2412"
-  }
- },
- "latex_packages": [
-  "booktabs",
-  "array",
-  "tabularx",
-  "longtable"
- ],
- "dropped": {
-  "tab_s07_design": "design stage removed from the manuscript; observed-contrast quantiles under the audit generators replace it (tab_ma_audit_slopes)",
-  "tab_s06_calibration": "calibration withdrawn (2026-11-03): its simulator did not reproduce the observed slope, row count or autocorrelation",
-  "tab_ma_calibration_diag": "calibration withdrawn (2026-11-03)",
-  "tab_s02_cv": "fold-level held-out scores superseded by the paired-uncertainty comparison (tab_ma_validation)"
- },
- "note": "Copied from the experiment stage by paper_tools/stage_tables.py; float placement normalized from [htbp] to [!tbp]; plain-text notation typeset as math and the Chan et al. reference turned into a numbered citation; numerical cells unchanged.",
- "tables": [
-  {
-   "file": "tables/tab_targets.tex",
-   "label": "tab:targets",
-   "rows": 3,
-   "environment": "tabularx",
-   "builder": "symbolic (no numerical cells)",
-   "id": "tab:targets",
-   "path": "tab_targets.tex",
-   "sha256": "70953614ee0344b090280c12f13ce33a1720e426c6b75a8d541d50dec2cb2807",
-   "generator": "symbolic summary of Proposition 1, Corollary 1, Proposition 2 and Corollary 2",
-   "data_sources": [
-    "closed-form results in sections/model.tex and sections/reporting.tex"
-   ],
-   "display": "raw",
-   "n_seeds": 1
-  },
-  {
-   "file": "tables/tab_s01_pooled.tex",
-   "label": "tab:pooled",
-   "rows": 12,
-   "environment": "tabularx",
-   "builder": "render_revision.pooled_table",
-   "origin": "authors' Table S1",
-   "id": "tab:pooled",
-   "path": "tab_s01_pooled.tex",
-   "sha256": "496981917289b18280e3386a761777b044ce0419e3ed09ab044a6ea6b41bd578",
-   "generator": "render_revision.pooled_table",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_s03_thinning.tex",
-   "label": "tab:thinning",
-   "rows": 102,
-   "environment": "longtable",
-   "builder": "render_revision.thinning_table",
-   "origin": "authors' Table S3",
-   "id": "tab:thinning",
-   "path": "tab_s03_thinning.tex",
-   "sha256": "48d2887fa112175fafddb9fa11ba9f440ebe01a634841a7ab332103e321742b2",
-   "generator": "render_revision.thinning_table",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 20
-  },
-  {
-   "file": "tables/tab_s04_fe.tex",
-   "label": "tab:fe",
-   "rows": 56,
-   "environment": "longtable",
-   "builder": "render_revision.fe_table",
-   "origin": "authors' Table S4",
-   "id": "tab:fe",
-   "path": "tab_s04_fe.tex",
-   "sha256": "0f2f266006961fc78dc83c6e64c5d8e4676660c484d7d29845b7f90736cb8849",
-   "generator": "render_revision.fe_table",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_s05_centering.tex",
-   "label": "tab:centering",
-   "rows": 14,
-   "environment": "longtable",
-   "builder": "render_revision.centering_table",
-   "origin": "authors' Table S5",
-   "id": "tab:centering",
-   "path": "tab_s05_centering.tex",
-   "sha256": "10d3daa4d091ed691ab3e51ea9e40bdf001faa193d02fcdcd0147c614149982a",
-   "generator": "render_revision.centering_table",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 1
-  },
-  {
-   "file": "tables/tab_s08_secondary.tex",
-   "label": "tab:secondary",
-   "rows": 10,
-   "environment": "longtable",
-   "builder": "render_revision.secondary_table",
-   "origin": "authors' Table S8",
-   "id": "tab:secondary",
-   "path": "tab_s08_secondary.tex",
-   "sha256": "73ca0a0bbdad2fc10b78de83298a12eeb2d2f0dfc6b34c8bb09d3edb5e08e1ae",
-   "generator": "render_revision.secondary_table",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_ma_summer.tex",
-   "label": "tab:summer",
-   "rows": 3,
-   "environment": "tabularx",
-   "builder": "render_revision.summer_table",
-   "origin": "authors' Table S8 summer rows (descriptive, separated)",
-   "id": "tab:summer",
-   "path": "tab_ma_summer.tex",
-   "sha256": "6496fdf56cc6001f1fb02999af4aa07f1af0b8fb352cb3e8aad194050721230c",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 1
-  },
-  {
-   "file": "tables/tab_ma_audit_loss.tex",
-   "label": "tab:ma_audit_loss",
-   "rows": 11,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_audit_loss",
-   "path": "tab_ma_audit_loss.tex",
-   "sha256": "8122fc4c86740038e846059ccfedd425816e0bda3e304f289f8ea64f9e6f0ea7",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "synthetic panels on the observed state-week design",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 200
-  },
-  {
-   "file": "tables/tab_ma_audit_slopes.tex",
-   "label": "tab:ma_audit_slopes",
-   "rows": 11,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_audit_slopes",
-   "path": "tab_ma_audit_slopes.tex",
-   "sha256": "26fa700f6145130fd97b49145d3c9d72c03861ed9abd8b41230d21ced02580a6",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "synthetic panels on the observed state-week design",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 200
-  },
-  {
-   "file": "tables/tab_ma_baselines.tex",
-   "label": "tab:ma_baselines",
-   "rows": 5,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_baselines",
-   "path": "tab_ma_baselines.tex",
-   "sha256": "761bfb52ec2b81a875e4db8b2c411d38bbdda6e838b1415e95bf50299c648fb1",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "synthetic panels on the observed state-week design",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 200
-  },
-  {
-   "file": "tables/tab_ma_rho_k.tex",
-   "label": "tab:ma_rho_k",
-   "rows": 4,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_rho_k",
-   "path": "tab_ma_rho_k.tex",
-   "sha256": "83dfba10b90aa687794a740a4d65d8229f95c09127a24c2b50e6674d65847a4e",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "synthetic panels on the observed state-week design",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 100
-  },
-  {
-   "file": "tables/tab_ma_thinning_exact.tex",
-   "label": "tab:ma_thinning_exact",
-   "rows": 9,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_thinning_exact",
-   "path": "tab_ma_thinning_exact.tex",
-   "sha256": "dc7291e2f6de71c3463039b56948617a2a95a246559d3cd55764aed9f591cdba",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 20
-  },
-  {
-   "file": "tables/tab_ma_varlog.tex",
-   "label": "tab:ma_varlog",
-   "rows": 6,
-   "environment": "longtable",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_varlog",
-   "path": "tab_ma_varlog.tex",
-   "sha256": "76fe0892617556684ca045d68d836ca89ca8d3cf8a0e0f9ee517235bb24fcadd",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 1
-  },
-  {
-   "file": "tables/tab_ma_targets_observed.tex",
-   "label": "tab:ma_targets_observed",
-   "rows": 4,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_targets_observed",
-   "path": "tab_ma_targets_observed.tex",
-   "sha256": "23726341c9756cf9dd738ee30bdf1c5ccdaa222c710fd6341fc336ff4dc6558f",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "analytic moments and Monte Carlo draws (no external data)",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 400000
-  },
-  {
-   "file": "tables/tab_ma_gi.tex",
-   "label": "tab:ma_gi",
-   "rows": 3,
-   "environment": "longtable",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_gi",
-   "path": "tab_ma_gi.tex",
-   "sha256": "78c0f9f204e925786fbefef44fe7c42ddacff8f77fcf095cf5478f45e6482197",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_ma_within.tex",
-   "label": "tab:ma_within",
-   "rows": 7,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_within",
-   "path": "tab_ma_within.tex",
-   "sha256": "14c454395356e5bc5354caff581440e358166e650c82c7ef0d3a689485fe0f09",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_ma_sensitivity.tex",
-   "label": "tab:ma_sensitivity",
-   "rows": 10,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_sensitivity",
-   "path": "tab_ma_sensitivity.tex",
-   "sha256": "d9941131fd192244b503b64822106822eb34defabe653b5ef5fabc9353e4006d",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_ma_seasons.tex",
-   "label": "tab:ma_seasons",
-   "rows": 14,
-   "environment": "tabularx",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_seasons",
-   "path": "tab_ma_seasons.tex",
-   "sha256": "e6b4a98ac958599a2b8f037319afe74791206b55b7772ffacee5450e475be417",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 2000
-  },
-  {
-   "file": "tables/tab_ma_validation.tex",
-   "label": "tab:ma_validation",
-   "rows": 2,
-   "environment": "longtable",
-   "builder": "ma_render.py",
-   "origin": "mainline-A analysis",
-   "id": "tab:ma_validation",
-   "path": "tab_ma_validation.tex",
-   "sha256": "3812c82eab7836347d319f50ff8c7344e43424b6af20755577bde80463543297",
-   "generator": "ma_render.py",
-   "data_sources": [
-    "NHSN Weekly Hospital Respiratory Data, data.cdc.gov ua7e-t2fy, snapshot 2026-10-20",
-    "experiment/analysis/results.json"
-   ],
-   "display": "raw",
-   "n_seeds": 1
-  }
- ]
+  "tables": [
+    {
+      "file": "tables/tab_s01_pooled.tex",
+      "label": "tab:pooled",
+      "rows": 12,
+      "environment": "tabularx",
+      "builder": "render_revision.pooled_table",
+      "origin": "authors' Table S1",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s02_cv.tex",
+      "label": "tab:cv",
+      "rows": 24,
+      "environment": "longtable",
+      "builder": "render_revision.cv_table",
+      "origin": "authors' Table S2"
+    },
+    {
+      "file": "tables/tab_s03_thinning.tex",
+      "label": "tab:thinning",
+      "rows": 102,
+      "environment": "longtable",
+      "builder": "render_revision.thinning_table",
+      "origin": "authors' Table S3"
+    },
+    {
+      "file": "tables/tab_s04_fe.tex",
+      "label": "tab:fe",
+      "rows": 56,
+      "environment": "longtable",
+      "builder": "render_revision.fe_table",
+      "origin": "authors' Table S4",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s05_centering.tex",
+      "label": "tab:centering",
+      "rows": 14,
+      "environment": "longtable",
+      "builder": "render_revision.centering_table",
+      "origin": "authors' Table S5",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s08_secondary.tex",
+      "label": "tab:secondary",
+      "rows": 10,
+      "environment": "longtable",
+      "builder": "render_revision.secondary_table",
+      "origin": "authors' Table S8"
+    },
+    {
+      "file": "tables/tab_ma_summer.tex",
+      "label": "tab:summer",
+      "rows": 3,
+      "environment": "tabularx",
+      "builder": "render_revision.summer_table",
+      "origin": "authors' Table S8 summer rows (descriptive, separated)"
+    },
+    {
+      "file": "tables/tab_ma_audit_loss.tex",
+      "label": "tab:ma_audit_loss",
+      "rows": 12,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_audit_slopes.tex",
+      "label": "tab:ma_audit_slopes",
+      "rows": 12,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_baselines.tex",
+      "label": "tab:ma_baselines",
+      "rows": 5,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_rho_k.tex",
+      "label": "tab:ma_rho_k",
+      "rows": 4,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_thinning_exact.tex",
+      "label": "tab:ma_thinning_exact",
+      "rows": 9,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_varlog.tex",
+      "label": "tab:ma_varlog",
+      "rows": 6,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_targets_observed.tex",
+      "label": "tab:ma_targets_observed",
+      "rows": 4,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_gi.tex",
+      "label": "tab:ma_gi",
+      "rows": 3,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_within.tex",
+      "label": "tab:ma_within",
+      "rows": 7,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_sensitivity.tex",
+      "label": "tab:ma_sensitivity",
+      "rows": 10,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_seasons.tex",
+      "label": "tab:ma_seasons",
+      "rows": 14,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_validation.tex",
+      "label": "tab:ma_validation",
+      "rows": 2,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    }
+  ]
 }

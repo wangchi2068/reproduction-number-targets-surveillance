@@ -1,0 +1,1 @@
+copied from review/repro/out (reproduce-check rerun, bit-identical to authors' committed calibration)

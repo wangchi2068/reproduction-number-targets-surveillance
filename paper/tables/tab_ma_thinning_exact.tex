@@ -1,11 +1,11 @@
-\begin{table}[!tbp]
+\begin{table}[htbp]
 \centering
 \small
-\caption{Exact expected thinning increment against the delta prediction $b_{\mathrm P}$}\label{tab:ma_thinning_exact}
+\caption{Exact expected thinning increment against the delta prediction b\_\allowbreak{}P}\label{tab:ma_thinning_exact}
 \setlength{\tabcolsep}{2pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}@{}}
 \toprule
-q & Exact rate & Exact rate / $b_{\mathrm P}$ & Monte Carlo rate [95\% CI] & Leverage in c & Positive-part mass (max) \\
+q & Exact rate & Exact rate / b\_\allowbreak{}P & Authors' MC rate [95\% CI] & Leverage in c & Positive-part mass (max) \\
 \midrule
 0.8 & 0.4672 & 1.049 & 0.4588 [0.3731, 0.5557] & 0.001 & 0.0e+00 \\
 0.6 & 0.4845 & 1.087 & 0.4745 [0.4064, 0.5532] & 0.004 & 0.0e+00 \\
@@ -19,7 +19,7 @@ c, without q = 0.1 & 0.4882 & 1.096 & -- & -- & -- \\
 \bottomrule
 \end{tabularx}
 \par\smallskip
-\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
-Rate = ($b_q$ - $b_1$)/(1/q - 1) from the affine FGLS fit of the exact expected thinned loss (binomial supports summed, mass below 1e-13 dropped); $b_{\mathrm P}$ = 0.4455 is the delta-method prediction. Leverage: share of the least-squares rate through the origin carried by each q. Check: q = 0.5: independent-thinning MC 0.4903 (SE 0.0048) vs expected-loss 0.4957; q = 0.1: independent-thinning MC 0.3832 (SE 0.0024) vs expected-loss 0.3836.
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+Rate = (b\_\allowbreak{}q - b\_\allowbreak{}1)/(1/q - 1) from the affine FGLS fit of the exact expected thinned loss (binomial supports summed, mass below 1e-13 dropped); b\_\allowbreak{}P = 0.4455 is the delta-method prediction. Leverage: share of the least-squares rate through the origin carried by each q. Check: q = 0.5: independent-thinning MC 0.4903 (SE 0.0048) vs expected-loss 0.4957; q = 0.1: independent-thinning MC 0.3832 (SE 0.0024) vs expected-loss 0.3836.
 \end{minipage}
 \end{table}

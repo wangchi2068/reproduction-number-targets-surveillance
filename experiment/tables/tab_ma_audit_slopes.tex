@@ -1,0 +1,35 @@
+\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}@{}}
+\caption{Known-truth audit: b/a, slope references, thinning and the in-sample contrast by generator}\label{tab:ma_audit_slopes}\\
+\toprule
+Generator & b/a & b/b\_\allowbreak{}P & b\_\allowbreak{}w/b\_\allowbreak{}P (state FE) & Pooled / within slope & Thinning c/b\_\allowbreak{}P & In-sample contrast & Quantile of observed contrast \\
+\midrule
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{(continued)}}\\
+\toprule
+Generator & b/a & b/b\_\allowbreak{}P & b\_\allowbreak{}w/b\_\allowbreak{}P (state FE) & Pooled / within slope & Thinning c/b\_\allowbreak{}P & In-sample contrast & Quantile of observed contrast \\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r@{}}{\textit{(continued on next page)}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+Observed & 37.4 [18.4, 72.4] & 1.257 [0.812, 1.734] & 0.852 [0.237, 1.475] & 1.48 [0.99, 3.66] & 0.909 [0.810, 0.999] & -0.0014 & -- \\
+S0 Poisson, no heterogeneity & --- & 0.930 [0.853, 1.005] & 0.896 [0.794, 1.021] & 1.04 [0.95, 1.13] & 0.970 [0.946, 1.000] & -0.0004 [-0.0028, 0.0018] & 0.200 \\
+S1 iid heterogeneity, Poisson counts & 25.9 [19.4, 32.9] & 0.855 [0.686, 1.020] & 0.819 [0.617, 1.026] & 1.05 [0.94, 1.21] & 0.950 [0.912, 0.986] & 0.0119 [0.0035, 0.0213] & 0.000 \\
+S2 NB offspring + binomial reporting, no heterogeneity & --- & 1.225 [1.128, 1.321] & 1.206 [1.064, 1.342] & 1.02 [0.95, 1.10] & 0.929 [0.898, 0.970] & -0.0003 [-0.0033, 0.0031] & 0.190 \\
+S3 iid heterogeneity + NB/reporting & 36.3 [27.4, 44.4] & 1.143 [0.983, 1.308] & 1.123 [0.899, 1.333] & 1.02 [0.93, 1.14] & 0.879 [0.828, 0.927] & 0.0164 [0.0044, 0.0281] & 0.010 \\
+S4 state + week heterogeneity, Poisson counts & 22.2 [17.0, 27.7] & 0.734 [0.602, 0.871] & 0.649 [0.486, 0.819] & 1.14 [0.99, 1.37] & 0.997 [0.964, 1.035] & 0.0123 [0.0032, 0.0229] & 0.000 \\
+S5 state + week heterogeneity + NB/reporting & 32.6 [24.7, 40.0] & 1.025 [0.866, 1.201] & 0.953 [0.743, 1.142] & 1.08 [0.94, 1.25] & 0.925 [0.875, 0.981] & 0.0239 [0.0128, 0.0363] & 0.000 \\
+S2P Poisson offspring + binomial reporting, no heterogeneity & --- & 0.797 [0.732, 0.863] & 0.774 [0.684, 0.865] & 1.03 [0.96, 1.13] & 0.974 [0.953, 1.004] & -0.0004 [-0.0037, 0.0022] & 0.205 \\
+S6 S3 + state-week reporting shock (half of a) & 36.4 [28.2, 47.6] & 1.144 [0.970, 1.342] & 1.141 [0.935, 1.354] & 1.01 [0.90, 1.12] & 0.869 [0.814, 0.919] & 0.0176 [0.0048, 0.0337] & 0.000 \\
+S7a S3 with scale-dependent heterogeneity, gamma 0.25 & 51.4 [39.5, 65.9] & 1.564 [1.337, 1.787] & 1.484 [1.249, 1.759] & 1.06 [0.95, 1.18] & 0.914 [0.861, 0.986] & -0.0003 [-0.0112, 0.0106] & 0.430 \\
+S7b S3 with scale-dependent heterogeneity, gamma 0.5 & 77.5 [58.4, 99.7] & 2.251 [1.975, 2.582] & 2.058 [1.656, 2.493] & 1.10 [0.97, 1.21] & 0.922 [0.862, 0.980] & -0.0142 [-0.0225, -0.0046] & 1.000 \\
+S8 Combo S6 shock + S7a scale-dep (gamma 0.25) & 40.8 [31.2, 53.0] & 1.291 [1.100, 1.508] & 1.274 [1.038, 1.542] & 1.02 [0.91, 1.15] & 0.886 [0.831, 0.934] & 0.0094 [-0.0061, 0.0242] & 0.080 \\
+\end{longtable}
+\vspace{-.5\baselineskip}
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+b\_\allowbreak{}P is the independent-Poisson reference computed on each panel. S2, S3, S5, S6 and S7 use negative-binomial offspring (k = 0.3) with binomial reporting probability 0.25; S2P uses Poisson offspring with the same reporting. b/a undefined when a ≈ 0 (S0, S2, S2P: true relative variance 0), shown as ---. Pooled / within slope = (b/b\_\allowbreak{}P)/(b\_\allowbreak{}w/b\_\allowbreak{}P) with state fixed effects. Observed row: primary bootstrap (2,000 draws); its pooled / within slope is the slope ratio of the fixed-effects decomposition. Thinning uses 100 panels x 20 shared-count binomial draws per q and the authors' least-squares rate through the origin. Contrast = in-sample affine minus power mean score (authors' revision\_\allowbreak{}design.contrast); its last column is the share of synthetic panels with a contrast at or below the observed value.
+\end{minipage}\par
+\endgroup

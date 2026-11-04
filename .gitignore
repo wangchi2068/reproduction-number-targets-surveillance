@@ -35,3 +35,4 @@ desktop.ini
 
 # Compile diagnostics produced by build_papers.py
 validation/
+paper/figures/*.png

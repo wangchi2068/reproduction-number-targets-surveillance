@@ -31,6 +31,7 @@ Generators
                           relative variances each about a_obs/2
   S7a/S7b scale_dep       S3 with sigma^2(C) = sigma0^2 (EC/45)^(-gamma),
                           gamma = 0.25 / 0.5, EC the expected count
+  S8 combo                S3 combining S7a scale-dep (gamma=0.25) with S6 reporting shock
 Per generator (REPS panels): loss fit a, b, b/a; true-error fit
 ((x - R_i)/xbar)^2; unthinned b/b_P; within-state slope b_w; week-centred
 intercept; affine-minus-power score contrast and the quantile of the observed
@@ -394,7 +395,8 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
             "S2P_branching_poisson": Generator(d, g0, z, "none", k=np.inf),
             "S6_reporting_shock": Generator(d, g0, z, "iid", k=K, half=True, kap=kap),
             "S7a_scale_dep": Generator(d, g0, z, "iid", k=K, gamma=.25),
-            "S7b_scale_dep": Generator(d, g0, z, "iid", k=K, gamma=.5)}
+            "S7b_scale_dep": Generator(d, g0, z, "iid", k=K, gamma=.5),
+            "S8_combo": Generator(d, g0, z, "iid", k=K, half=True, gamma=.25, kap=kap)}
     alignment = {}
     for si_, (name, gen) in enumerate(gens.items()):
         gen.set(amp=1.0, lam=1.0)

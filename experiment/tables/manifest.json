@@ -1,0 +1,231 @@
+{
+  "generated_utc": "2026-11-04 07:06:53",
+  "generator": "code/ma_render.py",
+  "inputs": {
+    "authors_and_fe": {
+      "empirical": {
+        "path": "论文\\experiment\\analysis\\authors\\empirical.json",
+        "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
+        "bytes": 285030
+      },
+      "thinning": {
+        "path": "论文\\experiment\\analysis\\authors\\thinning.json",
+        "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
+        "bytes": 157030
+      },
+      "secondary": {
+        "path": "论文\\experiment\\analysis\\authors\\secondary.json",
+        "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
+        "bytes": 8571
+      },
+      "theory": {
+        "path": "论文\\experiment\\analysis\\authors\\theory.json",
+        "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
+        "bytes": 20201
+      },
+      "fixed_effects": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\L1\\fixed_effects.json",
+        "sha256": "9ea5b2d16d11654d60b4d54ecc2dae4556ad52eaf7e08c06a3399fe04ac2c773",
+        "bytes": 19997
+      },
+      "block2": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block2\\fixed_effects.json",
+        "sha256": "a6bacf6614ca95d5d59a81bacb670b412400011c7dab7946def9dc9a49314ec0",
+        "bytes": 20115
+      },
+      "block3": {
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block3\\fixed_effects.json",
+        "sha256": "702885140d5ed9a550d09abb8928a72590146ad3552f218872d08e0f126d286b",
+        "bytes": 20434
+      }
+    },
+    "ma_audit.json": {
+      "path": "论文\\experiment\\analysis\\ma_audit.json",
+      "sha256": "8ea16256eb535090cda52059f12a45c313d2a0bbf6d4c8ae7a9ddbb5fb7a8d71"
+    },
+    "ma_audit_draws.npz": {
+      "path": "论文\\experiment\\analysis\\ma_audit_draws.npz",
+      "sha256": "4d8fb2add9145b7d0fe984c5f31fa8794fe1d8e3749e949eb15d06a108b3b30b"
+    },
+    "ma_thinning_exact.json": {
+      "path": "论文\\experiment\\analysis\\ma_thinning_exact.json",
+      "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
+    },
+    "ma_extensions.json": {
+      "path": "论文\\experiment\\analysis\\ma_extensions.json",
+      "sha256": "db4dd8cee7b014ff6328fbfec55d2bce9eee5f00158cc2d040b8bb1104071c68"
+    },
+    "ma_fe_decomp.json": {
+      "path": "论文\\experiment\\analysis\\ma_fe_decomp.json",
+      "sha256": "9015755cf7ef6fa65777020436702c2689db8b292ad6354a27b2200a973b3da9"
+    }
+  },
+  "latex_packages": [
+    "booktabs",
+    "array",
+    "tabularx",
+    "longtable"
+  ],
+  "dropped": {
+    "tab_s07_design": "design stage removed from the manuscript; observed-contrast quantiles under the audit generators replace it (tab_ma_audit_slopes)",
+    "tab_s06_calibration": "calibration withdrawn (2026-11-03): its simulator did not reproduce the observed slope, row count or autocorrelation; see code/README.md",
+    "tab_ma_calibration_diag": "calibration withdrawn (2026-11-03)"
+  },
+  "tables": [
+    {
+      "file": "tables/tab_s01_pooled.tex",
+      "label": "tab:pooled",
+      "rows": 12,
+      "environment": "tabularx",
+      "builder": "render_revision.pooled_table",
+      "origin": "authors' Table S1",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s02_cv.tex",
+      "label": "tab:cv",
+      "rows": 24,
+      "environment": "longtable",
+      "builder": "render_revision.cv_table",
+      "origin": "authors' Table S2"
+    },
+    {
+      "file": "tables/tab_s03_thinning.tex",
+      "label": "tab:thinning",
+      "rows": 102,
+      "environment": "longtable",
+      "builder": "render_revision.thinning_table",
+      "origin": "authors' Table S3"
+    },
+    {
+      "file": "tables/tab_s04_fe.tex",
+      "label": "tab:fe",
+      "rows": 56,
+      "environment": "longtable",
+      "builder": "render_revision.fe_table",
+      "origin": "authors' Table S4",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s05_centering.tex",
+      "label": "tab:centering",
+      "rows": 14,
+      "environment": "longtable",
+      "builder": "render_revision.centering_table",
+      "origin": "authors' Table S5",
+      "pooled_rows": "primary bootstrap"
+    },
+    {
+      "file": "tables/tab_s08_secondary.tex",
+      "label": "tab:secondary",
+      "rows": 10,
+      "environment": "longtable",
+      "builder": "render_revision.secondary_table",
+      "origin": "authors' Table S8"
+    },
+    {
+      "file": "tables/tab_ma_summer.tex",
+      "label": "tab:summer",
+      "rows": 3,
+      "environment": "tabularx",
+      "builder": "render_revision.summer_table",
+      "origin": "authors' Table S8 summer rows (descriptive, separated)"
+    },
+    {
+      "file": "tables/tab_ma_audit_loss.tex",
+      "label": "tab:ma_audit_loss",
+      "rows": 12,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_audit_slopes.tex",
+      "label": "tab:ma_audit_slopes",
+      "rows": 12,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_baselines.tex",
+      "label": "tab:ma_baselines",
+      "rows": 5,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_rho_k.tex",
+      "label": "tab:ma_rho_k",
+      "rows": 4,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_thinning_exact.tex",
+      "label": "tab:ma_thinning_exact",
+      "rows": 9,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_varlog.tex",
+      "label": "tab:ma_varlog",
+      "rows": 6,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_targets_observed.tex",
+      "label": "tab:ma_targets_observed",
+      "rows": 4,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_gi.tex",
+      "label": "tab:ma_gi",
+      "rows": 3,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_within.tex",
+      "label": "tab:ma_within",
+      "rows": 7,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_sensitivity.tex",
+      "label": "tab:ma_sensitivity",
+      "rows": 10,
+      "environment": "tabularx",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_seasons.tex",
+      "label": "tab:ma_seasons",
+      "rows": 14,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    },
+    {
+      "file": "tables/tab_ma_validation.tex",
+      "label": "tab:ma_validation",
+      "rows": 2,
+      "environment": "longtable",
+      "builder": "ma_render.py",
+      "origin": "mainline-A analysis"
+    }
+  ]
+}

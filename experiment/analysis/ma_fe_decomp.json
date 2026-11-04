@@ -1,0 +1,335 @@
+{
+  "L1": {
+    "pooled_a": {
+      "value": 0.014954566182030291,
+      "ci95": [
+        0.010060454907989416,
+        0.020633057685582705
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    "pooled_b": {
+      "value": 0.5599555819435609,
+      "ci95": [
+        0.36202648083642996,
+        0.7694411681636362
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    "pooled_b_over_a": {
+      "value": 37.443786407954434,
+      "ci95": [
+        18.406218624289615,
+        72.3749575346261
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "nonpositive_fraction": 0.0
+    },
+    "state_b": {
+      "value": 0.37937647014788367,
+      "ci95": [
+        0.10690717241752809,
+        0.6501846033913928
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    "a_mean": {
+      "value": 0.021923040330930267,
+      "ci95": [
+        0.012662771658941254,
+        0.03543898009744661
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000
+    },
+    "state_b_over_a": {
+      "value": 17.304920504691033,
+      "ci95": [
+        3.4017236700936913,
+        49.12387429178587
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "nonpositive_fraction": 0.0015
+    },
+    "slope_ratio": {
+      "value": 1.4759892244378945,
+      "ci95": [
+        0.988251037628361,
+        3.661751970246354
+      ],
+      "valid_draws": 1997,
+      "total_draws": 2000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "intercept_ratio": {
+      "value": 1.465976348900942,
+      "ci95": [
+        0.9891899692146643,
+        2.2914397713930765
+      ],
+      "valid_draws": 2000,
+      "total_draws": 2000,
+      "nonpositive_fraction": 0.0
+    },
+    "crosscount_ratio": {
+      "value": 2.1637652942585976,
+      "ci95": [
+        0.9946429837949142,
+        7.637086161414613
+      ],
+      "valid_draws": 1997,
+      "total_draws": 2000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "log_share_slope": {
+      "value": 0.5044095072240271,
+      "ci95": [
+        0.305367590700388,
+        0.7365442125650956
+      ],
+      "valid_draws": 1997,
+      "total_draws": 2000
+    },
+    "meta": {
+      "B": 2000,
+      "block_length": 1,
+      "rng": "default_rng([2026110352, 1])",
+      "rows": 1748,
+      "states": 51,
+      "seconds": 50.6,
+      "authors_format": "analysis/fe_rev2/L1/fixed_effects.json"
+    }
+  },
+  "L2": {
+    "pooled_a": {
+      "value": 0.014954566182030291,
+      "ci95": [
+        0.010016806509943426,
+        0.021178581475154935
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "pooled_b": {
+      "value": 0.5599555819435609,
+      "ci95": [
+        0.3716056187793332,
+        0.7720626071217624
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "pooled_b_over_a": {
+      "value": 37.443786407954434,
+      "ci95": [
+        19.121575999877614,
+        70.85555074470872
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0
+    },
+    "state_b": {
+      "value": 0.37937647014788367,
+      "ci95": [
+        0.1044813116540048,
+        0.6645932726458784
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "a_mean": {
+      "value": 0.021923040330930267,
+      "ci95": [
+        0.012452371421076679,
+        0.03616027835841981
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "state_b_over_a": {
+      "value": 17.304920504691033,
+      "ci95": [
+        2.8324046580162405,
+        50.14307665954746
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.002
+    },
+    "slope_ratio": {
+      "value": 1.4759892244378945,
+      "ci95": [
+        0.9922182921739617,
+        4.29039770728226
+      ],
+      "valid_draws": 998,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "intercept_ratio": {
+      "value": 1.465976348900942,
+      "ci95": [
+        0.9874386523357704,
+        2.291486206350552
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0
+    },
+    "crosscount_ratio": {
+      "value": 2.1637652942585976,
+      "ci95": [
+        0.9939171471112389,
+        9.308837354836003
+      ],
+      "valid_draws": 998,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "log_share_slope": {
+      "value": 0.5044095072240271,
+      "ci95": [
+        0.3070258207096551,
+        0.7334300422434464
+      ],
+      "valid_draws": 998,
+      "total_draws": 1000
+    },
+    "meta": {
+      "B": 1000,
+      "block_length": 2,
+      "rng": "default_rng([2026110352, 1])",
+      "rows": 1748,
+      "states": 51,
+      "seconds": 28.1,
+      "authors_format": "analysis/fe_rev2/block2/fixed_effects.json"
+    }
+  },
+  "L3": {
+    "pooled_a": {
+      "value": 0.014954566182030291,
+      "ci95": [
+        0.010077735078548446,
+        0.020687125728599286
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "pooled_b": {
+      "value": 0.5599555819435609,
+      "ci95": [
+        0.373486936322509,
+        0.7731592079454902
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000
+    },
+    "pooled_b_over_a": {
+      "value": 37.443786407954434,
+      "ci95": [
+        19.015205162967465,
+        67.91938060709491
+      ],
+      "valid_draws": 1000,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0
+    },
+    "state_b": {
+      "value": 0.37937647014788367,
+      "ci95": [
+        0.09548675222911637,
+        0.6499090923317767
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000
+    },
+    "a_mean": {
+      "value": 0.021923040330930267,
+      "ci95": [
+        0.013152399648301297,
+        0.03666411935271854
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000
+    },
+    "state_b_over_a": {
+      "value": 17.304920504691033,
+      "ci95": [
+        2.6575097512959003,
+        46.48471494917051
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "slope_ratio": {
+      "value": 1.4759892244378945,
+      "ci95": [
+        1.0276460340871258,
+        4.597547812946673
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "intercept_ratio": {
+      "value": 1.465976348900942,
+      "ci95": [
+        1.0103215435749096,
+        2.3652254494870957
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "crosscount_ratio": {
+      "value": 2.1637652942585976,
+      "ci95": [
+        1.0225760838771651,
+        9.786644251687443
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000,
+      "nonpositive_fraction": 0.0,
+      "interval_status": "unstable denominator; percentile interval shown but flagged"
+    },
+    "log_share_slope": {
+      "value": 0.5044095072240271,
+      "ci95": [
+        0.3389788353979709,
+        0.720412051242801
+      ],
+      "valid_draws": 999,
+      "total_draws": 1000
+    },
+    "meta": {
+      "B": 1000,
+      "block_length": 3,
+      "rng": "default_rng([2026110352, 1])",
+      "rows": 1748,
+      "states": 51,
+      "seconds": 28.9,
+      "authors_format": "analysis/fe_rev2/block3/fixed_effects.json"
+    }
+  },
+  "definitions": {
+    "slope_ratio": "pooled b / state-FE common b",
+    "intercept_ratio": "mean state-FE intercept (state-occurrence weighted) / pooled a",
+    "crosscount_ratio": "(pooled b/a) / (state-FE b / mean intercept) = slope_ratio x intercept_ratio",
+    "log_share_slope": "log(slope_ratio) / log(crosscount_ratio)",
+    "interval": "percentile, finite draws (valid_draws reported)"
+  }
+}

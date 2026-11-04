@@ -1,21 +1,21 @@
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \small
 \caption{Branching-Poisson and independent-Poisson slope references: analytic, simulated and observed}\label{tab:ma_baselines}
 \setlength{\tabcolsep}{2pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.2333\linewidth}>{\raggedright\arraybackslash}p{0.2333\linewidth}>{\raggedright\arraybackslash}p{0.2333\linewidth}@{}}
 \toprule
-Reference & Analytic reference / $b_{\mathrm P}$ & Simulated b/$b_{\mathrm P}$ (no heterogeneity) & Observed b / reference \\
+Reference & Analytic reference / b\_\allowbreak{}P & Simulated b/b\_\allowbreak{}P (no heterogeneity) & Observed b / reference \\
 \midrule
-Branching-Poisson, $\rho$ = 0.1 & 0.944 & 0.877 [0.802, 0.955] & 1.33 [0.86, 1.84] \\
-Branching-Poisson, $\rho$ = 0.25 & 0.861 & 0.802 [0.734, 0.878] & 1.46 [0.94, 2.02] \\
-Branching-Poisson, $\rho$ = 0.5 & 0.722 & 0.669 [0.618, 0.714] & 1.74 [1.12, 2.41] \\
-Branching-Poisson, $\rho$ = 1 & 0.443 & 0.402 [0.373, 0.434] & 2.84 [1.83, 3.94] \\
-Independent-Poisson $b_{\mathrm P}$ & 1 & 0.930 [0.853, 1.005] & 1.26 [0.81, 1.73] \\
+Branching-Poisson, rho = 0.1 & 0.944 & 0.877 [0.802, 0.955] & 1.33 [0.86, 1.84] \\
+Branching-Poisson, rho = 0.25 & 0.861 & 0.802 [0.734, 0.878] & 1.46 [0.94, 2.02] \\
+Branching-Poisson, rho = 0.5 & 0.722 & 0.669 [0.618, 0.714] & 1.74 [1.12, 2.41] \\
+Branching-Poisson, rho = 1 & 0.443 & 0.402 [0.373, 0.434] & 2.84 [1.83, 3.94] \\
+Independent-Poisson b\_\allowbreak{}P & 1 & 0.930 [0.853, 1.005] & 1.26 [0.81, 1.73] \\
 \bottomrule
 \end{tabularx}
 \par\smallskip
-\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
-The branching-Poisson reference is $b_{\mathrm{P,br}}$($\rho$) = mean over the observed retained rows of $\kappa^2$ [(1 - $\rho$) + ($C_t$ + 0.5)/($C_{t+1}$ + 0.5)]; independent-Poisson reference $b_{\mathrm P}$ = 0.4455. Simulated: pure branching chain with Poisson offspring and binomial reporting $\rho$ (independent-Poisson counts, S0, in the last row), no transmission heterogeneity, count-aligned as in the audit; 200 panels each, Monte Carlo 2.5-97.5\% in brackets. Dividing the simulated reference by the S0 recovery factor (0.930, reflecting the common finite-sample downward bias of gamma FGLS) yields normalized references of 0.943, 0.862, 0.720 and 0.432, in exact agreement with the analytic column; against this normalized benchmark the observed slope ratios become 1.24, 1.36, 1.62 and 2.64. Observed: primary bootstrap (2,000 draws), $b_{\mathrm{P,br}}$ recomputed with the weights of each draw. The ratio of the observed slope to the reference depends on the reporting probability.
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+The branching-Poisson reference is b\_\allowbreak{}Pbr(rho) = mean over the observed retained rows of kappa\textasciicircum{}2 [(1 - rho) + (C\_\allowbreak{}t + 0.5)/(C\_\allowbreak{}t+1 + 0.5)]; independent-Poisson reference b\_\allowbreak{}P = 0.4455. Simulated: pure branching chain with Poisson offspring and binomial reporting rho (independent-Poisson counts, S0, in the last row), no transmission heterogeneity, count-aligned as in the audit; 200 panels each, Monte Carlo 2.5-97.5\% in brackets. Observed: primary bootstrap (2,000 draws), b\_\allowbreak{}Pbr recomputed with the weights of each draw. The ratio of the observed slope to the reference depends on the reporting probability.
 \end{minipage}
 \end{table}

@@ -42,7 +42,8 @@ SCEN = {"S0_poisson": "S0 Poisson, no heterogeneity",
         "S2P_branching_poisson": "S2P Poisson offspring + binomial reporting, no heterogeneity",
         "S6_reporting_shock": "S6 S3 + state-week reporting shock (half of a)",
         "S7a_scale_dep": "S7a S3 with scale-dependent heterogeneity, gamma 0.25",
-        "S7b_scale_dep": "S7b S3 with scale-dependent heterogeneity, gamma 0.5"}
+        "S7b_scale_dep": "S7b S3 with scale-dependent heterogeneity, gamma 0.5",
+        "S8_combo": "S8 Combo S6 shock + S7a scale-dep (gamma 0.25)"}
 SHORT = {k: k.split("_")[0] for k in SCEN}
 PRIMARY = {"RA": "RA_gi3.6", "G": "G_gi3.6", "RA32": "RA_gi3.2", "RA32source": "RA_gi3.2_sd2.1"}
 RHOS = ("0.1", "0.25", "0.5", "1")

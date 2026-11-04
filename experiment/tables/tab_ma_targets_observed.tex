@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Point-target error with a known versus an observed denominator}\label{tab:ma_targets_observed}
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}>{\raggedright\arraybackslash}p{0.1400\linewidth}@{}}
+\toprule
+m & Known denominator A/m & MC (SE) & Observed denominator (A + (1 - rho)(Rbar\textasciicircum{}2 + v\_\allowbreak{}R))/m & MC (SE) & MC observed / A/m \\
+\midrule
+10 & 0.21232 & 0.21304 (0.00055) & 0.31451 & 0.51453 (0.00482) & 2.423 \\
+50 & 0.04246 & 0.04234 (0.00010) & 0.06290 & 0.06745 (0.00019) & 1.588 \\
+200 & 0.01062 & 0.01060 (0.00002) & 0.01573 & 0.01601 (0.00004) & 1.508 \\
+1000 & 0.00212 & 0.00212 (0.00000) & 0.00315 & 0.00316 (0.00001) & 1.489 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+Parameters Rbar = 1.15, v\_\allowbreak{}R = 0.04, k = 0.35, rho = 0.25 (A = 2.1232); 400,000 Monte Carlo draws per m. Crossing scale m\_\allowbreak{}x = A/v\_\allowbreak{}R = 53.08 with a known denominator and (A + (1 - rho)(Rbar\textasciicircum{}2 + v\_\allowbreak{}R))/v\_\allowbreak{}R = 78.63 when the denominator is the observed previous count (delta approximation). At m = 10 the delta approximation understates the Monte Carlo error of the observed-denominator estimator.
+\end{minipage}
+\end{table}

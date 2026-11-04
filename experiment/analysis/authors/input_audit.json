@@ -1,0 +1,76 @@
+{
+  "snapshot_sha256": "9685ddd4b0035694754334e530d5b356bd3503f57b82821f7ee7883c4f5fb94b",
+  "source": "https://data.cdc.gov/ua7e-t2fy",
+  "snapshot_date": "2026-10-20",
+  "raw_state_rows_after_grid": 16473,
+  "states": 51,
+  "missing_count_rows": 504,
+  "inserted_missing_weeks": 0,
+  "windows": {
+    "2022-23": {
+      "start": "2022-10-01",
+      "end": "2022-11-26",
+      "weeks": 9,
+      "turning_week": "2022-12-03"
+    },
+    "2023-24": {
+      "start": "2023-10-07",
+      "end": "2023-12-23",
+      "weeks": 12,
+      "turning_week": "2023-12-30"
+    },
+    "2024-25": {
+      "start": "2024-11-09",
+      "end": "2024-12-28",
+      "weeks": 8,
+      "turning_week": "2025-01-04"
+    },
+    "2025-26": {
+      "start": "2025-10-04",
+      "end": "2025-12-27",
+      "weeks": 13,
+      "turning_week": "2026-01-03"
+    }
+  },
+  "samples": {
+    "RA": {
+      "rows": 1748,
+      "states": 51,
+      "weeks": 42,
+      "candidate_rows": 2142,
+      "incomplete_rows_in_windows": 0,
+      "zero_next_counts": 0,
+      "count_range": [
+        5.0,
+        3870.0
+      ],
+      "file_sha256": "f375fb12090155502248cfb76aebd8b2ce6d6275b717ed25bd5fcce10d0441a7"
+    },
+    "G": {
+      "rows": 1756,
+      "states": 51,
+      "weeks": 42,
+      "candidate_rows": 2142,
+      "incomplete_rows_in_windows": 0,
+      "zero_next_counts": 0,
+      "count_range": [
+        5.0,
+        3503.5
+      ],
+      "file_sha256": "cdb5f72cdcbe5b14355c8d40e32e7c77887cb4a0fbe0c70b5d8bad7d1b192d96"
+    },
+    "RA32": {
+      "rows": 1748,
+      "states": 51,
+      "weeks": 42,
+      "candidate_rows": 2142,
+      "incomplete_rows_in_windows": 0,
+      "zero_next_counts": 0,
+      "count_range": [
+        5.0,
+        3870.0
+      ],
+      "file_sha256": "2e2e073e154d9583750b500f92cc66ad7784a1cc09282c6a82d803bc254ac8d7"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}@{}}
+\caption{Foldwise model validation}\label{tab:cv}\\
+\toprule
+Statistic / split & Fold & Valid/total or n & Affine & Power & Difference & Wins / valid \\
+\midrule
+\endfirsthead
+\multicolumn{7}{@{}l}{\textit{(continued)}}\\
+\toprule
+Statistic / split & Fold & Valid/total or n & Affine & Power & Difference & Wins / valid \\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r@{}}{\textit{(continued on next page)}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+RA / state & Summary & 51/51 & -- & -- & -0.002018 & 26 \\
+RA / season & Summary & 4/4 & -- & -- & 0.004626 & 3 \\
+RA & 2022-23 & 365 & -2.378 & -2.369 & 0.008954 & yes \\
+RA & 2023-24 & 499 & -2.613 & -2.612 & 0.0008806 & yes \\
+RA & 2024-25 & 356 & -2.46 & -2.481 & -0.02077 & yes \\
+RA & 2025-26 & 528 & -2.346 & -2.324 & 0.0223 & yes \\
+G / state & Summary & 51/51 & -- & -- & -0.007369 & 22 \\
+G / season & Summary & 4/4 & -- & -- & -0.004414 & 2 \\
+G & 2022-23 & 367 & -0.5979 & -0.5942 & 0.003756 & yes \\
+G & 2023-24 & 503 & -1.201 & -1.192 & 0.008487 & yes \\
+G & 2024-25 & 357 & -0.7333 & -0.7584 & -0.02505 & yes \\
+G & 2025-26 & 529 & -0.7557 & -0.7641 & -0.008421 & yes \\
+RA32 / state & Summary & 51/51 & -- & -- & -0.002242 & 25 \\
+RA32 / season & Summary & 4/4 & -- & -- & 0.004343 & 3 \\
+RA32 & 2022-23 & 365 & -2.612 & -2.604 & 0.00805 & yes \\
+RA32 & 2023-24 & 499 & -2.83 & -2.83 & 0.0001618 & yes \\
+RA32 & 2024-25 & 356 & -2.691 & -2.712 & -0.02118 & yes \\
+RA32 & 2025-26 & 528 & -2.572 & -2.549 & 0.02294 & yes \\
+RA32source / state & Summary & 51/51 & -- & -- & -0.002824 & 25 \\
+RA32source / season & Summary & 4/4 & -- & -- & 0.003577 & 2 \\
+RA32source & 2022-23 & 365 & -2.701 & -2.695 & 0.005641 & yes \\
+RA32source & 2023-24 & 499 & -2.886 & -2.888 & -0.001735 & yes \\
+RA32source & 2024-25 & 356 & -2.77 & -2.792 & -0.02217 & yes \\
+RA32source & 2025-26 & 528 & -2.644 & -2.619 & 0.02453 & yes \\
+\end{longtable}
+\vspace{-.5\baselineskip}
+\begin{minipage}{\linewidth}\footnotesize\raggedright
+Summary rows show valid/total folds and the number favoring affine in the last column; season rows show test n and convergence. Score is mean L/mu + log(mu), lower is better. Difference = power minus affine, so positive favors affine. The summary difference is the mean across folds weighted by held-out test n; the unweighted fold mean and the count of folds favouring affine are shown separately. Fold fits refit the training center. Training sets overlap; no iid-fold SE or four-season significance test is reported.
+\end{minipage}\par
+\endgroup

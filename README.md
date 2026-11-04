@@ -50,7 +50,7 @@ The study investigates how case counts determine the statistical precision of ef
 3. **Known-Truth Diagnostic Audit on Real Surveillance Design**:
    - Synthetic audits across 9 data-generating mechanisms on the real 1,748 state-week design demonstrate that fitted affine dispersion intercepts ($a \approx 0.0150$) recover count-independent relative dispersion ($v_R$ under constant reporting; $v_R + v_H$ under volatile reporting) rather than an estimation-error floor.
    - Counting slopes, slope ratios to Poisson benchmarks, and binomial thinning responses do not separate offspring overdispersion from under-reporting.
-   - Incorporating moderate scale-dependent heterogeneity with reporting shocks (S8 Combo) simultaneously reconciles the observed intercept ($0.0148$), crossover count ($41.7$, covering observed $37.4$), slope ratio ($1.298$, covering $1.257$), and curve contrast ($p=0.080$).
+   - Incorporating moderate scale-dependent heterogeneity with reporting shocks (S8 Combo) simultaneously reconciles the observed intercept ($0.0150$), crossover count ($40.8$, covering observed $37.4$), slope ratio ($1.291$, covering $1.257$), and curve contrast ($p=0.045$--$0.080$).
 
 ---
 

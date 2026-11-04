@@ -1,62 +1,62 @@
 {
-  "generated_utc": "2026-11-04 03:08:03",
+  "generated_utc": "2026-11-04 07:07:10",
   "generator": "code/ma_render.py",
   "inputs": {
     "authors_and_fe": {
       "empirical": {
-        "path": "reproduction-number-review/experiment/analysis/authors/empirical.json",
+        "path": "论文\\experiment\\analysis\\authors\\empirical.json",
         "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
         "bytes": 285030
       },
       "thinning": {
-        "path": "reproduction-number-review/experiment/analysis/authors/thinning.json",
+        "path": "论文\\experiment\\analysis\\authors\\thinning.json",
         "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
         "bytes": 157030
       },
       "secondary": {
-        "path": "reproduction-number-review/experiment/analysis/authors/secondary.json",
+        "path": "论文\\experiment\\analysis\\authors\\secondary.json",
         "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
         "bytes": 8571
       },
       "theory": {
-        "path": "reproduction-number-review/experiment/analysis/authors/theory.json",
+        "path": "论文\\experiment\\analysis\\authors\\theory.json",
         "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
         "bytes": 20201
       },
       "fixed_effects": {
-        "path": "reproduction-number-review/experiment/analysis/fe_rev2/L1/fixed_effects.json",
+        "path": "论文\\experiment\\analysis\\fe_rev2\\L1\\fixed_effects.json",
         "sha256": "9ea5b2d16d11654d60b4d54ecc2dae4556ad52eaf7e08c06a3399fe04ac2c773",
         "bytes": 19997
       },
       "block2": {
-        "path": "reproduction-number-review/experiment/analysis/fe_rev2/block2/fixed_effects.json",
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block2\\fixed_effects.json",
         "sha256": "a6bacf6614ca95d5d59a81bacb670b412400011c7dab7946def9dc9a49314ec0",
         "bytes": 20115
       },
       "block3": {
-        "path": "reproduction-number-review/experiment/analysis/fe_rev2/block3/fixed_effects.json",
+        "path": "论文\\experiment\\analysis\\fe_rev2\\block3\\fixed_effects.json",
         "sha256": "702885140d5ed9a550d09abb8928a72590146ad3552f218872d08e0f126d286b",
         "bytes": 20434
       }
     },
     "ma_audit.json": {
-      "path": "reproduction-number-review/experiment/analysis/ma_audit.json",
-      "sha256": "81ddd52cb8ed7a20c3ae143319d73ef44a9d1ec5ce11da81a1c96fda01003c23"
+      "path": "论文\\experiment\\analysis\\ma_audit.json",
+      "sha256": "8ea16256eb535090cda52059f12a45c313d2a0bbf6d4c8ae7a9ddbb5fb7a8d71"
     },
     "ma_audit_draws.npz": {
-      "path": "reproduction-number-review/experiment/analysis/ma_audit_draws.npz",
-      "sha256": "cddf8bac04fa084638e0a362779dc850e25fcecf750a115c61a35b9c0f0dcf68"
+      "path": "论文\\experiment\\analysis\\ma_audit_draws.npz",
+      "sha256": "4d8fb2add9145b7d0fe984c5f31fa8794fe1d8e3749e949eb15d06a108b3b30b"
     },
     "ma_thinning_exact.json": {
-      "path": "reproduction-number-review/experiment/analysis/ma_thinning_exact.json",
+      "path": "论文\\experiment\\analysis\\ma_thinning_exact.json",
       "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
     },
     "ma_extensions.json": {
-      "path": "reproduction-number-review/experiment/analysis/ma_extensions.json",
+      "path": "论文\\experiment\\analysis\\ma_extensions.json",
       "sha256": "db4dd8cee7b014ff6328fbfec55d2bce9eee5f00158cc2d040b8bb1104071c68"
     },
     "ma_fe_decomp.json": {
-      "path": "reproduction-number-review/experiment/analysis/ma_fe_decomp.json",
+      "path": "论文\\experiment\\analysis\\ma_fe_decomp.json",
       "sha256": "9015755cf7ef6fa65777020436702c2689db8b292ad6354a27b2200a973b3da9"
     }
   },
@@ -5396,6 +5396,303 @@
     {
       "name": "audit/S7b_scale_dep/sigma",
       "point": 0.35389993944083264,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S8_combo/a",
+      "point": 0.015010037342751041,
+      "lower": 0.01311469828947091,
+      "upper": 0.01720020835596597,
+      "ci95": [
+        0.01311469828947091,
+        0.01720020835596597
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/err_a",
+      "point": 0.009155047644716748,
+      "lower": 0.00774537637719947,
+      "upper": 0.010674206091621138,
+      "ci95": [
+        0.00774537637719947,
+        0.010674206091621138
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/b",
+      "point": 0.6076005817069472,
+      "lower": 0.512115773074475,
+      "upper": 0.7174621472438425,
+      "ci95": [
+        0.512115773074475,
+        0.7174621472438425
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/bP",
+      "point": 0.4705740545507022,
+      "lower": 0.46123654080853344,
+      "upper": 0.4838083325112226,
+      "ci95": [
+        0.46123654080853344,
+        0.4838083325112226
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/b_over_bP",
+      "point": 1.2908183165027654,
+      "lower": 1.0995675805565248,
+      "upper": 1.5079020600323532,
+      "ci95": [
+        1.0995675805565248,
+        1.5079020600323532
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/bw_over_bP",
+      "point": 1.2736296796233233,
+      "lower": 1.0378783462076797,
+      "upper": 1.541935422335084,
+      "ci95": [
+        1.0378783462076797,
+        1.541935422335084
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/week_reduction",
+      "point": -0.016968232951219155,
+      "lower": -0.06073335703370719,
+      "upper": 0.02003694045714524,
+      "ci95": [
+        -0.06073335703370719,
+        0.02003694045714524
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/contrast",
+      "point": 0.009416498994241969,
+      "lower": -0.006127731205433684,
+      "upper": 0.02421606554186181,
+      "ci95": [
+        -0.006127731205433684,
+        0.02421606554186181
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/pooled_over_within_slope",
+      "point": 1.0171896458898158,
+      "lower": 0.9097642417743779,
+      "upper": 1.1477195446656914,
+      "ci95": [
+        0.9097642417743779,
+        1.1477195446656914
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/n_retained",
+      "point": 1596.33,
+      "lower": 1552.0,
+      "upper": 1633.075,
+      "ci95": [
+        1552.0,
+        1633.075
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/true_total_kept_rows",
+      "point": 0.017504263812700035,
+      "lower": 0.016753638651945627,
+      "upper": 0.018235557833814614,
+      "ci95": [
+        0.016753638651945627,
+        0.018235557833814614
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/b_over_a",
+      "point": 40.845216972850864,
+      "lower": 31.167891826392538,
+      "upper": 53.00181389261175,
+      "ci95": [
+        31.167891826392538,
+        53.00181389261175
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/a_recovery_kept_rows",
+      "point": 1.7567065008978469,
+      "lower": 1.5370733410925272,
+      "upper": 2.0303642067989895,
+      "ci95": [
+        1.5370733410925272,
+        2.0303642067989895
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/D_p10",
+      "point": 9.833,
+      "lower": 9.0,
+      "upper": 11.0,
+      "ci95": [
+        9.0,
+        11.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/D_p50",
+      "point": 45.235,
+      "lower": 41.975,
+      "upper": 49.0,
+      "ci95": [
+        41.975,
+        49.0
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/D_p90",
+      "point": 310.9200000000001,
+      "lower": 283.1850000000003,
+      "upper": 342.0075,
+      "ci95": [
+        283.1850000000003,
+        342.0075
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/a_over_true_total",
+      "point": 0.8575074909383317,
+      "lower": 0.7507760417541823,
+      "upper": 0.9839799805541056,
+      "ci95": [
+        0.7507760417541823,
+        0.9839799805541056
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = ratio of MC means)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 200,
+      "n_total": 200
+    },
+    {
+      "name": "audit/S8_combo/c_over_bP",
+      "point": 0.8862119544763146,
+      "lower": 0.8312020017439289,
+      "upper": 0.9338321902993989,
+      "ci95": [
+        0.8312020017439289,
+        0.9338321902993989
+      ],
+      "interval": "Monte Carlo 2.5-97.5% over synthetic panels (point = MC mean)",
+      "source": "code/ma_audit.py -> analysis/ma_audit.json",
+      "n_valid": 100,
+      "n_total": 100
+    },
+    {
+      "name": "audit/S8_combo/true_relative_variance",
+      "point": 0.008881545780474712,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S8_combo/observed_contrast_quantile",
+      "point": 0.08,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S8_combo/shape_contrast_quantile",
+      "point": 0.08,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S8_combo/lambda",
+      "point": 0.84375,
+      "lower": null,
+      "upper": null,
+      "ci95": null,
+      "interval": null,
+      "source": "code/ma_audit.py -> analysis/ma_audit.json"
+    },
+    {
+      "name": "audit/S8_combo/sigma",
+      "point": 0.1868436547924373,
       "lower": null,
       "upper": null,
       "ci95": null,

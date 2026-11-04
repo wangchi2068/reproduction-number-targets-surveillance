@@ -1,0 +1,79 @@
+{
+  "started_profile": "independent deterministic replicate batches",
+  "batches": [
+    {
+      "path": "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b0",
+      "command": [
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/venv/bin/python",
+        "-B",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/work/experiment/code/revision_calibration.py",
+        "--output-dir",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b0",
+        "--replicates",
+        "50",
+        "--replicate-start",
+        "0",
+        "--simulate-only"
+      ],
+      "replicate_start": 0,
+      "replicates": 50,
+      "returncode": 0
+    },
+    {
+      "path": "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b1",
+      "command": [
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/venv/bin/python",
+        "-B",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/work/experiment/code/revision_calibration.py",
+        "--output-dir",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b1",
+        "--replicates",
+        "50",
+        "--replicate-start",
+        "50",
+        "--simulate-only"
+      ],
+      "replicate_start": 50,
+      "replicates": 50,
+      "returncode": 0
+    },
+    {
+      "path": "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b2",
+      "command": [
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/venv/bin/python",
+        "-B",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/work/experiment/code/revision_calibration.py",
+        "--output-dir",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b2",
+        "--replicates",
+        "50",
+        "--replicate-start",
+        "100",
+        "--simulate-only"
+      ],
+      "replicate_start": 100,
+      "replicates": 50,
+      "returncode": 0
+    },
+    {
+      "path": "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b3",
+      "command": [
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/venv/bin/python",
+        "-B",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/work/experiment/code/revision_calibration.py",
+        "--output-dir",
+        "/tmp/velastep_a8jd567j/code/.work/reproduction-number-review/review/repro/out/calibration_batches/b3",
+        "--replicates",
+        "50",
+        "--replicate-start",
+        "150",
+        "--simulate-only"
+      ],
+      "replicate_start": 150,
+      "replicates": 50,
+      "returncode": 0
+    }
+  ],
+  "seconds": 614.3830597060005,
+  "completed_at": "2026-11-03T08:03:49.864788+00:00"
+}

@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "bootstrap": 1000,
+    "seed": 2026110306,
+    "raw_sha256": "9685ddd4b0035694754334e530d5b356bd3503f57b82821f7ee7883c4f5fb94b",
+    "code_sha256": "c79162331c0cf6bf4cfcb5663be6e7a337101538baf32b2064901dc5f4fb95d2",
+    "completed_at": "2026-11-03T10:08:39.750036+00:00"
+  },
+  "seasons": {
+    "RA": {
+      "2022-23": {
+        "n": 365,
+        "a": {
+          "value": 0.013685048116324563,
+          "ci95": [
+            0.007100076953702141,
+            0.021018130622638118
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.013685048116324563,
+          "b": 0.6967027290880666,
+          "ratio": 50.90977563001673,
+          "method": "damped_fgls",
+          "min_mu": 0.013949853410542756,
+          "rank": 2,
+          "n_active": 365,
+          "converged": true,
+          "iterations": 6,
+          "objective": 0.781950295397734,
+          "scoring_residual": 1.0680733550555181e-11,
+          "failure": null,
+          "xbar": 1.2400517160789244
+        }
+      },
+      "2023-24": {
+        "n": 499,
+        "a": {
+          "value": 0.006174051852779763,
+          "ci95": [
+            0.0026668184506352497,
+            0.015419907694326307
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.006174051852779763,
+          "b": 0.7018369448933861,
+          "ratio": 113.675259234727,
+          "method": "damped_fgls",
+          "min_mu": 0.006572144277563306,
+          "rank": 2,
+          "n_active": 499,
+          "converged": true,
+          "iterations": 15,
+          "objective": 0.7750938601792128,
+          "scoring_residual": 7.761824977519463e-10,
+          "failure": null,
+          "xbar": 1.1596490811092126
+        }
+      },
+      "2024-25": {
+        "n": 356,
+        "a": {
+          "value": 0.012683966447451905,
+          "ci95": [
+            0.005686926870851759,
+            0.022758270874504848
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.012683966447451905,
+          "b": 0.5825753098126208,
+          "ratio": 45.93005762244467,
+          "method": "damped_fgls",
+          "min_mu": 0.012834658457232717,
+          "rank": 2,
+          "n_active": 356,
+          "converged": true,
+          "iterations": 15,
+          "objective": 0.8338427989530891,
+          "scoring_residual": 3.432764755909149e-10,
+          "failure": null,
+          "xbar": 1.2489983515850187
+        }
+      },
+      "2025-26": {
+        "n": 528,
+        "a": {
+          "value": 0.022525438109000397,
+          "ci95": [
+            0.008432355383748638,
+            0.03509245798072642
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.022525438109000397,
+          "b": 0.3532854491680455,
+          "ratio": 15.6838436375133,
+          "method": "damped_fgls",
+          "min_mu": 0.022616726338759583,
+          "rank": 2,
+          "n_active": 528,
+          "converged": true,
+          "iterations": 11,
+          "objective": 0.9339737982379511,
+          "scoring_residual": 3.6566860089395643e-10,
+          "failure": null,
+          "xbar": 1.1966312457735202
+        }
+      }
+    },
+    "G": {
+      "2022-23": {
+        "n": 367,
+        "a": {
+          "value": 0.07178614780189047,
+          "ci95": [
+            0.03785564376858283,
+            0.11617704353900393
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.07178614780189047,
+          "b": 2.7022378364334996,
+          "ratio": 37.64288681280007,
+          "method": "damped_fgls",
+          "min_mu": 0.07303101712350722,
+          "rank": 2,
+          "n_active": 367,
+          "converged": true,
+          "iterations": 7,
+          "objective": 0.8046874431554049,
+          "scoring_residual": 2.6550748853845807e-10,
+          "failure": null,
+          "xbar": 1.86301387719633
+        }
+      },
+      "2023-24": {
+        "n": 503,
+        "a": {
+          "value": 0.03045890598307488,
+          "ci95": [
+            0.011800445267429223,
+            0.07461971049050357
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.03045890598307488,
+          "b": 2.381758586992547,
+          "ratio": 78.19580218396618,
+          "method": "damped_fgls",
+          "min_mu": 0.032044630741392154,
+          "rank": 2,
+          "n_active": 503,
+          "converged": true,
+          "iterations": 12,
+          "objective": 0.7708585549572774,
+          "scoring_residual": 2.158527451675924e-10,
+          "failure": null,
+          "xbar": 1.529801897271939
+        }
+      },
+      "2024-25": {
+        "n": 357,
+        "a": {
+          "value": 0.06468758600907464,
+          "ci95": [
+            0.031908996416699247,
+            0.12783020959861857
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.06468758600907464,
+          "b": 2.0823504525601533,
+          "ratio": 32.190882069212364,
+          "method": "damped_fgls",
+          "min_mu": 0.06531745607941951,
+          "rank": 2,
+          "n_active": 357,
+          "converged": true,
+          "iterations": 15,
+          "objective": 0.8700755120562069,
+          "scoring_residual": 4.120362407721897e-10,
+          "failure": null,
+          "xbar": 1.8901422241007761
+        }
+      },
+      "2025-26": {
+        "n": 529,
+        "a": {
+          "value": 0.13829858291136443,
+          "ci95": [
+            0.03714622843064399,
+            0.2252155631787764
+          ],
+          "valid_draws": 1000,
+          "total_draws": 1000,
+          "nonpositive_fraction": 0.0
+        },
+        "point": {
+          "a": 0.13829858291136443,
+          "b": 0.7411334391698984,
+          "ratio": 5.358937333760613,
+          "method": "damped_fgls",
+          "min_mu": 0.1385101237816855,
+          "rank": 2,
+          "n_active": 529,
+          "converged": true,
+          "iterations": 12,
+          "objective": 0.9853434678172692,
+          "scoring_residual": 8.671162427598141e-10,
+          "failure": null,
+          "xbar": 1.699032462151014
+        }
+      }
+    }
+  },
+  "participation": {
+    "RA": {
+      "n": 1748,
+      "coverage_median": 93.7,
+      "original_a": 0.014954566182030291,
+      "adjusted_a": 0.014660660336300426,
+      "delta_original_minus_adjusted": {
+        "value": 0.00029390584572986517,
+        "ci95": [
+          -0.0003183048258194136,
+          0.0008475601184266025
+        ],
+        "valid_draws": 1000,
+        "total_draws": 1000,
+        "nonpositive_fraction": 0.193
+      },
+      "scale": "original scale held fixed; adjusts statistic counts using facility reporting participation",
+      "scope": "descriptive paired sensitivity; does not measure all ascertainment or identify mandate effects"
+    },
+    "G": {
+      "n": 1756,
+      "coverage_median": 93.75,
+      "original_a": 0.08400822402292245,
+      "adjusted_a": 0.08363517901982855,
+      "delta_original_minus_adjusted": {
+        "value": 0.00037304500309390254,
+        "ci95": [
+          -0.003558602889539277,
+          0.0034535496396279667
+        ],
+        "valid_draws": 1000,
+        "total_draws": 1000,
+        "nonpositive_fraction": 0.385
+      },
+      "scale": "original scale held fixed; adjusts statistic counts using facility reporting participation",
+      "scope": "descriptive paired sensitivity; does not measure all ascertainment or identify mandate effects"
+    }
+  },
+  "summer": {
+    "2023": {
+      "n": 772,
+      "median_count_scale": 15.55,
+      "coverage_median": 94.24,
+      "iqr_logG": 0.48728808433084525
+    },
+    "2024": {
+      "n": 400,
+      "median_count_scale": 17.125,
+      "coverage_median": 45.59,
+      "iqr_logG": 0.6682584523909499
+    },
+    "2025": {
+      "n": 839,
+      "median_count_scale": 16.25,
+      "coverage_median": 92.31,
+      "iqr_logG": 0.48815226380977783
+    },
+    "note": "One voluntary summer, 2024; unadjusted descriptive summaries only, not causal or independent replications."
+  }
+}
