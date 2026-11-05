@@ -1,63 +1,76 @@
 {
-  "generated_utc": "2026-11-04 07:06:53",
+  "schema_version": 1,
+  "generated_utc": "2026-11-04 11:41:23",
   "generator": "code/ma_render.py",
   "inputs": {
     "authors_and_fe": {
       "empirical": {
-        "path": "论文\\experiment\\analysis\\authors\\empirical.json",
-        "sha256": "5269dccaab52562d8575b69aef23f982b35da25f1ed7e2b10a3c6d7ae8f516a1",
-        "bytes": 285030
+        "path": "analysis/authors/empirical.json",
+        "sha256": "f5f92cf96d64dc42ebcc73554cff7a6c2e98be0625222e3dc20000f63b406bd9",
+        "bytes": 285048
       },
       "thinning": {
-        "path": "论文\\experiment\\analysis\\authors\\thinning.json",
-        "sha256": "6b457f52772a4e7c0460342b575f4712d7a8651a9e09c543638a8ed2cb71788d",
-        "bytes": 157030
+        "path": "analysis/authors/thinning.json",
+        "sha256": "ac214d3172502e24e10a6836513a5a3346fa913645e3c394e69f396611a8a65d",
+        "bytes": 157010
       },
       "secondary": {
-        "path": "论文\\experiment\\analysis\\authors\\secondary.json",
-        "sha256": "3a164b5d4b357814b098c619244ab153d3259a6d47f7e49e4bbbf49acde2962e",
-        "bytes": 8571
+        "path": "analysis/authors/secondary.json",
+        "sha256": "ff5ddc94f27d628553756c7c1844f001a12fe70db586ad007626cebc5b944b48",
+        "bytes": 8565
       },
       "theory": {
-        "path": "论文\\experiment\\analysis\\authors\\theory.json",
-        "sha256": "9478c3fc004781e163c48012c8e92dab032f5b07d31a4d96c6307558d7ae31e9",
+        "path": "analysis/authors/theory.json",
+        "sha256": "23c7dd65d21eda04f8e510cd0665d0c87a8239d51c2904525591f98583f091a1",
         "bytes": 20201
       },
       "fixed_effects": {
-        "path": "论文\\experiment\\analysis\\fe_rev2\\L1\\fixed_effects.json",
+        "path": "analysis/fe_rev2/L1/fixed_effects.json",
         "sha256": "9ea5b2d16d11654d60b4d54ecc2dae4556ad52eaf7e08c06a3399fe04ac2c773",
         "bytes": 19997
       },
       "block2": {
-        "path": "论文\\experiment\\analysis\\fe_rev2\\block2\\fixed_effects.json",
+        "path": "analysis/fe_rev2/block2/fixed_effects.json",
         "sha256": "a6bacf6614ca95d5d59a81bacb670b412400011c7dab7946def9dc9a49314ec0",
         "bytes": 20115
       },
       "block3": {
-        "path": "论文\\experiment\\analysis\\fe_rev2\\block3\\fixed_effects.json",
+        "path": "analysis/fe_rev2/block3/fixed_effects.json",
         "sha256": "702885140d5ed9a550d09abb8928a72590146ad3552f218872d08e0f126d286b",
         "bytes": 20434
       }
     },
     "ma_audit.json": {
-      "path": "论文\\experiment\\analysis\\ma_audit.json",
-      "sha256": "8ea16256eb535090cda52059f12a45c313d2a0bbf6d4c8ae7a9ddbb5fb7a8d71"
+      "path": "analysis/ma_audit.json",
+      "sha256": "439f4046d1f64d70122b19a98a66e3640e051ce560b2439314e789d3383f2688"
     },
     "ma_audit_draws.npz": {
-      "path": "论文\\experiment\\analysis\\ma_audit_draws.npz",
-      "sha256": "4d8fb2add9145b7d0fe984c5f31fa8794fe1d8e3749e949eb15d06a108b3b30b"
+      "path": "analysis/ma_audit_draws.npz",
+      "sha256": "5c8e57ec7e25b63a78b632746b6861b5ab3207610d31dd50220fd528b4823713"
     },
     "ma_thinning_exact.json": {
-      "path": "论文\\experiment\\analysis\\ma_thinning_exact.json",
-      "sha256": "ad7d01c54247f31a8358cacae8cdb3f8fdc18d1a45ecd5f38db0f04007b2dd60"
+      "path": "analysis/ma_thinning_exact.json",
+      "sha256": "b052c8f5b1cb201ff41180f09ae53ac9c7a48710bceb7b1c309b6138407c47af"
     },
     "ma_extensions.json": {
-      "path": "论文\\experiment\\analysis\\ma_extensions.json",
-      "sha256": "db4dd8cee7b014ff6328fbfec55d2bce9eee5f00158cc2d040b8bb1104071c68"
+      "path": "analysis/ma_extensions.json",
+      "sha256": "31ddd33a8c8caeecfdcebbb8c8ef6ffc65d57d359d204f85628a9582dc1f74ee"
     },
     "ma_fe_decomp.json": {
-      "path": "论文\\experiment\\analysis\\ma_fe_decomp.json",
-      "sha256": "9015755cf7ef6fa65777020436702c2689db8b292ad6354a27b2200a973b3da9"
+      "path": "analysis/ma_fe_decomp.json",
+      "sha256": "e9339321e7fa91053ae03bc4360482a59322af28ad1fc3eb99d356b3ef02738c"
+    },
+    "ma_audit_extra.json": {
+      "path": "analysis/ma_audit_extra.json",
+      "sha256": "3143afbb261e62a75ba46278dab5fa3daf90daf3e949b0dd2a16486c782abddf"
+    },
+    "ma_coverage.json": {
+      "path": "analysis/ma_coverage.json",
+      "sha256": "964d671ec5ee8a3879c3b92d006c4c60d9e0450be87bf3541c37c8430bb9653e"
+    },
+    "china_covid19_empirical.json": {
+      "path": "analysis/china_covid19_empirical.json",
+      "sha256": "4fe97dc03a2d9ebe0d3b9fe5367e89fda4214dfcbef2dc3333322d3c045ec3d2"
     }
   },
   "latex_packages": [
@@ -73,159 +86,310 @@
   },
   "tables": [
     {
-      "file": "tables/tab_s01_pooled.tex",
-      "label": "tab:pooled",
-      "rows": 12,
-      "environment": "tabularx",
-      "builder": "render_revision.pooled_table",
-      "origin": "authors' Table S1",
-      "pooled_rows": "primary bootstrap"
+      "id": "tab:ma_audit_loss",
+      "path": "tab_ma_audit_loss.tex",
+      "sha256": "6bb02a1add0eef699a60c01a75903c7312117cc632b8028f3a723f8ec59b4852",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_audit.json",
+        "experiment/analysis/ma_audit_extra.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_s02_cv.tex",
-      "label": "tab:cv",
-      "rows": 24,
-      "environment": "longtable",
-      "builder": "render_revision.cv_table",
-      "origin": "authors' Table S2"
+      "id": "tab:ma_audit_slopes",
+      "path": "tab_ma_audit_slopes.tex",
+      "sha256": "91df34bfc836ebf7cd5bdad7d4608d2400a056d74f90f54d26bf707faf57ae1e",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_audit.json",
+        "experiment/analysis/ma_audit_extra.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_s03_thinning.tex",
-      "label": "tab:thinning",
-      "rows": 102,
-      "environment": "longtable",
-      "builder": "render_revision.thinning_table",
-      "origin": "authors' Table S3"
+      "id": "tab:ma_baselines",
+      "path": "tab_ma_baselines.tex",
+      "sha256": "bb48da607444a9691f9b0d678ca3d0cac9ce1fc40f066e33ad091986cde253a7",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_audit.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_s04_fe.tex",
-      "label": "tab:fe",
-      "rows": 56,
-      "environment": "longtable",
-      "builder": "render_revision.fe_table",
-      "origin": "authors' Table S4",
-      "pooled_rows": "primary bootstrap"
+      "id": "tab:ma_calibration",
+      "path": "tab_ma_calibration.tex",
+      "sha256": "5f0ff51182942df816a971f5cef984b619abe69123ea3d5fe231bf0ae6b8b4e4",
+      "generator": "code/ma_gaps.py",
+      "data_sources": [
+        "experiment/analysis/ma_calibration.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_s05_centering.tex",
-      "label": "tab:centering",
-      "rows": 14,
-      "environment": "longtable",
-      "builder": "render_revision.centering_table",
-      "origin": "authors' Table S5",
-      "pooled_rows": "primary bootstrap"
+      "id": "tab:ma_china_covid",
+      "path": "tab_ma_china_covid.tex",
+      "sha256": "f840cbe57670ae64f42bf6369372d10318d7b917eb4612933104c64e6e8c872b",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/china_covid19_empirical.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_s08_secondary.tex",
-      "label": "tab:secondary",
-      "rows": 10,
-      "environment": "longtable",
-      "builder": "render_revision.secondary_table",
-      "origin": "authors' Table S8"
+      "id": "tab:ma_coverage",
+      "path": "tab_ma_coverage.tex",
+      "sha256": "3c820200944ed239bb07032e5c410bb66524f6fd4f17cb2b70c5d374a939cfb6",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_coverage.json",
+        "experiment/analysis/ma_audit_national.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 400
     },
     {
-      "file": "tables/tab_ma_summer.tex",
-      "label": "tab:summer",
-      "rows": 3,
-      "environment": "tabularx",
-      "builder": "render_revision.summer_table",
-      "origin": "authors' Table S8 summer rows (descriptive, separated)"
+      "id": "tab:ma_gi",
+      "path": "tab_ma_gi.tex",
+      "sha256": "b6ea4ed9dd4c74fe370d8e8f541944bb5292a8f950778f4f4e10666a1d439e7f",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_audit_loss.tex",
-      "label": "tab:ma_audit_loss",
-      "rows": 12,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_heldout_sim",
+      "path": "tab_ma_heldout_sim.tex",
+      "sha256": "14c551305908937cb4413012acfeb6bd89adb69c1163fdbaf63baef2179319db",
+      "generator": "code/ma_gaps.py",
+      "data_sources": [
+        "experiment/analysis/ma_heldout_sim.json",
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_audit_slopes.tex",
-      "label": "tab:ma_audit_slopes",
-      "rows": 12,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_rho_k",
+      "path": "tab_ma_rho_k.tex",
+      "sha256": "2ef0dd6070f6cfadcb3435bd145268eed15a0c31a5e9bb93b0fcfbf5d68b9323",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_baselines.tex",
-      "label": "tab:ma_baselines",
-      "rows": 5,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_seasons",
+      "path": "tab_ma_seasons.tex",
+      "sha256": "a908165eea58e0c4ed2a5d3c2d19ef676d7b02284cf5d9b084d1732ec608a622",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_rho_k.tex",
-      "label": "tab:ma_rho_k",
-      "rows": 4,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_sensitivity",
+      "path": "tab_ma_sensitivity.tex",
+      "sha256": "26af56017720460a5903d01ee9a03a5efc4e5eb074ca49c3e5e12101e863c0ee",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_thinning_exact.tex",
-      "label": "tab:ma_thinning_exact",
-      "rows": 9,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_share_grid",
+      "path": "tab_ma_share_grid.tex",
+      "sha256": "ce6b55d2e7c8222c6bfb9a7c81a13845e3c4199889c9a8615cdbc1504653ebca",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_audit_extra.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_varlog.tex",
-      "label": "tab:ma_varlog",
-      "rows": 6,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_share_tests",
+      "path": "tab_ma_share_tests.tex",
+      "sha256": "5cd757ce102a81b25c8b94dd1908a3f3ae12a643fd2386c7bf40b810dc078a68",
+      "generator": "code/ma_gaps.py",
+      "data_sources": [
+        "experiment/analysis/ma_share_tests.json",
+        "experiment/analysis/ma_calibration.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_targets_observed.tex",
-      "label": "tab:ma_targets_observed",
-      "rows": 4,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:summer",
+      "path": "tab_ma_summer.tex",
+      "sha256": "2ca8adde8556518777c2c6f033c6f4123176fca763c77380a46b5a9428f6a59e",
+      "generator": "render_revision.summer_table",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_gi.tex",
-      "label": "tab:ma_gi",
-      "rows": 3,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_targets_observed",
+      "path": "tab_ma_targets_observed.tex",
+      "sha256": "3df429ec92b645120f3c3f6bf5028bbb772b31b680720b0d025abcb862b7e714",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_within.tex",
-      "label": "tab:ma_within",
-      "rows": 7,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_tests",
+      "path": "tab_ma_tests.tex",
+      "sha256": "c7d99d15bb6abeb1b75db0d235a0c74f4c1fad88ea1d00ee1a9ec3231d958c2d",
+      "generator": "code/ma_tests.py",
+      "data_sources": [
+        "experiment/analysis/ma_tests.json",
+        "experiment/analysis/ma_audit_national.json",
+        "experiment/analysis/results.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     },
     {
-      "file": "tables/tab_ma_sensitivity.tex",
-      "label": "tab:ma_sensitivity",
-      "rows": 10,
-      "environment": "tabularx",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_thinning_exact",
+      "path": "tab_ma_thinning_exact.tex",
+      "sha256": "8055c8a2e1f5b615529456647ac81eb14d8abc15452b06543b6bbb72561dfc10",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_thinning_exact.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_seasons.tex",
-      "label": "tab:ma_seasons",
-      "rows": 14,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_validation",
+      "path": "tab_ma_validation.tex",
+      "sha256": "e12b3150c32235527060671deaab55f86bf80e8f7b2043840082e003fa5bf916",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_extensions.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
     },
     {
-      "file": "tables/tab_ma_validation.tex",
-      "label": "tab:ma_validation",
-      "rows": 2,
-      "environment": "longtable",
-      "builder": "ma_render.py",
-      "origin": "mainline-A analysis"
+      "id": "tab:ma_varlog",
+      "path": "tab_ma_varlog.tex",
+      "sha256": "2336d58738c6c35a192a267d3ec8619b747624bca05a735b6a4b8ab5e989483d",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_thinning_exact.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
+    },
+    {
+      "id": "tab:ma_within",
+      "path": "tab_ma_within.tex",
+      "sha256": "39e84cf2fad621e0ff8cbb123f2eea564f89cff85b9df6063ee84fa2618392f2",
+      "generator": "ma_render.py",
+      "data_sources": [
+        "experiment/analysis/ma_fe_decomp.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
+    },
+    {
+      "id": "tab:pooled",
+      "path": "tab_s01_pooled.tex",
+      "sha256": "b4a597e5cb46728b922eccefc39042c780b61ee7b14877b5cb4c19aa3caa1456",
+      "generator": "render_revision.pooled_table",
+      "data_sources": [
+        "experiment/analysis/authors/empirical.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
+    },
+    {
+      "id": "tab:cv",
+      "path": "tab_s02_cv.tex",
+      "sha256": "d725e107e9f075fe3308e76c3767bf46c5e2a4ad378c88e7bd1e62736f120708",
+      "generator": "render_revision.cv_table",
+      "data_sources": [
+        "experiment/analysis/authors/empirical.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
+    },
+    {
+      "id": "tab:thinning",
+      "path": "tab_s03_thinning_summary.tex",
+      "sha256": "c0e4555996d97cd6965e894cb1575882cf17f0ac2d2c72c32a014914fced86ff",
+      "generator": "code/ma_gaps.py",
+      "data_sources": [
+        "experiment/analysis/authors/thinning.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 1000
+    },
+    {
+      "id": "tab:fe",
+      "path": "tab_s04_fe.tex",
+      "sha256": "464084c366ca96524a3ea03e60112c60d91e34ad1cdc72d1242022c23f4c9c7a",
+      "generator": "render_revision.fe_table",
+      "data_sources": [
+        "experiment/analysis/fe_rev2/L1/fixed_effects.json",
+        "experiment/analysis/fe_rev2/block2/fixed_effects.json",
+        "experiment/analysis/fe_rev2/block3/fixed_effects.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
+    },
+    {
+      "id": "tab:centering",
+      "path": "tab_s05_centering.tex",
+      "sha256": "7017edda36a4d2ff35182930152b94db92afb34d33eebffc5836e7125ac39ee0",
+      "generator": "render_revision.centering_table",
+      "data_sources": [
+        "experiment/analysis/authors/empirical.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
+    },
+    {
+      "id": "tab:secondary",
+      "path": "tab_s08_secondary.tex",
+      "sha256": "d330f7c34ba2d8d0d54167aa3917bc5c77ff3b0a9a2ec5e93fad75050233b9ce",
+      "generator": "render_revision.secondary_table",
+      "data_sources": [
+        "experiment/analysis/authors/secondary.json"
+      ],
+      "display": "mean_ci",
+      "n_seeds": 2000
+    },
+    {
+      "id": "tab:targets",
+      "path": "tab_targets.tex",
+      "sha256": "70953614ee0344b090280c12f13ce33a1720e426c6b75a8d541d50dec2cb2807",
+      "generator": "code/ma_render.py",
+      "data_sources": [
+        "experiment/analysis/authors/theory.json"
+      ],
+      "display": "raw",
+      "n_seeds": 1
     }
   ]
 }

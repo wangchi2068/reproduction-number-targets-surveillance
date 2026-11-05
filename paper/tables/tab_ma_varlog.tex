@@ -1,5 +1,5 @@
 \begingroup\scriptsize\setlength{\tabcolsep}{2pt}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}>{\raggedright\arraybackslash}p{0.1000\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2400\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}@{}}
 \caption{Small-count variance of the log thinned count relative to the delta approximation}\label{tab:ma_varlog}\\
 \toprule
 C & q = 0.8 & q = 0.6 & q = 0.5 & q = 0.4 & q = 0.3 & q = 0.2 & q = 0.1 \\
@@ -23,7 +23,7 @@ C & q = 0.8 & q = 0.6 & q = 0.5 & q = 0.4 & q = 0.3 & q = 0.2 & q = 0.1 \\
 500 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 & 1.01 \\
 \end{longtable}
 \vspace{-.5\baselineskip}
-\begin{minipage}{0.95\linewidth}\footnotesize\raggedright
+\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
 Exact added variance Var log(Bin(C, q) + 0.5) - Var log(C + 0.5) divided by the delta value (1 - q)/(qC). Values below 1 mean that thinning adds less variance than the delta method assumes.
 \end{minipage}\par
 \endgroup

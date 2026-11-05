@@ -78,7 +78,7 @@ Let the count of week $t$ in a state be reported with probability $\rho z_t$, wh
  \tilde v_H\approx2\kappa^2s^2 ,
  \label{eq:ratio-shock}
 \end{equation}
-which does not scale with count and therefore enters the intercept $a$. A reporting level that is constant over consecutive weeks of a state ($z_{t+1}=z_t$) gives $\eta_t=0$ and cancels. Consecutive rows share one shock with opposite signs, so $\Cov(\eta_t,\eta_{t+1})=-s^2$ and their correlation is $-1/2$. While the crossed state $\times$ week bootstrap preserves cross-sectional dependence within weeks and within states over time, unblocked row-level resampling ignores this negative serial covariance, making intervals for multi-week summaries slightly conservative. For the realised mean over $T$ consecutive rows of one state the mean of the shock terms telescopes to $(\log z_{T+1}-\log z_1)/T$, so their contribution to the error of the realised mean falls as $T^{-2}$ rather than $T^{-1}$. With $\kappa$ near 0.5 for the primary interval and $s=0.122$ as in generator S6, Eq.~\eqref{eq:ratio-shock} gives a shock component of about half the observed intercept.
+which does not scale with count and therefore enters the intercept $a$. A reporting level that is constant over consecutive weeks of a state ($z_{t+1}=z_t$) gives $\eta_t=0$ and cancels. Consecutive rows share one shock with opposite signs, so $\Cov(\eta_t,\eta_{t+1})=-s^2$ and their correlation is $-1/2$. The affine fit uses squared deviations, and for jointly Gaussian terms a correlation of $-1/2$ becomes a correlation of $+1/4$ between their squares. Resampling single weeks does not preserve this serial dependence, so interval coverage was checked directly. Under S6 and S8, which contain such shocks, the intervals for $a$, $b$ and $b/a$ covered the Monte Carlo means of their estimators in at least 99.5\% of 400 panels (Table~\ref{tab:ma_coverage}). For the realised mean over $T$ consecutive rows of one state the mean of the shock terms telescopes to $(\log z_{T+1}-\log z_1)/T$, so their contribution to the error of the realised mean falls as $T^{-2}$ rather than $T^{-1}$. With $\kappa$ near 0.5 for the primary interval and $s=0.122$ as in generator S6, Eq.~\eqref{eq:ratio-shock} gives a shock component of about half the observed intercept.
 
 \section{Extensions}
 \label{app:extensions}
@@ -125,6 +125,28 @@ Because $Q/(kn)>0$, the difference is negative, and a proportional increase in $
 
 Suppose $S\ge2$ season effects are independent Gaussian with unknown mean and variance $v_S>0$, and the count law given the effects does not depend on these parameters. Any estimator unbiased for $v_S$ then has relative standard error at least $(2/(S-1))^{1/2}$. Observing the effects themselves gives at least as much information as the counts, and their sample variance is the minimum-variance unbiased estimator \citep{lehmann1998theory, searle1992variance}. With the four seasons analysed here the bound is $(2/3)^{1/2}=0.82$, and additional admissions within the same seasons leave it unchanged. This bound concerns the precision with which the between-season variance component can be estimated; it is distinct from the power of a test of equal season intercepts, which depends on the size of the season differences relative to their standard errors and is reported in Section~\ref{sec:app-crossover}.
 
+\subsection{Thinning and the delta approximation}
+\label{app:thinning-exact}
+
+The thinning check of Eq.~\eqref{eq:thinning} rests on a delta approximation, so its exact expectation was computed on the observed counts. For each retention probability $q$ the expected increment of the inverse-count slope was evaluated by summing over the binomial law of every thinned count (Table~\ref{tab:ma_thinning_exact}; Fig.~\ref{fig:thinning-exact}A). The exact increment rate is 0.467 at $q=0.8$, rises to 0.505 at $q=0.3$ and falls to 0.480 at $q=0.2$ and 0.384 at $q=0.1$. The least-squares rate over all $q$ is 0.408, or 0.917 $\bP$, against the Monte Carlo estimate 0.405 (0.366--0.441), or 0.909 (0.810--0.999) $\bP$ (Table~\ref{tab:thinning}).
+
+The pooled rate is dominated by the smallest retention probability. The value $q=0.1$ carries 76\% of the leverage in the least-squares rate (Fig.~\ref{fig:thinning-exact}B), and without it the rate is 0.488, or 1.096 $\bP$. At $q=0.1$ many thinned counts are small, and the delta approximation of the variance of a log thinned count fails there. At $C=5$ and $q=0.1$ the exact added variance of $\log(\Bin(C,q)+0.5)$ is 0.21 of the delta value (Table~\ref{tab:ma_varlog}; Fig.~\ref{fig:thinning-exact}C). The positive-part truncation of the fitted mean never binds. The shortfall of the pooled rate below $\bP$ is therefore a property of the approximation at small thinned counts, not evidence about the data-generating process.
+
+In the audit the ratio $c/\bP$ lies in 0.95--1.00 under S0, 0.96--1.04 under S4, 0.87--0.98 under S5, 0.83--0.93 under S3 and 0.81--0.92 under S6. The observed value lies outside the ranges of the generators with Poisson offspring (S0, S1, S2P and S4) and inside those with negative binomial offspring, but its confidence interval overlaps all of them. Because thinning adds known binomial variance whatever the original counting process, the check cannot separate offspring overdispersion from under-reporting.
+
+\subsection{Cross-regime check on COVID-19 counts from mainland China}
+\label{app:china}
+
+The diagnostics were applied to weekly confirmed COVID-19 cases from the Johns Hopkins CSSE repository \citep{dong2020interactive} for the 31 provincial-level units of mainland China. The primary period runs from 25 January 2020 to 3 December 2022, before routine mass testing ended on 7 December 2022. Hong Kong SAR and Macao SAR enter only a sensitivity analysis, and Taiwan, China is not in the extract. Rows are unit-weeks with $C_t\ge5$ inside national growth windows. Each window starts at a national peak of at least 100 weekly cases and extends back while the national growth factor is at least 1.05. The rule does not use the growth factor of the row itself, so the selection does not depend on the regressed outcome.
+
+The generation interval is gamma with mean 3.95 days and standard deviation 1.51 days before 2022 \citep{ganyani2020estimating}. From 2022 the Omicron BA.1 serial interval, with mean 3.5 days and standard deviation 2.4 days, serves as a proxy \citep{backer2022shorter}, and $\bP$ uses the interval of each row. Negative daily increments, which occur in 30 unit-weeks, are set to zero.
+
+The primary fit on 711 unit-weeks gave $a=0.133$ (0.074--0.223), $b/a=13.2$ (1.3--42.3) and $b/\bP=0.54$ (0.05--2.78) (Table~\ref{tab:ma_china_covid}). The intercept is about nine times the influenza value. It stays between 0.119 and 0.146 for the full extract to 21 January 2023, window thresholds of 1.02 and 1.10, inclusion of the two SARs, removal of weeks with negative revisions, counts of at least 20 and the two sub-periods. Because $a$ contains reporting variation (Proposition~\ref{prop:report-noise}), the larger intercept is consistent both with greater variation in testing and case definitions and with greater transmission heterogeneity, and these data do not separate the two. The slope-ratio interval contains 1 and values well below it, so the panel is uninformative about counting variation relative to the Poisson reference.
+
+Two specification choices change the results. A single interval with mean 5.2 days throughout raises $a$ to 0.298 and $b/\bP$ to 4.62, and selecting rows on their own growth factor lowers $a$ to 0.054 and raises $b/\bP$ to 2.18. The comparison therefore supports one conclusion. Under every outcome-independent specification with a period-specific interval, the intercept in this regime is several times larger than in US influenza hospital admissions.
+
+The comparison has further limits. Confirmed cases in this period may include imported cases, testing regimes and case definitions changed repeatedly, and the JHU CSSE series contains batch reporting, so weekly counts mix transmission with surveillance practice. The intercept also depends strongly on the generation interval, since a single 5.2-day interval more than doubles it, from 0.133 to 0.298. The panel is therefore a sensitivity check of the diagnostics in a different reporting regime and supports no conclusion about transmission.
+
 \FloatBarrier
 \clearpage
 \section{Supplementary tables and figures}
@@ -135,22 +157,33 @@ Suppose $S\ge2$ season effects are independent Gaussian with unknown mean and va
 \setcounter{figure}{0}
 
 \FloatBarrier
+\input{tables/tab_ma_share_grid}
+
+\input{tables/tab_ma_share_tests}
+
 \input{tables/tab_s01_pooled}
 \FloatBarrier
 \input{tables/tab_ma_baselines}
 \FloatBarrier
 \input{tables/tab_ma_thinning_exact}
 \FloatBarrier
-\input{tables/tab_s03_thinning}
+\input{tables/tab_s03_thinning_summary}
 \FloatBarrier
 \input{tables/tab_ma_varlog}
+\FloatBarrier
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.98\linewidth]{figures/fig_06_thinning_exact.pdf}
+\caption{Exact thinning expectation on the observed counts. Panel A shows the expected increment rate of the inverse-count slope by retention probability $q$, exact expectation against Monte Carlo estimates with 95\% ranges; the dashed line is the delta prediction $\bP=0.4455$. Panel B shows the share of each $q$ in the leverage of the pooled least-squares rate $c$. Panel C shows the exact added variance of the log thinned count relative to its delta approximation, by original count $C$, for three retention probabilities.}
+\label{fig:thinning-exact}
+\end{figure}
 \FloatBarrier
 \input{tables/tab_s05_centering}
 \FloatBarrier
 \begin{figure}[!tbp]
 \centering
-\includegraphics[width=0.95\linewidth]{figures/fig_06_heterogeneity.pdf}
-\caption{Heterogeneity diagnostics for the $R_A$ and $G$ samples. (A) Crossover count $b/a$ for $R_A$ from the pooled fit, a state fixed-effects fit and a state fixed-effects fit with $D_t$ as count scale. (B) Cross-count ratio, pooled $b/a$ over state fixed-effects $b$ divided by the mean state intercept, under week resampling ($L=1$) and two- and three-week blocks ($L=2,3$), with the number of finite bootstrap draws; the dotted line marks 1. (C, D) Intercept $a$ under five centring choices for $R_A$ and $G$, each with the pooled mean of its statistic as common normaliser. Bars are bootstrap 95\% confidence intervals.}
+\includegraphics[width=0.95\linewidth]{figures/fig_07_heterogeneity.pdf}
+\caption{Heterogeneity diagnostics for the $R_A$ and $G$ samples. Panel A shows the crossover count $b/a$ for $R_A$ from the pooled fit, a state fixed-effects fit and a state fixed-effects fit with $D_t$ as count scale. Panel B shows the cross-count ratio, pooled $b/a$ over state fixed-effects $b$ divided by the mean state intercept, under week resampling ($L=1$) and two- and three-week blocks ($L=2,3$), with the number of finite bootstrap draws; the dotted line marks 1. Panels C and D show the intercept $a$ under five centring choices for $R_A$ and $G$, each with the pooled mean of its statistic as common normaliser. Bars are bootstrap 95\% confidence intervals.}
 \label{fig:heterogeneity}
 \end{figure}
 \FloatBarrier
@@ -167,13 +200,21 @@ Suppose $S\ge2$ season effects are independent Gaussian with unknown mean and va
 \input{tables/tab_ma_summer}
 \FloatBarrier
 \input{tables/tab_ma_gi}
+\FloatBarrier
+\input{tables/tab_ma_china_covid}
 \clearpage
 \input{tables/tab_ma_validation}
+
+\begingroup\let\oldtable\table\renewcommand{\table}[1][]{\oldtable[!h]}
+\input{tables/tab_ma_heldout_sim}
+\endgroup
+\FloatBarrier
+\input{tables/tab_s02_cv}
 \FloatBarrier
 \clearpage
 \begin{figure}[!p]
 \centering
-\includegraphics[width=0.80\linewidth]{figures/fig_07_models.pdf}
+\includegraphics[width=0.80\linewidth]{figures/fig_08_models.pdf}
 \caption{Affine and power-law forms of the dispersion curve. (A, B) Relative squared deviation averaged within count bins for $R_A$ and $G$, with the fitted affine and power-law curves; bins are for display only. (C) Held-out power-minus-affine score difference for each left-out season. (D) The same for each left-out state. Positive differences favour the affine model.}
 \label{fig:models}
 \end{figure}

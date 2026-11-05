@@ -1,0 +1,20 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Mapping from theoretical inferential targets to empirical surveillance diagnostics}
+\label{tab:rosetta}
+\begin{tabularx}{\linewidth}{@{}p{0.20\linewidth}p{0.18\linewidth}p{0.28\linewidth}p{0.28\linewidth}@{}}
+\toprule
+Theoretical Target (Section~\ref{sec:model}) & Empirical Diagnostic (Section~\ref{sec:diagnostics}) & Exact Equivalence Conditions & Distortion Mechanism and Bias Direction \\
+\midrule
+Relative transmission variance: $\tilde v_R = v_R / \Rbar^2$ & Dispersion Intercept: $a$ & Constant reporting probability ($\tau = 0$); scale-independent transmission ($\gamma = 0$). & If reporting varies ($\tau > 0$), $a \approx \tilde v_R + \tilde v_H$. The intercept is an upper bound on $\tilde v_R$, not an error floor. Under scale dependence ($\gamma > 0$), $a < \tilde v_R$. \\
+\addlinespace[2pt]
+Counting error scale: $\tilde A = A / \Rbar^2$ & Counting Slope: $b$ & Independent Poisson limit ($\rho \to 0$ gives $b \approx \bP$); branching Poisson ($b \approx b_{\mathrm{P,br}}(\rho)$). & Inflated by offspring overdispersion ($k < \infty$, $b > b_{\mathrm{P,br}}$) or unmodelled scale-dependent heterogeneity ($\gamma > 0$). \\
+\addlinespace[2pt]
+Crossover scale: $\mx = A / v_R$ & Crossover Count: $b/a$ & Exact match between $A$ and $b$, and between $v_R$ and $a$. & Under reporting shocks ($\tau > 0$), $b/a$ is attenuated below $\mx$; under scale dependence ($\gamma > 0$), $b/a$ is inflated. $b/a$ is an in-sample balance point. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright Formal correspondence between the theoretical parameters derived under the branching model in Section~\ref{sec:model} and the empirical summaries estimated by the cross-sectional dispersion diagnostic in Section~\ref{sec:diagnostics}. The table makes explicit the conditions under which empirical diagnostics identify theoretical quantities and the sign of the distortion when those conditions fail.\end{minipage}
+\end{table}

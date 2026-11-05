@@ -103,7 +103,7 @@
       "rng": "default_rng([2026110352, 1])",
       "rows": 1748,
       "states": 51,
-      "seconds": 50.6,
+      "seconds": 48.8,
       "authors_format": "analysis/fe_rev2/L1/fixed_effects.json"
     }
   },
@@ -211,7 +211,7 @@
       "rng": "default_rng([2026110352, 1])",
       "rows": 1748,
       "states": 51,
-      "seconds": 28.1,
+      "seconds": 26.6,
       "authors_format": "analysis/fe_rev2/block2/fixed_effects.json"
     }
   },
@@ -321,7 +321,7 @@
       "rng": "default_rng([2026110352, 1])",
       "rows": 1748,
       "states": 51,
-      "seconds": 28.9,
+      "seconds": 27.6,
       "authors_format": "analysis/fe_rev2/block3/fixed_effects.json"
     }
   },

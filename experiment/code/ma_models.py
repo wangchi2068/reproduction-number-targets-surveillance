@@ -50,6 +50,29 @@ def summ(values, point=None):
     return out
 
 
+MC_BOOT = 500  # bootstrap resamples of the replicate values for quantile MC SEs
+
+
+def summ_mc(values, point=None):
+    """summ plus Monte Carlo standard errors (Morris et al. 2019): mean SE = sd/sqrt(n);
+    2.5/97.5 percentile SEs from MC_BOOT resamples of the replicates (fixed stream)."""
+    out = summ(values, point)
+    v = np.asarray(values, float)
+    good = v[np.isfinite(v)]
+    n = len(good)
+    if n > 1:
+        out["mcse_mean"] = float(good.std(ddof=1) / np.sqrt(n))
+        idx = np.random.default_rng([20261104, n]).integers(n, size=(MC_BOOT, n))
+        qs = np.quantile(good[idx], (.025, .975), axis=1)
+        out["mcse_q025"], out["mcse_q975"] = float(qs[0].std(ddof=1)), float(qs[1].std(ddof=1))
+    return out
+
+
+def binom_mcse(p, n):
+    """Monte Carlo SE of an estimated proportion or quantile level from n replicates."""
+    return float(np.sqrt(p * (1 - p) / n)) if n else None
+
+
 def boot_ci(point, draws, ratio=False):
     """Percentile bootstrap interval in the authors' convention (finite_summary)."""
     a = np.asarray(draws, float)

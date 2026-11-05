@@ -1,0 +1,62 @@
+2026-11-04 14:39:44 +    0.0s held-out jobs 48 panels 200 observed {'state': -0.002018428325305286, 'season': 0.004626341502804648} workers 8
+2026-11-04 14:39:49 +    5.2s S1_heterogeneity panels 0 50 done
+2026-11-04 14:39:50 +    5.3s S1_heterogeneity panels 100 150 done
+2026-11-04 14:39:50 +    5.3s S1_heterogeneity panels 150 200 done
+2026-11-04 14:39:50 +    5.4s S1_heterogeneity panels 50 100 done
+2026-11-04 14:39:51 +    6.3s S0_poisson panels 50 100 done
+2026-11-04 14:39:51 +    6.6s S0_poisson panels 0 50 done
+2026-11-04 14:39:51 +    6.7s S0_poisson panels 150 200 done
+2026-11-04 14:39:51 +    7.2s S0_poisson panels 100 150 done
+2026-11-04 14:39:56 +   11.5s S2_nb_reporting panels 0 50 done
+2026-11-04 14:39:56 +   11.7s S2_nb_reporting panels 100 150 done
+2026-11-04 14:39:56 +   12.2s S2_nb_reporting panels 150 200 done
+2026-11-04 14:39:57 +   12.4s S2_nb_reporting panels 50 100 done
+2026-11-04 14:39:57 +   13.0s S3_heterogeneity_nb panels 0 50 done
+2026-11-04 14:39:58 +   13.4s S3_heterogeneity_nb panels 50 100 done
+2026-11-04 14:39:58 +   13.5s S3_heterogeneity_nb panels 100 150 done
+2026-11-04 14:39:58 +   13.9s S3_heterogeneity_nb panels 150 200 done
+2026-11-04 14:40:01 +   17.0s S4_structured panels 0 50 done
+2026-11-04 14:40:01 +   17.1s S4_structured panels 50 100 done
+2026-11-04 14:40:02 +   17.7s S4_structured panels 100 150 done
+2026-11-04 14:40:02 +   17.8s S4_structured panels 150 200 done
+2026-11-04 14:40:03 +   18.9s S5_structured_nb panels 0 50 done
+2026-11-04 14:40:04 +   19.4s S5_structured_nb panels 50 100 done
+2026-11-04 14:40:04 +   19.5s S5_structured_nb panels 100 150 done
+2026-11-04 14:40:04 +   20.0s S5_structured_nb panels 150 200 done
+2026-11-04 14:40:08 +   23.8s S2P_branching_poisson panels 0 50 done
+2026-11-04 14:40:08 +   23.9s S2P_branching_poisson panels 50 100 done
+2026-11-04 14:40:09 +   24.8s S2P_branching_poisson panels 150 200 done
+2026-11-04 14:40:10 +   25.7s S2P_branching_poisson panels 100 150 done
+2026-11-04 14:40:10 +   25.9s S6_reporting_shock panels 0 50 done
+2026-11-04 14:40:10 +   26.2s S6_reporting_shock panels 50 100 done
+2026-11-04 14:40:11 +   26.6s S6_reporting_shock panels 100 150 done
+2026-11-04 14:40:11 +   27.1s S6_reporting_shock panels 150 200 done
+2026-11-04 14:40:17 +   32.3s S7a_scale_dep panels 0 50 done
+2026-11-04 14:40:17 +   32.5s S7a_scale_dep panels 50 100 done
+2026-11-04 14:40:18 +   33.3s S7a_scale_dep panels 100 150 done
+2026-11-04 14:40:19 +   34.3s S7a_scale_dep panels 150 200 done
+2026-11-04 14:40:22 +   37.8s S7b_scale_dep panels 0 50 done
+2026-11-04 14:40:22 +   37.8s S7b_scale_dep panels 50 100 done
+2026-11-04 14:40:23 +   38.4s S7b_scale_dep panels 100 150 done
+2026-11-04 14:40:23 +   39.1s S7b_scale_dep panels 150 200 done
+2026-11-04 14:40:24 +   40.2s S8_combo panels 0 50 done
+2026-11-04 14:40:25 +   40.4s S8_combo panels 50 100 done
+2026-11-04 14:40:25 +   41.2s S8_combo panels 100 150 done
+2026-11-04 14:40:26 +   42.1s S8_combo panels 150 200 done
+2026-11-04 14:40:29 +   44.9s S9_national panels 0 50 done
+2026-11-04 14:40:29 +   45.1s S9_national panels 50 100 done
+2026-11-04 14:40:30 +   45.7s S9_national panels 100 150 done
+2026-11-04 14:40:31 +   46.3s S9_national panels 150 200 done
+2026-11-04 14:40:31 +   46.7s S0_poisson state q 0.235 mean -0.0010057671701390978 season q 0.97 mean -0.0008901247823538028
+2026-11-04 14:40:31 +   46.7s S1_heterogeneity state q 0.0 mean 0.01283855664914546 season q 0.06 mean 0.012967708988664417
+2026-11-04 14:40:31 +   46.7s S2_nb_reporting state q 0.125 mean -0.00021036137802001476 season q 0.985 mean -8.876706453932754e-05
+2026-11-04 14:40:31 +   46.7s S3_heterogeneity_nb state q 0.0 mean 0.017380412633790258 season q 0.0 mean 0.01748550930169873
+2026-11-04 14:40:31 +   46.7s S4_structured state q 0.0 mean 0.011205126756787715 season q 0.01 mean 0.015779336255317244
+2026-11-04 14:40:31 +   46.7s S5_structured_nb state q 0.0 mean 0.024032498622937513 season q 0.0 mean 0.0283178130649125
+2026-11-04 14:40:31 +   46.7s S2P_branching_poisson state q 0.215 mean -0.000996820922764735 season q 0.98 mean -0.0008073649762290588
+2026-11-04 14:40:31 +   46.8s S6_reporting_shock state q 0.0 mean 0.018738912421497972 season q 0.045 mean 0.018604784894001514
+2026-11-04 14:40:31 +   46.8s S7a_scale_dep state q 0.475 mean -0.0013204593636546905 season q 0.805 mean -0.0008472367089692917
+2026-11-04 14:40:31 +   46.8s S7b_scale_dep state q 0.995 mean -0.015423847433680532 season q 1.0 mean -0.01430619753330665
+2026-11-04 14:40:31 +   46.8s S8_combo state q 0.05 mean 0.011073178435227123 season q 0.22 mean 0.011153613834322194
+2026-11-04 14:40:31 +   46.8s S9_national state q 0.055 mean 0.01183208735651979 season q 0.145 mean 0.012595485832733445
+2026-11-04 14:40:31 +   46.8s held-out simulation complete

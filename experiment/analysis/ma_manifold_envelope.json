@@ -1,0 +1,551 @@
+{
+  "manifold_analysis": {
+    "n_total_cells": 20,
+    "n_compatible_cells": 14,
+    "compatible_recovery_range": [
+      0.9957629274376094,
+      1.1023129441070365
+    ],
+    "implied_sd_point_range": [
+      0.11647546509187306,
+      0.12254876253869659
+    ],
+    "implied_sd_propagated_range": [
+      0.09921159128708856,
+      0.13835137237885012
+    ],
+    "cells": [
+      {
+        "rho": 0.1,
+        "k": 0.1,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 1.281777766304114,
+        "b_over_bP_q025": 1.114010331542932,
+        "b_over_bP_q975": 1.4695630602586904,
+        "slope_compatible": true,
+        "a_over_vR": 1.022095589408636,
+        "a_over_vR_mcse": 0.005743988886264405,
+        "implied_transmission_rel_sd_point": 0.12095982498717273,
+        "implied_transmission_rel_sd_propagated": [
+          0.10303128396456149,
+          0.1365575420183991
+        ]
+      },
+      {
+        "rho": 0.1,
+        "k": 0.3,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.9762283419191137,
+        "b_over_bP_q025": 0.8605240613676146,
+        "b_over_bP_q975": 1.1303173918535845,
+        "slope_compatible": true,
+        "a_over_vR": 1.0085021133138163,
+        "a_over_vR_mcse": 0.005007112534264649,
+        "implied_transmission_rel_sd_point": 0.12177229765710307,
+        "implied_transmission_rel_sd_propagated": [
+          0.10372333276983974,
+          0.13747478268714658
+        ]
+      },
+      {
+        "rho": 0.1,
+        "k": 1.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.8620164762907505,
+        "b_over_bP_q025": 0.6860583967241116,
+        "b_over_bP_q975": 1.009718036009952,
+        "slope_compatible": true,
+        "a_over_vR": 1.0111448784901123,
+        "a_over_vR_mcse": 0.004930879593527711,
+        "implied_transmission_rel_sd_point": 0.1216130592793875,
+        "implied_transmission_rel_sd_propagated": [
+          0.10358769654091654,
+          0.13729501058960808
+        ]
+      },
+      {
+        "rho": 0.1,
+        "k": 3.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.8243302394526519,
+        "b_over_bP_q025": 0.6947697781248671,
+        "b_over_bP_q975": 0.9934493587902576,
+        "slope_compatible": true,
+        "a_over_vR": 1.0096687358249539,
+        "a_over_vR_mcse": 0.004416838542173109,
+        "implied_transmission_rel_sd_point": 0.12170192637647315,
+        "implied_transmission_rel_sd_propagated": [
+          0.10366339184814694,
+          0.1373953370603649
+        ]
+      },
+      {
+        "rho": 0.1,
+        "k": null,
+        "offspring": "poisson",
+        "b_over_bP_mean": 0.8146177281233443,
+        "b_over_bP_q025": 0.683174121545324,
+        "b_over_bP_q975": 0.9419241413145062,
+        "slope_compatible": true,
+        "a_over_vR": 0.9978056410213724,
+        "a_over_vR_mcse": 0.004194515647681151,
+        "implied_transmission_rel_sd_point": 0.1224232569977255,
+        "implied_transmission_rel_sd_propagated": [
+          0.10427780758559087,
+          0.13820968295274091
+        ]
+      },
+      {
+        "rho": 0.25,
+        "k": 0.1,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 1.795522073477786,
+        "b_over_bP_q025": 1.59472600878451,
+        "b_over_bP_q975": 2.028761814991076,
+        "slope_compatible": true,
+        "a_over_vR": 1.0585073303518686,
+        "a_over_vR_mcse": 0.006334800133128473,
+        "implied_transmission_rel_sd_point": 0.11886116207472967,
+        "implied_transmission_rel_sd_propagated": [
+          0.10124368271347879,
+          0.1341882574325559
+        ]
+      },
+      {
+        "rho": 0.25,
+        "k": 0.3,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 1.1378192649406507,
+        "b_over_bP_q025": 0.9479639243705535,
+        "b_over_bP_q975": 1.3103876237333478,
+        "slope_compatible": true,
+        "a_over_vR": 1.0188939494925997,
+        "a_over_vR_mcse": 0.005819429449567989,
+        "implied_transmission_rel_sd_point": 0.12114972014484772,
+        "implied_transmission_rel_sd_propagated": [
+          0.10319303305700588,
+          0.136771924074392
+        ]
+      },
+      {
+        "rho": 0.25,
+        "k": 1.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.864914898600355,
+        "b_over_bP_q025": 0.7078973311530398,
+        "b_over_bP_q975": 1.0203386827262395,
+        "slope_compatible": true,
+        "a_over_vR": 1.0058112115996976,
+        "a_over_vR_mcse": 0.004350456592206316,
+        "implied_transmission_rel_sd_point": 0.12193508089622584,
+        "implied_transmission_rel_sd_propagated": [
+          0.10386198844445325,
+          0.1376585567544351
+        ]
+      },
+      {
+        "rho": 0.25,
+        "k": 3.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.7888814939616487,
+        "b_over_bP_q025": 0.670658005886167,
+        "b_over_bP_q975": 0.9332415030461735,
+        "slope_compatible": true,
+        "a_over_vR": 0.9986833759451937,
+        "a_over_vR_mcse": 0.004841848438400179,
+        "implied_transmission_rel_sd_point": 0.12236944675541081,
+        "implied_transmission_rel_sd_propagated": [
+          0.10423197304212395,
+          0.13814893390299082
+        ]
+      },
+      {
+        "rho": 0.25,
+        "k": null,
+        "offspring": "poisson",
+        "b_over_bP_mean": 0.7560951974754576,
+        "b_over_bP_q025": 0.6081180335362275,
+        "b_over_bP_q975": 0.8852980854428816,
+        "slope_compatible": true,
+        "a_over_vR": 0.9957629274376094,
+        "a_over_vR_mcse": 0.003933673793004314,
+        "implied_transmission_rel_sd_point": 0.12254876253869659,
+        "implied_transmission_rel_sd_propagated": [
+          0.1043847108241851,
+          0.13835137237885012
+        ]
+      },
+      {
+        "rho": 0.5,
+        "k": 0.1,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 2.4008444762371437,
+        "b_over_bP_q025": 2.07096685193843,
+        "b_over_bP_q975": 2.7354424963991306,
+        "slope_compatible": false,
+        "a_over_vR": 1.1702207884239109,
+        "a_over_vR_mcse": 0.011399513544823582,
+        "implied_transmission_rel_sd_point": 0.11304542799656818,
+        "implied_transmission_rel_sd_propagated": [
+          0.09628995076708273,
+          0.1276225869644431
+        ]
+      },
+      {
+        "rho": 0.5,
+        "k": 0.3,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 1.4053939395471826,
+        "b_over_bP_q025": 1.2352345510146998,
+        "b_over_bP_q975": 1.5859980109166927,
+        "slope_compatible": true,
+        "a_over_vR": 1.0321249072328975,
+        "a_over_vR_mcse": 0.005755797625096944,
+        "implied_transmission_rel_sd_point": 0.12037069764183034,
+        "implied_transmission_rel_sd_propagated": [
+          0.10252947646925718,
+          0.13589244695709
+        ]
+      },
+      {
+        "rho": 0.5,
+        "k": 1.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.8486875717171732,
+        "b_over_bP_q025": 0.6913891542250475,
+        "b_over_bP_q975": 0.9777252898783888,
+        "slope_compatible": true,
+        "a_over_vR": 1.0251814527767864,
+        "a_over_vR_mcse": 0.004635774948486961,
+        "implied_transmission_rel_sd_point": 0.12077763928537472,
+        "implied_transmission_rel_sd_propagated": [
+          0.10287610164036233,
+          0.1363518635492787
+        ]
+      },
+      {
+        "rho": 0.5,
+        "k": 3.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.7108495531676522,
+        "b_over_bP_q025": 0.5878052594297312,
+        "b_over_bP_q975": 0.8086734149198603,
+        "slope_compatible": false,
+        "a_over_vR": 1.0009788099594756,
+        "a_over_vR_mcse": 0.004777451307504502,
+        "implied_transmission_rel_sd_point": 0.12222905806458022,
+        "implied_transmission_rel_sd_propagated": [
+          0.10411239261885602,
+          0.13799044215129525
+        ]
+      },
+      {
+        "rho": 0.5,
+        "k": null,
+        "offspring": "poisson",
+        "b_over_bP_mean": 0.623355875561505,
+        "b_over_bP_q025": 0.5039290704909934,
+        "b_over_bP_q975": 0.751251693529031,
+        "slope_compatible": false,
+        "a_over_vR": 1.001686564509796,
+        "a_over_vR_mcse": 0.003992662879742725,
+        "implied_transmission_rel_sd_point": 0.12218586917627976,
+        "implied_transmission_rel_sd_propagated": [
+          0.10407560514322046,
+          0.13794168407455826
+        ]
+      },
+      {
+        "rho": 1.0,
+        "k": 0.1,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 2.890098734889386,
+        "b_over_bP_q025": 2.4084344794653245,
+        "b_over_bP_q975": 3.344443916233688,
+        "slope_compatible": false,
+        "a_over_vR": 1.5077512925525351,
+        "a_over_vR_mcse": 0.026164178694307153,
+        "implied_transmission_rel_sd_point": 0.09959144923129246,
+        "implied_transmission_rel_sd_propagated": [
+          0.08483010691590899,
+          0.11243372346576808
+        ]
+      },
+      {
+        "rho": 1.0,
+        "k": 0.3,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 1.8041182146382813,
+        "b_over_bP_q025": 1.534930004850225,
+        "b_over_bP_q975": 2.0411635769890477,
+        "slope_compatible": true,
+        "a_over_vR": 1.1023129441070365,
+        "a_over_vR_mcse": 0.00984936207452736,
+        "implied_transmission_rel_sd_point": 0.11647546509187306,
+        "implied_transmission_rel_sd_propagated": [
+          0.09921159128708856,
+          0.13149492585726505
+        ]
+      },
+      {
+        "rho": 1.0,
+        "k": 1.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.881588732567425,
+        "b_over_bP_q025": 0.7362776262714597,
+        "b_over_bP_q975": 1.0407149536521734,
+        "slope_compatible": true,
+        "a_over_vR": 1.0234348016897368,
+        "a_over_vR_mcse": 0.005033370441175627,
+        "implied_transmission_rel_sd_point": 0.12088065828757628,
+        "implied_transmission_rel_sd_propagated": [
+          0.10296385127186766,
+          0.1364681668071854
+        ]
+      },
+      {
+        "rho": 1.0,
+        "k": 3.0,
+        "offspring": "negative_binomial",
+        "b_over_bP_mean": 0.5472513260185274,
+        "b_over_bP_q025": 0.4132984769005697,
+        "b_over_bP_q975": 0.6759052944480789,
+        "slope_compatible": false,
+        "a_over_vR": 1.0130156870940423,
+        "a_over_vR_mcse": 0.0040410117244779635,
+        "implied_transmission_rel_sd_point": 0.12150071161310513,
+        "implied_transmission_rel_sd_propagated": [
+          0.10349200093033906,
+          0.1371681757404286
+        ]
+      },
+      {
+        "rho": 1.0,
+        "k": null,
+        "offspring": "poisson",
+        "b_over_bP_mean": 0.36856408655351536,
+        "b_over_bP_q025": 0.28321110422095974,
+        "b_over_bP_q975": 0.475547518052804,
+        "slope_compatible": false,
+        "a_over_vR": 1.0083073832807674,
+        "a_over_vR_mcse": 0.003601311602105486,
+        "implied_transmission_rel_sd_point": 0.12178405576736143,
+        "implied_transmission_rel_sd_propagated": [
+          0.10373334810507227,
+          0.13748805700062905
+        ]
+      }
+    ]
+  },
+  "decision_rule_sensitivity": {
+    "n_total_decisions": 180,
+    "n_borderline_within_2mcse": 19,
+    "rule_90_percent": {
+      "changed_decisions": 8,
+      "changed_percent": 4.444444444444445,
+      "surviving_cells_count": 0,
+      "surviving_cells": []
+    },
+    "rule_95_percent_baseline": {
+      "surviving_cells_count": 0,
+      "surviving_cells": []
+    },
+    "rule_99_percent": {
+      "changed_decisions": 20,
+      "changed_percent": 11.11111111111111,
+      "surviving_cells_count": 0,
+      "surviving_cells": []
+    },
+    "rule_2mcse_tolerance": {
+      "changed_decisions": 8,
+      "changed_percent": 4.444444444444445,
+      "surviving_cells_count": 0,
+      "surviving_cells": []
+    },
+    "borderline_decisions": [
+      {
+        "cell": "g0_phi0_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.8046171113372599,
+        "q975": 0.9167514150127768,
+        "min_mcse_distance": 0.8237051650027948,
+        "pass": true
+      },
+      {
+        "cell": "g0_phi0.25_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.8022215145805949,
+        "q975": 0.9121599075865239,
+        "min_mcse_distance": 0.545674294331009,
+        "pass": true
+      },
+      {
+        "cell": "g0_phi0_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.7981259971564432,
+        "q975": 0.8981344656645739,
+        "min_mcse_distance": 1.3058887334438622,
+        "pass": false
+      },
+      {
+        "cell": "g0_phi0.25_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.787768626929435,
+        "q975": 0.918732356187722,
+        "min_mcse_distance": 1.5370496827600424,
+        "pass": true
+      },
+      {
+        "cell": "g0_phi0.5_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.799890277885824,
+        "q975": 0.904965324971356,
+        "min_mcse_distance": 1.201035890468089,
+        "pass": false
+      },
+      {
+        "cell": "g0_phi0.75_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.7896001006234286,
+        "q975": 0.9068495500583411,
+        "min_mcse_distance": 0.3946218597352934,
+        "pass": false
+      },
+      {
+        "cell": "g0_phi1_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.807727196417422,
+        "q975": 0.9029633144860388,
+        "min_mcse_distance": 0.8431087781756935,
+        "pass": false
+      },
+      {
+        "cell": "g0.25_phi0_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.7979308402302776,
+        "q975": 0.9186364762487217,
+        "min_mcse_distance": 1.8577425853172016,
+        "pass": true
+      },
+      {
+        "cell": "g0.25_phi0.25_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.8076379864345344,
+        "q975": 0.9183489909011805,
+        "min_mcse_distance": 1.665954628063757,
+        "pass": true
+      },
+      {
+        "cell": "g0.25_phi0.25_nat0",
+        "test": "contrast",
+        "observed": 0.026,
+        "q025": 0.025,
+        "q975": 0.975,
+        "min_mcse_distance": 0.19871646259611406,
+        "pass": true
+      },
+      {
+        "cell": "g0.25_phi0_nat0.5",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.7977800302679022,
+        "q975": 0.9039293151514569,
+        "min_mcse_distance": 0.99404131496281,
+        "pass": false
+      },
+      {
+        "cell": "g0.25_phi0.25_nat0.5",
+        "test": "contrast",
+        "observed": 0.019,
+        "q025": 0.025,
+        "q975": 0.975,
+        "min_mcse_distance": 1.3897604433180875,
+        "pass": false
+      },
+      {
+        "cell": "g0.5_phi0_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.7964447657820879,
+        "q975": 0.9163767978420895,
+        "min_mcse_distance": 0.618607275674645,
+        "pass": true
+      },
+      {
+        "cell": "g0.5_phi0.25_nat0",
+        "test": "thinning",
+        "observed": 0.9093430797550824,
+        "q025": 0.8167256866427728,
+        "q975": 0.9239835876305829,
+        "min_mcse_distance": 1.9234203644181371,
+        "pass": true
+      },
+      {
+        "cell": "g0.5_phi0.25_nat0",
+        "test": "contrast",
+        "observed": 0.024,
+        "q025": 0.025,
+        "q975": 0.975,
+        "min_mcse_distance": 0.20661862653352714,
+        "pass": false
+      },
+      {
+        "cell": "g0.5_phi0.5_nat0",
+        "test": "b_over_bP",
+        "observed": 1.2568183250421943,
+        "q025": 1.221889245302957,
+        "q975": 1.713800161901611,
+        "min_mcse_distance": 1.499848671810348,
+        "pass": true
+      },
+      {
+        "cell": "g0.5_phi0.75_nat0.5",
+        "test": "b_over_a",
+        "observed": 37.443786407954434,
+        "q025": 36.40462450322195,
+        "q975": 72.18310346980529,
+        "min_mcse_distance": 0.7147100862641611,
+        "pass": true
+      },
+      {
+        "cell": "g0.5_phi0.75_nat0.5",
+        "test": "week_reduction",
+        "observed": 0.34696653574209124,
+        "q025": 0.13997976567108183,
+        "q975": 0.35261805665767815,
+        "min_mcse_distance": 0.5058086584361664,
+        "pass": true
+      },
+      {
+        "cell": "g0.5_phi1_nat0.5",
+        "test": "contrast",
+        "observed": 0.98,
+        "q025": 0.025,
+        "q975": 0.975,
+        "min_mcse_distance": 1.1293848786315648,
+        "pass": false
+      }
+    ]
+  },
+  "slope_decomposition": {
+    "pooled_slope": 0.5599555819435609,
+    "within_slope": 0.37937647014788367,
+    "between_slope": 0.6795697085686779,
+    "slope_ratio": 1.4759892244378945,
+    "slope_ratio_ci95": [
+      0.988251037628361,
+      3.661751970246354
+    ],
+    "ci_spans_one": true,
+    "interpretation": "The pooled slope (0.560) is a weighted combination of the within-state slope (0.379) and the between-state slope (0.680). Smaller states exhibit higher average dispersion, inducing a positive between-state gradient that inflates the pooled slope."
+  }
+}

@@ -4,11 +4,11 @@
 \subsection{Period-level reporting variation}
 \label{sec:reporting-volatility}
 
-Replace H1 by a common period-specific reporting probability $p_t\in[0,1]$, independent of $R_t$ and of $n$, with known mean $\rho>0$ and $\Var(p_t)=\rho^2\tau^2$ (H5). Reporting remains independent across infections given $p_t$, so $\tau^2\le(1-\rho)/\rho$. The estimator still divides by $m=\rho n$ and does not observe $p_t$.
+Replace H1 by a common period-specific reporting probability $p_t\in[0,1]$, independent of $R_t$ and of $n$, with known mean $\rho>0$ and $\Var(p_t)=\rho^2\tau^2$ (H5). Reporting remains independent across infections given $p_t$. Because $p_t$ lies in $[0,1]$ with mean $\rho$, $\Var(p_t)\le\rho(1-\rho)$ \citep{bhatia2000better}, so $\tau^2\le(1-\rho)/\rho$. The estimator still divides by $m=\rho n$ and does not observe $p_t$.
 
 \begin{proposition}[Reporting volatility and second-moment nonidentification]
 \label{prop:report-noise}
-Under H2--H5, put $Q=\Rbar^2+v_R$. Then
+Under H2--H5, put $Q=\Rbar^2+v_R$. The first two moments of $\Rhat_t$ are:
 \begin{equation}
   \E(\Rhat_t)=\Rbar,\qquad
   \Var(\Rhat_t)=v_R+v_H+\frac{A_H}{m},\qquad
@@ -28,7 +28,7 @@ Under H2--H5, the current-value risk is:
   \E[(\Rhat_t-R_t)^2]=v_H+\frac{A_H}{m}.
   \label{eq:vH-current}
 \end{equation}
-If, in addition, the $p_t$ are independent and identically distributed, independent of the transmission trajectory, and counts are independent given both trajectories, then
+If, in addition, the $p_t$ are independent and identically distributed, independent of the transmission trajectory, and counts are independent given both trajectories, the two mean targets have risks:
 \begin{equation}
   \E[(\overline{\Rhat}_T-\Rbar_T)^2]=\frac{v_H+A_H/m}{T},\qquad
   \E[(\overline{\Rhat}_T-\Rbar)^2]=B_T+\frac{v_H+A_H/m}{T}.
@@ -41,7 +41,7 @@ At fixed $T$, unobserved reporting volatility leaves the floor $v_H/T$ on the re
 \subsection{From the branching experiment to surveillance counts}
 \label{sec:reporting-scope}
 
-If the scale $m$ is random and associated with transmission, conditional unbiasedness given $(R_t,m)$ still yields
+If the scale $m$ is random and associated with transmission, conditional unbiasedness given $(R_t,m)$ still yields the conditional risk:
 \begin{equation}
  \E[(\Rhat_t-\Rbar)^2\mid m]
  =\frac{\E(R_t\mid m)+\rho\E(R_t^2\mid m)/k}{m}

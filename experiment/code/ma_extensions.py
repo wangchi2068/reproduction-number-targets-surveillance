@@ -9,16 +9,15 @@ Sections (each written to analysis/ma_extensions.json as soon as it finishes):
                 precision-weighted FGLS, ma_models.within_slope) with bootstrap;
                 iterated two-way variant reported with its convergence
   sensitivity   b/a and b/b_P under count filter >= 10/20/50, continuity +1.0,
-                window threshold 1.10, and per season
+                window threshold 1.02 and 1.10 (primary 1.05), and per season
   seasons       season-stratified affine model: season intercepts + common
                 slope on the pooled loss; fully stratified (season-centred) fits
   validation    held-out affine vs power score by state and by season folds,
                 paired fold standard error and state x week bootstrap interval
   table1        observed-denominator (ratio estimator) companion row of Table 1:
-                delta-method MSE, Monte Carlo MSE and its m-cross
-  calibration   WITHDRAWN 2026-11-03 (kept as a function, not in the default run):
-                inversion v and slope / n / autocorrelation diagnostics of the
-                authors' calibration (reproduced outputs, not rerun)
+                delta-method MSE, Monte Carlo MSE and its m-cross; draws with a zero
+                observed denominator are dropped (share reported), and a +0.5
+                continuity-corrected ratio that keeps every draw is reported alongside
 
 Primary bootstrap (revision 2, spec A3): the RA_gi3.6 frame of `ratios`, B=2000,
 rng default_rng([SEED, 1]); the sensitivity primary row and the within-table
@@ -172,7 +171,7 @@ def section_within(B, log):
 def sens_frames():
     panel = build_panel(load_raw())
     nat = national_series()
-    w105, w110 = rule_windows(nat, 1.05)[0], rule_windows(nat, 1.10)[0]
+    w102, w105, w110 = (rule_windows(nat, thr)[0] for thr in (1.02, 1.05, 1.10))
     base = load_sample("RA", panel=panel, windows=w105)
     specs = {"primary": base}
     for m in (10, 20, 50):
@@ -180,10 +179,12 @@ def sens_frames():
     cc = base.copy()
     cc["x"] = wl_R((cc.C_next + 1.0) / (cc.C_t + 1.0))
     specs["continuity_1.0"] = cc
+    specs["window_threshold_1.02"] = load_sample("RA", panel=panel, windows=w102)
     specs["window_threshold_1.10"] = load_sample("RA", panel=panel, windows=w110)
     for season in sorted(base.season.unique()):
         specs[f"season_{season}"] = base[base.season == season].reset_index(drop=True)
-    windows = {"1.05": {s: [a.date().isoformat(), b.date().isoformat()] for s, (a, b) in w105.items()},
+    windows = {"1.02": {s: [a.date().isoformat(), b.date().isoformat()] for s, (a, b) in w102.items()},
+               "1.05": {s: [a.date().isoformat(), b.date().isoformat()] for s, (a, b) in w105.items()},
                "1.10": {s: [a.date().isoformat(), b.date().isoformat()] for s, (a, b) in w110.items()}}
     return specs, windows
 
@@ -191,9 +192,13 @@ def sens_frames():
 def section_sensitivity(B, log):
     specs, windows = sens_frames()
     out = {"windows": windows, "specs": {}}
-    for j, (name, e) in enumerate(specs.items()):
+    # stream index j as in the first version (specifications in their original order);
+    # window_threshold_1.02 was added later and gets its own stream so the others keep theirs
+    first = [n for n in specs if n != "window_threshold_1.02"]
+    for name, e in specs.items():
         # the primary specification reuses the primary stream (same rows as ratios/RA_gi3.6)
-        r, _ = boot_ab(e, B, np.random.default_rng([SEED, 1] if name == "primary" else [SEED, 3, j]))
+        stream = [SEED, 1] if name == "primary" else [SEED, 3, 100] if name == "window_threshold_1.02" else [SEED, 3, first.index(name)]
+        r, _ = boot_ab(e, B, np.random.default_rng(stream))
         out["specs"][name] = r
         log("sensitivity", name, r["n"], "b/a", r["b_over_a"]["value"], r["b_over_a"]["ci95"], "b/bP", r["b_over_bP"]["value"])
     return out
@@ -387,50 +392,21 @@ def section_table1(reps, log):
         ok = cprev > 0
         err = (C[ok] / cprev[ok] - R[ok]) ** 2
         known = (C / m - R) ** 2
+        half = ((C + .5) / (cprev + .5) - R) ** 2  # every draw kept
         rows.append({"m": m, "known_denominator_analytic": A / m, "known_denominator_mc": float(known.mean()),
                      "known_denominator_mc_se": float(known.std(ddof=1) / np.sqrt(reps)),
                      "observed_denominator_delta": (A + extra) / m, "observed_denominator_mc": float(err.mean()),
                      "observed_denominator_mc_se": float(err.std(ddof=1) / np.sqrt(ok.sum())),
-                     "observed_over_known": float(err.mean() / (A / m)), "share_zero_denominator": float(1 - ok.mean())})
+                     "observed_over_known": float(err.mean() / (A / m)), "share_zero_denominator": float(1 - ok.mean()),
+                     "observed_denominator_half_corrected_mc": float(half.mean()),
+                     "observed_denominator_half_corrected_mc_se": float(half.std(ddof=1) / np.sqrt(reps))})
         log("table1 m", m, rows[-1]["observed_denominator_mc"], "delta", rows[-1]["observed_denominator_delta"])
     return {"parameters": {"Rbar": rb, "v_R": vr, "k": k, "rho": rho, "A": A, "reps": reps},
             "m_cross_known": A / vr, "m_cross_observed_delta": (A + extra) / vr,
             "estimator": "C_t / C_prev with C_prev ~ Binomial(m/rho, rho) observed previous count (exposure not known)",
+            "zero_denominator_rule": "draws with C_prev = 0 are excluded from the ratio-estimator MSE (share_zero_denominator); "
+                                     "the +0.5 variant (C_t + .5)/(C_prev + .5) keeps every draw",
             "rows": rows}
-
-
-def section_calibration(log):
-    src = EXP / "analysis/authors/calibration_reproduced"
-    cal = json.loads((src / "calibration.json").read_text())
-    emp = json.loads((src / "calibration_empirical.json").read_text())
-    obs = emp["3.6"]["RA"]
-    out = {"source": "analysis/authors/calibration_reproduced/calibration.json (reproduced, bit-identical to authors)",
-           "observed": {k: obs[k] for k in ("n", "a", "b", "ratio", "r1_state", "r1_national", "VR_week", "D_median")},
-           "scenarios": {}}
-    cells = {}
-    for c in cal["cells"]:
-        cells.setdefault(c["scenario"], []).append(c)
-    for name, inf in cal["inference"].items():
-        r = inf["RA"]
-        vd = r["v_draws"]
-        cs = sorted(cells.get(name, []), key=lambda c: c["v"])
-        v = r["v_implied"]
-        near = min(cs, key=lambda c: abs(c["v"] - v)) if cs else None
-        diag = None
-        if near is not None:
-            ra = near["RA"]
-            diag = {"cell_v": near["v"], **{k: ra[k]["mean_finite"] for k in ("b", "n", "r1_state", "r1_national", "VR_week")}}
-        out["scenarios"][name] = {"v_implied": v, "v_ci95": [vd["q025_50_975_finite"][0], vd["q025_50_975_finite"][2]],
-                                  "line_status": r["line_status"], "nearest_cell": diag}
-    m = out["scenarios"]["matched36_binomial"]["nearest_cell"]
-    out["primary_mismatch"] = {k: {"simulated": m[k], "observed": out["observed"][k]} for k in ("b", "n", "r1_national", "r1_state", "VR_week")}
-    vs = [s["v_implied"] for s in out["scenarios"].values()]
-    out["v_range_across_scenarios"] = [float(np.min(vs)), float(np.max(vs))]
-    out["decision"] = ("withdraw from the manuscript: the inversion exists but the calibrated simulator does not reproduce "
-                       "the pooled slope, the retained sample size or the national lag-1 autocorrelation at the implied v, "
-                       "so the map from a to v is not supported by its own checks")
-    log("calibration primary mismatch", out["primary_mismatch"], "v range", out["v_range_across_scenarios"])
-    return out
 
 
 def main(sections, outdir, logdir):
@@ -443,8 +419,8 @@ def main(sections, outdir, logdir):
             "sensitivity": lambda: section_sensitivity(2000 if not SMOKE else 30, log),
             "seasons": lambda: section_seasons(2000 if not SMOKE else 30, log),
             "validation": lambda: section_validation(1000 if not SMOKE else 6, log),
-            "table1": lambda: section_table1(20000 if SMOKE else 400000, log),
-            "calibration": lambda: section_calibration(log)}
+            "table1": lambda: section_table1(20000 if SMOKE else 400000, log)}
+    result.pop("calibration", None)  # withdrawn section; never carried forward
     for name in sections:
         log("start", name)
         result[name] = plan[name]()
