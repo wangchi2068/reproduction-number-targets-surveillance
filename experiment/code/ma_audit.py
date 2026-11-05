@@ -51,7 +51,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from ma_models import Log, summ, write
+from ma_models import Log, binom_mcse, summ_mc as summ, write
 from revision_data import load_sample, wl_R
 from revision_design import contrast
 from revision_empirical import centered_loss
@@ -64,7 +64,9 @@ MIN_COUNT = 5  # analyst filter of the R_A sample (C_t >= 5)
 TARGET_D = 45.0
 GI_MEAN, GI_SD = 3.6, 1.6
 EXP = Path(__file__).resolve().parents[1]
-C03 = EXP.parent / "revision2/checks/c03_baselines_counts_s6.json"
+# frozen R_A design (Table S1 sample): row count and retained-count quantiles checked on every run
+OBS_DESIGN = {"n": 1748, "p10": 10.0, "median": 45.0, "p90": 388.6}
+TAIL_GENERATORS = ("S1_heterogeneity", "S4_structured", "S6_reporting_shock", "S7a_scale_dep")
 
 
 class Design:
@@ -201,10 +203,12 @@ class Generator:
     """Transmission law (g_rows as a function of a variance multiplier amp and the
     scale lam), offspring/reporting law, and optional reporting shock."""
 
-    def __init__(self, d, g0, z, kind, k=None, rho=.25, half=False, gamma=None, kap=None, g_fixed=None):
+    def __init__(self, d, g0, z, kind, k=None, rho=.25, share=1.0, gamma=None, kap=None, g_fixed=None):
+        """share: transmission share of the variance target amp*a_obs; the remainder
+        (1 - share) is a state-week reporting shock with 2 kappa^2 s^2 = (1 - share) amp a_obs."""
         self.d, self.g0, self.z, self.kind, self.k, self.rho = d, g0, z, kind, k, rho
         self.g_fixed = g_fixed
-        self.half, self.gamma, self.kap = half, gamma, kap
+        self.share, self.gamma, self.kap = share, gamma, kap
         self.amp, self.lam, self.sigma, self.shock_s = 1.0, 1.0, 0.0, 0.0
 
     @property
@@ -218,8 +222,11 @@ class Generator:
         if not self.het:
             self.g, self.sigma = (np.full(d.n, g0) if self.g_fixed is None else self.g_fixed), 0.0
             return self
-        target = self.amp * GLOBAL["a_obs"] * (.5 if self.half else 1.0)
-        if self.gamma is None:
+        total = self.amp * GLOBAL["a_obs"]
+        target = total * self.share
+        if target <= 0:  # reporting shock only: constant transmission
+            self.sigma, self.g = 0.0, np.full(d.n, g0)
+        elif self.gamma is None:
             self.sigma = calibrate_sigma(target, self.z, g0)
             self.g = g0 * np.exp(self.sigma * self.z - self.sigma ** 2 / 2)
         else:
@@ -231,8 +238,8 @@ class Generator:
                 return g0 * np.exp(s * self.z - s ** 2 / 2)
             self.sigma = bisect(lambda s0: rel_var(wl_R(g_of(s0))) - target, 1e-4, 3.0)
             self.g = g_of(self.sigma)
-        if self.half:  # S6: shock variance 2 kappa^2 s^2 equal to the transmission share
-            self.shock_s = float(np.sqrt(target / (2 * self.kap ** 2)))
+        if self.share < 1:  # S6/S8: shock variance 2 kappa^2 s^2 = (1 - share) amp a_obs
+            self.shock_s = float(np.sqrt(total * (1 - self.share) / (2 * self.kap ** 2)))
         return self
 
     def draw(self, rng, reps):
@@ -290,13 +297,30 @@ def fit_amp(gen, stream, log, tag):
         amp = max(.1, min(3.0, amp))
     best = min(pts, key=lambda p: abs(p[1] - a_obs))
     gen.set(amp=best[0])
-    return {"amp": best[0], "mean_a_40panels": best[1], "iterations": len(pts)}
+    return {"amp": best[0], "mean_a_40panels": best[1], "iterations": len(pts),
+            "relative_miss": best[1] / a_obs - 1, "path": [{"amp": x, "mean_a_40panels": y} for x, y in pts]}
 
 
-def scenario_panels(gen, rng, reps, obs_contrast, heavy=True):
+def tail_weights(D, edges, obs_share):
+    """Post-stratification weights matching the retained-count distribution of a
+    synthetic panel to the observed one over observed-quantile bins of D."""
+    j = np.clip(np.searchsorted(edges, D, side="right") - 1, 0, len(obs_share) - 1)
+    sim = np.bincount(j, minlength=len(obs_share)) / len(D)
+    ok = sim > 0
+    w_bin = np.where(ok, obs_share / np.where(ok, sim, 1), 0.0)
+    w = w_bin[j]
+    return w * len(D) / w.sum()
+
+
+def scenario_panels(gen, rng, reps, obs_contrast, heavy=True, tail=None):
     """Analyst view of each synthetic panel: the analyst sees only simulated
     counts, so the scale is the simulated C_t and the R_A filter C_t >= 5 is
-    applied to the simulated counts (rows of the real design otherwise)."""
+    applied to the simulated counts (rows of the real design otherwise).
+
+    heavy=True: every measure; heavy="contrast": the loss fit, the true-error
+    fit and the score contrast only; heavy=False: loss fit and count summaries.
+    tail=(edges, obs_share): also refit a, and the true relative variances, with
+    weights that match the retained-count distribution to the observed one."""
     d = gen.d
     counts = gen.draw(rng, reps)
     shock = d.last_shock
@@ -305,7 +329,9 @@ def scenario_panels(gen, rng, reps, obs_contrast, heavy=True):
     target = wl_R(gen.g)
     names = ["a", "b", "bP", "n", "D_p10", "D_median", "D_p90", "truth_relvar_kept", "vH_kept", "lag1_corr"]
     if heavy:
-        names += ["err_a", "err_b", "bw", "a_week", "a_pooled_c", "contrast"]
+        names += ["err_a", "err_b", "contrast"] + (["bw", "a_week", "a_pooled_c"] if heavy is True else [])
+    if tail is not None:
+        names += ["a_tw", "truth_tw", "total_tw"]
     out = {nm: np.full(reps, np.nan) for nm in names}
     for r in range(reps):
         keep = ct[r] >= MIN_COUNT
@@ -326,6 +352,18 @@ def scenario_panels(gen, rng, reps, obs_contrast, heavy=True):
         if f["converged"]:
             out["a"][r], out["b"][r] = f["a"], f["b"]
         out["bP"][r] = bp_of(D, cn[r][keep])
+        if tail is not None:
+            w = tail_weights(D, *tail)
+            ft = fit_loss(xr, D, w=w)
+            if ft["converged"]:
+                out["a_tw"][r] = ft["a"]
+            tk = target[keep]
+            out["truth_tw"][r] = float(np.average((tk - np.average(tk, weights=w)) ** 2, weights=w) / np.average(tk, weights=w) ** 2)
+            vh = 0.0
+            if shock is not None:
+                xk = xinf[keep]
+                vh = float(np.average(((xk - tk) / np.average(xk, weights=w)) ** 2, weights=w))
+            out["total_tw"][r] = out["truth_tw"][r] + vh
         if not heavy:
             continue
         xbar = xr.mean()
@@ -333,6 +371,9 @@ def scenario_panels(gen, rng, reps, obs_contrast, heavy=True):
         if fe["converged"]:
             out["err_a"][r], out["err_b"][r] = fe["a"], fe["b"]
         loss, _ = relative_loss(xr)
+        out["contrast"][r] = contrast(loss, D)
+        if heavy == "contrast":
+            continue
         fw = fit_group_affine(loss, D, d.state[keep])
         if fw["converged"]:
             out["bw"][r] = fw["b"]
@@ -342,9 +383,8 @@ def scenario_panels(gen, rng, reps, obs_contrast, heavy=True):
             fc = fit_affine(L[valid], D[valid])
             if fc["converged"]:
                 out[key][r] = fc["a"]
-        out["contrast"][r] = contrast(loss, D)
     out["b_over_bP"] = out["b"] / out["bP"]
-    if heavy:
+    if heavy is True:
         out["bw_over_bP"] = out["bw"] / out["bP"]
     return out, counts
 
@@ -356,8 +396,11 @@ def ratio_of_means(num, den):
     return float(np.mean(num[ok]) / m) if ok.any() and m > 0 else None
 
 
-def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_name):
-    log = Log(Path(logdir) / log_name)
+K = 0.3  # offspring dispersion selected on the k grid in the first audit round
+
+
+def setup(log):
+    """Frozen design, observed summaries, fixed transmission draws and the eleven generators."""
     e = load_sample("RA")
     d = Design(e)
     log("design rows", d.n, "unique state-weeks", len(d.keys), "runs", int(d.start.sum()))
@@ -385,7 +428,6 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
     us, vw_ = rs.standard_normal(len(states)), rs.standard_normal(len(weeks))
     zs = (us[si] + vw_[wi]) / np.sqrt(2)
     zs = (zs - zs.mean()) / zs.std()
-    K = 0.3  # offspring dispersion selected on the k grid in the first audit round
     gens = {"S0_poisson": Generator(d, g0, z, "none"),
             "S1_heterogeneity": Generator(d, g0, z, "iid"),
             "S2_nb_reporting": Generator(d, g0, z, "none", k=K),
@@ -393,23 +435,70 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
             "S4_structured": Generator(d, g0, zs, "structured"),
             "S5_structured_nb": Generator(d, g0, zs, "structured", k=K),
             "S2P_branching_poisson": Generator(d, g0, z, "none", k=np.inf),
-            "S6_reporting_shock": Generator(d, g0, z, "iid", k=K, half=True, kap=kap),
+            "S6_reporting_shock": Generator(d, g0, z, "iid", k=K, share=.5, kap=kap),
             "S7a_scale_dep": Generator(d, g0, z, "iid", k=K, gamma=.25),
             "S7b_scale_dep": Generator(d, g0, z, "iid", k=K, gamma=.5),
-            "S8_combo": Generator(d, g0, z, "iid", k=K, half=True, gamma=.25, kap=kap)}
-    alignment = {}
-    for si_, (name, gen) in enumerate(gens.items()):
-        gen.set(amp=1.0, lam=1.0)
-        l1 = fit_lambda(gen, si_)
-        am = fit_amp(gen, si_, log, name) if gen.het else None
-        l2 = fit_lambda(gen, si_) if gen.het else l1
-        alignment[name] = {"lambda_first": l1, "amp": am, "lambda": l2, "sigma": gen.sigma, "shock_s": gen.shock_s}
-        log(name, "lambda", gen.lam, "median D (50 panels)", l2["median_D_50panels"], "amp", gen.amp, "sigma", gen.sigma, "s", gen.shock_s)
+            "S8_combo": Generator(d, g0, z, "iid", k=K, share=.5, gamma=.25, kap=kap)}
+    obs = {"a": a_obs, "b": b_obs, "b_over_a": b_obs / a_obs, "bP": bP_obs, "b_over_bP": b_obs / bP_obs,
+           "n": d.n, "D_p10": float(dq[0]), "D_median": float(dq[1]), "D_p90": float(dq[2]),
+           "bw": fw_obs["b"], "bw_over_bP": fw_obs["b"] / bP_obs, "a_week": a_week_obs,
+           "contrast_affine_minus_power": obs_contrast, "g0": g0, "kappa_mean": kap}
+    return e, d, obs, z, gens
+
+
+def calibrate(gen, si_, log, name, calibrate_amp=True):
+    """Count alignment (lambda), intercept alignment (amp) and lambda re-fit; stream si_."""
+    gen.set(amp=1.0, lam=1.0)
+    l1 = fit_lambda(gen, si_)
+    am = fit_amp(gen, si_, log, name) if gen.het and calibrate_amp else None
+    l2 = fit_lambda(gen, si_) if gen.het and calibrate_amp else l1
+    log(name, "lambda", gen.lam, "median D (50 panels)", l2["median_D_50panels"], "amp", gen.amp, "sigma", gen.sigma, "s", gen.shock_s)
+    return {"lambda_first": l1, "amp": am, "lambda": l2, "sigma": gen.sigma, "shock_s": gen.shock_s}
+
+
+def calibration_flags(gen, calibrated_amp=True):
+    """Which features of each generator were tuned to the observed data."""
+    return {"count_scale_lambda": "tuned: MC mean of the median retained count = observed 45",
+            "variance_amplitude": ("tuned: MC mean of fitted a = observed a" if gen.het and calibrated_amp else
+                                   "not tuned (amp = 1: total variance target = observed a)" if gen.het else "none (constant transmission)"),
+            "reporting_shock_s": (f"set by the variance split: 2 kappa^2 s^2 = {1 - gen.share:g} x amp x observed a" if gen.share < 1 else "none"),
+            "fixed_by_design": {"offspring_k": None if gen.k is None or np.isinf(gen.k) else gen.k, "rho": gen.rho if gen.k is not None else None,
+                                "scale_gamma": gen.gamma, "transmission_share": gen.share if gen.het else None}}
+
+
+ADEMP = {
+    "aims": "what the pooled affine intercept a, slope b, crossover b/a, slope ratio b/b_P and thinning rate c recover on the real R_A design, "
+            "under generators that differ in transmission heterogeneity, offspring dispersion, reporting and reporting shocks",
+    "data_generating_mechanisms": "eleven generators S0-S8 (meta.generators) on the frozen 1,748-row R_A design with shared counts; "
+                                  "count scale tuned to the observed median retained count; heterogeneity amplitude tuned to the observed a "
+                                  "(see scenarios.*.calibration); S8 transmission-share grid in ma_audit_extra.json",
+    "estimands": "transmission relative variance of R_i on retained rows (v_R); total relative variance v_R + v_H, where v_H is the "
+                 "current-value error caused by reporting shocks; the expected slope relative to b_P",
+    "methods": "the analyst pipeline of the application: R_A transform, relative loss, gamma FGLS affine fit, b_P plug-in, "
+               "within-state slope, week centring, affine-minus-power score contrast",
+    "performance_measures": "Monte Carlo mean with MC SE (sd/sqrt(n)); 2.5 and 97.5% Monte Carlo limits with bootstrap MC SEs "
+                            "(500 resamples of the replicates); ratio of means for recovery ratios; the quantile of the observed value among "
+                            "simulated values with binomial MC SE; interval coverage in ma_coverage.json",
+    "replicates": "200 panels per generator (thinning 100 x 20, rho x k grid 100 per cell, baselines 200); seeds fixed per generator stream"}
+
+
+def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_name):
+    log = Log(Path(logdir) / log_name)
+    e, d, obs, z, gens = setup(log)
+    a_obs, obs_contrast, g0, kap = obs["a"], obs["contrast_affine_minus_power"], obs["g0"], obs["kappa_mean"]
+    bP_obs = obs["bP"]
+    ct_obs, cn_obs = e.C_t.to_numpy(float), e.C_next.to_numpy(float)
+    dq = np.array([obs["D_p10"], obs["D_median"], obs["D_p90"]])
+    edges = np.unique(np.quantile(d.D, np.linspace(0, 1, 11)))
+    edges[-1] = np.inf
+    jo = np.clip(np.searchsorted(edges, d.D, side="right") - 1, 0, len(edges) - 2)
+    tail = (edges, np.bincount(jo, minlength=len(edges) - 1) / d.n)
+    alignment = {name: calibrate(gen, si_, log, name) for si_, (name, gen) in enumerate(gens.items())}
 
     results, draws = {}, {}
     for si_, (name, gen) in enumerate(gens.items()):
         rng = np.random.default_rng([SEED, 10, si_])
-        o, _ = scenario_panels(gen, rng, reps, obs_contrast)
+        o, _ = scenario_panels(gen, rng, reps, obs_contrast, tail=tail if name in TAIL_GENERATORS else None)
         truth_v = rel_var(wl_R(gen.g))
         true_total = o["truth_relvar_kept"] + o["vH_kept"]
         ratio = np.where(o["a"] > 0, o["b"] / o["a"], np.nan)
@@ -417,6 +506,7 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
                "offspring": None if gen.k is None else ("poisson" if np.isinf(gen.k) else "negative_binomial"),
                "rho": gen.rho if gen.k is not None else None, "gamma": gen.gamma,
                "lambda": gen.lam, "sigma": gen.sigma if gen.het else 0.0, "amp": gen.amp if gen.het else None,
+               "transmission_share": gen.share if gen.het else None, "calibration": calibration_flags(gen),
                "alignment": alignment[name], "true_relative_variance": truth_v,
                "a": summ(o["a"]), "b": summ(o["b"]), "b_over_a": summ(ratio),
                "share_a_le_0": float(np.mean(o["a"] <= 0)),
@@ -424,6 +514,8 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
                "truth_relvar_kept_rows": summ(o["truth_relvar_kept"]),
                "a_recovery_kept_rows": summ(o["a"] / o["truth_relvar_kept"]) if truth_v > 0 else None,
                "true_total_kept_rows": summ(true_total),
+               "a_over_transmission": ({"point": ratio_of_means(o["a"], o["truth_relvar_kept"]), **summ(o["a"] / o["truth_relvar_kept"])}
+                                       if truth_v > 0 else None),
                "a_over_true_total": {"point": ratio_of_means(o["a"], true_total) if np.nanmean(true_total) > 0 else None,
                                      **(summ(o["a"] / true_total) if np.nanmean(true_total) > 0 else {})},
                "n_rows": summ(o["n"]), "n_retained": summ(o["n"]),
@@ -434,10 +526,26 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
                "bw": summ(o["bw"]), "bw_over_bP": summ(o["bw_over_bP"]),
                "pooled_over_within_slope": {"point": ratio_of_means(o["b_over_bP"], o["bw_over_bP"]), **summ(o["b"] / o["bw"])},
                "a_week": summ(o["a_week"]),
-               "week_reduction": summ(1 - o["a_week"] / o["a_pooled_c"]),
+               # undefined without transmission heterogeneity: both intercepts are noise around zero
+               "week_reduction": summ(1 - o["a_week"] / o["a_pooled_c"]) if gen.het else {"status": "not defined (constant transmission)"},
                "contrast": summ(o["contrast"]),
                "observed_contrast_quantile": float(np.mean(o["contrast"][np.isfinite(o["contrast"])] <= obs_contrast))}
         res["shape_contrast_quantile"] = res["observed_contrast_quantile"]
+        nc = int(np.isfinite(o["contrast"]).sum())
+        res["observed_contrast_quantile_mcse"] = binom_mcse(res["observed_contrast_quantile"], nc)
+        at = res["a_over_transmission"]
+        if at and at["point"] and at["point"] > 0:
+            # transmission relative SD that the observed a would imply if this generator's map from v_R to a held
+            res["implied_transmission_rel_sd"] = {"point": float(np.sqrt(a_obs / at["point"])),
+                                                  "range_from_ratio_limits": [float(np.sqrt(a_obs / at["q975"])), float(np.sqrt(a_obs / at["q025"]))]}
+        if "a_tw" in o:
+            un, tw = ratio_of_means(o["a"], true_total), ratio_of_means(o["a_tw"], o["total_tw"])
+            res["tail_reweighting"] = {
+                "method": "post-stratification of retained rows to the observed retained-count distribution over observed deciles of D",
+                "a": summ(o["a_tw"]), "true_total": summ(o["total_tw"]), "true_transmission": summ(o["truth_tw"]),
+                "recovery_unweighted": un, "recovery_reweighted": tw,
+                "shift": None if un is None or tw is None else tw - un,
+                "relative_shift": None if un is None or tw is None else (tw - un) / un}
         if gen.shock_s > 0:
             res["reporting_shock"] = {
                 "s": gen.shock_s, "tau2": float(np.exp(gen.shock_s ** 2) - 1), "kappa_mean": kap,
@@ -498,37 +606,42 @@ def main(reps, thin_outer, thin_inner, grid_reps, sim_reps, outdir, logdir, log_
                          "b": summ(o["b"]), "b_over_bP": summ(o["b_over_bP"]), "a": summ(o["a"]), "D_median": summ(o["D_median"])})
             log("grid rho", rho, "k", k, "lambda", gen.lam, "b/bP", grid[-1]["b_over_bP"]["mean"])
 
-    # self-checks (spec A1(5))
+    # self-checks: frozen design, error floor without shocks, shock floor with shocks, calibration reached its target
     checks = []
-    c03 = json.load(open(C03))["observed"]
     obs_q = {"n": d.n, "p10": float(dq[0]), "median": float(dq[1]), "p90": float(dq[2])}
-    checks.append({"check": "observed quantiles equal c03", "value": obs_q,
-                   "pass": obs_q["n"] == c03["n"] and all(obs_q[k] == c03["D"][k] for k in ("p10", "median", "p90"))})
+    checks.append({"check": "observed design equals the frozen R_A sample", "value": obs_q, "expected": OBS_DESIGN,
+                   "pass": obs_q["n"] == OBS_DESIGN["n"] and all(abs(obs_q[k] - OBS_DESIGN[k]) < 1e-9 for k in ("p10", "median", "p90"))})
     for name, res in results.items():
-        if name != "S6_reporting_shock":
+        if "reporting_shock" not in res:
             v = res["err_a"]["mean"]
             checks.append({"check": f"{name} |err_a| < 1e-4", "value": v, "pass": abs(v) < 1e-4})
+        else:
+            v = res["reporting_shock"]["err_a_over_vH"]["point"]
+            checks.append({"check": f"{name} err_a_over_vH in [0.85, 1.20]", "value": v, "pass": .85 <= v <= 1.2})
+        am = alignment[name]["amp"]
+        if am is not None:
+            checks.append({"check": f"{name} amplitude calibration within 2% of observed a", "value": am["relative_miss"],
+                           "pass": abs(am["relative_miss"]) < .02})
     s6 = results["S6_reporting_shock"]
-    v = s6["reporting_shock"]["err_a_over_vH"]["point"]
-    checks.append({"check": "S6 err_a_over_vH in [0.85, 1.20]", "value": v, "pass": .85 <= v <= 1.2})
     v = s6["a_over_true_total"]["point"]
     checks.append({"check": "S6 a_over_true_total in [0.9, 1.2]", "value": v, "pass": .9 <= v <= 1.2})
     for c in checks:
         log("self-check", c["check"], c["value"], "PASS" if c["pass"] else "FAIL")
 
     result = {
-        "meta": {"seed": SEED, "reps": reps, "thin_outer": thin_outer, "thin_inner": thin_inner, "grid_reps": grid_reps,
+        "meta": {"seed": SEED, "ademp": ADEMP, "reps": reps, "thin_outer": thin_outer, "thin_inner": thin_inner, "grid_reps": grid_reps,
                  "baseline_sim_reps": sim_reps, "qs": QS.tolist(), "rows": d.n, "unique_state_weeks": len(d.keys),
                  "runs": int(d.start.sum()), "offspring_k": K,
+                 "generators": {n: {"het": g.het, "k": None if g.k is None or np.isinf(g.k) else g.k, "rho": g.rho, "gamma": g.gamma,
+                                    "transmission_share": g.share if g.het else None, "shock_s": g.shock_s} for n, g in gens.items()},
+                 "tail_reweighting": {"generators": list(TAIL_GENERATORS), "bins": "observed deciles of retained D",
+                                      "edges": edges[:-1].tolist(), "observed_share": tail[1].tolist()},
                  "design": ("real R_A rows; shared counts; run paths carried by the true growth factors and level-anchored to the "
                             "geometric mean of the observed counts of each run; global scale lambda per generator sets the mean "
                             "median retained D to 45 (50 panels, rng [SEED,50,si]); heterogeneity recalibrated so the MC mean of "
                             "fitted a equals observed a (40 panels, rng [SEED,51,si]); analyst scale D = simulated C_t, filter C_t >= 5"),
                  "superseded": "first-round audit (run-start anchoring, no lambda) kept in analysis/superseded/; not used"},
-        "observed": {"a": a_obs, "b": b_obs, "b_over_a": b_obs / a_obs, "bP": bP_obs, "b_over_bP": b_obs / bP_obs,
-                     "n": d.n, "D_p10": float(dq[0]), "D_median": float(dq[1]), "D_p90": float(dq[2]),
-                     "bw": fw_obs["b"], "bw_over_bP": fw_obs["b"] / bP_obs, "a_week": a_week_obs,
-                     "contrast_affine_minus_power": obs_contrast, "g0": g0, "kappa_mean": kap},
+        "observed": obs,
         "alignment": alignment, "scenarios": results, "baseline": baseline, "rho_k_grid": grid,
         "self_checks": checks, "self_checks_pass": all(c["pass"] for c in checks)}
     write(Path(outdir) / "ma_audit.json", result)

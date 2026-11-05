@@ -1,23 +1,30 @@
-\begin{table}[htbp]
-\centering
-\small
-\caption{Within-state, within-week and two-way slopes against the independent-Poisson reference (bootstrap 95\% confidence interval in brackets)}\label{tab:ma_within}
-\setlength{\tabcolsep}{2pt}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}>{\raggedright\arraybackslash}p{0.1750\linewidth}@{}}
+\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2400\linewidth-3.200pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1750\linewidth-3.200pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1750\linewidth-3.200pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1750\linewidth-3.200pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1750\linewidth-3.200pt\relax}@{}}
+\caption{Within-state, within-week and two-way slopes against the independent-Poisson reference (bootstrap 95\% confidence interval in brackets)}\label{tab:ma_within}\\
 \toprule
-Estimator & Slope [95\% CI] & Slope / $b_{\mathrm{P}}$ & Slope / pooled b & Fit status \\
+Estimator & Slope [95\% CI] & Slope / $b_P$ & Slope / pooled b & Fit status \\
 \midrule
+\endfirsthead
+\multicolumn{5}{@{}l}{\textit{(continued)}}\\
+\toprule
+Estimator & Slope [95\% CI] & Slope / $b_P$ & Slope / pooled b & Fit status \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r@{}}{\textit{(continued on next page)}}\\
+\endfoot
+\bottomrule
+\endlastfoot
 Pooled affine slope b & 0.560 [0.362, 0.769] & 1.26 [0.81, 1.73] & -- & -- \\
-$b_{\mathrm{P}}$, independent-Poisson reference & 0.446 [0.427, 0.465] & -- & -- & -- \\
-State FE, authors' iterated FGLS ($b_{\mathrm{w}}$) & 0.379 [0.107, 0.650] & 0.85 [0.24, 1.47] & 0.68 [0.26, 1.01] & -- \\
+$b_P$, independent-Poisson reference & 0.446 [0.427, 0.465] & -- & -- & -- \\
+State FE, iterated FGLS ($b_w$) & 0.379 [0.107, 0.650] & 0.85 [0.24, 1.47] & 0.68 [0.26, 1.01] & -- \\
 State FE, one-step WLS & 0.456 [0.228, 0.682] & 1.02 [0.51, 1.53] & 0.81 [0.57, 0.96] & single step \\
 Week FE, one-step WLS & 0.634 [0.420, 0.846] & 1.42 [0.96, 1.89] & 1.13 [0.98, 1.34] & single step \\
 State + week FE, one-step WLS & 0.480 [0.208, 0.744] & 1.08 [0.47, 1.66] & 0.86 [0.47, 1.14] & single step \\
 State + week FE, damped iterated FGLS & 0.414 [0.040, 0.659] & 0.93 [0.09, 1.48] & 0.74 [0.09, 1.10] & converged, 124 it. \\
-\bottomrule
-\end{tabularx}
-\par\smallskip
-\begin{minipage}{0.95\linewidth}\footnotesize\raggedright
-Primary bootstrap: state-week weights of the primary stream, 2,000 draws, so the pooled row equals Table S1; draws whose iterated fit does not converge are dropped (1962 valid for the damped two-way slope). Undamped two-way iteration: did not converge after 51 iterations (last values 0.4150, 0.4122); damping 0.5 removes the two-cycle. One-step WLS uses the pooled affine working precision; the iterated estimators re-weight with the fixed-effect fitted means.
-\end{minipage}
-\end{table}
+\end{longtable}
+\vspace{-.5\baselineskip}
+\noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
+The primary bootstrap uses the state-week weights of the primary stream with 2,000 draws, so the pooled row equals Table~\ref{tab:pooled}; draws whose iterated fit does not converge are dropped (1962 valid for the damped two-way slope). The undamped two-way iteration did not converge after 51 iterations (last values 0.4150, 0.4122); damping 0.5 removes the two-cycle. One-step WLS uses the pooled affine working precision; the iterated estimators re-weight with the fixed-effect fitted means.
+\end{minipage}\par
+\endgroup

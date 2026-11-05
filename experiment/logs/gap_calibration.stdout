@@ -1,0 +1,39 @@
+2026-11-04 14:33:42 +    0.3s observed two-way {'se_a': np.float64(0.0020316426951660447), 'se_b': np.float64(0.06433142977768638), 'se_log_b_over_a': 0.21884521677500943, 'a_ci': [np.float64(0.010851580521844525), np.float64(0.019057551842216056)], 'a_ci_z': [np.float64(0.010972619670050955), np.float64(0.018936512694009627)], 'a_ci_log': [np.float64(0.011366305045849043), np.float64(0.019675615671989787)], 'b_ci': [np.float64(0.4300356238204509), np.float64(0.6898755400666708)], 'b_over_a_ci': [24.06777714017404, 58.25370296554002]} season W sandwich 17.797317628352634
+2026-11-04 14:33:42 +    0.3s calibration jobs 32 panels 400 season bootstrap 200 x 200 workers 8
+2026-11-04 14:33:44 +    1.6s S1_heterogeneity panels 250 300 done
+2026-11-04 14:33:44 +    1.6s S1_heterogeneity panels 200 250 done
+2026-11-04 14:33:44 +    1.6s S1_heterogeneity panels 350 400 done
+2026-11-04 14:33:44 +    1.6s S1_heterogeneity panels 300 350 done
+2026-11-04 14:34:30 +   47.5s S1_heterogeneity panels 150 200 done
+2026-11-04 14:34:30 +   47.7s S1_heterogeneity panels 50 100 done
+2026-11-04 14:34:30 +   47.8s S1_heterogeneity panels 100 150 done
+2026-11-04 14:34:30 +   48.0s S1_heterogeneity panels 0 50 done
+2026-11-04 14:34:33 +   50.6s S6_reporting_shock panels 50 100 done
+2026-11-04 14:34:33 +   50.7s S6_reporting_shock panels 0 50 done
+2026-11-04 14:34:33 +   50.8s S6_reporting_shock panels 200 250 done
+2026-11-04 14:34:33 +   50.8s S6_reporting_shock panels 150 200 done
+2026-11-04 14:34:33 +   50.9s S6_reporting_shock panels 100 150 done
+2026-11-04 14:34:33 +   51.0s S6_reporting_shock panels 250 300 done
+2026-11-04 14:34:33 +   51.1s S6_reporting_shock panels 300 350 done
+2026-11-04 14:34:34 +   51.3s S6_reporting_shock panels 350 400 done
+2026-11-04 14:34:37 +   54.7s S8_combo panels 200 250 done
+2026-11-04 14:34:37 +   54.8s S8_combo panels 300 350 done
+2026-11-04 14:34:37 +   54.8s S8_combo panels 250 300 done
+2026-11-04 14:34:37 +   55.0s S8_combo panels 350 400 done
+2026-11-04 14:35:24 +  101.4s S8_combo panels 100 150 done
+2026-11-04 14:35:24 +  101.5s S8_combo panels 0 50 done
+2026-11-04 14:35:24 +  101.5s S8_combo panels 50 100 done
+2026-11-04 14:35:24 +  102.0s S8_combo panels 150 200 done
+2026-11-04 14:35:27 +  104.5s S9_national panels 200 250 done
+2026-11-04 14:35:27 +  104.5s S9_national panels 250 300 done
+2026-11-04 14:35:27 +  104.5s S9_national panels 0 50 done
+2026-11-04 14:35:27 +  104.6s S9_national panels 300 350 done
+2026-11-04 14:35:27 +  104.6s S9_national panels 100 150 done
+2026-11-04 14:35:27 +  104.7s S9_national panels 50 100 done
+2026-11-04 14:35:27 +  105.1s S9_national panels 350 400 done
+2026-11-04 14:35:28 +  105.2s S9_national panels 150 200 done
+2026-11-04 14:35:28 +  105.5s S1_heterogeneity two-way a/E 0.9925 a/true 0.99 b/E 0.945 b/a 0.97 se ratio {'a': 1.4006297554807223, 'b': 0.934279084155398, 'log_b_over_a': 1.0213037201084} boot ratio {'a': 2.5221182787649252, 'b': 1.6872291323576907} season size 0.0425 p_obs 0.0125
+2026-11-04 14:35:28 +  105.6s S6_reporting_shock two-way a/E 0.925 a/true 0.9275 b/E 0.9175 b/a 0.915 se ratio {'a': 0.9984856226737462, 'b': 0.916146391537945, 'log_b_over_a': 0.9295243647140203} boot ratio {'a': 1.7601081784192365, 'b': 1.6108346802952949} season size 0.195 p_obs 0.045
+2026-11-04 14:35:28 +  105.6s S8_combo two-way a/E 0.925 a/true 0.4225 b/E 0.9375 b/a 0.9225 se ratio {'a': 0.9394095545095432, 'b': 0.9699159310530193, 'log_b_over_a': 0.9367324409888361} boot ratio {'a': 1.710433269237178, 'b': 1.7603963583374347} season size 0.2175 p_obs 0.0275
+2026-11-04 14:35:28 +  105.7s S9_national two-way a/E 0.9825 a/true 0.785 b/E 0.9275 b/a 0.9625 se ratio {'a': 1.2198924948599386, 'b': 0.9871416127121133, 'log_b_over_a': 1.0579650123377335} boot ratio {'a': 1.919132843576897, 'b': 1.782774618447191} season size 0.0725 p_obs 0.005
+2026-11-04 14:35:28 +  105.7s calibration complete; chosen two_way_sandwich

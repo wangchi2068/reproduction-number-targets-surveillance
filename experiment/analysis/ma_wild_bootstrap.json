@@ -1,0 +1,38 @@
+{
+  "observed": {
+    "W_CGM": 17.79731762835243,
+    "df": 3,
+    "asymptotic_chi2_p": 0.0004842776149698323,
+    "season_intercepts": [
+      0.01585219745612899,
+      0.00708584558862944,
+      0.015368325342755217,
+      0.01800371809014694
+    ],
+    "common_slope": 0.6072256678255336
+  },
+  "wild_cluster_bootstrap": {
+    "method": "Webb 6-point Wild Cluster Bootstrap (State clusters)",
+    "n_draws": 2000,
+    "mean": 4.226042358135907,
+    "median": 3.053116323961767,
+    "sd": 7.3631934876837795,
+    "null_q90": 7.435046148130654,
+    "null_q95": 9.849401753825079,
+    "null_q99": 19.59204135567546,
+    "p_value": 0.0125,
+    "p_value_mcse": 0.002484325864293974
+  },
+  "permutation_test": {
+    "method": "Within-state season permutation",
+    "n_draws": 2000,
+    "mean": 6.003446312598255,
+    "median": 3.488591043990739,
+    "sd": 10.032622611751522,
+    "null_q90": 12.06304374238478,
+    "null_q95": 17.067641812142917,
+    "null_q99": 42.93692706279943,
+    "p_value": 0.0455,
+    "p_value_mcse": 0.004659922209651144
+  }
+}

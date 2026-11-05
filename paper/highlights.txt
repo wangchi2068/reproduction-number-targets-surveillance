@@ -1,5 +1,0 @@
-Current-value, realised-mean and process-mean targets have different error floors
-Reporting shocks and transmission variation share the same single-period moments
-Dispersion-curve intercepts combine transmission and reporting variation
-Counting slopes and thinning do not identify offspring overdispersion
-A crossover near 37 weekly admissions is descriptive, not a sample-size rule

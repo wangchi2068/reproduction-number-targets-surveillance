@@ -1,0 +1,28 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Declared known-truth tests by generator under one decision rule}
+\label{tab:ma_tests}
+\begin{tabularx}{\linewidth}{@{}l*{6}{>{\centering\arraybackslash}X}c@{}}
+\toprule
+Generator & $b/\bP$ & $b/a$ & Thinning $c/\bP$ & Pooled / within slope & Week-centring reduction & Score contrast & Passed \\
+Observed & 1.26 & 37.4 & 0.91 & 1.48 & 34.7 & $-0.0014$ &  \\
+\midrule
+S0 & fail (0.85 to 1.01) & n.d. & fail (0.95 to 1.00) & fail (0.95 to 1.13) & n.d. & pass (0.195) & 1/4 \\
+S1 & fail (0.69 to 1.02) & fail (19.38 to 32.86) & fail (0.91 to 0.99) & fail (0.94 to 1.21) & fail (-4.0 to 0.8) & fail (0.001) & 0/6 \\
+S2 & pass (1.13 to 1.32) & n.d. & pass (0.90 to 0.97) & fail (0.95 to 1.10) & n.d. & pass (0.152) & 3/4 \\
+S2P & fail (0.73 to 0.86) & n.d. & fail (0.95 to 1.00) & fail (0.96 to 1.13) & n.d. & pass (0.171) & 1/4 \\
+S3 & pass (0.98 to 1.31) & pass (27.41 to 44.44) & pass (0.83 to 0.93) & fail (0.93 to 1.14) & fail (-5.3 to 0.8) & fail (0.001) & 3/6 \\
+S4 & fail (0.60 to 0.87) & fail (17.04 to 27.65) & fail (0.96 to 1.04) & fail (0.99 to 1.37) & fail (58.0 to 65.7) & fail (0.000) & 0/6 \\
+S5 & fail (0.87 to 1.20) & pass (24.66 to 40.02) & pass (0.87 to 0.98) & fail (0.94 to 1.25) & fail (53.5 to 64.2) & fail (0.000) & 2/6 \\
+S6 & pass (0.97 to 1.34) & pass (28.17 to 47.60) & pass (0.81 to 0.92) & fail (0.90 to 1.12) & fail (-5.0 to 1.6) & fail (0.003) & 3/6 \\
+S7a & fail (1.34 to 1.79) & fail (39.46 to 65.92) & pass (0.86 to 0.99) & fail (0.95 to 1.18) & fail (-7.5 to 1.9) & pass (0.495) & 2/6 \\
+S7b & fail (1.98 to 2.58) & fail (58.42 to 99.67) & pass (0.86 to 0.98) & fail (0.97 to 1.21) & fail (-7.5 to 5.6) & fail (0.987) & 1/6 \\
+S8 & pass (1.08 to 1.52) & pass (30.81 to 58.24) & pass (0.81 to 0.95) & fail (0.92 to 1.15) & fail (-6.1 to 2.3) & pass (0.069) & 4/6 \\
+S9 & pass (1.04 to 1.48) & pass (29.45 to 51.74) & pass (0.82 to 0.94) & fail (0.92 to 1.17) & fail (12.5 to 25.9) & pass (0.057) & 4/6 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize\raggedright Pass or fail under the decision rule of Section~\ref{sec:diagnostics}. Brackets give the Monte Carlo 2.5--97.5\% range or, for the power-minus-affine score contrast, the quantile of the observed value pooled over five streams. The week-centring reduction is in per cent. n.d., not defined because the intercept is essentially zero. The pooled/within slope ratio is $b/b_w$, with $b_w$ the state fixed-effects slope. S9 is S8 with half of the transmission heterogeneity carried by a national calendar-week component.\end{minipage}
+\end{table}

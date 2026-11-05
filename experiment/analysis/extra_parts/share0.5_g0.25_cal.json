@@ -1,0 +1,223 @@
+{
+  "id": "share0.5_g0.25_cal",
+  "kind": "share",
+  "share": 0.5,
+  "gamma": 0.25,
+  "name": null,
+  "calibrated_amp": true,
+  "panels_per_stream": 200,
+  "streams": 5,
+  "lambda": 0.84375,
+  "amp": 1.1996912377201916,
+  "sigma": 0.18777232060183507,
+  "shock_s": 0.13454582703142898,
+  "calibration": {
+    "count_scale_lambda": "tuned: MC mean of the median retained count = observed 45",
+    "variance_amplitude": "tuned: MC mean of fitted a = observed a",
+    "reporting_shock_s": "set by the variance split: 2 kappa^2 s^2 = 0.5 x amp x observed a",
+    "fixed_by_design": {
+      "offspring_k": 0.3,
+      "rho": 0.25,
+      "scale_gamma": 0.25,
+      "transmission_share": 0.5
+    }
+  },
+  "alignment": {
+    "lambda_first": {
+      "lambda": 0.84375,
+      "median_D_50panels": 45.17,
+      "at_bound": false
+    },
+    "amp": {
+      "amp": 1.1996912377201916,
+      "mean_a_40panels": 0.015068565784431623,
+      "iterations": 7,
+      "relative_miss": 0.007623063150993703,
+      "path": [
+        {
+          "amp": 1.0,
+          "mean_a_40panels": 0.012570602304357203
+        },
+        {
+          "amp": 1.1896459548996123,
+          "mean_a_40panels": 0.01483464308646199
+        },
+        {
+          "amp": 1.1996912377201916,
+          "mean_a_40panels": 0.015068565784431623
+        },
+        {
+          "amp": 1.194795781838849,
+          "mean_a_40panels": 0.015286393965392808
+        },
+        {
+          "amp": 1.2022532571135673,
+          "mean_a_40panels": 0.015126955027243327
+        },
+        {
+          "amp": 1.2103164414632284,
+          "mean_a_40panels": 0.015131138147503675
+        },
+        {
+          "amp": 0.8699646896645903,
+          "mean_a_40panels": 0.01086450350330966
+        }
+      ]
+    },
+    "lambda": {
+      "lambda": 0.84375,
+      "median_D_50panels": 45.02,
+      "at_bound": false
+    },
+    "sigma": 0.18777232060183507,
+    "shock_s": 0.13454582703142898
+  },
+  "a": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 0.01510794511666815,
+    "sd": 0.0011522589048004535,
+    "q025": 0.012909216429876328,
+    "q975": 0.017426405968881956,
+    "mcse_mean": 3.643762593380558e-05,
+    "mcse_q025": 0.00013183259243108113,
+    "mcse_q975": 8.23545682769283e-05
+  },
+  "b": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 0.6108548427349844,
+    "sd": 0.05520843526880628,
+    "q025": 0.5068924325325552,
+    "q975": 0.7230753699637135,
+    "mcse_mean": 0.0017458440150339817,
+    "mcse_q025": 0.004541441667937488,
+    "mcse_q975": 0.006258026640383066
+  },
+  "b_over_a": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 40.849251925834764,
+    "sd": 6.219021018665383,
+    "q025": 30.055795210817806,
+    "q975": 54.35269553165288,
+    "mcse_mean": 0.1966627123544314,
+    "mcse_q025": 0.373535847545681,
+    "mcse_q975": 1.0114881237060622
+  },
+  "b_over_bP": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 1.2970504663359093,
+    "sd": 0.1118200673933101,
+    "q025": 1.08721444828123,
+    "q975": 1.5205157331259125,
+    "mcse_mean": 0.0035360610107638716,
+    "mcse_q025": 0.010713312263981437,
+    "mcse_q975": 0.013506611176556493
+  },
+  "contrast": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 0.01023180532403989,
+    "sd": 0.0076988236053624,
+    "q025": -0.004847940642392157,
+    "q975": 0.02486797275355542,
+    "mcse_mean": 0.00024345817896814496,
+    "mcse_q025": 0.0007065394052951739,
+    "mcse_q975": 0.0007742381568540139
+  },
+  "true_transmission_relvar": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 0.008639076285124975,
+    "sd": 0.00010063992585041151,
+    "q025": 0.008425326023894127,
+    "q975": 0.008825569727240188,
+    "mcse_mean": 3.1825138923775853e-06,
+    "mcse_q025": 1.0250033148184347e-05,
+    "mcse_q975": 7.656151286324115e-06
+  },
+  "true_total_relvar": {
+    "n_valid": 1000,
+    "n_total": 1000,
+    "mean": 0.017627157012637163,
+    "sd": 0.0004137913041552571,
+    "q025": 0.01681029747537848,
+    "q975": 0.018406913610680486,
+    "mcse_mean": 1.3085229971021085e-05,
+    "mcse_q025": 3.0185885353468398e-05,
+    "mcse_q975": 3.0627168842998864e-05
+  },
+  "a_over_true_total": 0.857083482369678,
+  "a_over_true_transmission": 1.748791724721944,
+  "observed_contrast_quantile": {
+    "per_stream": [
+      {
+        "stream": 0,
+        "observed_contrast_quantile": 0.095,
+        "mcse": 0.020733427116615334,
+        "n": 200
+      },
+      {
+        "stream": 1,
+        "observed_contrast_quantile": 0.05,
+        "mcse": 0.015411035007422441,
+        "n": 200
+      },
+      {
+        "stream": 2,
+        "observed_contrast_quantile": 0.07,
+        "mcse": 0.01804161855266872,
+        "n": 200
+      },
+      {
+        "stream": 3,
+        "observed_contrast_quantile": 0.075,
+        "mcse": 0.018624580532189176,
+        "n": 200
+      },
+      {
+        "stream": 4,
+        "observed_contrast_quantile": 0.06,
+        "mcse": 0.016792855623746664,
+        "n": 200
+      }
+    ],
+    "mean": 0.07,
+    "sd_across_streams": 0.01695582495781317,
+    "pooled": 0.07,
+    "pooled_mcse": 0.008068457101577725
+  },
+  "compatibility": {
+    "a": {
+      "observed": 0.014954566182030291,
+      "sim_q025": 0.012909216429876328,
+      "sim_q975": 0.017426405968881956,
+      "inside": true,
+      "observed_quantile": 0.467
+    },
+    "b_over_bP": {
+      "observed": 1.2568183250421943,
+      "sim_q025": 1.08721444828123,
+      "sim_q975": 1.5205157331259125,
+      "inside": true,
+      "observed_quantile": 0.36
+    },
+    "b_over_a": {
+      "observed": 37.443786407954434,
+      "sim_q025": 30.055795210817806,
+      "sim_q975": 54.35269553165288,
+      "inside": true,
+      "observed_quantile": 0.302
+    },
+    "contrast": {
+      "observed": -0.0013596580771664257,
+      "sim_q025": -0.004847940642392157,
+      "sim_q975": 0.02486797275355542,
+      "inside": true,
+      "observed_quantile": 0.07
+    }
+  },
+  "compatible_all": true
+}

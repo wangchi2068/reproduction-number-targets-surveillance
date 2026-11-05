@@ -1,0 +1,510 @@
+{
+  "meta": {
+    "seed": 2026110351,
+    "panels": 200,
+    "rng": "[SEED, 73, stream]; calibration streams as ma_audit_extra / ma_audit_national",
+    "score": "mean L/mu + log mu on held-out rows; positive power-minus-affine favours affine",
+    "folds": {
+      "state": "leave one state out",
+      "season": "leave one season out"
+    }
+  },
+  "observed": {
+    "state": -0.002018428325305286,
+    "season": 0.004626341502804648
+  },
+  "generators": {
+    "S0_poisson": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.0010057671701390978,
+          "sd": 0.0026294597739918366,
+          "q025": -0.006975738214624047,
+          "q975": 0.002709843379353203,
+          "mcse_mean": 0.00018593088370468742,
+          "mcse_q025": 0.0016890349490317595,
+          "mcse_q975": 0.001229476209718191
+        },
+        "share_favouring_affine": 0.335,
+        "share_mcse": 0.0333747659167821,
+        "observed_quantile": 0.235,
+        "observed_quantile_mcse": 0.029981244136960027,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.0008901247823538028,
+          "sd": 0.0032118034540850626,
+          "q025": -0.008490789141316256,
+          "q975": 0.004695561207000846,
+          "mcse_mean": 0.0002271088002221924,
+          "mcse_q025": 0.0017671999415708982,
+          "mcse_q975": 0.0007058569365517546
+        },
+        "share_favouring_affine": 0.375,
+        "share_mcse": 0.03423265984407288,
+        "observed_quantile": 0.97,
+        "observed_quantile_mcse": 0.012062338081814825,
+        "inside_central_95": true
+      }
+    },
+    "S1_heterogeneity": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.01283855664914546,
+          "sd": 0.005182050789276322,
+          "q025": 0.0034737825136911668,
+          "q975": 0.02280420268995983,
+          "mcse_mean": 0.0003664263253550388,
+          "mcse_q025": 0.0003029995533162922,
+          "mcse_q975": 0.0008727915367817975
+        },
+        "share_favouring_affine": 0.995,
+        "share_mcse": 0.004987484335815003,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.012967708988664417,
+          "sd": 0.005267375540083399,
+          "q025": 0.003520446864644117,
+          "q975": 0.02388766048648533,
+          "mcse_mean": 0.00037245969634491246,
+          "mcse_q025": 0.0006012519698861114,
+          "mcse_q975": 0.000885223492958508
+        },
+        "share_favouring_affine": 0.995,
+        "share_mcse": 0.004987484335815003,
+        "observed_quantile": 0.06,
+        "observed_quantile_mcse": 0.016792855623746664,
+        "inside_central_95": true
+      }
+    },
+    "S2_nb_reporting": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.00021036137802001476,
+          "sd": 0.0018150512193973107,
+          "q025": -0.004114859386027289,
+          "q975": 0.002741269374719133,
+          "mcse_mean": 0.00012834350254367505,
+          "mcse_q025": 0.0005207642843692043,
+          "mcse_q975": 0.00031080273572771665
+        },
+        "share_favouring_affine": 0.51,
+        "share_mcse": 0.03534826728426727,
+        "observed_quantile": 0.125,
+        "observed_quantile_mcse": 0.023385358667337135,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -8.876706453932754e-05,
+          "sd": 0.002170684340089372,
+          "q025": -0.0046955402508864555,
+          "q975": 0.0038538330257321817,
+          "mcse_mean": 0.00015349056166926407,
+          "mcse_q025": 0.0010032376571249787,
+          "mcse_q975": 0.0005147068562686991
+        },
+        "share_favouring_affine": 0.5,
+        "share_mcse": 0.035355339059327376,
+        "observed_quantile": 0.985,
+        "observed_quantile_mcse": 0.008595056718835545,
+        "inside_central_95": false
+      }
+    },
+    "S3_heterogeneity_nb": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.017380412633790258,
+          "sd": 0.006156625561308961,
+          "q025": 0.006963270224439345,
+          "q975": 0.03052393693472143,
+          "mcse_mean": 0.0004353391683628001,
+          "mcse_q025": 0.0006577044628916722,
+          "mcse_q975": 0.0016519474436488023
+        },
+        "share_favouring_affine": 1.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.01748550930169873,
+          "sd": 0.006204169997115959,
+          "q025": 0.0069382873424766725,
+          "q975": 0.03018871017023803,
+          "mcse_mean": 0.00043870106765948175,
+          "mcse_q025": 0.0004951189911393366,
+          "mcse_q975": 0.002240761318837328
+        },
+        "share_favouring_affine": 1.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      }
+    },
+    "S4_structured": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.011205126756787715,
+          "sd": 0.005044019891131948,
+          "q025": 0.001995143118243527,
+          "q975": 0.020522061347749185,
+          "mcse_mean": 0.00035666606694592315,
+          "mcse_q025": 0.0006392101276773059,
+          "mcse_q975": 0.0011750450340254422
+        },
+        "share_favouring_affine": 0.995,
+        "share_mcse": 0.004987484335815003,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.015779336255317244,
+          "sd": 0.005367049702563252,
+          "q025": 0.005839447122814779,
+          "q975": 0.02645687493553379,
+          "mcse_mean": 0.0003795077239647718,
+          "mcse_q025": 0.0006474604282281996,
+          "mcse_q975": 0.0012673227286470147
+        },
+        "share_favouring_affine": 1.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.01,
+        "observed_quantile_mcse": 0.007035623639735145,
+        "inside_central_95": false
+      }
+    },
+    "S5_structured_nb": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.024032498622937513,
+          "sd": 0.0068445112655095616,
+          "q025": 0.01099108995614858,
+          "q975": 0.037864697835887126,
+          "mcse_mean": 0.0004839800329749529,
+          "mcse_q025": 0.0010357360845032228,
+          "mcse_q975": 0.001131657301296104
+        },
+        "share_favouring_affine": 1.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.0283178130649125,
+          "sd": 0.008161582904972575,
+          "q025": 0.013923422406241526,
+          "q975": 0.04428349983899227,
+          "mcse_mean": 0.0005771110617322309,
+          "mcse_q025": 0.000938792568049057,
+          "mcse_q975": 0.0013693992895485517
+        },
+        "share_favouring_affine": 1.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      }
+    },
+    "S2P_branching_poisson": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.000996820922764735,
+          "sd": 0.002557689974367319,
+          "q025": -0.006805694068063626,
+          "q975": 0.0029399848221641177,
+          "mcse_mean": 0.00018085599250479783,
+          "mcse_q025": 0.0010704233800044505,
+          "mcse_q975": 0.0003260110030384464
+        },
+        "share_favouring_affine": 0.355,
+        "share_mcse": 0.033836001536824645,
+        "observed_quantile": 0.215,
+        "observed_quantile_mcse": 0.029049526674285075,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.0008073649762290588,
+          "sd": 0.0043320151999277036,
+          "q025": -0.006355405859004348,
+          "q975": 0.004207222957175855,
+          "mcse_mean": 0.00030631973240720763,
+          "mcse_q025": 0.0006879777900012135,
+          "mcse_q975": 0.0007228414957645419
+        },
+        "share_favouring_affine": 0.42,
+        "share_mcse": 0.034899856733230296,
+        "observed_quantile": 0.98,
+        "observed_quantile_mcse": 0.009899494936611668,
+        "inside_central_95": false
+      }
+    },
+    "S6_reporting_shock": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.018738912421497972,
+          "sd": 0.008295230551084916,
+          "q025": 0.0034412265252136242,
+          "q975": 0.03418555946381527,
+          "mcse_mean": 0.0005865613774177965,
+          "mcse_q025": 0.001291285543068204,
+          "mcse_q975": 0.0011839277465730221
+        },
+        "share_favouring_affine": 0.995,
+        "share_mcse": 0.004987484335815003,
+        "observed_quantile": 0.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.018604784894001514,
+          "sd": 0.008187885516592283,
+          "q025": 0.0036061590744473388,
+          "q975": 0.03547801109666094,
+          "mcse_mean": 0.0005789709372361521,
+          "mcse_q025": 0.0007626265591259322,
+          "mcse_q975": 0.0017132689902359128
+        },
+        "share_favouring_affine": 0.995,
+        "share_mcse": 0.004987484335815003,
+        "observed_quantile": 0.045,
+        "observed_quantile_mcse": 0.014658615214269049,
+        "inside_central_95": true
+      }
+    },
+    "S7a_scale_dep": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.0013204593636546905,
+          "sd": 0.006222330882210776,
+          "q025": -0.011796626584482234,
+          "q975": 0.012469770013294364,
+          "mcse_mean": 0.0004399852361597712,
+          "mcse_q025": 0.0008338443708831222,
+          "mcse_q975": 0.0020187674230829136
+        },
+        "share_favouring_affine": 0.41,
+        "share_mcse": 0.0347778665245584,
+        "observed_quantile": 0.475,
+        "observed_quantile_mcse": 0.035311117229563836,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.0008472367089692917,
+          "sd": 0.006263201478990543,
+          "q025": -0.012035445782989596,
+          "q975": 0.010706132905283397,
+          "mcse_mean": 0.0004428752237731827,
+          "mcse_q025": 0.0008621999787281708,
+          "mcse_q975": 0.0014257372314790153
+        },
+        "share_favouring_affine": 0.44,
+        "share_mcse": 0.03509985754956849,
+        "observed_quantile": 0.805,
+        "observed_quantile_mcse": 0.028015620642777128,
+        "inside_central_95": true
+      }
+    },
+    "S7b_scale_dep": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.015423847433680532,
+          "sd": 0.005424661955265796,
+          "q025": -0.025245124053887805,
+          "q975": -0.005669164180450357,
+          "mcse_mean": 0.000383581525421312,
+          "mcse_q025": 0.0005600534481996195,
+          "mcse_q975": 0.0015276940316280377
+        },
+        "share_favouring_affine": 0.0,
+        "share_mcse": 0.0,
+        "observed_quantile": 0.995,
+        "observed_quantile_mcse": 0.004987484335815003,
+        "inside_central_95": false
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": -0.01430619753330665,
+          "sd": 0.005675695086708537,
+          "q025": -0.024808859985580457,
+          "q975": -0.0038074428888381956,
+          "mcse_mean": 0.0004013322483758776,
+          "mcse_q025": 0.0006889634360363684,
+          "mcse_q975": 0.0013308716437438024
+        },
+        "share_favouring_affine": 0.005,
+        "share_mcse": 0.004987484335815001,
+        "observed_quantile": 1.0,
+        "observed_quantile_mcse": 0.0,
+        "inside_central_95": false
+      }
+    },
+    "S8_combo": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.011073178435227123,
+          "sd": 0.00846816786851621,
+          "q025": -0.004615464259741505,
+          "q975": 0.0266125811746983,
+          "mcse_mean": 0.0005987898924053845,
+          "mcse_q025": 0.0013742215614852091,
+          "mcse_q975": 0.002002222750269958
+        },
+        "share_favouring_affine": 0.905,
+        "share_mcse": 0.02073342711661533,
+        "observed_quantile": 0.05,
+        "observed_quantile_mcse": 0.015411035007422441,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.011153613834322194,
+          "sd": 0.008735377567174497,
+          "q025": -0.006002359791832699,
+          "q975": 0.02839602389398323,
+          "mcse_mean": 0.0006176844713973933,
+          "mcse_q025": 0.0013964746568503543,
+          "mcse_q975": 0.002041936620831005
+        },
+        "share_favouring_affine": 0.905,
+        "share_mcse": 0.02073342711661533,
+        "observed_quantile": 0.22,
+        "observed_quantile_mcse": 0.02929163703175362,
+        "inside_central_95": true
+      }
+    },
+    "S9_national": {
+      "panels": 200,
+      "state": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.01183208735651979,
+          "sd": 0.008275971945999168,
+          "q025": -0.004926944353930441,
+          "q975": 0.02666789965940296,
+          "mcse_mean": 0.000585199588392564,
+          "mcse_q025": 0.0019536581649551355,
+          "mcse_q975": 0.0019357916895515496
+        },
+        "share_favouring_affine": 0.915,
+        "share_mcse": 0.019719913792915014,
+        "observed_quantile": 0.055,
+        "observed_quantile_mcse": 0.016120638945153507,
+        "inside_central_95": true
+      },
+      "season": {
+        "n": 200,
+        "contrast": {
+          "n_valid": 200,
+          "n_total": 200,
+          "mean": 0.012595485832733445,
+          "sd": 0.00883069423438423,
+          "q025": -0.004356299583953145,
+          "q975": 0.030464076311005894,
+          "mcse_mean": 0.0006244243775718037,
+          "mcse_q025": 0.001854003707512755,
+          "mcse_q975": 0.0021355898384292104
+        },
+        "share_favouring_affine": 0.925,
+        "share_mcse": 0.01862458053218917,
+        "observed_quantile": 0.145,
+        "observed_quantile_mcse": 0.02489728900904675,
+        "inside_central_95": true
+      }
+    }
+  }
+}

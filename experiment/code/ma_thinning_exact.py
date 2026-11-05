@@ -92,8 +92,8 @@ def main():
     c_noq01 = float(inv[:-1] @ db[:-1] / (inv[:-1] @ inv[:-1]))
     # authors' Monte Carlo rates (shared-count thinning, analysis/authors/thinning.json)
     src = EXP / "analysis/authors/thinning.json"
-    if not src.exists():  # authors' lane still running: same pipeline output from the reproduce-check rerun
-        src = EXP.parents[0] / "review/repro/out/thinning.json"
+    if not src.exists():  # run_all.sh runs the authors' pipeline first; never read outputs from outside the package
+        raise SystemExit(f"missing {src}: run the authors' pipeline (run_all.sh lane 1) first")
     auth = json.loads(src.read_text())["estimates"]
     mc = [{"q": float(q), "rate_mc": auth[f"full/q{q:.1f}/c"]["value"], "ci95": auth[f"full/q{q:.1f}/c"]["ci95"]} for q in QS]
     # leverage of each q in the least-squares rate through the origin
@@ -117,7 +117,7 @@ def main():
         check.append({"q": q, "independent_mc_rate": mc_rate, "mc_se": float(np.nanstd(fb["b"], ddof=1) / np.sqrt(200) / (1 / q - 1)),
                       "expected_loss_rate": ex})
         log("mc check q", q, mc_rate, "expected-loss", ex)
-    out = {"authors_mc_source": str(src.relative_to(EXP.parents[2])), "bP_delta": bp, "observed_b": base["b"], "per_q": per_q, "authors_mc": mc, "lsq_leverage_by_q": dict(zip([f"{q:.1f}" for q in QS], lev)),
+    out = {"authors_mc_source": str(src.resolve().relative_to(EXP)), "bP_delta": bp, "observed_b": base["b"], "per_q": per_q, "authors_mc": mc, "lsq_leverage_by_q": dict(zip([f"{q:.1f}" for q in QS], lev)),
            "c_exact_all_q": c_exact, "c_exact_all_q_over_bP": c_exact / bp,
            "c_exact_without_q01": c_noq01, "c_exact_without_q01_over_bP": c_noq01 / bp,
            "var_log_small_count": vl, "mc_check": check,

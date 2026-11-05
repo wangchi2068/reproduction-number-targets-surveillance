@@ -1,0 +1,454 @@
+{
+  "rows": [
+    {
+      "r": 100,
+      "state": -0.0028845333884865536,
+      "state_folds": 51,
+      "state_affine_better_folds": 30,
+      "season": -0.0013556342989146355,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 101,
+      "state": 0.006609179564239131,
+      "state_folds": 51,
+      "state_affine_better_folds": 27,
+      "season": 0.006889160071653919,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 102,
+      "state": -0.002533530128492189,
+      "state_folds": 51,
+      "state_affine_better_folds": 23,
+      "season": -0.002160744936310408,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 103,
+      "state": -0.0059354285321109096,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.006244502407319446,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 104,
+      "state": 0.004490102507912415,
+      "state_folds": 51,
+      "state_affine_better_folds": 27,
+      "season": 0.004256851668661557,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 105,
+      "state": -0.003160049781143709,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": -0.0035739197088623066,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 106,
+      "state": 0.006071338854885465,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": 0.0072581290123164555,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 107,
+      "state": -0.0038723629146882425,
+      "state_folds": 51,
+      "state_affine_better_folds": 23,
+      "season": -0.0037140605604448207,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 108,
+      "state": -0.0035685206322630418,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": -0.0036306634451933203,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 109,
+      "state": -0.0008582054201109401,
+      "state_folds": 51,
+      "state_affine_better_folds": 22,
+      "season": 0.00023417378325727768,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 110,
+      "state": -0.009035581439462783,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.009086722237156784,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 111,
+      "state": 0.004588813177706802,
+      "state_folds": 51,
+      "state_affine_better_folds": 25,
+      "season": 0.004166835872190172,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 112,
+      "state": -0.0001387359267898598,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": 0.0013316949405209149,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 113,
+      "state": -0.003336586414002036,
+      "state_folds": 51,
+      "state_affine_better_folds": 25,
+      "season": -0.0011249699160037678,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 114,
+      "state": -0.009284955527591865,
+      "state_folds": 51,
+      "state_affine_better_folds": 18,
+      "season": -0.00885161924506214,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 115,
+      "state": -0.010000545727749131,
+      "state_folds": 51,
+      "state_affine_better_folds": 20,
+      "season": -0.009159287704516003,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 116,
+      "state": 0.008166948193278518,
+      "state_folds": 51,
+      "state_affine_better_folds": 28,
+      "season": 0.010160141183930263,
+      "season_folds": 4,
+      "season_affine_better_folds": 4
+    },
+    {
+      "r": 117,
+      "state": 0.00041811752182149706,
+      "state_folds": 51,
+      "state_affine_better_folds": 24,
+      "season": 0.0013376133462945205,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 118,
+      "state": -0.0017585894899165878,
+      "state_folds": 51,
+      "state_affine_better_folds": 25,
+      "season": -0.0012917255269867683,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 119,
+      "state": -0.005048477203698541,
+      "state_folds": 51,
+      "state_affine_better_folds": 20,
+      "season": -0.004717129192178407,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 120,
+      "state": -0.004401184657049648,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": -0.003672153100316657,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 121,
+      "state": 0.008314840048236119,
+      "state_folds": 51,
+      "state_affine_better_folds": 33,
+      "season": 0.010659530686177313,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 122,
+      "state": -0.00119813738202043,
+      "state_folds": 51,
+      "state_affine_better_folds": 19,
+      "season": -0.0005821434858000272,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 123,
+      "state": -0.013689934387747685,
+      "state_folds": 51,
+      "state_affine_better_folds": 18,
+      "season": -0.012452403804678124,
+      "season_folds": 4,
+      "season_affine_better_folds": 0
+    },
+    {
+      "r": 124,
+      "state": -0.002654045479054959,
+      "state_folds": 51,
+      "state_affine_better_folds": 23,
+      "season": -0.0003799028198951159,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 125,
+      "state": -0.005237747426799384,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.005113241098456792,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 126,
+      "state": -0.01050616221257237,
+      "state_folds": 51,
+      "state_affine_better_folds": 17,
+      "season": -0.009988673174221939,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 127,
+      "state": 0.0033459136628791993,
+      "state_folds": 51,
+      "state_affine_better_folds": 24,
+      "season": 0.0029791604990162665,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 128,
+      "state": 0.002183048963061895,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": 0.00516882281393567,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 129,
+      "state": 0.00863804620597925,
+      "state_folds": 51,
+      "state_affine_better_folds": 29,
+      "season": 0.007494347728927605,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 130,
+      "state": 0.0022003150271876527,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": 0.0020255764107540044,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 131,
+      "state": 0.0010786547129400653,
+      "state_folds": 51,
+      "state_affine_better_folds": 20,
+      "season": 0.003916821758643505,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 132,
+      "state": 0.0024478559830341863,
+      "state_folds": 51,
+      "state_affine_better_folds": 30,
+      "season": 0.004718146182679786,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 133,
+      "state": -0.0007041920330445338,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": -0.0020341417020558416,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 134,
+      "state": -0.0018239375169837285,
+      "state_folds": 51,
+      "state_affine_better_folds": 23,
+      "season": -0.0016754632465842798,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 135,
+      "state": 0.01302714674016102,
+      "state_folds": 51,
+      "state_affine_better_folds": 30,
+      "season": 0.012523619450420256,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 136,
+      "state": 0.001278776422077333,
+      "state_folds": 51,
+      "state_affine_better_folds": 28,
+      "season": 0.0008296885735010129,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 137,
+      "state": 0.0010816735159695902,
+      "state_folds": 51,
+      "state_affine_better_folds": 22,
+      "season": 0.0024722961450292695,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 138,
+      "state": -0.0027708181972781343,
+      "state_folds": 51,
+      "state_affine_better_folds": 25,
+      "season": -0.002603632737782938,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 139,
+      "state": -0.005548293634269429,
+      "state_folds": 51,
+      "state_affine_better_folds": 23,
+      "season": -0.00651403709880097,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 140,
+      "state": -0.006145152687383878,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.00447448460296681,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 141,
+      "state": 0.003815531406410004,
+      "state_folds": 51,
+      "state_affine_better_folds": 22,
+      "season": 0.005191958183075352,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    },
+    {
+      "r": 142,
+      "state": 0.021903257756580957,
+      "state_folds": 51,
+      "state_affine_better_folds": 31,
+      "season": 0.02084804972130626,
+      "season_folds": 4,
+      "season_affine_better_folds": 4
+    },
+    {
+      "r": 143,
+      "state": -0.00919323112142215,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.009524140985467482,
+      "season_folds": 4,
+      "season_affine_better_folds": 0
+    },
+    {
+      "r": 144,
+      "state": 0.013000543311396091,
+      "state_folds": 51,
+      "state_affine_better_folds": 33,
+      "season": 0.012836304406454774,
+      "season_folds": 4,
+      "season_affine_better_folds": 4
+    },
+    {
+      "r": 145,
+      "state": -0.006104044948465435,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.005499463410613662,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 146,
+      "state": -0.005658087535110625,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.0051979777792100675,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 147,
+      "state": 0.0014278607111008485,
+      "state_folds": 51,
+      "state_affine_better_folds": 32,
+      "season": 0.002079238462701356,
+      "season_folds": 4,
+      "season_affine_better_folds": 2
+    },
+    {
+      "r": 148,
+      "state": -0.003599532750978455,
+      "state_folds": 51,
+      "state_affine_better_folds": 21,
+      "season": -0.004324946975040225,
+      "season_folds": 4,
+      "season_affine_better_folds": 1
+    },
+    {
+      "r": 149,
+      "state": -0.0003830208985228602,
+      "state_folds": 51,
+      "state_affine_better_folds": 26,
+      "season": 0.0004437330039160938,
+      "season_folds": 4,
+      "season_affine_better_folds": 3
+    }
+  ]
+}

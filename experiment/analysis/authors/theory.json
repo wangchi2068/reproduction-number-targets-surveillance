@@ -4,7 +4,7 @@
     "replicates": 200000,
     "finite_replicates": 20000,
     "code_sha256": "ef50404608044f779698d2fbce4ca1fc73f9edf2aff5443f25a9bb9bfeb84d4f",
-    "completed_at": "2026-11-03T10:08:06.140254+00:00"
+    "completed_at": "2026-11-04T14:49:05.137383+00:00"
   },
   "parameters": {
     "Rbar": 1.15,
