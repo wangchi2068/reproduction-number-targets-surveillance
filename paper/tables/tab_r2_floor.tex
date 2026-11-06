@@ -1,0 +1,37 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{The floor under a free exponent and without a model}
+\label{tab:r2-floor}
+\begin{tabularx}{\linewidth}{@{}Xrll@{}}
+\toprule
+Quantity & Estimate & Week bootstrap & State bootstrap \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Affine fit $a+b/C$ (primary, for reference)}} \\
+$a$ (two-way interval) & 0.0150 & 0.0109--0.0191 & -- \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Three-parameter fit $a+bC^{-\gamma}$}} \\
+$a$ & 0.0089 & $-$0.0014 to 0.0137 & 0.0034--0.0144 \\
+$b$ & 0.228 & 0.130--0.436 & -- \\
+$\gamma$ & 0.617 & 0.355--0.870 & 0.438--0.862 \\
+Share of draws with $a\le 0$ & -- & 0.040 & 0.006 \\
+Quasi-deviance gain over affine & 10.67 & share $>2$: 0.946 & -- \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Model-free floor among rows with $C_t$ at or above a quantile}} \\
+P75 ($C_t\ge 152$, $n=438$, mean $C_t$ 497): mean $L$ & 0.0157 & 0.0117--0.0191 & -- \\
+\quad mean $L-\hat b/C_t$ & 0.0139 & 0.0096--0.0176 & -- \\
+\quad mean $L-b_P/C_t$ & 0.0142 & 0.0102--0.0177 & -- \\
+\quad relative SD $(L-\hat b/C_t)^{1/2}$ (\%) & 11.8 & 9.8--13.2 & -- \\
+P90 ($C_t\ge 389$, $n=175$, mean $C_t$ 882): mean $L$ & 0.0110 & 0.0078--0.0139 & -- \\
+\quad mean $L-\hat b/C_t$ & 0.0102 & 0.0069--0.0132 & -- \\
+\quad mean $L-b_P/C_t$ & 0.0104 & 0.0071--0.0132 & -- \\
+\quad relative SD $(L-\hat b/C_t)^{1/2}$ (\%) & 10.1 & 8.3--11.5 & -- \\
+P95 ($C_t\ge 699$, $n=90$, mean $C_t$ 1238): mean $L$ & 0.0101 & 0.0071--0.0128 & -- \\
+\quad mean $L-\hat b/C_t$ & 0.0096 & 0.0064--0.0123 & -- \\
+\quad mean $L-b_P/C_t$ & 0.0097 & 0.0066--0.0124 & -- \\
+\quad relative SD $(L-\hat b/C_t)^{1/2}$ (\%) & 9.8 & 8.0--11.1 & -- \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Week bootstrap: calendar-week blocks (1,999 draws); state bootstrap: states resampled (999 draws). Model-free floor: mean loss of the rows above the threshold minus the mean counting term, with $\hat b$ the fitted slope or $b_P$ the Poisson reference; intervals from the calendar-week block bootstrap with $\hat b$ refitted in each draw. Reading rule of Amendment 2: the floor survives a free exponent if the week-bootstrap interval of $a$ excludes 0 (here: no).}
+\end{table}

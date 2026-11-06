@@ -5,7 +5,6 @@ No model is fitted here: every number is read from
   analysis/ma_audit.json, *_draws.npz known-truth audit (ma_audit.py)
   analysis/ma_audit_extra.json       (gamma, s) grid and multi-stream contrast quantiles (ma_audit_extra.py)
   analysis/ma_coverage.json          bootstrap interval coverage on known-truth panels (ma_coverage.py)
-  analysis/china_covid19_empirical.json  China COVID-19 cross-regime check (china_covid_empirical.py)
   analysis/ma_thinning_exact.json    exact thinning expectation (ma_thinning_exact.py)
   analysis/ma_extensions.json        extensions and the primary bootstrap (ma_extensions.py)
   analysis/ma_fe_decomp.json, fe_rev2/  fixed-effects decomposition (ma_fe_decomp.py)
@@ -226,7 +225,7 @@ SRC = {"audit": "code/ma_audit.py -> analysis/ma_audit.json",
        "thinA": "code/s03b_thinning.py (run_all.sh) -> analysis/authors/thinning.json",
        "extra": "code/ma_audit_extra.py -> analysis/ma_audit_extra.json",
        "cov": "code/ma_coverage.py -> analysis/ma_coverage.json",
-       "china": "code/china_covid_empirical.py -> analysis/china_covid19_empirical.json"}
+       "china": "legacy/china_covid19/china_covid_empirical.py -> analysis/china_covid19_empirical.json (frozen; no longer run by run_all.sh)"}
 
 
 # ---------------------------------------------------------------- new tables
@@ -279,7 +278,7 @@ def t_audit(au, ext, fe, ex):
     notes2 = ["b_P is the independent-Poisson reference computed on each panel. S2, S3, S5, S6, S7 and S8 use negative-binomial offspring (k = 0.3) with binomial reporting probability 0.25; S2P uses Poisson offspring with the same reporting. Every column is a test (none is a calibration target).",
               f"b/a undefined when a ≈ 0 ({undef}: true relative variance 0), shown as ---. Pooled / within slope = (b/b_P)/(b_w/b_P) with state fixed effects. Observed row: primary bootstrap (2,000 draws); its pooled / within slope is the slope ratio of the fixed-effects decomposition.",
               f"Thinning uses {au['meta']['thin_outer']} panels x {au['meta']['thin_inner']} shared-count binomial draws per q and the authors' least-squares rate through the origin.",
-              f"Contrast = in-sample affine minus power mean score (authors' revision_design.contrast). Last column: share of synthetic panels with a contrast at or below the observed value, pooled over {ex['meta']['streams']} independent random streams of {ex['meta']['panels_per_stream']} panels each, with its binomial MC SE; the SD of the per-stream quantiles is {min(sds):.3f}-{max(sds):.3f}."]
+              f"Contrast = in-sample affine minus power mean score (computed as in the authors' replication code). Last column: share of synthetic panels with a contrast at or below the observed value, pooled over {ex['meta']['streams']} independent random streams of {ex['meta']['panels_per_stream']} panels each, with its binomial MC SE; the SD of the per-stream quantiles is {min(sds):.3f}-{max(sds):.3f}."]
     return (("tab_ma_audit_loss", "Known-truth audit on the real R_A design: intercept against transmission and total variance by generator", "tab:ma_audit_loss", h1, rows1, notes1),
             ("tab_ma_audit_slopes", "Known-truth audit: b/a, slope references, thinning and the in-sample contrast by generator", "tab:ma_audit_slopes", h2, rows2, notes2))
 

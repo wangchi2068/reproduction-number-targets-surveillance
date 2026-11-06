@@ -1,0 +1,35 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Equal-season-intercept test ($W_{\mathrm{CGM}}$ = 17.80): primary calibration of the locked plan and every secondary calibration}
+\label{tab:rev_season_calibration}
+\begin{tabularx}{\linewidth}{@{}X c c@{}}
+\toprule
+Calibration & $p$ (MCSE) & Draws \\
+\midrule
+Calendar-week permutation (primary, locked plan) & 0.102 (0.003) & 9,999 \\
+Asymptotic $\chi^2_3$, sandwich $W$ & 0.0005 & -- \\
+Asymptotic $\chi^2_3$, bootstrap-covariance $W$ & 0.138 & -- \\
+Week-cluster wild bootstrap (Webb, null imposed) & 0.011 (0.001) & 9,999 \\
+Circular shifts of the season sequence (exact, 42) & 0.405 & 42 \\
+State-cluster wild bootstrap & 0.013 (0.002) & 2,000 \\
+Within-state permutation & 0.045 (0.005) & 2,000 \\
+Generator S1 (fixed transmission field) & 0.013 (0.006) & 400 \\
+Generator S6 (fixed transmission field) & 0.045 (0.010) & 400 \\
+Generator S8 (fixed transmission field) & 0.028 (0.008) & 400 \\
+Generator S9 (fixed transmission field; post hoc law) & 0.005 (0.004) & 400 \\
+Generator FD-S1 (redrawn per replicate) & 0.055 (0.016) & 200 \\
+Generator FD-S8 (redrawn per replicate) & 0.050 (0.015) & 200 \\
+Generator FD-S9-25 (redrawn per replicate; post hoc law) & 0.035 (0.013) & 200 \\
+Generator FD-S9-50 (redrawn per replicate; post hoc law) & 0.045 (0.015) & 200 \\
+Generator FD-S9-75 (redrawn per replicate; post hoc law) & 0.035 (0.013) & 200 \\
+\midrule
+\multicolumn{3}{l}{\emph{Data sensitivities, primary calibration (calendar-week permutation, $B$=9,999)}} \\
+S-a6 exclude pause: $W$=11.04, 3 df, 36 weeks & 0.261 (0.004) & 9,999 \\
+S-a8 coverage $\ge$ 90\%: $W$=16.77, 3 df, 42 weeks & 0.081 (0.003) & 9,999 \\
+S-a4 calendar windows: $W$=15.55, 2 df, 29 weeks & 0.031 (0.002) & 9,999 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Decision rule (locked analysis plan): significant only if the primary $p<0.05$. Verdict: not significant: season statements are exploratory/descriptive. Holm-adjusted over the two claims: E1 $<10^{-4}$, season 0.102. Shipped generator calibrations hold the transmission field fixed; S9 and FD-S9 laws were specified after the data were seen.}
+\end{table}

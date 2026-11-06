@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "script": "code/rev_r3_tables.py",
+    "plan": "analysis/analysis_plan_amendment3.md, Section A3.5",
+    "source": "results.json revision_2026_11.E1_intercept.sensitivities",
+    "seconds": 0.0
+  },
+  "sensitivity_ledger": [
+    {
+      "name": "S-a1_gi_mean_3.2",
+      "n_rows": 1748,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.9751069426329507,
+      "upper_limit_b_over_bP": 1.5421811645173273,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a1_gi_mean_4.0",
+      "n_rows": 1748,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.95812986098141,
+      "upper_limit_b_over_bP": 1.5597972500796822,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a2_gi_sd_1.2",
+      "n_rows": 1748,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.9735357497938171,
+      "upper_limit_b_over_bP": 1.5817962958600378,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a2_gi_sd_2.0",
+      "n_rows": 1748,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.9563084933748806,
+      "upper_limit_b_over_bP": 1.511631884122209,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a3_floor_10",
+      "n_rows": 1600,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 1.0888786778519828,
+      "upper_limit_b_over_bP": 1.8336705871489922,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a3_floor_20",
+      "n_rows": 1268,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 1.072869488102145,
+      "upper_limit_b_over_bP": 1.9851689378387722,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a3_floor_50",
+      "n_rows": 828,
+      "n_states": 50,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.5012552752733194,
+      "upper_limit_b_over_bP": 2.6811946506467836,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a4_calendar_windows",
+      "n_rows": 1263,
+      "n_states": 51,
+      "n_weeks": 29,
+      "lower_limit_b_over_bP": 0.6566860913511265,
+      "upper_limit_b_over_bP": 1.6242384685348585,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a5_threshold_1.02",
+      "n_rows": 1748,
+      "n_states": 51,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.965213438113329,
+      "upper_limit_b_over_bP": 1.54842321197106,
+      "duplicate_of_primary": true,
+      "role": "duplicate check"
+    },
+    {
+      "name": "S-a5_threshold_1.1",
+      "n_rows": 1564,
+      "n_states": 51,
+      "n_weeks": 36,
+      "lower_limit_b_over_bP": 0.9502201231979638,
+      "upper_limit_b_over_bP": 1.5601315887764204,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a6_exclude_pause",
+      "n_rows": 1554,
+      "n_states": 51,
+      "n_weeks": 36,
+      "lower_limit_b_over_bP": 1.0423688932704067,
+      "upper_limit_b_over_bP": 1.6186813832864237,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a7_drop_2022-23",
+      "n_rows": 1383,
+      "n_states": 51,
+      "n_weeks": 33,
+      "lower_limit_b_over_bP": 0.7816136211366195,
+      "upper_limit_b_over_bP": 1.4195976793611835,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a7_drop_2023-24",
+      "n_rows": 1249,
+      "n_states": 51,
+      "n_weeks": 30,
+      "lower_limit_b_over_bP": 0.8988209224127021,
+      "upper_limit_b_over_bP": 1.5811894930159003,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a7_drop_2024-25",
+      "n_rows": 1392,
+      "n_states": 51,
+      "n_weeks": 34,
+      "lower_limit_b_over_bP": 0.9029347051409299,
+      "upper_limit_b_over_bP": 1.557893486751634,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a7_drop_2025-26",
+      "n_rows": 1220,
+      "n_states": 51,
+      "n_weeks": 29,
+      "lower_limit_b_over_bP": 1.1604920533529723,
+      "upper_limit_b_over_bP": 1.814920334444656,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a8_coverage_ge_90",
+      "n_rows": 1358,
+      "n_states": 50,
+      "n_weeks": 42,
+      "lower_limit_b_over_bP": 0.799035342766858,
+      "upper_limit_b_over_bP": 1.4094382890089372,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    },
+    {
+      "name": "S-a9_leave_one_week_out",
+      "n_rows": null,
+      "n_states": null,
+      "n_weeks": null,
+      "lower_limit_b_over_bP": 0.010042826697739019,
+      "upper_limit_b_over_bP": null,
+      "duplicate_of_primary": false,
+      "role": "independent"
+    }
+  ],
+  "counts": {
+    "declared": 17,
+    "duplicates": 1,
+    "independent": 16,
+    "text_phrasing": "16 independent sensitivity analyses"
+  },
+  "s_a5_note": "S-a5_threshold_1.02 selects exactly the primary sample (1748 rows, identical window set) and is therefore a duplicate check, not an independent sensitivity analysis",
+  "bootstrap_t_note": "The studentised statistic uses the stacked cluster-robust sandwich that includes the estimate of xbar, not a sandwich with xbar held fixed. This choice is required for stability on clamped bootstrap draws, where the restricted mean b0/D would otherwise put mass at zero.",
+  "table_split": {
+    "main_text": [
+      "sensitivity",
+      "b_over_bP_reference",
+      "population_gradient",
+      "cross_series",
+      "bias_range"
+    ],
+    "supplementary": [
+      "state_realistic_generator_details",
+      "clamp_types",
+      "interval_types"
+    ]
+  }
+}

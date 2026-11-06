@@ -1,0 +1,260 @@
+{
+ "fetched_utc_of_this_manifest": "2026-11-05 10:33:35",
+ "files": {
+  "delphi_nhsn_flu_ak.json.gz": {
+   "state": "AK",
+   "sha256": "6934fa19c684507fd33081084255b063b7d5cf583e4bfc9c532b78e5473cfd40",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ak&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_al.json.gz": {
+   "state": "AL",
+   "sha256": "e00fc5958cbd671beba822f87fadfadf34cd18fd53e322bcb8af568dc8b9a5c4",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=al&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ar.json.gz": {
+   "state": "AR",
+   "sha256": "d13797c75a551b2c3b1a6ed7468952b9165b2d1f8adab5a465bb23f8a0ad2d10",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ar&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_az.json.gz": {
+   "state": "AZ",
+   "sha256": "9f45e16c1627602f17a07a6c9e19d1e3d8286f5c3a4294ec51d9e0cf6f9648fd",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=az&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ca.json.gz": {
+   "state": "CA",
+   "sha256": "361ff029220a13db0764bbc65724b15d9d06d66b7a492ccfbae23ff436d35f6d",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ca&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_co.json.gz": {
+   "state": "CO",
+   "sha256": "e5bd9259ed9229f1d04c34158c240e27c56ed1c7f2bd8cd2e94b0a31aba2106c",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=co&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ct.json.gz": {
+   "state": "CT",
+   "sha256": "cf9226e8688ca8c9f023bce22157630aa364766ef67ccfe7e59d4e791706906e",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ct&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_dc.json.gz": {
+   "state": "DC",
+   "sha256": "af2feac3029f270a72ec80df583e7ea00f30443780db265994e019fc0a71e04c",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=dc&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_de.json.gz": {
+   "state": "DE",
+   "sha256": "a3b6804b852b3d4c2e4417c512beaf89ec423e8249479a6554cb0dcea43e5faf",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=de&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_fl.json.gz": {
+   "state": "FL",
+   "sha256": "fbfed963b59f66045e3b44d42b39d67854c71ab144fb1de0653c6b63f8fd4256",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=fl&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ga.json.gz": {
+   "state": "GA",
+   "sha256": "90637dc54d4524f8b1d9bb1f9e32ca7fd4a723ee0990f4caa3b2c02395337925",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ga&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_hi.json.gz": {
+   "state": "HI",
+   "sha256": "3d7595c8a6adb5dcb0c0ae9c79fa5739298045b8b727421167ce31dab78f7218",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=hi&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ia.json.gz": {
+   "state": "IA",
+   "sha256": "34790c3556c9f7b87d9ca6415902a2853e14113b88f960c383b0e000f91644b8",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ia&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_id.json.gz": {
+   "state": "ID",
+   "sha256": "85a1ca66696a5641ef6b1d779c7ccc6c507323ee10c4f311cde7f52d6dffa117",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=id&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_il.json.gz": {
+   "state": "IL",
+   "sha256": "585125a98950ed7362d5ac601bfe2f0dde5970aec3d5993280b7d74f9731c12b",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=il&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_in.json.gz": {
+   "state": "IN",
+   "sha256": "9d5a66044a75b86dcb1474fc6044608843da17519e9f5c56872d494d9f9011df",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=in&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ks.json.gz": {
+   "state": "KS",
+   "sha256": "d8e167ce734900fe22960d37fd66a41808f4584b85d4483f979220979390e6a9",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ks&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ky.json.gz": {
+   "state": "KY",
+   "sha256": "00e239562e20324f88e9f18295490969bd04e43b09f21dd1eb887347f21da187",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ky&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_la.json.gz": {
+   "state": "LA",
+   "sha256": "2732b03d9016b0714650550c28a89e3fd1ce534e01d763865a06ac6e23a3887b",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=la&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ma.json.gz": {
+   "state": "MA",
+   "sha256": "b6013b7c1e93a03bd37891f1e367e0ea426293aa040ec80cbe7830c9988c0a0f",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ma&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_md.json.gz": {
+   "state": "MD",
+   "sha256": "4aea4218fb7384b357850e898c762f484c65cacc9a0f2ee35afdcbba82cf25c1",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=md&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_me.json.gz": {
+   "state": "ME",
+   "sha256": "821fd9cc872ec4eafe54512e61276e3a2d8e74b4a7637c3045bea01c9f597427",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=me&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_mi.json.gz": {
+   "state": "MI",
+   "sha256": "daab4fbaa4cbb416e4531f9e928752c0c0511fe895a32be704b4526c51dedebb",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=mi&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_mn.json.gz": {
+   "state": "MN",
+   "sha256": "59ca6150cc9c19cce6c3ad0bc699dc1b828e6e40b87b28914377ac0cb94cc278",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=mn&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_mo.json.gz": {
+   "state": "MO",
+   "sha256": "db9c144c92709be2392b004ab4e627cfb785463a77bfd331a882311c5c6d0272",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=mo&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ms.json.gz": {
+   "state": "MS",
+   "sha256": "6071d0adb0baec73258495156e1c004e77b8ace8ccc547724f547ff488b9f111",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ms&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_mt.json.gz": {
+   "state": "MT",
+   "sha256": "3ab80970aedc55474011a245e6280fd05082440ae19d138749addc8a695bc64a",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=mt&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nc.json.gz": {
+   "state": "NC",
+   "sha256": "23cc7510c895151664614d4a0d4d78b09d1368d10d26472f8f5e9ae79772fc00",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nc&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nd.json.gz": {
+   "state": "ND",
+   "sha256": "d6b97e73aa46b1acc0974407c41d5d1afdc10089bfe53ff2a907e0165f31b003",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nd&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ne.json.gz": {
+   "state": "NE",
+   "sha256": "80fd491c32d93b7b77c77caa34d2d659cf4ac40d8332cb592bd2a0ba7bfecba1",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ne&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nh.json.gz": {
+   "state": "NH",
+   "sha256": "23d7a3a3d4b255bc8602ce2ff64fc7917bbef54c94d2783bf13048f9f3408b47",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nh&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nj.json.gz": {
+   "state": "NJ",
+   "sha256": "bb56499d6f3811cf1aa78b502fab6369c59f1849aa10320b0007da73bfb656ef",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nj&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nm.json.gz": {
+   "state": "NM",
+   "sha256": "adb4df80534d076f62b160a2bf1627e75fe194e283e57e63aebee30a9e1f3d9f",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nm&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_nv.json.gz": {
+   "state": "NV",
+   "sha256": "bfc9debc2857ae8a348c2f0f0663870da714d95a1923f05699f51b6b70b8b1fe",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=nv&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ny.json.gz": {
+   "state": "NY",
+   "sha256": "07e919eae3722fa935615ce14d0d8ba34ffa94f6026d5a2afcafc1c30e08cd62",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ny&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_oh.json.gz": {
+   "state": "OH",
+   "sha256": "7a1a6267249a450c5e470d2d67393b3f9b598236eba8bcc279dd05bb94f86bef",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=oh&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ok.json.gz": {
+   "state": "OK",
+   "sha256": "6b880e3bb9d349c58043fe1370e3be57b35fd4de2aa3239030cea1eabcd6a8d1",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ok&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_or.json.gz": {
+   "state": "OR",
+   "sha256": "6c7bd1dec92e791867ff6b048c991b9d89275e0abebd786c9fc16434446ddec9",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=or&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_pa.json.gz": {
+   "state": "PA",
+   "sha256": "f187a14e9b19ae369e6c7df2bde9f554274701edd609e7d0191e0d1b955b81ee",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=pa&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ri.json.gz": {
+   "state": "RI",
+   "sha256": "20fb85e716c7e5f7b6fbf4ea9af88e8b1e2514eb4be50dd0f9b3bdabee09b6e8",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ri&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_sc.json.gz": {
+   "state": "SC",
+   "sha256": "ec5f7eb2cf4ec74505d2c815afd960df849d159e099c16624d3a9905c531eaf1",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=sc&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_sd.json.gz": {
+   "state": "SD",
+   "sha256": "875399f2035ebaad620997dfa1af7141dd3a5e3634a011729a5b80fc0e28549f",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=sd&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_tn.json.gz": {
+   "state": "TN",
+   "sha256": "93711adf4200529b5e1b2a294d713f6de57cbf51bf2062c6ab350760cd5b4068",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=tn&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_tx.json.gz": {
+   "state": "TX",
+   "sha256": "3ea09a0d0fa4c8e1a84296e724abafa5690c7ea6c74243548f490c07090cf22f",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=tx&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_ut.json.gz": {
+   "state": "UT",
+   "sha256": "2eb3d9ab1d28bb535ce3281b0fb7a4b0c78ba9704c2e5206c3e8eda0a0144713",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=ut&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_va.json.gz": {
+   "state": "VA",
+   "sha256": "22d9578e50d405861679b81da5fe87f4b82c2756bb8bb5a351ed6c884e95c81c",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=va&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_vt.json.gz": {
+   "state": "VT",
+   "sha256": "e1be76a2f187de7eac6ebf18858e44503d8544d29f71ae4cb0d2c3f881a9f416",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=vt&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_wa.json.gz": {
+   "state": "WA",
+   "sha256": "770aaa402da253e436121d1b676ef405a978597e1844dc61a17a0a5213897b64",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=wa&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_wi.json.gz": {
+   "state": "WI",
+   "sha256": "22fe6cc986fa762bfd96ce5671948d42c168a878def6b21ebabb20f1705db3df",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=wi&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_wv.json.gz": {
+   "state": "WV",
+   "sha256": "75bacad449e04f0c3b11d4afeee25a2a1d78b2a61db1b4d149beb4f90c72c7db",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=wv&time_values=202235-202601&issues=202001-202652"
+  },
+  "delphi_nhsn_flu_wy.json.gz": {
+   "state": "WY",
+   "sha256": "d0b97318a98a89c5169f0cfcd9a3312a6bb1ea0241f180b3c27d0bebec395a1a",
+   "url": "https://api.delphi.cmu.edu/epidata/covidcast/?data_source=nhsn&signals=confirmed_admissions_flu_ew&time_type=week&geo_type=state&geo_values=wy&time_values=202235-202601&issues=202001-202652"
+  }
+ }
+}

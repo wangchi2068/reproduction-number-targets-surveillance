@@ -1,0 +1,14 @@
+{"script": "rev_r3_bias_range.py", "sha256": "2c9ff00981c5fd1ce5f604c3848176604c3d0f4b131035703dcb200aedf4c2e0", "utc": "2026-11-06 02:51:15", "note": "Amendment 3, Section A3.3"}
+{"script": "rev_r3_reference.py", "sha256": "2019ec6396b909393bb6298e7b938e6b201c1a3561ba1713ebe5e13a76ea8a5f", "utc": "2026-11-06 02:51:16", "note": "Amendment 3, Section A3.2"}
+{"script": "rev_r3_reference.py", "sha256": "2019ec6396b909393bb6298e7b938e6b201c1a3561ba1713ebe5e13a76ea8a5f", "utc": "2026-11-06 03:23:49", "note": "Amendment 3, Section A3.2"}
+{"script": "rev_r3_crosspathogen.py", "sha256": "7d1cc3b6b18da14d7e96ecd443548b8204a1b2597917e7d0ff8395fecbe496f7", "utc": "2026-11-06 03:25:45", "note": "Amendment 3, Section A3.4"}
+{"script": "rev_r3_crosspathogen.py", "sha256": "c5f267df7d618240afbf8d5402b1171a61bca3cc5e49a10edf5a239864662c06", "utc": "2026-11-06 03:26:27", "note": "Amendment 3, Section A3.4"}
+{"script": "rev_r3_crosspathogen.py", "sha256": "65a5dc3eda152197329edb9ef929bcede0b2a1fffd97f7dfec4cca8617b44391", "utc": "2026-11-06 03:26:46", "note": "Amendment 3, Section A3.4"}
+{"script": "rev_r3_crosspathogen.py", "sha256": "c02960223b5af8f5596b71e992e08e3b220840418c488f2c3a186dbfbc72a002", "utc": "2026-11-06 03:27:08", "note": "Amendment 3, Section A3.4"}
+{"script": "rev_r3_tables.py", "sha256": "db052621aa9266d71b1fda6745b6d835e4ab95412e601d9ab30bd2c2db98580c", "utc": "2026-11-06 03:28:00", "note": "Amendment 3, Section A3.5"}
+{"script": "rev_r3_tables.py", "sha256": "404e148d1b70eb48b6c6c0397bf214ae3ee101b9f929ce1e4ba967429ef17993", "utc": "2026-11-06 03:28:22", "note": "Amendment 3, Section A3.5"}
+{"script": "rev_r3_collect.py", "sha256": "0afb1d362366921a9c5adc1383d6853c9a027a1e9acfc8eef8f955bb79da86e7", "utc": "2026-11-06 03:29:18", "note": "Amendment 3, Section A3.6"}
+{"script": "rev_r3_collect.py", "sha256": "2242c3c03600e16b3324519e4c42952d44febbe24a6a4d3efe0fe84fa70c69a3", "utc": "2026-11-06 05:07:44", "note": "Amendment 3, Section A3.6"}
+{"script": "rev_r3_population.py", "sha256": "15a789d170d6e67baed50385141cfe6ec19ed369ddeb049cec6b8bbf7f2fbba7", "utc": "2026-11-06 05:08:32", "note": "Amendment 3, Section A3.1 (hash recorded retroactively; the 2026-11-06 run of this script did not write one)"}
+{"script": "rev_r3_collect.py", "sha256": "2242c3c03600e16b3324519e4c42952d44febbe24a6a4d3efe0fe84fa70c69a3", "utc": "2026-11-06 05:08:32", "note": "Amendment 3, Section A3.6"}
+{"script": "rev_r3_collect.py", "sha256": "d99db2244b6f904671ce22ad283ff20ff58bfe2dba13d3d7af1dceca3ed85d21", "utc": "2026-11-06 05:08:51", "note": "Amendment 3, Section A3.6"}

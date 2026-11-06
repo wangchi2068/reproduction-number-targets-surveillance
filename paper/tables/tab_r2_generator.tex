@@ -1,0 +1,21 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{State-realistic fresh-draw generators against four features of the observed panel}
+\label{tab:r2-generator}
+\begin{tabularx}{\linewidth}{@{}Xlllllrrr@{}}
+\toprule
+Cell & $\sigma$ & T1 $b/b_P$ & T2 P90 & T3 pooled/within & T4 state CV & $E(\hat a)/v_R$ & SE/SD & Coverage \\
+\midrule
+SR-pop-c0 & failed & 1.06--1.43 & 367 & 1.07--1.47* & 0.41--0.72 & 1.24 & 2.31 & 1.000 \\
+SR-pop-c25 & failed & 1.35--1.89* & 364 & 1.02--1.34* & 0.47--0.78 & 1.26 & 1.79 & 0.990 \\
+SR-pop-c50 & failed & 1.67--2.21* & 356 & 1.03--1.31* & 0.52--0.93 & 1.25 & 1.81 & 0.990 \\
+SR-fe-c25 & failed & 1.45--1.93* & 364 & 1.04--1.41* & 0.55--0.90 & 1.26 & 1.78 & 0.990 \\
+SR-pop-c25-r003 & failed & 1.38--1.84* & 363 & 1.02--1.34* & 0.46--0.76 & 1.27 & 1.80 & 1.000 \\
+SR-pop-c25-t50 & 0.161 & 1.29--1.77* & 308* & 1.04--1.39* & 0.47--0.93 & 1.56 & 1.63 & 0.960 \\
+Observed & -- & 1.26 & 389 & 1.48 & 0.59 & -- & -- & -- \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont State-realistic generators (200 panels per cell): transmission field around a smoothed observed trend with state-specific variance (multiplier proportional to the population-dependent intercept, or to the state fixed-effect intercepts for SR-fe), clustered admissions with extra-Poisson parameter $\theta_c$ (c0, c25, c50 $=0, 0.25, 0.5$), reporting probability 0.01 (0.003 for r003), trend exponent 1 (0.5 for t50). $\sigma$: transmission SD scale; ``failed'' when the smoothed trend alone exceeds the transmission target ($\sigma=0$). T1--T4: Monte Carlo 2.5--97.5\% range of $b/b_P$, mean P90 of $C_t$ (band 350--428), range of pooled/within slope ratio and of the between-state CV of intercepts; * the observed value lies outside. Success rule of Amendment 2: all four pass in one cell (outcome: M4/M5 unresolved). Last columns: $E(\hat a)/v_R$, observed SE over Monte Carlo SD of $\hat a$, coverage of $E(\hat a)$ by the two-way interval. Data-informed generator design; no inferential result uses these generators.}
+\end{table}

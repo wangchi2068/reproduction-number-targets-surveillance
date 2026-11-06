@@ -1,13 +1,13 @@
 \begingroup\scriptsize\setlength{\tabcolsep}{2pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2400\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.0875\linewidth-3.556pt\relax}@{}}
-\caption{Known-truth audit of the intercept on the real $R_A$ design against transmission and total variance by generator}\label{tab:ma_audit_loss}\\
+\caption{Known-truth audit on the real R\_\allowbreak{}A design: intercept against transmission and total variance by generator}\label{tab:ma_audit_loss}\\
 \toprule
-Generator & D median [P10, P90] & Transmission $v_R$ & Total $v_R$ + $v_H$ & Intercept a (MC SE) & a / $v_R$ & a / ($v_R$ + $v_H$) & True-error intercept & Week-centred a reduction \\
+Generator & D median [P10, P90] & Transmission v\_\allowbreak{}R & Total v\_\allowbreak{}R + v\_\allowbreak{}H & Intercept a (MC SE) & a / v\_\allowbreak{}R & a / (v\_\allowbreak{}R + v\_\allowbreak{}H) & True-error intercept & Week-centred a reduction \\
 \midrule
 \endfirsthead
 \multicolumn{9}{@{}l}{\textit{(continued)}}\\
 \toprule
-Generator & D median [P10, P90] & Transmission $v_R$ & Total $v_R$ + $v_H$ & Intercept a (MC SE) & a / $v_R$ & a / ($v_R$ + $v_H$) & True-error intercept & Week-centred a reduction \\
+Generator & D median [P10, P90] & Transmission v\_\allowbreak{}R & Total v\_\allowbreak{}R + v\_\allowbreak{}H & Intercept a (MC SE) & a / v\_\allowbreak{}R & a / (v\_\allowbreak{}R + v\_\allowbreak{}H) & True-error intercept & Week-centred a reduction \\
 \midrule
 \endhead
 \midrule
@@ -15,21 +15,21 @@ Generator & D median [P10, P90] & Transmission $v_R$ & Total $v_R$ + $v_H$ & Int
 \endfoot
 \bottomrule
 \endlastfoot
-Observed ($R_A$, GI 3.6) & 45 [10, 389] & unknown & unknown & 0.0150 [0.0101, 0.0206] & -- & -- & -- & 0.35 \\
-S0 Poisson, no heterogeneity & 45 [10, 281] & 0 & 0 & 0.0000 (0.0000) & $v_R$ = 0 & total 0 & 0.00003 [-0.00010, 0.00019] & not defined \\
+Observed (R\_\allowbreak{}A, GI 3.6) & 45 [10, 389] & unknown & unknown & 0.0150 [0.0101, 0.0206] & -- & -- & -- & 0.35 \\
+S0 Poisson, no heterogeneity & 45 [10, 281] & 0 & 0 & 0.0000 (0.0000) & v\_\allowbreak{}R = 0 & total 0 & 0.00003 [-0.00010, 0.00019] & not defined \\
 S1 iid heterogeneity, Poisson counts & 45 [11, 263] & 0.0150 & 0.0150 & 0.0151 (0.0000) & 1.01 [0.93, 1.09] & 1.01 [0.93, 1.09] & 0.00003 [-0.00010, 0.00021] & -0.01 [-0.04, 0.01] \\
-S2 NB offspring + binomial reporting, no heterogeneity & 45 [10, 324] & 0 & 0 & 0.0001 (0.0000) & $v_R$ = 0 & total 0 & 0.00002 [-0.00013, 0.00018] & not defined \\
+S2 NB offspring + binomial reporting, no heterogeneity & 45 [10, 324] & 0 & 0 & 0.0001 (0.0000) & v\_\allowbreak{}R = 0 & total 0 & 0.00002 [-0.00013, 0.00018] & not defined \\
 S3 iid heterogeneity + NB/reporting & 45 [10, 298] & 0.0147 & 0.0147 & 0.0150 (0.0001) & 1.02 [0.91, 1.13] & 1.02 [0.91, 1.13] & 0.00003 [-0.00011, 0.00020] & -0.02 [-0.05, 0.01] \\
 S4 state + week heterogeneity, Poisson counts & 45 [11, 315] & 0.0135 & 0.0135 & 0.0150 (0.0000) & 1.12 [1.04, 1.19] & 1.12 [1.04, 1.19] & 0.00002 [-0.00006, 0.00015] & 0.62 [0.58, 0.66] \\
 S5 state + week heterogeneity + NB/reporting & 45 [10, 324] & 0.0130 & 0.0130 & 0.0149 (0.0001) & 1.15 [1.06, 1.27] & 1.15 [1.06, 1.27] & 0.00003 [-0.00007, 0.00017] & 0.59 [0.53, 0.64] \\
-S2P Poisson offspring + binomial reporting, no heterogeneity & 45 [10, 293] & 0 & 0 & 0.0000 (0.0000) & $v_R$ = 0 & total 0 & 0.00002 [-0.00008, 0.00015] & not defined \\
+S2P Poisson offspring + binomial reporting, no heterogeneity & 45 [10, 293] & 0 & 0 & 0.0000 (0.0000) & v\_\allowbreak{}R = 0 & total 0 & 0.00002 [-0.00008, 0.00015] & not defined \\
 S6 S3 + state-week reporting shock (half of a) & 45 [10, 307] & 0.0074 & 0.0147 & 0.0148 (0.0001) & 2.02 [1.71, 2.29] & 1.01 [0.87, 1.14] & 0.00746 [0.00590, 0.00877] & -0.01 [-0.05, 0.02] \\
-S7a S3 with scale-dependent heterogeneity, $\gamma$ 0.25 & 45 [10, 296] & 0.0217 & 0.0217 & 0.0148 (0.0001) & 0.68 [0.60, 0.78] & 0.68 [0.60, 0.78] & 0.00003 [-0.00011, 0.00020] & -0.03 [-0.08, 0.02] \\
-S7b S3 with scale-dependent heterogeneity, $\gamma$ 0.5 & 44 [11, 286] & 0.0346 & 0.0346 & 0.0150 (0.0001) & 0.43 [0.37, 0.50] & 0.43 [0.37, 0.50] & 0.00002 [-0.00013, 0.00021] & 0.00 [-0.08, 0.06] \\
-S8 Combo S6 shock + S7a scale-dep ($\gamma$ 0.25) & 45 [10, 313] & 0.0084 & 0.0173 & 0.0148 (0.0001) & 1.75 [1.47, 2.04] & 0.85 [0.72, 0.99] & 0.00896 [0.00729, 0.01093] & -0.02 [-0.06, 0.02] \\
+S7a S3 with scale-dependent heterogeneity, gamma 0.25 & 45 [10, 296] & 0.0217 & 0.0217 & 0.0148 (0.0001) & 0.68 [0.60, 0.78] & 0.68 [0.60, 0.78] & 0.00003 [-0.00011, 0.00020] & -0.03 [-0.08, 0.02] \\
+S7b S3 with scale-dependent heterogeneity, gamma 0.5 & 44 [11, 286] & 0.0346 & 0.0346 & 0.0150 (0.0001) & 0.43 [0.37, 0.50] & 0.43 [0.37, 0.50] & 0.00002 [-0.00013, 0.00021] & 0.00 [-0.08, 0.06] \\
+S8 Combo S6 shock + S7a scale-dep (gamma 0.25) & 45 [10, 313] & 0.0084 & 0.0173 & 0.0148 (0.0001) & 1.75 [1.47, 2.04] & 0.85 [0.72, 0.99] & 0.00896 [0.00729, 0.01093] & -0.02 [-0.06, 0.02] \\
 \end{longtable}
 \vspace{-.5\baselineskip}
 \noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
-200 synthetic panels per generator on the real 1748-row $R_A$ design (growth factor $g_0$ = 1.407); analyst scale D = simulated $C_t$ and the filter $C_t$ $\ge$ 5 applied to each panel; D quantiles are Monte Carlo means over panels. The calibration targets, which are not tests, are the median retained D (count scale 0.797-0.844, all generators) and, for the generators with heterogeneity (S1, S3, S4, S5, S6, S7a, S7b, S8), the Monte Carlo mean of a, which equals the observed a by construction. All other columns are tests. The upper tail of D is not matched (generator P90 263-324, observed 389). Post-stratifying retained rows to the observed deciles of D changes a / ($v_R$ + $v_H$) from 1.007 to 1.008 (S1), 1.115 to 1.079 (S4), 1.009 to 1.004 (S6) and 0.684 to 0.665 (S7a). $v_R$ is the relative variance of the target $R_i$ on retained rows, and $v_H$ the current-value error caused by reporting shocks (S6, S8 only). Ratios are ratios of panel means with the 2.5-97.5\% range of panel ratios; MC SE = SD/sqrt(panels). The true-error intercept is the affine fit of ((x - $R_i$)/$\bar x$)$^2$. Week-centred reduction = 1 - $a_{\mathrm{week}}$/a, not defined without transmission heterogeneity. The observed a uses the primary bootstrap (2,000 draws). Shock log-SD s = 0.122 (S6) and 0.133 (S8). Under S6 the true-error intercept / $v_H$ is 1.02 [0.83, 1.19]; lag-1 correlation of the shock term -0.50 [-0.53, -0.46]. The transmission relative SD implied by the observed a under each generator's a / $v_R$ ranges from 9\% to 19\%.
+200 synthetic panels per generator on the real 1748-row R\_\allowbreak{}A design (growth factor g0 = 1.407); analyst scale D = simulated C\_\allowbreak{}t and the filter C\_\allowbreak{}t >= 5 applied to each panel; D quantiles are Monte Carlo means over panels. Calibration targets (not tests): the median retained D (count scale 0.797-0.844, all generators) and, for the generators with heterogeneity (S1, S3, S4, S5, S6, S7a, S7b, S8), the Monte Carlo mean of a, which equals the observed a by construction. All other columns are tests. The upper tail of D is not matched (generator P90 263-324, observed 389); post-stratifying retained rows to the observed deciles of D changes a / (v\_\allowbreak{}R + v\_\allowbreak{}H) as follows: S1 1.007 to 1.008; S4 1.115 to 1.079; S6 1.009 to 1.004; S7a 0.684 to 0.665. v\_\allowbreak{}R: relative variance of the target R\_\allowbreak{}i on retained rows; v\_\allowbreak{}H: current-value error caused by reporting shocks (S6, S8 only). Ratios are ratios of panel means with the 2.5-97.5\% range of panel ratios; MC SE = SD/sqrt(panels). True-error intercept: affine fit of ((x - R\_\allowbreak{}i)/xbar)\textasciicircum{}2. Week-centred reduction = 1 - a\_\allowbreak{}week/a, not defined without transmission heterogeneity. Observed a: primary bootstrap (2,000 draws). Shock log-SD s = 0.122 (S6) and 0.133 (S8). S6: true-error intercept / v\_\allowbreak{}H = 1.02 [0.83, 1.19]; lag-1 correlation of the shock term -0.50 [-0.53, -0.46]. The transmission relative SD implied by the observed a under each generator's a / v\_\allowbreak{}R ranges from 9\% to 19\%.
 \end{minipage}\par
 \endgroup

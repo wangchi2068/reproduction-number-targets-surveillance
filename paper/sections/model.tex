@@ -71,7 +71,7 @@ Among estimators based on this period's count that are conditionally unbiased fo
 
 The proof (Appendix~\ref{app:prop1}) squares the error decomposition:
 \begin{equation}
-  \Rhat_t-\Rbar=(\Rhat_t-R_t)+(R_t-\Rbar),
+  \Rhat_t-\Rbar=(\Rhat_t-R_t)+(R_t-\Rbar).
   \label{eq:error-split}
 \end{equation}
 The two terms on the right are uncorrelated. Between-period transmission variation is part of the signal for the current value and sampling error for the process mean, which is a mean under a stated stationary law and not automatically a seasonal average of a nonstationary epidemic.
@@ -101,7 +101,7 @@ In Eq.~\eqref{eq:target-means}, $B_T=v_R/T$ for independent, identically distrib
 \end{equation}
 \end{corollary}
 
-The realised-mean identity needs only conditionally independent counting errors, not independent transmission levels. More cases in the same periods remove its counting error, while process-mean risk tends to $B_T$; only more periods reduce $B_T$, at a rate set by their dependence. Positive persistence reduces the gain from adjacent periods. Spatial averaging behaves analogously. For $J$ units with transmission variance $v_R$ and mean pairwise correlation $\bar c$, the averaged transmission level has variance
+The realised-mean identity needs only conditionally independent counting errors, not independent transmission levels. More cases in the same periods remove its counting error, while process-mean risk tends to $B_T$; only more periods reduce $B_T$, at a rate set by their dependence. Positive persistence reduces the gain from adjacent periods. Spatial averaging behaves analogously. For $J$ units with transmission variance $v_R$ and mean pairwise correlation $\bar c$, the averaged transmission level has the variance:
 \begin{equation}
   \Var(J^{-1}{\textstyle\sum_{j=1}^J}R_{j,t})=v_R[\bar c+(1-\bar c)/J].
   \label{eq:pooling}
@@ -120,6 +120,7 @@ so the crossover scale moves to $\mx+(1-\rho)(\Rbar^2+v_R)/v_R$. With $\Rbar=1.1
 
 \input{tables/tab_targets}
 
+\clearpage
 \input{tables/tab_ma_targets_observed}
 
 \begin{figure}[!tbp]

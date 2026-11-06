@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "script": "code/rev_r3_bias_range.py",
+    "plan": "analysis/analysis_plan_amendment3.md, Section A3.3",
+    "source": "results.json revision_2026_11_r2.C_total_bias.generators and revision_2026_11_r2.D1_state_realistic_generators",
+    "seconds": 0.0
+  },
+  "fresh_draw_cells": [
+    {
+      "cell": "FD-S1",
+      "relative_bias": 0.014172252372720795,
+      "ci": [
+        0.005385407737854231,
+        0.022799965069284996
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S8",
+      "relative_bias": -0.1416926595118989,
+      "ci": [
+        -0.15131909906551344,
+        -0.1326667145440851
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S9-25",
+      "relative_bias": -0.1379764221845151,
+      "ci": [
+        -0.1478767311073233,
+        -0.12799642136117914
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S9-50",
+      "relative_bias": -0.1401439526334156,
+      "ci": [
+        -0.15053090081060072,
+        -0.12926685649443023
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S9-75",
+      "relative_bias": -0.14899222933603162,
+      "ci": [
+        -0.16073061559251825,
+        -0.13712720721623362
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S8-share100",
+      "relative_bias": -0.29283188807480653,
+      "ci": [
+        -0.3013231247894097,
+        -0.2844879030409709
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S8-share75",
+      "relative_bias": -0.2211775415306484,
+      "ci": [
+        -0.23053995047807055,
+        -0.21168886862536507
+      ],
+      "calibration": "ok"
+    },
+    {
+      "cell": "FD-S8-share25",
+      "relative_bias": -0.06313382978914672,
+      "ci": [
+        -0.07232613171125249,
+        -0.05426991709829952
+      ],
+      "calibration": "ok"
+    }
+  ],
+  "range": {
+    "min": -0.29283188807480653,
+    "max": 0.014172252372720795,
+    "min_pct": -29.283188807480652,
+    "max_pct": 1.4172252372720795,
+    "rounded_pct": [
+      -29,
+      1
+    ]
+  },
+  "state_realistic_cells": [
+    {
+      "cell": "SR-pop-c0",
+      "calibration_failed": true,
+      "a_over_total": 0.7366414482986964,
+      "coverage_of_true_total": 0.02,
+      "all_pass": false,
+      "failing_tests": [
+        "T3_pooled_over_within"
+      ]
+    },
+    {
+      "cell": "SR-pop-c25",
+      "calibration_failed": true,
+      "a_over_total": 0.7285137350034621,
+      "coverage_of_true_total": 0.035,
+      "all_pass": false,
+      "failing_tests": [
+        "T1_b_over_bP",
+        "T3_pooled_over_within"
+      ]
+    },
+    {
+      "cell": "SR-pop-c50",
+      "calibration_failed": true,
+      "a_over_total": 0.7153288013156502,
+      "coverage_of_true_total": 0.015,
+      "all_pass": false,
+      "failing_tests": [
+        "T1_b_over_bP",
+        "T3_pooled_over_within"
+      ]
+    },
+    {
+      "cell": "SR-fe-c25",
+      "calibration_failed": true,
+      "a_over_total": 0.7036524258654856,
+      "coverage_of_true_total": 0.025,
+      "all_pass": false,
+      "failing_tests": [
+        "T1_b_over_bP",
+        "T3_pooled_over_within"
+      ]
+    },
+    {
+      "cell": "SR-pop-c25-r003",
+      "calibration_failed": true,
+      "a_over_total": 0.7286915420616243,
+      "coverage_of_true_total": 0.04,
+      "all_pass": false,
+      "failing_tests": [
+        "T1_b_over_bP",
+        "T3_pooled_over_within"
+      ]
+    },
+    {
+      "cell": "SR-pop-c25-t50",
+      "calibration_failed": false,
+      "a_over_total": 0.776421913983036,
+      "coverage_of_true_total": 0.16,
+      "all_pass": false,
+      "failing_tests": [
+        "T1_b_over_bP",
+        "T2_p90",
+        "T3_pooled_over_within"
+      ]
+    }
+  ],
+  "state_realistic_note": "none of the six state-realistic cells passes the six declared tests; the one cell with a successful calibration recovers 77.6% of the simulated total, so its bias is about -22%",
+  "decision_rule": {
+    "rule": "report the min-max of the relative bias over the fresh-draw cells; state-realistic cells are reported separately",
+    "abstract_phrase": "6--30%"
+  }
+}

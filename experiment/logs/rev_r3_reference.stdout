@@ -1,0 +1,11 @@
+draw 500
+draw 1000
+draw 1500
+{
+ "point": {
+  "shipped_plugin": 1.2568183250421943,
+  "normalised_plugin": 1.333617653037781,
+  "simulated_exact": 1.4078699561561248
+ },
+ "lower_all": false
+}

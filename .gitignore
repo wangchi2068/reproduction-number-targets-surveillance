@@ -36,3 +36,7 @@ desktop.ini
 # Compile diagnostics produced by build_papers.py
 validation/
 paper/figures/*.png
+
+# ObsAwareData revision history (887 MB, public source, not redistributed here)
+# Fetch: see experiment/data/obsaware/README.md
+experiment/data/obsaware/*.csv.gz

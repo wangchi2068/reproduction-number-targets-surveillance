@@ -1,0 +1,4 @@
+flu seasons ['2022-23', '2023-24', '2024-25', '2025-26'] rows 1799 a 0.024455 floor 0.1413
+covid seasons ['2022-23', '2023-24', '2024-25', '2025-26'] rows 1614 a 0.005559 floor 0.0709
+rsv seasons ['2023-24', '2024-25', '2025-26'] rows 720 a 0.011308 floor 0.0962
+done {"flu": {"floor": "replicates", "gradient": "replicates"}, "covid": {"floor": "does not replicate", "gradient": "replicates"}, "rsv": {"floor": "does not replicate", "gradient": "does not replicate"}} seconds 1.2

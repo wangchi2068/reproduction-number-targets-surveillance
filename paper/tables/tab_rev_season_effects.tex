@@ -1,0 +1,22 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Season intercepts (reflecting transmission and reporting variation) with sandwich and season-stratified block-bootstrap intervals, and design-based power}
+\label{tab:rev_season_effects}
+\begin{tabularx}{\linewidth}{@{}l*{7}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Season & Weeks & Rows & $a_s$ & 95\% CI (sandwich) & 95\% CI (bootstrap) & $a_s/a$ (95\% CI) & Coverage (\%) \\
+\midrule
+2022-23 & 9 & 365 & 0.0159 & 0.0112--0.0224 & 0.0102--0.0221 & 1.06 (0.68--1.64) & 90.9 \\
+2023-24 & 12 & 499 & 0.0071 & 0.0050--0.0100 & 0.0050--0.0111 & 0.47 (0.34--0.71) & 94.2 \\
+2024-25 & 8 & 356 & 0.0154 & 0.0092--0.0257 & 0.0084--0.0242 & 1.03 (0.59--1.55) & 93.8 \\
+2025-26 & 13 & 528 & 0.0180 & 0.0108--0.0299 & 0.0090--0.0252 & 1.20 (0.71--1.56) & 92.3 \\
+\midrule
+\multicolumn{8}{l}{Highest/lowest intercept ratio 2.54 (bootstrap 1.75--4.35; biased upward)} \\
+\multicolumn{8}{l}{Post hoc: 2023-24 vs geometric mean of the other seasons, ratio 0.43 (sandwich 0.29--0.65; bootstrap 0.31--0.72); no test} \\
+\multicolumn{8}{l}{Design-based power at the observed pattern 0.47; minimum detectable highest/lowest ratio at 80\% power 4.48} \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Coverage: mean hospital-reporting coverage of the sample rows. Voluntary reporting May--Oct 2024; CDC data-channel pause 3 October to 13 November 2025.}
+\end{table}

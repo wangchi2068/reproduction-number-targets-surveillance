@@ -11,7 +11,7 @@ Subset (n) & Fit over & $\bP$ [95\% CI] & $c$ [95\% CI] & $c/\bP$ [95\% CI] & $\
 full (1748) & all $q$ & 0.446 [0.428, 0.466] & 0.405 [0.366, 0.441] & 0.909 [0.810, 0.999] & -0.13 [-0.62, 0.47] & 0.85--1.14 \\
  & $q\ge0.2$ &  & 0.485 [0.439, 0.528] & 1.088 [0.994, 1.186] & -0.81 [-1.70, 0.05] & 1.03--1.14 \\
 \addlinespace[2pt]
-highCt50 (828) & all $q$ & 0.421 [0.403, 0.439] & 0.473 [0.409, 0.550] & 1.126 [0.970, 1.316] & -0.19 [-0.69, 0.14] & 1.05--1.14 \\
+highCt50 (828) & all $q$ & 0.421 [0.403, 0.439] & 0.473 [0.409, 0.550] & 1.126 [0.970, 1.316] & -0.19 [-0.69, 0.15] & 1.05--1.14 \\
  & $q\ge0.2$ &  & 0.459 [0.381, 0.560] & 1.092 [0.903, 1.327] & -0.24 [-0.96, 0.21] & 1.05--1.10 \\
 \addlinespace[2pt]
 both50 (821) & all $q$ & 0.418 [0.401, 0.436] & 0.493 [0.420, 0.574] & 1.178 [1.004, 1.379] & -0.31 [-0.90, 0.10] & 1.16--1.21 \\
@@ -19,5 +19,5 @@ both50 (821) & all $q$ & 0.418 [0.401, 0.436] & 0.493 [0.420, 0.574] & 1.178 [1.
 \bottomrule
 \end{tabularx}
 \par\smallskip
-\begin{minipage}{\linewidth}\footnotesize\raggedright Thinning probabilities $q\in\{0.8, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1\}$. $c$ is the increase of the slope per unit of $1/q-1$ and the $\Delta a$ rate the corresponding change of the intercept; $\bP$ is the independent-Poisson reference (plug-in delta value). highCt50 requires a current count of at least 50 and both50 both adjacent counts of at least 50; eligibility is fixed before thinning. Pairs bootstrap with B=1000 draws, 400 thinning replicates for the point estimate and 50 per bootstrap draw; the Monte Carlo precision criterion (MC SE at most 0.1 times the point estimate on the monitored summaries) is met; point fits 8400/8400, bootstrap fits 1049998/1050000. The last column gives the range of the per-$q$ point estimates of $c/\bP$ over the $q$ values of the fit. Per-$q$ estimates, simultaneous bands over $q$ and leave-one-$q$-out fits are in the released file analysis/authors/thinning.json.\end{minipage}
+\begin{minipage}{\linewidth}\footnotesize\raggedright Thinning probabilities $q\in\{0.8, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1\}$. $c$ is the increase of the slope per unit of $1/q-1$ and the $\Delta a$ rate the corresponding change of the intercept; $\bP$ is the independent-Poisson reference (plug-in delta value). highCt50 requires a current count of at least 50 and both50 both adjacent counts of at least 50; eligibility is fixed before thinning. Pairs bootstrap with B=1000 draws, 400 thinning replicates for the point estimate and 50 per bootstrap draw; the Monte Carlo precision criterion (MC SE at most 0.1 times the point estimate on the monitored summaries) is met; point fits 8400/8400, bootstrap fits 1049999/1050000. The last column gives the range of the per-$q$ point estimates of $c/\bP$ over the $q$ values of the fit. Per-$q$ estimates, simultaneous bands over $q$ and leave-one-$q$-out fits are in the released file analysis/authors/thinning.json.\end{minipage}
 \end{table}

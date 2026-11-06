@@ -1,0 +1,39 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Count-independent intercept $a$: primary test of the analysis plan, secondary calibrations and sensitivity analyses}
+\label{tab:rev_intercept}
+\begin{tabularx}{\linewidth}{@{}l*{6}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Analysis (rows) & $a$ & 95\% CI & $t$ & $p$ (two-sided) & $b/a$ & $b/b_P$ \\
+\midrule
+\multicolumn{7}{l}{\emph{E1, primary: two-way CGM sandwich, $t_{41}$}} \\
+All rows (1748) & 0.0150 & 0.0109--0.0191 & 7.36 & $<10^{-4}$ & 37.4 & 1.257 \\
+State-cluster sandwich & 0.0150 & 0.0125--0.0174 & 12.23 & $<10^{-4}$ & -- & -- \\
+Week-cluster sandwich & 0.0150 & 0.0112--0.0188 & 7.94 & $<10^{-4}$ & -- & -- \\
+Week wild bootstrap-$t$, $a=0$ imposed ($B$=9,999) & -- & -- & -- & 0.0001 & -- & -- \\
+Calendar-week block bootstrap ($B$=1,999) & -- & 0.0107--0.0192 & -- & -- & 23.4--60.5 & 0.97--1.59 \\
+\midrule
+\multicolumn{7}{l}{\emph{Sensitivity analyses (two-way sandwich)}} \\
+S-a1 GI mean 3.2 (1748) & 0.0117 & 0.0085--0.0149 & 7.44 & $<10^{-4}$ & 37.6 & 1.259 \\
+S-a1 GI mean 4.0 (1748) & 0.0186 & 0.0134--0.0237 & 7.27 & $<10^{-4}$ & 37.5 & 1.259 \\
+S-a2 GI SD 1.2 (1748) & 0.0154 & 0.0111--0.0197 & 7.27 & $<10^{-4}$ & 37.6 & 1.278 \\
+S-a2 GI SD 2.0 (1748) & 0.0144 & 0.0105--0.0183 & 7.46 & $<10^{-4}$ & 37.4 & 1.234 \\
+S-a3 count floor 10 (1600) & 0.0140 & 0.0100--0.0180 & 7.07 & $<10^{-4}$ & 46.1 & 1.461 \\
+S-a3 count floor 20 (1268) & 0.0136 & 0.0096--0.0176 & 6.82 & $<10^{-4}$ & 48.6 & 1.529 \\
+S-a3 count floor 50 (828) & 0.0130 & 0.0088--0.0172 & 6.21 & $<10^{-4}$ & 51.5 & 1.591 \\
+S-a4 calendar windows (1263) & 0.0202 & 0.0092--0.0311 & 3.78 & 0.0008 & 25.6 & 1.140 \\
+S-a5 threshold 1.02 (1748) & 0.0150 & 0.0109--0.0191 & 7.36 & $<10^{-4}$ & 37.4 & 1.257 \\
+S-a5 threshold 1.1 (1564) & 0.0141 & 0.0105--0.0176 & 8.00 & $<10^{-4}$ & 38.6 & 1.255 \\
+S-a6 exclude pause (1554) & 0.0139 & 0.0103--0.0176 & 7.76 & $<10^{-4}$ & 41.5 & 1.331 \\
+S-a7 drop 2022-23 (1383) & 0.0160 & 0.0105--0.0214 & 5.97 & $<10^{-4}$ & 31.0 & 1.101 \\
+S-a7 drop 2023-24 (1249) & 0.0163 & 0.0122--0.0204 & 8.08 & $<10^{-4}$ & 33.3 & 1.240 \\
+S-a7 drop 2024-25 (1392) & 0.0152 & 0.0100--0.0204 & 5.89 & $<10^{-4}$ & 36.6 & 1.230 \\
+S-a7 drop 2025-26 (1220) & 0.0119 & 0.0082--0.0156 & 6.57 & $<10^{-4}$ & 55.5 & 1.488 \\
+S-a8 coverage $\ge$ 90\% (1358) & 0.0159 & 0.0110--0.0207 & 6.59 & $<10^{-4}$ & 31.0 & 1.104 \\
+S-a9 leave one week out (42 fits) & 0.0136--0.0156 & min lower 0.0100 & -- & max $<10^{-4}$ & -- & 1.188--1.306 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Robustness rule (locked analysis plan): verdict \emph{robust}; analyses with a lower limit $\le 0$: none. S-a5 with threshold 1.02 reproduces the primary windows. Block-bootstrap columns give percentile intervals.}
+\end{table}

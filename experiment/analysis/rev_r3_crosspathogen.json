@@ -1,0 +1,351 @@
+{
+  "meta": {
+    "script": "code/rev_r3_crosspathogen.py",
+    "plan": "analysis/analysis_plan_amendment3.md, Section A3.4",
+    "data": "frozen NHSN 2026-10-20 vintage; columns Total Influenza / COVID-19 / RSV Admissions",
+    "window_rule": {
+      "min_weeks": 4,
+      "min_states": 45,
+      "min_report_share": 0.9,
+      "growth_rule": "national g(t) = C_nat(t+1)/C_nat(t) >= 1.0"
+    },
+    "B": 1999,
+    "seconds": 1.2
+  },
+  "series": {
+    "flu": {
+      "window_ledger": [
+        {
+          "season": "2022-23",
+          "included": true,
+          "reason": null,
+          "turning_week": "2022-12-03",
+          "window_start": "2022-10-01",
+          "window_end": "2022-12-03",
+          "weeks": 10,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2023-24",
+          "included": true,
+          "reason": null,
+          "turning_week": "2023-12-30",
+          "window_start": "2023-10-07",
+          "window_end": "2023-12-30",
+          "weeks": 13,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2024-25",
+          "included": true,
+          "reason": null,
+          "turning_week": "2025-02-08",
+          "window_start": "2025-01-11",
+          "window_end": "2025-02-08",
+          "weeks": 5,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2025-26",
+          "included": true,
+          "reason": null,
+          "turning_week": "2026-01-03",
+          "window_start": "2025-10-04",
+          "window_end": "2026-01-03",
+          "weeks": 14,
+          "reporting_jurisdictions": 51
+        }
+      ],
+      "seasons_included": [
+        "2022-23",
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "sample": {
+        "rows": 1799,
+        "states": 51,
+        "weeks": 42,
+        "count_range": [
+          5.0,
+          4729.0
+        ]
+      },
+      "affine_intercept": {
+        "estimate": 0.02445505843947789,
+        "se": 0.004691686781463852,
+        "ci": [
+          0.014980004763833406,
+          0.033930112115122375
+        ],
+        "b": 0.4410715546201658,
+        "b_ci": [
+          0.25951415523502575,
+          0.6226289540053058
+        ],
+        "df": 41
+      },
+      "free_exponent": {
+        "gamma": 1.2734837100265914,
+        "a0": {
+          "estimate": 0.029462339307169585,
+          "se": 0.004851622660958636,
+          "t": 6.072677404253879,
+          "p_two_sided": 3.409953660438337e-07,
+          "ci": [
+            0.019664288570241814,
+            0.03926039004409736
+          ]
+        },
+        "a1": {
+          "estimate": -0.006911668025509542,
+          "se": 0.002042466222631148,
+          "t": -3.3839815556928943,
+          "p_two_sided": 0.0015833670237654736,
+          "ci": [
+            -0.011036512242855782,
+            -0.002786823808163302
+          ]
+        }
+      },
+      "model_free_floor": {
+        "threshold_c_t": 751.4000000000003,
+        "rows_above": 180,
+        "relative_rmse": 0.1413229344540527,
+        "ci": [
+          0.10062461434604578,
+          0.1716478602440379
+        ],
+        "n": 1999
+      }
+    },
+    "covid": {
+      "window_ledger": [
+        {
+          "season": "2022-23",
+          "included": true,
+          "reason": null,
+          "turning_week": "2022-12-31",
+          "window_start": "2022-11-19",
+          "window_end": "2022-12-31",
+          "weeks": 7,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2023-24",
+          "included": true,
+          "reason": null,
+          "turning_week": "2024-01-06",
+          "window_start": "2023-11-04",
+          "window_end": "2024-01-06",
+          "weeks": 10,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2024-25",
+          "included": true,
+          "reason": null,
+          "turning_week": "2025-01-04",
+          "window_start": "2024-11-30",
+          "window_end": "2025-01-04",
+          "weeks": 6,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2025-26",
+          "included": true,
+          "reason": null,
+          "turning_week": "2026-01-03",
+          "window_start": "2025-11-08",
+          "window_end": "2026-01-03",
+          "weeks": 9,
+          "reporting_jurisdictions": 51
+        }
+      ],
+      "seasons_included": [
+        "2022-23",
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "sample": {
+        "rows": 1614,
+        "states": 51,
+        "weeks": 32,
+        "count_range": [
+          5.0,
+          5349.0
+        ]
+      },
+      "affine_intercept": {
+        "estimate": 0.00555907625221364,
+        "se": 0.0010252922314506606,
+        "ci": [
+          0.0034679789596842392,
+          0.007650173544743041
+        ],
+        "b": 0.6913915956588591,
+        "b_ci": [
+          0.5398854931387198,
+          0.8428976981789984
+        ],
+        "df": 31
+      },
+      "free_exponent": {
+        "gamma": 0.9307847242641907,
+        "a0": {
+          "estimate": 0.00633233127045917,
+          "se": 0.0013638377667822396,
+          "t": 4.643023843957121,
+          "p_two_sided": 5.959717012912944e-05,
+          "ci": [
+            0.003550765806403543,
+            0.009113896734514796
+          ]
+        },
+        "a1": {
+          "estimate": -0.0012294879649156192,
+          "se": 0.000525070736476067,
+          "t": -2.341566344312277,
+          "p_two_sided": 0.025806750588065124,
+          "ci": [
+            -0.002300376792267823,
+            -0.00015859913756341546
+          ]
+        }
+      },
+      "model_free_floor": {
+        "threshold_c_t": 950.1000000000001,
+        "rows_above": 162,
+        "relative_rmse": 0.07089214789338834,
+        "ci": [
+          0.05801059932601577,
+          0.08132453956956089
+        ],
+        "n": 1999
+      }
+    },
+    "rsv": {
+      "window_ledger": [
+        {
+          "season": "2022-23",
+          "included": false,
+          "reason": "no non-missing national counts in the season window"
+        },
+        {
+          "season": "2023-24",
+          "included": false,
+          "reason": "4 of 51 jurisdictions report in >= 90% of the run weeks (< 45)",
+          "turning_week": "2023-12-30",
+          "window_start": "2023-11-25",
+          "window_end": "2023-12-30",
+          "weeks": 6,
+          "reporting_jurisdictions": 4
+        },
+        {
+          "season": "2024-25",
+          "included": true,
+          "reason": null,
+          "turning_week": "2025-01-04",
+          "window_start": "2024-11-09",
+          "window_end": "2025-01-04",
+          "weeks": 9,
+          "reporting_jurisdictions": 51
+        },
+        {
+          "season": "2025-26",
+          "included": true,
+          "reason": null,
+          "turning_week": "2026-02-21",
+          "window_start": "2026-01-17",
+          "window_end": "2026-02-21",
+          "weeks": 6,
+          "reporting_jurisdictions": 51
+        }
+      ],
+      "seasons_included": [
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "sample": {
+        "rows": 720,
+        "states": 51,
+        "weeks": 20,
+        "count_range": [
+          5.0,
+          1301.0
+        ]
+      },
+      "affine_intercept": {
+        "estimate": 0.011307534589267823,
+        "se": 0.004104370740720887,
+        "ci": [
+          0.0027169879007293597,
+          0.019898081277806286
+        ],
+        "b": 0.646497803108549,
+        "b_ci": [
+          0.44362319576888654,
+          0.8493724104482114
+        ],
+        "df": 19
+      },
+      "free_exponent": {
+        "gamma": 1.2088880099398227,
+        "a0": {
+          "estimate": 0.014935370712980423,
+          "se": 0.005095391137011002,
+          "t": 2.931152940251341,
+          "p_two_sided": 0.008570668732452385,
+          "ci": [
+            0.004270594496597493,
+            0.025600146929363354
+          ]
+        },
+        "a1": {
+          "estimate": -0.0028769742434263178,
+          "se": 0.001831616836652203,
+          "t": -1.5707293064005683,
+          "p_two_sided": 0.132749882108825,
+          "ci": [
+            -0.006710592340998633,
+            0.0009566438541459971
+          ]
+        }
+      },
+      "model_free_floor": {
+        "threshold_c_t": 428.1,
+        "rows_above": 72,
+        "relative_rmse": 0.0961741926955353,
+        "ci": [
+          0.05167799680982158,
+          0.12234145660589774
+        ],
+        "n": 1999
+      }
+    }
+  },
+  "replication": {
+    "reference": "influenza floor 95% interval",
+    "reference_floor_ci": [
+      0.10062461434604578,
+      0.1716478602440379
+    ],
+    "reference_note": "influenza is run through the A3.4 window rule as an internal check, so its sample (1,799 rows) differs from the primary analysis (1,748 rows) and its rows here are not the primary result",
+    "verdicts": {
+      "flu": {
+        "floor": "replicates",
+        "gradient": "replicates"
+      },
+      "covid": {
+        "floor": "does not replicate",
+        "gradient": "replicates"
+      },
+      "rsv": {
+        "floor": "does not replicate",
+        "gradient": "does not replicate"
+      }
+    }
+  }
+}

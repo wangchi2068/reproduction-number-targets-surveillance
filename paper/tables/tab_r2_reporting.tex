@@ -1,0 +1,32 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{External reporting data: participation and backfill}
+\label{tab:r2-reporting}
+\begin{tabularx}{\linewidth}{@{}Xll@{}}
+\toprule
+Quantity & Value & 95\% interval \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Hospital participation (NHSN, \% of hospitals reporting)}} \\
+Mean (min; P10) participation & 92.9\% (67.7; 86.9) & -- \\
+Rows with full participation in both weeks & 4.1\% & -- \\
+Mean week-to-week change & 0.78 pp & -- \\
+$a$, observed counts & 0.0150 & -- \\
+$a$, participation-adjusted counts & 0.0147 & two-way SE 0.0020 \\
+Difference (relative) & $-$0.00029 ($-$2.0\%) & $-$0.00086 to 0.00027 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Backfill (Delphi Epidata issue history, archive from issue 2024w47)}} \\
+Rows of $R_A$ in the archive; latest issue equals the vintage & 1,748; 99.1\% & -- \\
+Rows with a provisional first issue (lag $\le$ 2 weeks) & 661 (15 weeks, 2024-11-09 to 2025-12-27) & -- \\
+First issue equals latest (current week) & 29.2\% & -- \\
+Revised up / down & 65.8\% / 5.0\% & -- \\
+Mean relative revision (latest $-$ first) / first & 11.0\% & -- \\
+$a$, latest issue (654 rows) & 0.0143 & 0.0096--0.0183 \\
+$a$, first issue & 0.0227 & 0.0133--0.0298 \\
+Difference first $-$ latest & 0.0084 & 0.0016--0.0146 \\
+$v_{\mathrm{rev}}$ (revision variance of $x$) & 0.0107 & -- \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Participation adjustment: both counts scaled by 100/participation, $x$ recomputed, the affine fit repeated with the observed $C_t$ as the count; assumes unreported hospitals admit as many patients per hospital as reporting ones. Backfill: rows whose two weeks both have a provisional first issue; fits restricted to rows with first and latest counts $\ge 5$. Intervals: calendar-week block bootstrap, 1,999 draws. The backfill comparison bounds the provisional-versus-settled component only; the residual reporting error of the settled vintage is not identified from public data.}
+\end{table}

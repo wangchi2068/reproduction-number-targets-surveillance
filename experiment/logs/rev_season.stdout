@@ -1,0 +1,10 @@
+2026-11-05 06:03:15 +    0.0s rev_season start 8 tasks B 9999
+2026-11-05 06:03:50 +   35.3s finished power {'p': None, 'mcse': None, 'p_exact': None, 'W_obs': None, 'mdr_max_over_min_at_80pct_power': 4.4753107440495485, 'seconds': 35.3}
+2026-11-05 06:04:01 +   46.2s finished effects {'p': None, 'mcse': None, 'p_exact': None, 'W_obs': None, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 10.8}
+2026-11-05 06:04:01 +   46.5s finished circular_shift {'p': None, 'mcse': None, 'p_exact': 0.40476190476190477, 'W_obs': 17.797317628352435, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 0.3}
+2026-11-05 06:04:05 +   50.1s finished permutation_S-a4_calendar_windows {'p': 0.031, 'mcse': 0.0017332629402494026, 'p_exact': None, 'W_obs': 15.547030275376752, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 50.1}
+2026-11-05 06:04:06 +   50.9s finished permutation_S-a8_coverage_ge_90 {'p': 0.0808, 'mcse': 0.002725413507686272, 'p_exact': None, 'W_obs': 16.773413786787188, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 50.9}
+2026-11-05 06:04:06 +   51.6s finished wild_week {'p': 0.0108, 'mcse': 0.0010336550896137592, 'p_exact': None, 'W_obs': 17.797317628352435, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 51.5}
+2026-11-05 06:04:09 +   54.2s finished permutation_S-a6_exclude_pause {'p': 0.2607, 'mcse': 0.004390384783575898, 'p_exact': None, 'W_obs': 11.043591613597881, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 54.2}
+2026-11-05 06:04:15 +   60.1s finished permutation_primary {'p': 0.1022, 'mcse': 0.0030292628877937183, 'p_exact': None, 'W_obs': 17.797317628352435, 'mdr_max_over_min_at_80pct_power': None, 'seconds': 60.1}
+2026-11-05 06:04:15 +   60.1s rev_season done primary p 0.1022 significant False holm {'E1_intercept': 1.0248320547373777e-08, 'season_primary': 0.1022}

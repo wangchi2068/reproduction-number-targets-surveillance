@@ -1,13 +1,13 @@
 \begingroup\scriptsize\setlength{\tabcolsep}{2pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr 0.2400\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}>{\raggedright\arraybackslash}p{\dimexpr 0.1000\linewidth-3.500pt\relax}@{}}
-\caption{Known-truth audit of b/a, slope references, thinning and the in-sample contrast by generator}\label{tab:ma_audit_slopes}\\
+\caption{Known-truth audit: b/a, slope references, thinning and the in-sample contrast by generator}\label{tab:ma_audit_slopes}\\
 \toprule
-Generator & b/a & b/$b_P$ & $b_w$/$b_P$ (state FE) & Pooled / within slope & Thinning c/$b_P$ & In-sample contrast & Quantile of observed contrast (MC SE) \\
+Generator & b/a & b/b\_\allowbreak{}P & b\_\allowbreak{}w/b\_\allowbreak{}P (state FE) & Pooled / within slope & Thinning c/b\_\allowbreak{}P & In-sample contrast & Quantile of observed contrast (MC SE) \\
 \midrule
 \endfirsthead
 \multicolumn{8}{@{}l}{\textit{(continued)}}\\
 \toprule
-Generator & b/a & b/$b_P$ & $b_w$/$b_P$ (state FE) & Pooled / within slope & Thinning c/$b_P$ & In-sample contrast & Quantile of observed contrast (MC SE) \\
+Generator & b/a & b/b\_\allowbreak{}P & b\_\allowbreak{}w/b\_\allowbreak{}P (state FE) & Pooled / within slope & Thinning c/b\_\allowbreak{}P & In-sample contrast & Quantile of observed contrast (MC SE) \\
 \midrule
 \endhead
 \midrule
@@ -24,12 +24,12 @@ S4 state + week heterogeneity, Poisson counts & 22.2 [17.0, 27.7] & 0.734 [0.602
 S5 state + week heterogeneity + NB/reporting & 32.6 [24.7, 40.0] & 1.025 [0.866, 1.201] & 0.953 [0.743, 1.142] & 1.08 [0.94, 1.25] & 0.925 [0.875, 0.981] & 0.0239 [0.0128, 0.0363] & 0.000 (0.000) \\
 S2P Poisson offspring + binomial reporting, no heterogeneity & --- & 0.797 [0.732, 0.863] & 0.774 [0.684, 0.865] & 1.03 [0.96, 1.13] & 0.974 [0.953, 1.004] & -0.0004 [-0.0037, 0.0022] & 0.171 (0.012) \\
 S6 S3 + state-week reporting shock (half of a) & 36.4 [28.2, 47.6] & 1.144 [0.970, 1.342] & 1.141 [0.935, 1.354] & 1.01 [0.90, 1.12] & 0.869 [0.814, 0.919] & 0.0176 [0.0048, 0.0337] & 0.003 (0.002) \\
-S7a S3 with scale-dependent heterogeneity, $\gamma$ 0.25 & 51.4 [39.5, 65.9] & 1.564 [1.337, 1.787] & 1.484 [1.249, 1.759] & 1.06 [0.95, 1.18] & 0.914 [0.861, 0.986] & -0.0003 [-0.0112, 0.0106] & 0.495 (0.016) \\
-S7b S3 with scale-dependent heterogeneity, $\gamma$ 0.5 & 77.5 [58.4, 99.7] & 2.251 [1.975, 2.582] & 2.058 [1.656, 2.493] & 1.10 [0.97, 1.21] & 0.922 [0.862, 0.980] & -0.0142 [-0.0225, -0.0046] & 0.987 (0.004) \\
-S8 Combo S6 shock + S7a scale-dep ($\gamma$ 0.25) & 42.1 [30.8, 58.2] & 1.306 [1.081, 1.520] & 1.278 [1.043, 1.512] & 1.02 [0.92, 1.15] & 0.881 [0.810, 0.947] & 0.0108 [-0.0021, 0.0290] & 0.069 (0.008) \\
+S7a S3 with scale-dependent heterogeneity, gamma 0.25 & 51.4 [39.5, 65.9] & 1.564 [1.337, 1.787] & 1.484 [1.249, 1.759] & 1.06 [0.95, 1.18] & 0.914 [0.861, 0.986] & -0.0003 [-0.0112, 0.0106] & 0.495 (0.016) \\
+S7b S3 with scale-dependent heterogeneity, gamma 0.5 & 77.5 [58.4, 99.7] & 2.251 [1.975, 2.582] & 2.058 [1.656, 2.493] & 1.10 [0.97, 1.21] & 0.922 [0.862, 0.980] & -0.0142 [-0.0225, -0.0046] & 0.987 (0.004) \\
+S8 Combo S6 shock + S7a scale-dep (gamma 0.25) & 42.1 [30.8, 58.2] & 1.306 [1.081, 1.520] & 1.278 [1.043, 1.512] & 1.02 [0.92, 1.15] & 0.881 [0.810, 0.947] & 0.0108 [-0.0021, 0.0290] & 0.069 (0.008) \\
 \end{longtable}
 \vspace{-.5\baselineskip}
 \noindent\begin{minipage}{\linewidth}\footnotesize\raggedright
-$b_P$ is the independent-Poisson reference computed on each panel. S2, S3, S5, S6, S7 and S8 use negative-binomial offspring (k = 0.3) with binomial reporting probability 0.25; S2P uses Poisson offspring with the same reporting. Every column is a test (none is a calibration target). b/a undefined when a ≈ 0 (S0, S2 and S2P, whose true relative variance is 0), shown as ---. Pooled / within slope = (b/$b_P$)/($b_w$/$b_P$) with state fixed effects. The observed row uses the primary bootstrap (2,000 draws); its pooled / within slope is the slope ratio of the fixed-effects decomposition. Thinning uses 100 panels $\times$ 20 shared-count binomial draws per q and the least-squares rate through the origin. Contrast = in-sample power minus affine mean score (lower is better, so positive values favour the affine form). The last column gives the share of synthetic panels with a contrast at or below the observed value, pooled over 5 independent random streams of 200 panels each, with its binomial MC SE; the SD of the per-stream quantiles is 0.000-0.039.
+b\_\allowbreak{}P is the independent-Poisson reference computed on each panel. S2, S3, S5, S6, S7 and S8 use negative-binomial offspring (k = 0.3) with binomial reporting probability 0.25; S2P uses Poisson offspring with the same reporting. Every column is a test (none is a calibration target). b/a undefined when a ≈ 0 (S0, S2, S2P: true relative variance 0), shown as ---. Pooled / within slope = (b/b\_\allowbreak{}P)/(b\_\allowbreak{}w/b\_\allowbreak{}P) with state fixed effects. Observed row: primary bootstrap (2,000 draws); its pooled / within slope is the slope ratio of the fixed-effects decomposition. Thinning uses 100 panels x 20 shared-count binomial draws per q and the authors' least-squares rate through the origin. Contrast = in-sample affine minus power mean score (computed as in the authors' replication code). Last column: share of synthetic panels with a contrast at or below the observed value, pooled over 5 independent random streams of 200 panels each, with its binomial MC SE; the SD of the per-stream quantiles is 0.000-0.039.
 \end{minipage}\par
 \endgroup

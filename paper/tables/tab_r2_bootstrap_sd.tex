@@ -1,0 +1,19 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Pigeonhole bootstrap SD of the intercept against the Monte Carlo SD}
+\label{tab:r2-bootstrap-sd}
+\begin{tabularx}{\linewidth}{@{}Xrrrlrr@{}}
+\toprule
+Generator & Panels & MC SD ($\times10^3$) & Boot.\ SD ($\times10^3$) & Boot./MC & Sandwich/MC & Coverage \\
+\midrule
+FD-S1 & 100 & 0.976 & 1.742 & 1.78 (1.47--2.22) & 1.02 & 1.00 \\
+FD-S8 & 100 & 1.266 & 2.121 & 1.67 (1.29--2.07) & 0.92 & 0.99 \\
+FD-S9-25$^\dagger$ & 100 & 1.300 & 2.148 & 1.65 (1.29--2.05) & 0.94 & 1.00 \\
+FD-S9-50$^\dagger$ & 100 & 1.324 & 2.196 & 1.66 (1.28--2.22) & 1.03 & 1.00 \\
+FD-S9-75$^\dagger$ & 100 & 1.465 & 2.270 & 1.55 (1.19--1.92) & 1.07 & 0.99 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Pigeonhole (state $\times$ calendar-week) bootstrap, 199 draws per panel, on the first 100 stored panels of each fresh-draw generator (panels regenerated exactly from the stored seeds). MC SD: Monte Carlo SD of $\hat a$ over 200 panels. Ratio range over panels in brackets. Sandwich: two-way SE over MC SD. Coverage: share of panels whose percentile interval covers $E(\hat a)$. $^\dagger$ post hoc law. Reading rule of Amendment 2: conservative if every ratio exceeds 1 (outcome: conservative).}
+\end{table}

@@ -1,0 +1,30 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Reporting probability $\rho$ $\times$ offspring dispersion $k$: intercept recovery $E(\hat a)/v_R$ and counting slope $b/b_P$ (100 panels per cell)}
+\label{tab:rev_rho_grid}
+\begin{tabularx}{\linewidth}{@{}l*{5}{>{\centering\arraybackslash}X}@{}}
+\toprule
+$\rho$ & $k$=0.1 & $k$=0.3 & $k$=1 & $k$=3 & Poisson \\
+\midrule
+0.001* & 1.00 / 0.88 & 0.99 / 0.87 & 1.00 / 0.86 & 1.00 / 0.86 & 1.00 / 0.87 \\
+0.003* & 1.01 / 0.87 & 1.01 / 0.86 & 1.01 / 0.85 & 1.01 / 0.86 & 1.01 / 0.85 \\
+0.01* & 1.00 / 0.91 & 1.01 / 0.87 & 1.00 / 0.86 & 1.01 / 0.85 & 1.00 / 0.85 \\
+0.03 & 1.00 / 1.00 & 1.02 / 0.89 & 1.01 / 0.86 & 1.00 / 0.85 & 1.00 / 0.86 \\
+0.1 & 1.02 / 1.29$^\checkmark$ & 1.01 / 0.97 & 1.00 / 0.86 & 1.00 / 0.83 & 1.01 / 0.80 \\
+0.25 & 1.06 / 1.81 & 1.02 / 1.14$^\checkmark$ & 1.01 / 0.87 & 1.00 / 0.79 & 1.00 / 0.74 \\
+0.5 & 1.18 / 2.41 & 1.04 / 1.41$^\checkmark$ & 1.01 / 0.87 & 1.01 / 0.71 & 1.01 / 0.63 \\
+1 & 1.49 / 2.90 & 1.11 / 1.81 & 1.03 / 0.87 & 1.02 / 0.54 & 1.02 / 0.36 \\
+\midrule
+\multicolumn{6}{l}{\emph{Daily renewal, two generations per week} ($a/v_R$ / $a/v_{\bar R}$ / $b/b_P$)} \\
+\multicolumn{6}{l}{$\rho$=0.003, Poisson: 0.76 / 1.53 / 0.85} \\
+\multicolumn{6}{l}{$\rho$=0.003, NB $k$=0.3: 0.75 / 1.51 / 0.87} \\
+\multicolumn{6}{l}{$\rho$=0.01, Poisson: 0.75 / 1.50 / 0.86} \\
+\multicolumn{6}{l}{$\rho$=0.01, NB $k$=0.3: 0.75 / 1.51 / 0.91} \\
+\multicolumn{6}{l}{$\rho$=0.1, Poisson: 0.75 / 1.52 / 0.91} \\
+\multicolumn{6}{l}{$\rho$=0.1, NB $k$=0.3: 0.78 / 1.56 / 1.38} \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Cells give $E(\hat a)/v_R$ / mean $b/b_P$. * Assumed range for $\rho$ (0.001--0.01; CDC burden estimates, not estimated). $^\checkmark$ MC 2.5--97.5\% range of $b/b_P$ contains the observed 1.257. SC2 (recovery within 0.9--1.1 in every cell): not met; SC3 ($b/b_P$ within 0.9--1.1 at $\rho\le0.01$): not met; SC1 (renewal $a/v_R$ within 0.8--1.25): not met.}
+\end{table}

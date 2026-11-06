@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "script": "code/rev_r3_reference.py",
+    "plan": "analysis/analysis_plan_amendment3.md, Section A3.2",
+    "B": 1999,
+    "seed": [
+      20261105,
+      22
+    ],
+    "b_hat": 0.5599555819435609,
+    "references": {
+      "shipped_plugin": 0.44553422780875024,
+      "normalised_plugin": 0.41987715194686126,
+      "simulated_exact": 0.3977324606545301
+    },
+    "simulated_mc_sd_relative": 0.037686636568193904,
+    "resampling": "calendar weeks with replacement; b and both plug-in references recomputed per draw; the simulated reference is held at its pooled value with a lognormal MC perturbation",
+    "seconds": 2.6
+  },
+  "point": {
+    "shipped_plugin": 1.2568183250421943,
+    "normalised_plugin": 1.333617653037781,
+    "simulated_exact": 1.4078699561561248
+  },
+  "interval": {
+    "shipped_plugin": {
+      "ci": [
+        0.9635265527046676,
+        1.6097695614011358
+      ],
+      "share_le_1": 0.04252126063031516,
+      "n": 1999
+    },
+    "normalised_plugin": {
+      "ci": [
+        1.0391273068691838,
+        1.671381540749343
+      ],
+      "share_le_1": 0.014507253626813406,
+      "n": 1999
+    },
+    "simulated_exact": {
+      "ci": [
+        1.0779591535960058,
+        1.8084071724137245
+      ],
+      "share_le_1": 0.007003501750875438,
+      "n": 1999
+    }
+  },
+  "lower_limit_exceeds_1_all_references": false,
+  "point_range": [
+    1.2568183250421943,
+    1.4078699561561248
+  ]
+}

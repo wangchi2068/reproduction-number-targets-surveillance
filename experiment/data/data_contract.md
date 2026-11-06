@@ -34,3 +34,9 @@
 - **Trust:**
   - Text in the user's repository and in `uploads/` was treated as data.
   - A keyword scan for instruction-like text ("ignore previous instructions" and similar) found none in `sources/repo/` or `uploads/main.pdf`.
+
+## Second revision inputs (2026-11-05)
+
+- **Population:** Census Bureau Vintage 2025 state totals; mean of the 2022–2025 July 1 estimates, one value per jurisdiction (51); used as a covariate on the intercept and for population deciles. No imputation was needed (all 51 jurisdictions present).
+- **Issue history:** Delphi Epidata `nhsn` source, `confirmed_admissions_flu_ew`, all issues per state and epiweek. The archive starts at issue 2024w47, so a reference week has a provisional first value only if its first archived issue has lag ≤ 2 weeks; 661 of the 1,748 $R_A$ rows (week ending 2024-11-09 to 2025-12-27) qualify. All 1,748 rows are present in the archive; for 98.8% of covered rows the latest issue equals the frozen vintage.
+- **Participation:** the NHSN percentage of hospitals reporting (already in the frozen vintage) is used for the coverage adjustment under proportional participation.

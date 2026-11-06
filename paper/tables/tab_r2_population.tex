@@ -1,0 +1,42 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Dependence of the count-independent intercept on state population}
+\label{tab:r2-population}
+\begin{tabularx}{\linewidth}{@{}Xrlll@{}}
+\toprule
+Quantity & Estimate & Two-way & State bootstrap & Week bootstrap \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Linear intercept $a_0+a_1z$, common slope $b$ (primary)}} \\
+$a_0$ & 0.0197 & 0.0136--0.0258 & -- & -- \\
+$a_1$ (per SD of log population) & $-$0.0054 & $-$0.0085 to $-$0.0023 & $-$0.0078 to $-$0.0034 & $-$0.0085 to $-$0.0023 \\
+$a$ at population P10 / P90 & 0.0273 / 0.0137 & -- & -- & -- \\
+Ratio $a$(P90) / $a$(P10) & 0.501 & -- & 0.408--0.609 & -- \\
+$b$ & 0.451 & -- & -- & -- \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Log-link intercept $\exp(\alpha_0+\theta z)$ (secondary)}} \\
+$\theta$ & $-$0.327 & -- & $-$0.445 to $-$0.205 & $-$0.438 to $-$0.183 \\
+Ratio $a$(P90) / $a$(P10) & 0.436 & -- & 0.324--0.595 & -- \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Intercept and slope both linear in $z$ (secondary)}} \\
+$a_1$ & $-$0.0052 & $-$0.0083 to $-$0.0022 & -- & -- \\
+$b_1$ & $-$0.015 & $-$0.124 to 0.095 & -- & -- \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Population tertiles, separate affine fits (two-way interval, $t$ with $G-1$ df)}} \\
+Tertile 1 (17 states, 0.59--2.9 M, 399 rows): $a$ & 0.0189 & 0.0145--0.0233 & -- & -- \\
+\quad $b$ (median $C_t$ = 20) & 0.534 & 0.350--0.719 & -- & -- \\
+Tertile 2 (17 states, 2.96--6.2 M, 638 rows): $a$ & 0.0195 & 0.0125--0.0264 & -- & -- \\
+\quad $b$ (median $C_t$ = 37) & 0.462 & 0.299--0.624 & -- & -- \\
+Tertile 3 (17 states, 6.91--39.3 M, 711 rows): $a$ & 0.0135 & 0.0090--0.0180 & -- & -- \\
+\quad $b$ (median $C_t$ = 106) & 0.475 & 0.218--0.732 & -- & -- \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Population tertiles, common slope}} \\
+Tertile 1 intercept & 0.0213 & -- & 0.0160--0.0303 & -- \\
+Tertile 2 intercept & 0.0191 & -- & 0.0149--0.0240 & -- \\
+Tertile 3 intercept & 0.0128 & -- & 0.0105--0.0158 & -- \\
+Ratio tertile 3 / tertile 1 & 0.601 & -- & 0.421--0.818 & -- \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont $z$: log of the mean 2022--2025 resident population (Census Vintage 2025), standardised over the 51 jurisdictions (P10 = 0.92 M, P90 = 12.7 M). Primary test of $a_1=0$: two-way sandwich, $t$ with 41 df, $t=-3.51$, $p=0.0011$. State bootstrap: states resampled (1,999 draws; 999 for the tertile fits); week bootstrap: calendar-week blocks (1,999 draws). All intervals 95\%.}
+\end{table}

@@ -1,0 +1,26 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{What more cases buy: predicted relative squared error $a+b/C$ by count, crossover, and the within-week intercept}
+\label{tab:rev_error_components}
+\begin{tabularx}{\linewidth}{@{}r*{7}{>{\centering\arraybackslash}X}@{}}
+\toprule
+$C$ & $a$ & $b/C$ & $a+b/C$ & 95\% CI (sandwich) & 95\% CI (block bootstrap) & Share from $a$ (\%) & Relative RMSE (\%) \\
+\midrule
+10 & 0.0150 & 0.0560 & 0.0710 & 0.0595--0.0824 & 0.0604--0.0829 & 21.1 & 26.6 \\
+37 & 0.0150 & 0.0151 & 0.0301 & 0.0263--0.0339 & 0.0264--0.0333 & 49.7 & 17.3 \\
+100 & 0.0150 & 0.0056 & 0.0206 & 0.0170--0.0242 & 0.0168--0.0239 & 72.8 & 14.3 \\
+1,000 & 0.0150 & 0.0006 & 0.0155 & 0.0115--0.0196 & 0.0113--0.0196 & 96.4 & 12.5 \\
+\midrule
+\multicolumn{8}{l}{Crossover $C^\times=b/a$ = 37.4; sandwich (log-delta) 24.1--58.3; block bootstrap 23.4--60.5} \\
+\midrule
+\multicolumn{8}{l}{\emph{Within-week intercept (E3, estimand change; block bootstrap 95\% CI)}} \\
+\multicolumn{3}{l}{Leave-state-out week centre (primary)} & 0.0102 & 0.0078--0.0126 & \multicolumn{3}{c}{share of $a$ removed 32.0\% (10.2--47.8)} \\
+\multicolumn{3}{l}{Week centre incl. own row} & 0.0098 & 0.0075--0.0121 & \multicolumn{3}{c}{share of $a$ removed 34.7\% (13.8--49.8)} \\
+\multicolumn{3}{l}{Week centre and scale} & 0.0086 & 0.0066--0.0107 & \multicolumn{3}{c}{share of $a$ removed 42.6\% (22.0--57.0)} \\
+\multicolumn{3}{l}{Season centre} & 0.0147 & 0.0101--0.0184 & \multicolumn{3}{c}{share of $a$ removed 1.6\% ($-$6.8 to 19.1)} \\
+\multicolumn{3}{l}{Pooled centre (E1 loss)} & 0.0150 & 0.0107--0.0191 & \multicolumn{3}{c}{share of $a$ removed 0.0\% (0.0--0.0)} \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,0 +1,24 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Observed and fitted loss by decile of the current-week count}
+\label{tab:r2-deciles}
+\begin{tabularx}{\linewidth}{@{}rrrrrlrrrr@{}}
+\toprule
+Decile & $C_t$ & $n$ & Mean $C_t$ & Mean $L$ & 95\% interval & Affine & Power & Three-par. & Affine inside \\
+\midrule
+1 & 5--10 & 188 & 7.8 & 0.0684 & 0.0538--0.0854 & 0.0906 & 0.0656 & 0.0748 & no \\
+2 & 11--15 & 180 & 13.0 & 0.0597 & 0.0425--0.0787 & 0.0584 & 0.0533 & 0.0559 & yes \\
+3 & 16--21 & 162 & 18.4 & 0.0557 & 0.0431--0.0699 & 0.0457 & 0.0467 & 0.0469 & yes \\
+4 & 22--32 & 176 & 26.7 & 0.0321 & 0.0249--0.0404 & 0.0362 & 0.0405 & 0.0392 & yes \\
+5 & 33--45 & 173 & 38.5 & 0.0404 & 0.0310--0.0501 & 0.0296 & 0.0352 & 0.0330 & no \\
+6 & 46--73 & 174 & 57.4 & 0.0228 & 0.0174--0.0292 & 0.0249 & 0.0303 & 0.0278 & yes \\
+7 & 74--116 & 171 & 93.5 & 0.0223 & 0.0166--0.0287 & 0.0210 & 0.0251 & 0.0229 & yes \\
+8 & 117--206 & 174 & 153.4 & 0.0191 & 0.0144--0.0241 & 0.0187 & 0.0208 & 0.0193 & yes \\
+9 & 207--388 & 175 & 274.2 & 0.0190 & 0.0132--0.0249 & 0.0171 & 0.0167 & 0.0162 & yes \\
+10 & 390--3870 & 175 & 881.9 & 0.0110 & 0.0079--0.0137 & 0.0158 & 0.0115 & 0.0130 & no \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Rows of $R_A$ (1,748) split at the deciles of the current-week count $C_t$. Mean $L$: observed mean relative squared deviation; 95\% interval from a calendar-week block bootstrap (1,999 draws). Model columns give the mean prediction in the decile under the affine fit $a+b/C$ ($a=0.0150$, $b=0.560$), the power law $cC^{-\gamma}$ ($\gamma=0.383$) and the three-parameter fit $a+bC^{-\gamma}$ ($a=0.0089$, $\gamma=0.617$). Quasi-deviance: affine -4346.2, power -4348.6, three-parameter -4356.9. Last column: whether the affine prediction lies inside the interval of the observed mean.}
+\end{table}

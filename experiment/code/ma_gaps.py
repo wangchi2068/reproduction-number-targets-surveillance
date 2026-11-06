@@ -227,11 +227,13 @@ def table_calibration(cal, wb=None):
         wcb = wb["wild_cluster_bootstrap"]
         perm = wb["permutation_test"]
         lines.append("\\midrule")
-        lines.append(f"\\multicolumn{{6}}{{l}}{{\\textbf{{Non-parametric calibrations on real data:}}}} & "
-                     f"& {wcb['null_q95']:.1f} & {wcb['p_value']:.3f} ({wcb['p_value_mcse']:.3f}) & -- \\\\")
+        # one row per reference distribution, each with its own null 95th percentile and p-value
+        lines.append("\\multicolumn{6}{l}{\\textbf{Calibrations on the real data:}} & & & & \\\\")
         lines.append(f"\\multicolumn{{6}}{{l}}{{Wild cluster bootstrap (Webb 6-point, state-level clusters, 2,000 draws)}} & "
+                     f"& {wcb['null_q95']:.1f} & {wcb['p_value']:.3f} ({wcb['p_value_mcse']:.3f}) & -- \\\\")
+        lines.append(f"\\multicolumn{{6}}{{l}}{{Within-state season permutation (labels permuted within state, 2,000 draws)}} & "
                      f"& {perm['null_q95']:.1f} & {perm['p_value']:.3f} ({perm['p_value_mcse']:.3f}) & -- \\\\")
-        lines.append(f"\\multicolumn{{6}}{{l}}{{Within-state season permutation test (season exchangeability, 2,000 draws)}} & "
+        lines.append("\\multicolumn{6}{l}{Asymptotic $\\chi^2_3$ reference} & "
                      f"& 7.8 & {st['chi2_p_sandwich']:.4f} & {st['chi2_p_bootstrap']:.3f} \\\\")
     o = cal["observed"]
     lines += ["\\midrule",

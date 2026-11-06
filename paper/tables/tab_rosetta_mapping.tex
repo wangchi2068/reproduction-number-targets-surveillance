@@ -1,18 +1,17 @@
 \begin{table}[!tbp]
 \centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
+\linespread{1.2}\small
 \caption{Mapping from theoretical inferential targets to empirical surveillance diagnostics}
 \label{tab:rosetta}
-\begin{tabularx}{\linewidth}{@{}p{0.20\linewidth}p{0.18\linewidth}p{0.28\linewidth}p{0.28\linewidth}@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.22\linewidth}p{0.20\linewidth}p{0.30\linewidth}p{0.24\linewidth}@{}}
 \toprule
-Theoretical Target (Section~\ref{sec:model}) & Empirical Diagnostic (Section~\ref{sec:diagnostics}) & Exact Equivalence Conditions & Distortion Mechanism and Bias Direction \\
+Theoretical Quantity (Section~\ref{sec:model}) & Empirical Diagnostic (Section~\ref{sec:diagnostics}) & Exact Equivalence Conditions & Distortion Mechanism / Direction of Bias \\
 \midrule
-Relative transmission variance: $\tilde v_R = v_R / \Rbar^2$ & Dispersion Intercept: $a$ & Constant reporting probability ($\tau = 0$); scale-independent transmission ($\gamma = 0$). & If reporting varies ($\tau > 0$), $a \approx \tilde v_R + \tilde v_H$. The intercept is an upper bound on $\tilde v_R$, not an error floor. Under scale dependence ($\gamma > 0$), $a < \tilde v_R$. \\
-\addlinespace[2pt]
-Counting error scale: $\tilde A = A / \Rbar^2$ & Counting Slope: $b$ & Independent Poisson limit ($\rho \to 0$ gives $b \approx \bP$); branching Poisson ($b \approx b_{\mathrm{P,br}}(\rho)$). & Inflated by offspring overdispersion ($k < \infty$, $b > b_{\mathrm{P,br}}$) or unmodelled scale-dependent heterogeneity ($\gamma > 0$). \\
-\addlinespace[2pt]
-Crossover scale: $\mx = A / v_R$ & Crossover Count: $b/a$ & Exact match between $A$ and $b$, and between $v_R$ and $a$. & Under reporting shocks ($\tau > 0$), $b/a$ is attenuated below $\mx$; under scale dependence ($\gamma > 0$), $b/a$ is inflated. $b/a$ is an in-sample balance point. \\
+Relative transmission variance: $\tilde v_R = v_R / \Rbar^2$ & Dispersion Intercept: $a$ & Constant reporting probability ($\tau = 0$); count-independent heterogeneity ($\gamma = 0$). & When reporting varies ($\tau > 0$), $a$ reflects both $\tilde v_R$ and $\tilde v_H$; in simulation its estimate fell 6--22\% short of their sum (Section~\ref{sec:res-bias}). It does not identify $\tilde v_R$ and is not an error floor. Under scale dependence ($\gamma > 0$), $a < \tilde v_R$. \\
+\addlinespace[3pt]
+Counting error scale: $\tilde A = A / \Rbar^2$ & Counting Slope: $b$ & Independent Poisson limit ($\rho \to 0$ gives $b \approx \bP$); branching Poisson ($b \approx b_{\mathrm{P,br}}(\rho)$). & Inflated by offspring overdispersion ($k < \infty$, $b > b_{\mathrm{P,br}}$) or unmodelled scale dependence ($\gamma > 0$). \\
+\addlinespace[3pt]
+Crossover count: $\mx = A / v_R$ & Crossover Scale: $b/a$ & Exact match between $A$ and $b$, and between $v_R$ and $a$. & In presence of reporting shocks ($\tau > 0$), $b/a$ is attenuated below $\mx$; under scale dependence ($\gamma > 0$), $b/a$ is inflated. $b/a$ is an in-sample dispersion balance point. \\
 \bottomrule
 \end{tabularx}
 \par\smallskip

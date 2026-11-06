@@ -5,16 +5,16 @@
 \setlength{\tabcolsep}{2pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2400\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}>{\raggedright\arraybackslash}p{0.1167\linewidth}@{}}
 \toprule
-Generator & a covers $v_R$ + $v_H$ & a covers E(a) & b covers E(b) & b/a covers E(b)/E(a) & E(a) / ($v_R$ + $v_H$) & Bootstrap SD / MC SD (a, b, b/a) \\
+Generator & a covers v\_\allowbreak{}R + v\_\allowbreak{}H & a covers E(a) & b covers E(b) & b/a covers E(b)/E(a) & E(a) / (v\_\allowbreak{}R + v\_\allowbreak{}H) & Bootstrap SD / MC SD (a, b, b/a) \\
 \midrule
 S1 iid heterogeneity, Poisson counts & 1.000 (0.000) & 1.000 (0.000) & 0.995 (0.004) & 1.000 (0.000) & 1.004 & 2.52, 1.69, 2.01 \\
 S6 S3 + state-week reporting shock (half of a) & 0.998 (0.002) & 0.998 (0.002) & 0.995 (0.004) & 0.998 (0.002) & 1.014 & 1.76, 1.61, 1.72 \\
-S8 Combo S6 shock + S7a scale-dep ($\gamma$ 0.25) & 0.892 (0.015) & 1.000 (0.000) & 0.998 (0.002) & 1.000 (0.000) & 0.857 & 1.71, 1.76, 1.82 \\
+S8 Combo S6 shock + S7a scale-dep (gamma 0.25) & 0.892 (0.015) & 1.000 (0.000) & 0.998 (0.002) & 1.000 (0.000) & 0.857 & 1.71, 1.76, 1.82 \\
 S9 S8 with half of transmission heterogeneity national-week & 0.963 (0.009) & 0.998 (0.002) & 1.000 (0.000) & 0.998 (0.002) & 0.889 & 1.92, 1.78, 1.94 \\
 \bottomrule
 \end{tabularx}
 \par\smallskip
 \begin{minipage}{\linewidth}\footnotesize\raggedright
-400 known-truth panels per generator, each analysed as in the application with a gamma FGLS affine fit on retained rows and 200 state $\times$ calendar-week pigeonhole bootstrap draws (L = 1), percentile 95\% intervals. Nominal coverage 0.95; binomial MC SE in parentheses (0.000 when every panel is covered; the one-sided 95\% lower bound is then 1 - 3/400 = 0.993). E(.) is the Monte Carlo mean of the estimator over panels, so the 'covers E' columns isolate the calibration of the interval from the bias of the estimator; 'covers $v_R$ + $v_H$' also includes that bias. The last column is the mean bootstrap SD over the Monte Carlo SD of the point estimates. In every generator all bootstrap draws converged and none had a $\le$ 0.
+400 known-truth panels per generator, each analysed as the application: gamma FGLS affine fit on retained rows and 200 state x calendar-week pigeonhole bootstrap draws (L = 1), percentile 95\% intervals. Nominal coverage 0.95; binomial MC SE in parentheses (0.000 when every panel is covered; the one-sided 95\% lower bound is then 1 - 3/400 = 0.993). E(.) is the Monte Carlo mean of the estimator over panels, so the 'covers E' columns isolate the calibration of the interval from the bias of the estimator; 'covers v\_\allowbreak{}R + v\_\allowbreak{}H' also includes that bias. Last column: mean bootstrap SD over the Monte Carlo SD of the point estimates. Smallest share of bootstrap draws with a converged fit in any generator: 100.0\%; largest share of draws with a <= 0: 0.0\%.
 \end{minipage}
 \end{table}

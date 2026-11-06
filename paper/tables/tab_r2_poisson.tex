@@ -1,0 +1,17 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Counting slope against three Poisson references}
+\label{tab:r2-poisson}
+\begin{tabularx}{\linewidth}{@{}Xrrlr@{}}
+\toprule
+Reference & $b_P$ & $b/b_P$ & 95\% interval & Change vs.\ shipped (\%) \\
+\midrule
+plug-in, as shipped & 0.4455 & 1.257 & 0.97--1.55 & $-$0.0 \\
+plug-in, mean-normalised & 0.4199 & 1.334 & 1.02--1.64 & 6.1 \\
+simulated exact (Poisson-only panels) & 0.3977 & 1.408 & 1.08--1.73 & 12.0 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont $\hat b=0.560$, two-way 95\% interval 0.430--0.690; intervals of $b/b_P$ divide it by the reference ($b_P$ fixed). Simulated exact: 400 panels with Poisson counts around the observed means, same transform, row filter ($C_t\ge 5$) and affine fit; pooled slope 0.3977 (per-panel 0.370--0.429), pooled intercept 1.7e-05.}
+\end{table}

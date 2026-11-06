@@ -1,0 +1,20 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Wild bootstrap of the intercept under alternative loss clamps}
+\label{tab:r2-clamp}
+\begin{tabularx}{\linewidth}{@{}Xrllll@{}}
+\toprule
+Variant & Valid draws & $p$ (two-sided) & Min.\ $p$ & Clamped rows (\%) & $t^*$ quantiles \\
+\midrule
+clamp at $10^{-9}$ & 9,999 & 0.0001 & 0.0001 & 13.5 & $-$0.15 / 1.80 / 3.38 \\
+clamp at $10^{-7}$ (primary) & 9,999 & 0.0001 & 0.0001 & 13.5 & $-$0.15 / 1.80 / 3.38 \\
+clamp at $10^{-5}$ & 9,999 & 0.0001 & 0.0001 & 13.8 & $-$0.16 / 1.80 / 3.38 \\
+clamp at $10^{-3}$ & 9,999 & 0.0001 & 0.0001 & 17.0 & 0.43 / 2.03 / 3.53 \\
+no clamp & 3,768 & 0.0003 & 0.0003 & 13.5 & 0.32 / 1.11 / 2.88 \\
+exclude draws with any clamped row & 0 & not evaluable & -- & -- & -- \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Wild cluster bootstrap-$t$ of the intercept (9,999 draws, calendar-week Webb weights, seed 21); $t_{\mathrm{obs}}=7.36$. Valid: draws with a converged fit. Minimum attainable $p$: $1/(\text{valid}+1)$. Clamped rows: share of bootstrap rows whose loss is at or below the clamp (for no clamp: negative losses, kept). $t^*$: 2.5\%, 50\%, 97.5\% quantiles. Every draw contains at least one clamped row, so the exclusion variant has no draws. Secondary calibration; it does not change the E1 verdict.}
+\end{table}

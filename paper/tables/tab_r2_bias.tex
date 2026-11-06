@@ -1,0 +1,22 @@
+\begin{table}[!tbp]
+\centering
+\scriptsize\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3pt}
+\caption{Bias of the intercept relative to the total non-counting variance}
+\label{tab:r2-bias}
+\begin{tabularx}{\linewidth}{@{}Xrrrrlrl@{}}
+\toprule
+Generator & $v_H$ share (\%) & $E(\hat a)$ & $v_R$ & $v_H$ & Rel. bias (\%) & $E(\hat a)/v_R$ & $w_H$ \\
+\midrule
+FD-S1 & 0.0 & 0.0149 & 0.0146 & 0.0000 & 1.4 (0.5--2.3) & 1.014 & -- \\
+FD-S8 & 50.9 & 0.0150 & 0.0086 & 0.0089 & $-$14.2 ($-$15.1 to $-$13.3) & 1.749 & 0.708 (0.687--0.729) \\
+FD-S9, 25$^\dagger$ & 50.9 & 0.0151 & 0.0086 & 0.0089 & $-$13.8 ($-$14.8 to $-$12.8) & 1.754 & 0.715 (0.693--0.736) \\
+FD-S9, 50$^\dagger$ & 50.9 & 0.0150 & 0.0086 & 0.0089 & $-$14.0 ($-$15.1 to $-$12.9) & 1.753 & 0.711 (0.689--0.734) \\
+FD-S9, 75$^\dagger$ & 50.8 & 0.0148 & 0.0086 & 0.0089 & $-$14.9 ($-$16.1 to $-$13.7) & 1.731 & 0.693 (0.669--0.718) \\
+FD-S8, share 100 & 0.0 & 0.0154 & 0.0217 & 0.0000 & $-$29.3 ($-$30.1 to $-$28.4) & 0.707 & -- \\
+FD-S8, share 75 & 25.7 & 0.0152 & 0.0144 & 0.0050 & $-$22.1 ($-$23.1 to $-$21.2) & 1.049 & 0.100 (0.056--0.147) \\
+FD-S8, share 25 & 75.6 & 0.0148 & 0.0039 & 0.0120 & $-$6.3 ($-$7.2 to $-$5.4) & 3.840 & 0.912 (0.900--0.924) \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\parbox{\linewidth}{\scriptsize\linespread{1.15}\selectfont Fresh-draw generators of the first revision (200 panels each) and an FD-S8 sweep over the transmission share of the calibrated variance (shares 1.0, 0.75, 0.25; 0.5 is FD-S8 itself). $v_R$, $v_H$: true relative variance of transmission and of the reporting shock on the kept rows; relative bias $=E(\hat a)/(v_R+v_H)-1$; $w_H$: weight on $v_H$ solving $E(\hat a)=v_R+w_Hv_H$. Intervals: panel bootstrap (2,000 draws). $^\dagger$ post hoc law. Wording rule of Amendment 2: if every interval excludes 0, the manuscript says $\hat a$ reflects, not estimates, the total (outcome: reflects (not an estimate of the total)). Mechanism-conditional rescaling $a_{\mathrm{obs}}/t_g$ would range 0.0160--0.0192; not used.}
+\end{table}
